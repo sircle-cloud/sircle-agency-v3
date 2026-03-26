@@ -1,0 +1,153 @@
+/* ============================================ */
+/* SIRCLE STEPS — Text left, sticky visual right */
+/* ============================================ */
+
+.sticky-steps-wrapper {
+  background: var(--dark-green, #082412);
+  position: relative;
+}
+
+.sircle-steps {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+}
+
+/* LEFT: scrolling text items */
+.sircle-steps__left {
+  width: 50%;
+  padding-right: 64px;
+  padding-top: 50vh;
+  padding-bottom: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40vh;
+}
+
+.sircle-steps__item {
+  min-height: 30vh;
+}
+
+.sircle-steps__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: opacity 0.4s ease;
+}
+
+.sircle-steps__num {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold, #f2e2a4);
+  opacity: 0.7;
+}
+
+.sircle-steps__h2 {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--white, #fff);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.sircle-steps__p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--soft-green, #d0dfb9);
+  font-weight: 300;
+  opacity: 0.7;
+  max-width: 400px;
+}
+
+/* Dim non-active items */
+[data-sticky-steps-item-status="before"] .sircle-steps__text,
+[data-sticky-steps-item-status="after"] .sircle-steps__text {
+  opacity: 0.2;
+}
+
+[data-sticky-steps-item-status="active"] .sircle-steps__text {
+  opacity: 1;
+}
+
+/* RIGHT: sticky visual */
+.sircle-steps__right {
+  width: 50%;
+  position: relative;
+}
+
+.sircle-steps__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.sircle-steps__visual {
+  position: absolute;
+  width: 80%;
+  max-width: 440px;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--cream, #f3efe8);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.sircle-steps__visual.is-active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.sircle-steps__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+}
+
+/* MOBILE */
+@media screen and (max-width: 991px) {
+  .sircle-steps {
+    flex-direction: column;
+    padding: 0 24px;
+  }
+  
+  .sircle-steps__left {
+    width: 100%;
+    padding-right: 0;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    gap: 80px;
+  }
+  
+  .sircle-steps__right {
+    display: none;
+  }
+  
+  .sircle-steps__item {
+    min-height: auto;
+  }
+  
+  /* Show inline visuals on mobile */
+  .sircle-steps__item::after {
+    content: '';
+    display: block;
+  }
+  
+  [data-sticky-steps-item-status] .sircle-steps__text {
+    opacity: 1;
+  }
+}

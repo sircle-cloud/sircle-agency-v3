@@ -1,0 +1,26 @@
+# Only track images used in the site
+assets/images/*
+# Exclude large sircle-model PNGs
+assets/sircle-model/*.png
+assets/sircle-model/transparent/*.png
+assets/figma/*.png
+!assets/images/benoit-deschasaux-0tHVrVOJ1qU-unsplash.jpg
+!assets/images/daniel-mirlea-eQzLUXisfgA-unsplash.jpg
+!assets/images/dario-bronnimann-y51ZjAmV3_k-unsplash.jpg
+!assets/images/getty-images-Uu2HHyUpzrI-unsplash.jpg
+!assets/images/jordan-gonzalez-RdEYQ2YKalo-unsplash.jpg
+!assets/images/mikita-yo-UgWWJ0fIBGE-unsplash.jpg
+!assets/images/mohamed-nohassi-nJB_Fgxx-pI-unsplash.jpg
+!assets/images/ohlamour-studio-SxvXxLA65Ig-unsplash.jpg
+!assets/images/planet-volumes-AScLcUpWWVs-unsplash.jpg
+!assets/images/ryunosuke-kikuno-DNKKdn1Q8Dw-unsplash.jpg
+!assets/images/slashio-photography-yaith3Ahrf0-unsplash.jpg
+!assets/images/soham-banerjee-5sJfsX2D3mM-unsplash.jpg
+!assets/images/v1.1.png
+
+# Exclude large gradient PNGs (keep JPGs which are smaller)
+assets/gradients/Gradient*.png
+
+# OS files
+.DS_Store
+__MACOSX/

@@ -1,0 +1,2515 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sircle.agency — Homepage Wireframes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════
+       DESIGN TOKENS
+       ═══════════════════════════════════════ */
+    :root {
+      /* DARKS */
+      --black: #000000;
+      --dark-grey: #212121;
+      --dark-grey-green: #2B2F2D;
+      --mid-grey: #4E4E4E;
+      
+      /* NEUTRALS / CREAMS */
+      --white: #FFFFFF;
+      --warm-white: #FFF8EE;
+      --cream: #F3EFE8;
+      --warm-beige: #E9E2D6;
+      --beige: #DED6C9;
+      
+      /* GREENS */
+      --dark-green: #082412;
+      --mid-green: #3F6F45;
+      --sage-green: #8FAF8A;
+      --soft-green: #D0DFB9;
+      --light-green: #F0FFDA;
+      
+      /* GOLDS */
+      --light-sage: #D0DEBA;
+      --gold: #F2E2A4;
+      --light-gold: #F6EED0;
+      
+      --font-heading: 'Kulim Park', sans-serif;
+      --font-body: 'Kulim Park', sans-serif;
+      
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 40px;
+      --space-xl: 64px;
+      --space-2xl: 96px;
+      --space-3xl: 128px;
+      
+      --radius-pill: 100px;
+      --radius-card: 16px;
+      --radius-image: 12px;
+    }
+
+    /* ═══════════════════════════════════════
+       GRADIENT NOISE TEXTURE
+       ═══════════════════════════════════════ */
+    .gradient-noise {
+      position: relative;
+    }
+    .gradient-noise::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.045;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+    .gradient-noise > * { position: relative; z-index: 2; }
+
+    /* ═══════════════════════════════════════
+       RESET & BASE
+       ═══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { 
+      scroll-behavior: smooth; 
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--white);
+      background: var(--dark-green);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ═══════════════════════════════════════
+       WIREFRAME NAVIGATION (meta)
+       ═══════════════════════════════════════ */
+    .wireframe-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(8, 36, 18, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(208, 223, 185, 0.1);
+      padding: 12px 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      overflow-x: auto;
+    }
+    
+    .wireframe-nav .nav-title {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--gold);
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    
+    .wireframe-nav a {
+      font-size: 12px;
+      color: var(--soft-green);
+      white-space: nowrap;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    
+    .wireframe-nav a:hover {
+      color: var(--gold);
+      border-color: rgba(231, 221, 150, 0.3);
+      background: rgba(231, 221, 150, 0.05);
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE WRAPPER
+       ═══════════════════════════════════════ */
+    .scene {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    
+    .scene-label {
+      position: absolute;
+      top: 24px;
+      left: 32px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+      z-index: 10;
+    }
+    
+    .scene-number {
+      position: absolute;
+      top: 20px;
+      right: 32px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--soft-green);
+      opacity: 0.4;
+      z-index: 10;
+    }
+
+    /* ═══════════════════════════════════════
+       ANNOTATION SYSTEM
+       ═══════════════════════════════════════ */
+    .annotation {
+      position: absolute;
+      background: rgba(231, 221, 150, 0.12);
+      border: 1px dashed var(--gold);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+      z-index: 20;
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+    }
+    
+    .annotation::before {
+      content: '💡';
+      margin-right: 6px;
+    }
+
+    /* ═══════════════════════════════════════
+       TYPOGRAPHY
+       ═══════════════════════════════════════ */
+    .display-xl {
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+    
+    .display-lg {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    
+    .display-md {
+      font-family: var(--font-heading);
+      font-size: clamp(24px, 2.5vw, 36px);
+      font-weight: 700;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    
+    .body-lg {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    
+    .body { font-size: 17px; font-weight: 400; line-height: 1.65; }
+    
+    .label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    /* ═══════════════════════════════════════
+       BUTTONS
+       ═══════════════════════════════════════ */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--dark-green);
+      padding: 16px 32px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.03em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .btn-primary:hover {
+      background: var(--light-green);
+      transform: scale(1.02);
+    }
+    
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--soft-green);
+      padding: 16px 32px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--soft-green);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+      background: var(--soft-green);
+      color: var(--dark-green);
+    }
+    
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--soft-green);
+      font-weight: 500;
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .btn-ghost::after { content: '→'; transition: transform 0.3s ease; }
+    .btn-ghost:hover::after { transform: translateX(8px); }
+    .btn-ghost:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════
+       NOISE OVERLAY (global — ::before pseudo)
+       ═══════════════════════════════════════ */
+    .noise-overlay {
+      position: relative;
+    }
+    .noise-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 1: LOADING SCREEN
+       ═══════════════════════════════════════ */
+    #scene-1 {
+      background: linear-gradient(135deg, #000000, #082412);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    
+    .loader-logo {
+      width: 120px;
+      height: 120px;
+      border: 3px solid var(--soft-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: pulse-ring 2s ease-in-out infinite;
+    }
+    
+    .loader-logo .s-mark {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--white);
+      font-family: var(--font-heading);
+    }
+    
+    .loader-counter {
+      margin-top: 32px;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--soft-green);
+      letter-spacing: 0.2em;
+    }
+    
+    .loader-bar {
+      width: 200px;
+      height: 2px;
+      background: rgba(208, 223, 185, 0.15);
+      margin-top: 16px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    
+    .loader-bar-fill {
+      width: 67%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--light-green));
+      border-radius: 2px;
+      animation: load-progress 2.5s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(208, 223, 185, 0.3); }
+      50% { box-shadow: 0 0 0 20px rgba(208, 223, 185, 0); }
+    }
+    
+    @keyframes load-progress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 2: HERO
+       ═══════════════════════════════════════ */
+    #scene-2 {
+      background: linear-gradient(160deg, #082412 0%, #1a3a20 40%, #3F6F45 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      position: relative;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(8, 36, 18, 0.3) 0%,
+        rgba(8, 36, 18, 0.55) 100%
+      );
+      z-index: 1;
+    }
+    
+    .hero-video-placeholder {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 30% 20%, rgba(63, 111, 69, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(63, 111, 69, 0.1) 0%, transparent 50%),
+        var(--dark-green);
+      z-index: 0;
+    }
+    
+    .hero-video-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--soft-green);
+      opacity: 0.3;
+      border: 1px dashed rgba(208, 223, 185, 0.2);
+      padding: 12px 24px;
+      border-radius: 8px;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 32px;
+    }
+    
+    .hero-content h1 {
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    
+    .hero-content .subline {
+      color: var(--soft-green);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    
+    .hero-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+    }
+    
+    .hero-nav .logo {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+    
+    .hero-nav .logo span {
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-size: 10px;
+      display: block;
+      color: var(--soft-green);
+    }
+    
+    .hero-nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    
+    .hero-nav-links a {
+      font-size: 14px;
+      color: var(--soft-green);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .hero-nav-links a:hover { color: var(--white); }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: float-indicator 2s ease-in-out infinite;
+    }
+    
+    .scroll-indicator span {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .scroll-indicator .arrow {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.5), transparent);
+    }
+    
+    @keyframes float-indicator {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 3: PAIN POINTS
+       ═══════════════════════════════════════ */
+    #scene-3 {
+      background: linear-gradient(135deg, #F3EFE8, #FFF8EE);
+      padding: var(--space-2xl) 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: center;
+      color: var(--dark-green);
+    }
+    
+    .pain-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .pain-header .label {
+      color: var(--mid-green);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+    
+    .pain-header h2 {
+      color: var(--dark-green);
+    }
+    
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      width: 100%;
+    }
+    
+    .pain-card {
+      background: transparent;
+      padding: 40px;
+      border-radius: var(--radius-card);
+      transition: all 0.4s ease;
+      border: 1px solid transparent;
+    }
+    
+    .pain-card:hover {
+      background: var(--white);
+      border-color: rgba(8, 36, 18, 0.06);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 48px rgba(8, 36, 18, 0.08);
+    }
+    
+    .pain-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .pain-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--dark-green);
+      stroke-width: 1.5;
+      fill: none;
+    }
+    
+    .pain-card h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark-green);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    
+    .pain-card p {
+      font-size: 16px;
+      color: var(--dark-grey-green);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 4: INTRO + VIDEO
+       ═══════════════════════════════════════ */
+    #scene-4 {
+      background: linear-gradient(160deg, #082412 0%, #2B4A30 50%, #8FAF8A 100%);
+      padding: var(--space-2xl) 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .video-container {
+      width: 100%;
+      max-width: 1100px;
+      aspect-ratio: 16/9;
+      background: rgba(255,255,255,0.03);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(208, 223, 185, 0.08);
+      margin-bottom: var(--space-xl);
+    }
+    
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: 
+        radial-gradient(ellipse at center, rgba(63, 111, 69, 0.08) 0%, transparent 70%);
+    }
+    
+    .play-button {
+      width: 80px;
+      height: 80px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 16px;
+    }
+    
+    .play-button:hover { transform: scale(1.08); background: var(--light-green); }
+    
+    .play-button svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--dark-green);
+      margin-left: 4px;
+    }
+    
+    .play-label {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft-green);
+      font-weight: 600;
+    }
+    
+    .intro-brand {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    
+    .intro-text {
+      max-width: 720px;
+      text-align: center;
+      color: var(--white);
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .usp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      width: 100%;
+    }
+    
+    .usp-item {
+      border-top: 1px solid rgba(208, 223, 185, 0.2);
+      padding-top: 24px;
+    }
+    
+    .usp-item h4 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--light-green);
+      margin-bottom: 8px;
+    }
+    
+    .usp-item p {
+      font-size: 15px;
+      color: var(--soft-green);
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 5: SIRCLE MODEL
+       ═══════════════════════════════════════ */
+    #scene-5 {
+      background: radial-gradient(ellipse at center, #1a2e1a 0%, #000000 70%);
+      padding: var(--space-2xl) 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 120vh;
+      justify-content: center;
+      position: relative;
+    }
+    
+    #scene-5::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(63, 111, 69, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    
+    .model-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .model-header .label {
+      color: var(--gold);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+    
+    .model-header h2 {
+      color: var(--white);
+      margin-bottom: var(--space-md);
+    }
+    
+    .model-header .subtitle {
+      color: var(--soft-green);
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .sircle-circle {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      margin: 0 auto var(--space-xl);
+      z-index: 2;
+    }
+    
+    .sircle-circle svg {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .circle-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: var(--dark-green);
+      border: 2px solid var(--soft-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    
+    .model-phases {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .phase-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(208, 223, 185, 0.08);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .phase-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 4px 0 0 4px;
+    }
+    
+    .phase-card:nth-child(1)::before { background: var(--mid-green); }
+    .phase-card:nth-child(2)::before { background: var(--dark-grey-green); }
+    .phase-card:nth-child(3)::before { background: var(--gold); }
+    .phase-card:nth-child(4)::before { background: var(--soft-green); }
+    
+    .phase-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(208, 223, 185, 0.15);
+      transform: translateY(-4px);
+    }
+    
+    .phase-number {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    
+    .phase-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    
+    .phase-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .phase-card li {
+      font-size: 14px;
+      color: var(--soft-green);
+      line-height: 2;
+      padding-left: 16px;
+      position: relative;
+    }
+    
+    .phase-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 6: GESELECTEERD WERK
+       ═══════════════════════════════════════ */
+    #scene-6 {
+      background: linear-gradient(160deg, #082412, #2B3F2D);
+      padding: var(--space-2xl) 48px;
+      min-height: 100vh;
+    }
+    
+    .werk-header {
+      max-width: 1440px;
+      margin: 0 auto var(--space-xl);
+    }
+    
+    .werk-header .label {
+      color: rgba(208, 223, 185, 0.6);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+    
+    .werk-header h2 { color: var(--white); }
+    
+    .cases-grid {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+    }
+    
+    .cases-row {
+      display: grid;
+      gap: 24px;
+    }
+    
+    .cases-row:nth-child(1) { grid-template-columns: 3fr 2fr; }
+    .cases-row:nth-child(2) { grid-template-columns: 2fr 3fr; }
+    
+    .case-card {
+      border-radius: var(--radius-image);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+    
+    .case-card:hover { transform: scale(1.01); }
+    
+    .case-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: rgba(255,255,255,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .case-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft-green);
+      opacity: 0.3;
+    }
+    
+    .case-row-small .case-image { aspect-ratio: 4/3; }
+    
+    .case-info {
+      padding: 20px 0 0;
+    }
+    
+    .case-info h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    
+    .case-tags {
+      font-size: 14px;
+      color: var(--soft-green);
+      transition: color 0.3s;
+    }
+    
+    .case-card:hover .case-tags { color: var(--gold); }
+    
+    /* Marquee */
+    .logo-marquee {
+      max-width: 1440px;
+      margin: var(--space-xl) auto 0;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .logo-marquee::before,
+    .logo-marquee::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      z-index: 2;
+    }
+    
+    .logo-marquee::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--dark-green), transparent);
+    }
+    
+    .logo-marquee::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--dark-green), transparent);
+    }
+    
+    .marquee-track {
+      display: flex;
+      gap: 64px;
+      align-items: center;
+      animation: marquee-scroll 25s linear infinite;
+      width: max-content;
+    }
+    
+    .marquee-logo {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(208, 223, 185, 0.35);
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .werk-cta {
+      text-align: center;
+      margin-top: var(--space-xl);
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 7: DIENSTEN
+       ═══════════════════════════════════════ */
+    #scene-7 {
+      background: linear-gradient(135deg, #FFF8EE, #F3EFE8);
+      padding: var(--space-2xl) 48px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-green);
+    }
+    
+    .diensten-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .diensten-header .label {
+      color: var(--mid-green);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+    
+    .diensten-header h2 { color: var(--dark-green); }
+    
+    .diensten-scroll-track {
+      display: flex;
+      gap: 24px;
+      max-width: 1200px;
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .diensten-scroll-track::-webkit-scrollbar { height: 3px; }
+    .diensten-scroll-track::-webkit-scrollbar-track { background: rgba(8, 36, 18, 0.05); border-radius: 3px; }
+    .diensten-scroll-track::-webkit-scrollbar-thumb { background: var(--mid-green); border-radius: 3px; }
+    
+    .dienst-card {
+      min-width: 280px;
+      flex: 1;
+      scroll-snap-align: start;
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 40px 32px;
+      box-shadow: 0 4px 32px rgba(8, 36, 18, 0.06);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .dienst-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 48px rgba(8, 36, 18, 0.12);
+    }
+    
+    .dienst-card .phase-indicator {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    .dienst-card:nth-child(1) .phase-indicator { background: rgba(63, 111, 69, 0.1); color: var(--mid-green); }
+    .dienst-card:nth-child(2) .phase-indicator { background: rgba(43, 47, 45, 0.08); color: var(--dark-grey-green); }
+    .dienst-card:nth-child(3) .phase-indicator { background: rgba(231, 221, 150, 0.15); color: #b5a94e; }
+    .dienst-card:nth-child(4) .phase-indicator { background: rgba(208, 223, 185, 0.2); color: var(--mid-green); }
+    
+    .dienst-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--dark-green);
+      margin-bottom: 16px;
+    }
+    
+    .dienst-card ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 24px;
+    }
+    
+    .dienst-card li {
+      font-size: 15px;
+      color: var(--dark-grey-green);
+      line-height: 2;
+      padding-left: 16px;
+      position: relative;
+    }
+    
+    .dienst-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    
+    .dienst-card .btn-ghost {
+      color: var(--mid-green);
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 8: SOCIAL PROOF
+       ═══════════════════════════════════════ */
+    #scene-8 {
+      background: linear-gradient(160deg, #3F6F45 0%, #8FAF8A 50%, #D0DFB9 100%);
+      padding: var(--space-2xl) 48px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .social-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .social-header .label {
+      color: rgba(208, 223, 185, 0.6);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+    
+    .social-header h2 { color: var(--white); }
+    
+    .testimonial-card {
+      max-width: 800px;
+      text-align: center;
+      margin: 0 auto var(--space-xl);
+    }
+    
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+    
+    .star {
+      width: 24px;
+      height: 24px;
+      color: var(--gold);
+      font-size: 20px;
+    }
+    
+    .testimonial-quote {
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--white);
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(208, 223, 185, 0.15);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--soft-green);
+    }
+    
+    .author-info .name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--soft-green);
+    }
+    
+    .author-info .title {
+      font-size: 14px;
+      color: rgba(208, 223, 185, 0.6);
+    }
+    
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(208, 223, 185, 0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .dot.active {
+      background: var(--gold);
+      width: 24px;
+      border-radius: 4px;
+    }
+    
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      width: 100%;
+      padding-top: var(--space-lg);
+      border-top: 1px solid rgba(208, 223, 185, 0.1);
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .stat-label {
+      font-size: 13px;
+      color: var(--soft-green);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 9: SIRCLE SOLUTIONS
+       ═══════════════════════════════════════ */
+    #scene-9 {
+      background: linear-gradient(135deg, #8FAF8A 0%, #D0DEBA 50%, #F2E2A4 100%);
+      padding: var(--space-2xl) 48px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      max-width: 1200px;
+      width: 100%;
+      align-items: center;
+    }
+    
+    .solutions-text .label {
+      color: var(--mid-green);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+    
+    .solutions-text h2 {
+      color: var(--dark-green);
+      margin-bottom: var(--space-md);
+    }
+    
+    .solutions-text p {
+      color: var(--dark-grey-green);
+      font-size: 17px;
+      line-height: 1.65;
+      margin-bottom: var(--space-md);
+    }
+    
+    .solutions-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: var(--space-lg);
+    }
+    
+    .feature-pill {
+      background: rgba(8, 36, 18, 0.05);
+      color: var(--dark-green);
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .solutions-visual {
+      position: relative;
+    }
+    
+    .solutions-mockup {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--dark-green);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 24px 80px rgba(8, 36, 18, 0.2);
+    }
+    
+    .mockup-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+    }
+    
+    .mockup-header {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    
+    .mockup-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(208, 223, 185, 0.2);
+    }
+    
+    .mockup-body {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 12px;
+    }
+    
+    .mockup-sidebar {
+      background: rgba(208, 223, 185, 0.05);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    
+    .mockup-sidebar-item {
+      height: 8px;
+      background: rgba(208, 223, 185, 0.1);
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    
+    .mockup-main {
+      background: rgba(208, 223, 185, 0.03);
+      border-radius: 8px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    
+    .mockup-card {
+      background: rgba(208, 223, 185, 0.06);
+      border-radius: 6px;
+      height: 80px;
+    }
+    
+    /* Scene 9 text colors for light/warm background */
+    #scene-9 .solutions-text .label { color: #082412; }
+    #scene-9 .solutions-text h2 { color: #082412; }
+    #scene-9 .solutions-text p { color: #082412; }
+    #scene-9 .feature-pill { color: #082412; }
+    
+    /* Scene 10 text fix for light background */
+    #scene-10 .insights-header .btn-ghost { color: var(--mid-green); }
+    #scene-10 .insights-header .btn-ghost:hover { color: var(--dark-green); }
+    #scene-10 .scene-label { color: var(--mid-green); }
+    #scene-10 .scene-number { color: var(--dark-grey-green); }
+
+    /* ═══════════════════════════════════════
+       SCENE 10: INSIGHTS/BLOG
+       ═══════════════════════════════════════ */
+    #scene-10 {
+      background: linear-gradient(135deg, #F3EFE8, #FFF8EE);
+      padding: var(--space-2xl) 48px;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-green);
+    }
+    
+    .insights-header {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .insights-header .label {
+      color: var(--mid-green);
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+    
+    .insights-header h2 { color: var(--dark-green); }
+    
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      width: 100%;
+    }
+    
+    .insight-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      border: 1px solid rgba(8, 36, 18, 0.06);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 32px rgba(8, 36, 18, 0.06);
+    }
+    
+    .insight-card:hover {
+      border-color: rgba(8, 36, 18, 0.12);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 48px rgba(8, 36, 18, 0.12);
+    }
+    
+    .insight-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: rgba(8, 36, 18, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--mid-green);
+      opacity: 0.3;
+    }
+    
+    .insight-content {
+      padding: 24px;
+    }
+    
+    .insight-tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-green);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    
+    .insight-content h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark-green);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    
+    .insight-content p {
+      font-size: 15px;
+      color: #212121;
+      line-height: 1.6;
+    }
+    
+    .insight-date {
+      font-size: 13px;
+      color: var(--mid-grey);
+      margin-top: 16px;
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 11: CTA CONTACT
+       ═══════════════════════════════════════ */
+    #scene-11 {
+      background: linear-gradient(160deg, #D0DEBA 0%, #F2E2A4 60%, #F6EED0 100%);
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: var(--space-2xl) 48px;
+      color: #082412;
+    }
+    
+    #scene-11::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(242, 226, 164, 0.3) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    
+    #scene-11 .btn-primary {
+      background: #082412;
+      color: #F0FFDA;
+    }
+    
+    #scene-11 .btn-primary:hover {
+      background: #1a3a20;
+    }
+    
+    #scene-11 .btn-secondary {
+      color: #082412;
+      border-color: #082412;
+    }
+    
+    #scene-11 .btn-secondary:hover {
+      background: #082412;
+      color: #F0FFDA;
+    }
+    
+    .cta-content {
+      max-width: 700px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .cta-content h2 {
+      color: #082412;
+      margin-bottom: var(--space-md);
+    }
+    
+    .cta-content .subtext {
+      color: #212121;
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ═══════════════════════════════════════
+       SCENE 12: FOOTER
+       ═══════════════════════════════════════ */
+    #scene-12 {
+      background: linear-gradient(160deg, #082412, #000000);
+      border-top: 1px solid rgba(208, 223, 185, 0.1);
+      padding: 80px 48px 40px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 1.5fr;
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-col-1 .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    
+    .footer-col-1 .footer-logo span {
+      display: block;
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--soft-green);
+      margin-top: 2px;
+    }
+    
+    .footer-contact p {
+      font-size: 14px;
+      color: var(--soft-green);
+      line-height: 1.8;
+    }
+    
+    .footer-socials {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(208, 223, 185, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--soft-green);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    
+    .social-icon:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(231, 221, 150, 0.05);
+    }
+    
+    .footer-tagline {
+      font-style: italic;
+      color: var(--light-green);
+      font-size: 15px;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    
+    .footer-nav-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    
+    .footer-nav a {
+      display: block;
+      font-size: 15px;
+      color: var(--soft-green);
+      line-height: 2.2;
+      transition: color 0.3s;
+    }
+    
+    .footer-nav a:hover { color: var(--gold); }
+    
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(208, 223, 185, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer-legal {
+      font-size: 13px;
+      color: rgba(208, 223, 185, 0.4);
+    }
+    
+    .footer-ecosystem {
+      font-size: 13px;
+      color: rgba(208, 223, 185, 0.4);
+    }
+    
+    .footer-ecosystem a {
+      color: var(--soft-green);
+      transition: color 0.3s;
+    }
+    
+    .footer-ecosystem a:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .pain-grid,
+      .usp-grid,
+      .model-phases,
+      .cases-row,
+      .insights-grid,
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .cases-row:nth-child(1),
+      .cases-row:nth-child(2) {
+        grid-template-columns: 1fr;
+      }
+      
+      .solutions-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-nav-links { display: none; }
+      
+      .sircle-circle { width: 280px; height: 280px; }
+      
+      .cta-buttons { flex-direction: column; }
+      
+      .wireframe-nav { padding: 12px 16px; }
+    }
+
+    /* ═══════════════════════════════════════
+       SECTION DIVIDER
+       ═══════════════════════════════════════ */
+    .scene-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(208, 223, 185, 0.15), transparent);
+    }
+
+    /* ═══════════════════════════════════════
+       ANIMATION HINTS (visual annotations)
+       ═══════════════════════════════════════ */
+    .anim-hint {
+      position: absolute;
+      background: rgba(231, 221, 150, 0.08);
+      border: 1px dashed rgba(231, 221, 150, 0.25);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      z-index: 20;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       WIREFRAME NAVIGATION
+       ═══════════════════════════════════════ -->
+  <nav class="wireframe-nav">
+    <div class="nav-title">📐 Wireframes</div>
+    <a href="#scene-1">01 Loading</a>
+    <a href="#scene-2">02 Hero</a>
+    <a href="#scene-3">03 Pain Points</a>
+    <a href="#scene-4">04 Intro</a>
+    <a href="#scene-5">05 Model</a>
+    <a href="#scene-6">06 Werk</a>
+    <a href="#scene-7">07 Diensten</a>
+    <a href="#scene-8">08 Social Proof</a>
+    <a href="#scene-9">09 Solutions</a>
+    <a href="#scene-10">10 Insights</a>
+    <a href="#scene-11">11 CTA</a>
+    <a href="#scene-12">12 Footer</a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 1: LOADING SCREEN
+       ═══════════════════════════════════════ -->
+  <section id="scene-1" class="scene gradient-noise">
+    <span class="scene-label">Scene 01 — Loading</span>
+    <span class="scene-number">01/12</span>
+    
+    <div class="annotation" style="bottom: 32px; left: 32px;">OSMO Willem Loading Animation · max 2.5s · logo reveal → content fade</div>
+    
+    <div class="loader-logo">
+      <span class="s-mark">S</span>
+    </div>
+    <div class="loader-counter">LOADING — 67%</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 2: HERO
+       ═══════════════════════════════════════ -->
+  <section id="scene-2" class="scene gradient-noise">
+    <span class="scene-label">Scene 02 — Hero</span>
+    <span class="scene-number">02/12</span>
+    
+    <div class="hero-video-placeholder">
+      <div class="hero-video-label">📹 Cinematic Background Video (Showreel/Drone) · Muted Autoplay</div>
+    </div>
+    <div class="hero-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="hero-nav">
+      <div class="logo">
+        sircle
+        <span>agency</span>
+      </div>
+      <div class="hero-nav-links">
+        <a href="#">Over ons</a>
+        <a href="#">Model</a>
+        <a href="#">Diensten</a>
+        <a href="#">Werk</a>
+        <a href="#">Film</a>
+        <a href="#">Insights</a>
+        <a class="btn-primary" style="padding: 10px 24px; font-size: 14px;">Plan een gesprek</a>
+      </div>
+    </nav>
+    
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <h1 class="display-xl">Every brand has a story worth telling.</h1>
+      <p class="subline">Van merkstrategie tot film, van design tot digitale groei.</p>
+      <button class="btn-primary">Plan een gesprek →</button>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="arrow"></div>
+    </div>
+    
+    <div class="annotation" style="top: 80px; right: 200px;">GSAP SplitText · Word-by-word reveal · power3.out</div>
+    <div class="annotation" style="bottom: 100px; left: 32px;">Hero fades + parallax on scroll · Video Ken Burns 100→105% over 20s</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 3: PAIN POINTS
+       ═══════════════════════════════════════ -->
+  <section id="scene-3" class="scene">
+    <span class="scene-label" style="color: var(--mid-green);">Scene 03 — Pain Points</span>
+    <span class="scene-number" style="color: var(--dark-grey-green);">03/12</span>
+    
+    <div class="pain-header">
+      <span class="label">Het probleem</span>
+      <h2 class="display-lg">Herken je dit?</h2>
+    </div>
+    
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">
+          <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="14"/><path d="M12 18h12M18 12v12"/></svg>
+        </div>
+        <h3>Je merk voelt niet meer als jij.</h3>
+        <p>Je bent gegroeid, maar je merk is niet meegegroeid. Tijd voor helderheid.</p>
+      </div>
+      
+      <div class="pain-card">
+        <div class="pain-icon">
+          <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="6"/><circle cx="18" cy="18" r="14"/><line x1="28" y1="8" x2="22" y2="14"/></svg>
+        </div>
+        <h3>Je investeert in marketing, maar ziet geen groei.</h3>
+        <p>Campagnes, content, ads — maar het voelt als schieten in het donker.</p>
+      </div>
+      
+      <div class="pain-card">
+        <div class="pain-icon">
+          <svg viewBox="0 0 36 36"><path d="M6 24l6-6 4 4 8-10 6 6"/><rect x="4" y="4" width="28" height="24" rx="2"/></svg>
+        </div>
+        <h3>Je hebt een verhaal, maar niemand hoort het.</h3>
+        <p>Je weet dat je merk meer is dan wat je nu laat zien. Tijd om het te vertellen.</p>
+      </div>
+    </div>
+    
+    <div class="annotation" style="bottom: 32px; left: 32px; color: var(--mid-green); border-color: var(--mid-green); background: rgba(63,111,69,0.08);">OSMO Elements Reveal · Staggered cards fade-in · SVG icon stroke draw-in</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 4: INTRO + VIDEO
+       ═══════════════════════════════════════ -->
+  <section id="scene-4" class="scene gradient-noise">
+    <span class="scene-label">Scene 04 — Introductie</span>
+    <span class="scene-number">04/12</span>
+    
+    <div class="video-container">
+      <div class="video-placeholder">
+        <div class="play-button">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <span class="play-label">Bekijk onze aanpak</span>
+      </div>
+    </div>
+    
+    <div class="intro-brand">sircle.agency</div>
+    
+    <p class="intro-text">
+      Wij geloven dat elk merk een verhaal heeft dat het waard is om te vertellen. 
+      Als strategy-driven creative agency combineren wij strategie, film, design en 
+      technologie om merken te transformeren.
+    </p>
+    
+    <div class="usp-grid">
+      <div class="usp-item">
+        <h4>Strategie-gedreven</h4>
+        <p>Alles begint met een heldere richting. Geen pixel zonder plan.</p>
+      </div>
+      <div class="usp-item">
+        <h4>Filmmaker-DNA</h4>
+        <p>Wij denken in beeld en verhaal. Van concept tot eindproduct.</p>
+      </div>
+      <div class="usp-item">
+        <h4>Eén team, alles onder één dak</h4>
+        <p>Geen losse freelancers, maar één bureau dat strategie, creatie en groei verbindt.</p>
+      </div>
+    </div>
+    
+    <div class="annotation" style="top: 80px; right: 32px;">Custom Vimeo/Bunny Player · Video scales up on scroll · border-radius 32→16px scrub</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 5: SIRCLE MODEL (WOW MOMENT)
+       ═══════════════════════════════════════ -->
+  <section id="scene-5" class="scene gradient-noise">
+    <span class="scene-label">Scene 05 — SIRCLE Model ★ WOW Moment</span>
+    <span class="scene-number">05/12</span>
+    
+    <div class="model-header">
+      <span class="label">Het SIRCLE Model</span>
+      <h2 class="display-lg">Zo werken wij</h2>
+      <p class="subtitle">Vier fases die samen een cyclus vormen. Van richting bepalen tot langetermijn groei.</p>
+    </div>
+    
+    <!-- Interactive SIRCLE Circle -->
+    <div class="sircle-circle">
+      <svg viewBox="0 0 400 400">
+        <!-- Background ring -->
+        <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(208,223,185,0.08)" stroke-width="2"/>
+        
+        <!-- Strategy arc (top-right) -->
+        <path d="M 200 30 A 170 170 0 0 1 370 200" fill="none" stroke="#3F6F45" stroke-width="24" stroke-linecap="round" opacity="0.9"/>
+        
+        <!-- Production arc (bottom-right) -->
+        <path d="M 370 200 A 170 170 0 0 1 200 370" fill="none" stroke="#2B2F2D" stroke-width="24" stroke-linecap="round" opacity="0.9"/>
+        
+        <!-- Growth arc (bottom-left) -->
+        <path d="M 200 370 A 170 170 0 0 1 30 200" fill="none" stroke="#E7DD96" stroke-width="24" stroke-linecap="round" opacity="0.9"/>
+        
+        <!-- Care arc (top-left) -->
+        <path d="M 30 200 A 170 170 0 0 1 200 30" fill="none" stroke="#D0DFB9" stroke-width="24" stroke-linecap="round" opacity="0.9"/>
+        
+        <!-- Labels -->
+        <text x="305" y="120" fill="#D0DFB9" font-size="14" font-weight="600" font-family="Kulim Park, sans-serif" letter-spacing="0.05em">STRATEGY</text>
+        <text x="305" y="310" fill="#D0DFB9" font-size="14" font-weight="600" font-family="Kulim Park, sans-serif" letter-spacing="0.05em">PRODUCTION</text>
+        <text x="30" y="310" fill="#D0DFB9" font-size="14" font-weight="600" font-family="Kulim Park, sans-serif" letter-spacing="0.05em">GROWTH</text>
+        <text x="55" y="120" fill="#D0DFB9" font-size="14" font-weight="600" font-family="Kulim Park, sans-serif" letter-spacing="0.05em">CARE</text>
+        
+        <!-- Clockwise arrows (small) -->
+        <polygon points="340,150 350,145 345,157" fill="#D0DFB9" opacity="0.5"/>
+        <polygon points="340,270 350,264 345,278" fill="#D0DFB9" opacity="0.5"/>
+        <polygon points="70,270 60,264 65,278" fill="#D0DFB9" opacity="0.5"/>
+        <polygon points="70,150 60,145 65,157" fill="#D0DFB9" opacity="0.5"/>
+      </svg>
+      
+      <div class="circle-center">S</div>
+    </div>
+    
+    <!-- Phase Cards -->
+    <div class="model-phases">
+      <div class="phase-card">
+        <div class="phase-number">01</div>
+        <h3>Strategy</h3>
+        <ul>
+          <li>Brand strategy & positionering</li>
+          <li>Merkonderzoek & analyse</li>
+          <li>Content strategie</li>
+          <li>Doelgroepbepaling</li>
+        </ul>
+      </div>
+      
+      <div class="phase-card">
+        <div class="phase-number">02</div>
+        <h3>Production</h3>
+        <ul>
+          <li>Branding & visual identity</li>
+          <li>Film & video productie</li>
+          <li>Website design & development</li>
+          <li>Grafisch design</li>
+        </ul>
+      </div>
+      
+      <div class="phase-card">
+        <div class="phase-number">03</div>
+        <h3>Growth</h3>
+        <ul>
+          <li>SEO & organische groei</li>
+          <li>Google Ads & paid media</li>
+          <li>Social media strategie</li>
+          <li>Content marketing</li>
+        </ul>
+      </div>
+      
+      <div class="phase-card">
+        <div class="phase-number">04</div>
+        <h3>Care</h3>
+        <ul>
+          <li>Hosting & onderhoud</li>
+          <li>Security & updates</li>
+          <li>Performance monitoring</li>
+          <li>Doorontwikkeling & support</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="annotation" style="top: 80px; right: 32px;">⭐ KERNANIMATIE: ScrollTrigger pinned · Cirkel roteert per kwart · 400vh scroll distance</div>
+    <div class="annotation" style="bottom: 32px; left: 32px;">OSMO Draw Path on Scroll + Sticky Features · SVG stroke-dasharray · Segment fill clockwise</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 6: GESELECTEERD WERK
+       ═══════════════════════════════════════ -->
+  <section id="scene-6" class="scene gradient-noise" style="min-height: auto;">
+    <span class="scene-label">Scene 06 — Geselecteerd Werk</span>
+    <span class="scene-number">06/12</span>
+    
+    <div class="werk-header">
+      <span class="label">Portfolio</span>
+      <h2 class="display-lg">Geselecteerd werk</h2>
+    </div>
+    
+    <div class="cases-grid">
+      <div class="cases-row">
+        <div class="case-card">
+          <div class="case-image">
+            <div class="case-image-placeholder">📸 World Skate Center — Case Image</div>
+          </div>
+          <div class="case-info">
+            <h3>World Skate Center</h3>
+            <span class="case-tags">Brand Film · Strategy · Production</span>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-image" style="aspect-ratio: 4/3;">
+            <div class="case-image-placeholder">📸 VLIJT Tandartsen</div>
+          </div>
+          <div class="case-info">
+            <h3>VLIJT Tandartsen</h3>
+            <span class="case-tags">Web · SEO · Growth</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cases-row">
+        <div class="case-card">
+          <div class="case-image" style="aspect-ratio: 4/3;">
+            <div class="case-image-placeholder">📸 Type Design Video Course</div>
+          </div>
+          <div class="case-info">
+            <h3>Type Design</h3>
+            <span class="case-tags">Video Course · Production</span>
+          </div>
+        </div>
+        <div class="case-card">
+          <div class="case-image">
+            <div class="case-image-placeholder">📸 New Long — Branding</div>
+          </div>
+          <div class="case-info">
+            <h3>New Long</h3>
+            <span class="case-tags">Branding · Visual Identity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Logo Marquee -->
+    <div class="logo-marquee">
+      <div class="marquee-track">
+        <span class="marquee-logo">VLIJT</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">Redbull</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">iLOQ</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">Dudok</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">World Skate Center</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">Another Label</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">Casper Bouman</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">KONE</span>
+        <span class="marquee-logo">·</span>
+        <!-- Duplicate for infinite effect -->
+        <span class="marquee-logo">VLIJT</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">Redbull</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">iLOQ</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">Dudok</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">World Skate Center</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">Another Label</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">Casper Bouman</span>
+        <span class="marquee-logo">·</span>
+        <span class="marquee-logo">KONE</span>
+        <span class="marquee-logo">·</span>
+      </div>
+    </div>
+    
+    <div class="werk-cta">
+      <a class="btn-ghost" style="color: var(--gold);">Bekijk alle cases</a>
+    </div>
+    
+    <div class="annotation" style="top: 80px; right: 32px;">OSMO Image Preview Cursor Follower · clip-path reveal · 3D Perspective Hover</div>
+    <div class="annotation" style="bottom: 80px; left: 32px;">OSMO Marquee with Scroll Direction · logos monochrome --soft-green · 30s loop</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 7: DIENSTEN
+       ═══════════════════════════════════════ -->
+  <section id="scene-7" class="scene">
+    <span class="scene-label" style="color: var(--mid-green);">Scene 07 — Diensten</span>
+    <span class="scene-number" style="color: var(--dark-grey-green);">07/12</span>
+    
+    <div class="diensten-header">
+      <span class="label">Diensten</span>
+      <h2 class="display-lg" style="color: var(--dark-green);">Wat we doen</h2>
+    </div>
+    
+    <div class="diensten-scroll-track">
+      <div class="dienst-card">
+        <div class="phase-indicator">01</div>
+        <h3>Strategy</h3>
+        <ul>
+          <li>Brand strategy & positionering</li>
+          <li>Merkonderzoek & analyse</li>
+          <li>Content strategie</li>
+          <li>Doelgroepbepaling</li>
+        </ul>
+        <a class="btn-ghost">Meer info</a>
+      </div>
+      
+      <div class="dienst-card">
+        <div class="phase-indicator">02</div>
+        <h3>Production</h3>
+        <ul>
+          <li>Branding & visual identity</li>
+          <li>Film & video productie</li>
+          <li>Website design & development</li>
+          <li>Grafisch design</li>
+        </ul>
+        <a class="btn-ghost">Meer info</a>
+      </div>
+      
+      <div class="dienst-card">
+        <div class="phase-indicator">03</div>
+        <h3>Growth</h3>
+        <ul>
+          <li>SEO & organische groei</li>
+          <li>Google Ads & paid media</li>
+          <li>Social media strategie</li>
+          <li>Content marketing</li>
+        </ul>
+        <a class="btn-ghost">Meer info</a>
+      </div>
+      
+      <div class="dienst-card">
+        <div class="phase-indicator">04</div>
+        <h3>Care</h3>
+        <ul>
+          <li>Hosting & onderhoud</li>
+          <li>Security & updates</li>
+          <li>Performance monitoring</li>
+          <li>Doorontwikkeling & support</li>
+        </ul>
+        <a class="btn-ghost">Meer info</a>
+      </div>
+    </div>
+    
+    <div class="annotation" style="bottom: 32px; left: 32px; color: var(--mid-green); border-color: var(--mid-green); background: rgba(63,111,69,0.08);">OSMO Horizontal Scrolling Sections · Cards schuiven horizontaal bij verticaal scroll</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 8: SOCIAL PROOF
+       ═══════════════════════════════════════ -->
+  <section id="scene-8" class="scene gradient-noise">
+    <span class="scene-label">Scene 08 — Social Proof</span>
+    <span class="scene-number">08/12</span>
+    
+    <div class="social-header">
+      <span class="label">Social proof</span>
+      <h2 class="display-lg">Wat klanten zeggen</h2>
+    </div>
+    
+    <div class="testimonial-card">
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+      
+      <p class="testimonial-quote">
+        "sircle.agency heeft ons merk compleet getransformeerd. Van strategie tot de uiteindelijke website — alles klopt."
+      </p>
+      
+      <div class="testimonial-author">
+        <div class="author-avatar">JV</div>
+        <div class="author-info">
+          <div class="name">Jan de Vries</div>
+          <div class="title">CEO, Voorbeeldbedrijf B.V.</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="testimonial-dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Projecten</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">35+</div>
+        <div class="stat-label">Klanten</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Jaar Ervaring</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4.9</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+    </div>
+    
+    <div class="annotation" style="top: 80px; right: 32px;">OSMO Line Reveal Testimonials · Carousel auto-advance 6s · Swipe enabled</div>
+    <div class="annotation" style="bottom: 32px; left: 32px;">Animated counters (gsap snap) · Logo marquee boven testimonials (optioneel)</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 9: SIRCLE SOLUTIONS
+       ═══════════════════════════════════════ -->
+  <section id="scene-9" class="scene gradient-noise">
+    <span class="scene-label" style="color: var(--mid-green);">Scene 09 — Sircle Solutions</span>
+    <span class="scene-number" style="color: var(--dark-grey-green);">09/12</span>
+    
+    <div class="solutions-grid">
+      <div class="solutions-text">
+        <span class="label">Sircle Solutions</span>
+        <h2 class="display-lg" style="color: var(--dark-green);">Naast branding en film bouwen we ook software.</h2>
+        <p>
+          Sircle Solutions is de software-arm van Sircle Agency. 
+          Van klantportals tot dashboards, van web apps tot custom tools — 
+          wij bouwen digitale producten die je bedrijf naar het volgende niveau tillen.
+        </p>
+        
+        <div class="solutions-features">
+          <span class="feature-pill">🖥️ Klantportals</span>
+          <span class="feature-pill">📊 Dashboards</span>
+          <span class="feature-pill">🌐 Web Apps</span>
+          <span class="feature-pill">⚙️ Custom Tools</span>
+          <span class="feature-pill">🤖 AI Integraties</span>
+        </div>
+        
+        <a class="btn-primary" style="background: var(--dark-green); color: var(--white);">Ontdek Sircle Solutions →</a>
+      </div>
+      
+      <div class="solutions-visual">
+        <div class="solutions-mockup">
+          <div class="mockup-content">
+            <div class="mockup-header">
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-sidebar">
+                <div class="mockup-sidebar-item" style="width: 60%;"></div>
+                <div class="mockup-sidebar-item" style="width: 80%;"></div>
+                <div class="mockup-sidebar-item" style="width: 45%;"></div>
+                <div class="mockup-sidebar-item" style="width: 70%;"></div>
+                <div class="mockup-sidebar-item" style="width: 55%;"></div>
+                <div class="mockup-sidebar-item" style="width: 40%;"></div>
+              </div>
+              <div class="mockup-main">
+                <div class="mockup-card"></div>
+                <div class="mockup-card"></div>
+                <div class="mockup-card"></div>
+                <div class="mockup-card"></div>
+                <div class="mockup-card"></div>
+                <div class="mockup-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="annotation" style="bottom: 32px; right: 32px; color: var(--mid-green); border-color: var(--mid-green); background: rgba(63,111,69,0.08);">OSMO Stacking Cards Parallax · Mockup 3D perspective hover · Split-screen reveal</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 10: INSIGHTS / BLOG
+       ═══════════════════════════════════════ -->
+  <section id="scene-10" class="scene" style="min-height: auto;">
+    <span class="scene-label">Scene 10 — Insights</span>
+    <span class="scene-number">10/12</span>
+    
+    <div class="insights-header">
+      <div>
+        <span class="label">Insights</span>
+        <h2 class="display-lg">Laatste inzichten</h2>
+      </div>
+      <a class="btn-ghost" style="color: var(--mid-green);">Alle insights</a>
+    </div>
+    
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="insight-image">📸 Article Cover</div>
+        <div class="insight-content">
+          <span class="insight-tag">Strategie</span>
+          <h3>Waarom je merk meer is dan een logo</h3>
+          <p>De meeste bedrijven denken dat branding begint bij design. Maar een sterk merk begint bij strategie.</p>
+          <div class="insight-date">12 maart 2026</div>
+        </div>
+      </div>
+      
+      <div class="insight-card">
+        <div class="insight-image">📸 Article Cover</div>
+        <div class="insight-content">
+          <span class="insight-tag">Film & Video</span>
+          <h3>Video als merkstrategie: meer dan een mooi plaatje</h3>
+          <p>Film is het krachtigste middel om emotie over te brengen. Zo zet je het strategisch in.</p>
+          <div class="insight-date">5 maart 2026</div>
+        </div>
+      </div>
+      
+      <div class="insight-card">
+        <div class="insight-image">📸 Article Cover</div>
+        <div class="insight-content">
+          <span class="insight-tag">Groei</span>
+          <h3>SEO voor creatieve bureaus: wat écht werkt</h3>
+          <p>Organische groei is geen trucje. Het is een strategie. Hier zijn de fundamenten.</p>
+          <div class="insight-date">28 februari 2026</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="annotation" style="bottom: 32px; left: 32px; color: var(--mid-green); border-color: var(--mid-green); background: rgba(63,111,69,0.08);">OSMO Elements Reveal on Scroll · Card hover: translateY(-4px) + border glow</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 11: CTA CONTACT
+       ═══════════════════════════════════════ -->
+  <section id="scene-11" class="scene gradient-noise">
+    <span class="scene-label">Scene 11 — CTA</span>
+    <span class="scene-number">11/12</span>
+    
+    <div class="cta-content">
+      <h2 class="display-lg">Klaar om jouw verhaal te vertellen?</h2>
+      <p class="subtext">
+        Plan een vrijblijvend gesprek. We luisteren eerst, en komen dan met een helder voorstel.
+      </p>
+      <div class="cta-buttons">
+        <button class="btn-primary">Plan een gesprek →</button>
+        <button class="btn-secondary">📞 Bel direct: +31 85 212 91 45</button>
+      </div>
+    </div>
+    
+    <div class="annotation" style="top: 80px; right: 32px;">OSMO Highlight Text on Scroll · Tekst "kleurt in" terwijl je scrollt</div>
+    <div class="annotation" style="bottom: 32px; left: 32px;">Radiale gradient gold accent · Film grain overlay · Magnetic hover op CTA</div>
+  </section>
+
+  <div class="scene-divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 12: FOOTER
+       ═══════════════════════════════════════ -->
+  <section id="scene-12" class="scene gradient-noise" style="min-height: auto;">
+    <span class="scene-label">Scene 12 — Footer</span>
+    <span class="scene-number">12/12</span>
+    
+    <div class="footer-grid">
+      <div class="footer-col-1">
+        <div class="footer-logo">
+          sircle
+          <span>agency</span>
+        </div>
+        <div class="footer-contact">
+          <p>
+            Zwaardstraat 16<br>
+            2584 TX Den Haag<br><br>
+            hello@sircle.agency<br>
+            +31 85 212 91 45
+          </p>
+        </div>
+        <div class="footer-socials">
+          <div class="social-icon">Li</div>
+          <div class="social-icon">Ig</div>
+          <div class="social-icon">Yt</div>
+        </div>
+      </div>
+      
+      <div class="footer-col-2">
+        <p class="footer-tagline">"Every brand has a story worth telling."</p>
+        <div class="footer-nav-title">Diensten</div>
+        <div class="footer-nav">
+          <a href="#">Strategy</a>
+          <a href="#">Production</a>
+          <a href="#">Growth</a>
+          <a href="#">Care</a>
+        </div>
+      </div>
+      
+      <div class="footer-col-3">
+        <div class="footer-nav-title">Pagina's</div>
+        <div class="footer-nav">
+          <a href="#">Werk</a>
+          <a href="#">Over ons</a>
+          <a href="#">Contact</a>
+          <a href="#">Insights</a>
+        </div>
+        <div style="margin-top: 24px;">
+          <div class="footer-nav-title">Ecosysteem</div>
+          <div class="footer-nav">
+            <a href="#">sircle.dev</a>
+            <a href="#">Sircle Solutions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-legal">© 2026 sircle.agency · KvK 82089647 · <a href="#" style="color: var(--soft-green);">Privacybeleid</a></div>
+      <div class="footer-ecosystem">Part of the <a href="#">Sircle ecosystem</a></div>
+    </div>
+    
+    <div class="annotation" style="top: 32px; right: 32px;">OSMO Footer Parallax Effect · Footer schuift onder content vandaan</div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       WIREFRAME INFO PANEL
+       ═══════════════════════════════════════ -->
+  <div style="
+    background: rgba(8, 36, 18, 0.95);
+    border-top: 2px solid var(--gold);
+    padding: 48px;
+    text-align: center;
+  ">
+    <p style="color: var(--gold); font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">
+      📐 Wireframe Document
+    </p>
+    <h3 style="font-size: 28px; color: var(--white); margin-bottom: 16px;">
+      sircle.agency — Homepage Wireframes
+    </h3>
+    <p style="color: var(--soft-green); font-size: 15px; max-width: 600px; margin: 0 auto 24px; line-height: 1.6;">
+      12 scenes · Desktop 1440px · Alle branding tokens · Animatie annotaties<br>
+      Gebaseerd op projectplan v2.0 · Design spec v1.0 · 14 inspiratiesites
+    </p>
+    <p style="color: rgba(208, 223, 185, 0.4); font-size: 13px;">
+      Gemaakt door Clawd · Fase 1: Design & Prototype · Maart 2026
+    </p>
+  </div>
+
+</body>
+</html>
