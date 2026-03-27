@@ -141,68 +141,10 @@ function initCustomCursor() {
 }
 initCustomCursor();
 
-// ---- LOADER ----
-let animationsInitialized = false;
-
-function safeInitAnimations() {
-  if (animationsInitialized) return;
-  animationsInitialized = true;
-  initAnimations();
-}
-
+// ---- INIT ON LOAD ----
 window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  const counter = document.getElementById('loader-counter');
-  if (loader) {
-    if (counter) {
-      gsap.to({ val: 0 }, {
-        val: 100,
-        duration: 1.2,
-        ease: 'power2.inOut',
-        onUpdate: function() {
-          counter.textContent = Math.round(this.targets()[0].val);
-        }
-      });
-    }
-    setTimeout(() => {
-      gsap.to(loader, {
-        yPercent: -100,
-        duration: 0.6,
-        ease: 'power3.inOut',
-        onComplete: () => {
-          loader.style.display = 'none';
-          safeInitAnimations();
-        }
-      });
-    }, 1400);
-  } else {
-    setTimeout(safeInitAnimations, 100);
-  }
+  initAnimations();
 });
-
-// Bulletproof fallback: force loader away and init animations after 4s no matter what
-setTimeout(() => {
-  const loader = document.getElementById('loader');
-  if (loader && loader.style.display !== 'none') {
-    loader.style.display = 'none';
-  }
-  safeInitAnimations();
-  
-  document.querySelectorAll('.reveal-up').forEach(el => {
-    if (getComputedStyle(el).opacity === '0') {
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-      el.style.transition = 'opacity 0.5s, transform 0.5s';
-    }
-  });
-  document.querySelectorAll('.reveal-clip').forEach(el => {
-    if (getComputedStyle(el).opacity === '0') {
-      el.style.opacity = '1';
-      el.style.clipPath = 'inset(0)';
-      el.style.transition = 'opacity 0.5s, clip-path 0.5s';
-    }
-  });
-}, 4000);
 
 // ---- NAVIGATION ----
 const nav = document.getElementById('nav');
