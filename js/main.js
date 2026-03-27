@@ -67,6 +67,80 @@ gsap.ticker.lagSmoothing(0);
 // Sync scroll updates with ScrollTrigger
 lenis.on('scroll', ScrollTrigger.update);
 
+// ---- CUSTOM CURSOR ----
+function initCustomCursor() {
+  if (isMobile) return;
+
+  const cursor = document.getElementById('cursor');
+  if (!cursor) return;
+
+  document.documentElement.classList.add('has-custom-cursor');
+
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Smooth follow with GSAP ticker
+  gsap.ticker.add(() => {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    gsap.set(cursor, { x: cursorX, y: cursorY });
+  });
+
+  // Hover states for interactive elements
+  const hoverTargets = document.querySelectorAll('a:not(.case-card a), button, .btn-primary, .btn-secondary, .btn-ghost, input, textarea, .dot, .sircle-dot, .bold-nav__hamburger');
+  hoverTargets.forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('is-hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('is-hover'));
+  });
+
+  // "View" state for case cards
+  const caseCards = document.querySelectorAll('.case-card');
+  caseCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      cursor.classList.add('is-view');
+    });
+    card.addEventListener('mouseleave', () => {
+      cursor.classList.remove('is-view');
+    });
+  });
+
+  // Magnetic effect for primary buttons
+  const magneticBtns = document.querySelectorAll('.btn-primary, .btn-secondary');
+  magneticBtns.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      gsap.to(btn, {
+        x: x * 0.25,
+        y: y * 0.25,
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+      cursor.classList.add('is-magnetic');
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, {
+        x: 0,
+        y: 0,
+        duration: 0.6,
+        ease: 'elastic.out(1, 0.4)',
+      });
+      cursor.classList.remove('is-magnetic');
+    });
+  });
+
+  // Hide on leave window
+  document.addEventListener('mouseleave', () => cursor.classList.add('is-hidden'));
+  document.addEventListener('mouseenter', () => cursor.classList.remove('is-hidden'));
+}
+initCustomCursor();
+
 // ---- LOADER ----
 let animationsInitialized = false;
 
@@ -284,23 +358,27 @@ function initAnimations() {
     });
 
     // Set initial state
-    gsap.set(allHeroChars, { y: '110%', opacity: 0, rotateX: -90 });
+    gsap.set(allHeroChars, { y: '120%', opacity: 0, rotateX: -90 });
 
     heroTl
-      .from('.nav-logo-img', { y: -20, opacity: 0, duration: 0.6, ease: 'power2.out' })
-      .from('.nav-links a', { y: -15, opacity: 0, stagger: 0.08, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+      .from('.bold-nav__logo', { y: -20, opacity: 0, duration: 0.6, ease: 'power2.out' })
+      .from('.bold-nav__hamburger', { y: -20, opacity: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+      .from('.hero-label', {
+        y: 20, opacity: 0, scale: 0.9, duration: 0.7, ease: 'power3.out',
+      }, '-=0.2')
       .to(allHeroChars, {
         y: '0%',
         opacity: 1,
         rotateX: 0,
-        stagger: 0.025,
-        duration: 0.9,
+        stagger: 0.02,
+        duration: 1.0,
         ease: 'power4.out',
-      }, '-=0.2');
+      }, '-=0.4');
   } else if (hasHeroLines && isMobile) {
     // Mobile: simple line reveal
     heroTl
-      .from('.nav-logo-img', { y: -20, opacity: 0, duration: 0.6, ease: 'power2.out' })
+      .from('.bold-nav__logo', { y: -20, opacity: 0, duration: 0.6, ease: 'power2.out' })
+      .from('.hero-label', { y: 15, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.2')
       .from('.hero-title .line', {
         y: '100%', opacity: 0, stagger: 0.15, duration: 0.9, ease: 'power3.out'
       }, '-=0.3');
@@ -860,25 +938,42 @@ function initAnimations() {
     });
   }
 
-  // ---- Marquee with scroll direction (OSMO pattern) ----
+  // ---- Marquee with scroll-velocity skew (Noco/Dapper pattern) ----
   const track = document.querySelector('.marquee-track');
   if (track) {
     track.innerHTML += track.innerHTML;
-    
-    // Speed up/slow down based on scroll velocity
-    let marqueeSpeed = 1;
+
+    // Scroll-velocity based skew + speed
     ScrollTrigger.create({
       trigger: '.marquee',
       start: 'top bottom',
       end: 'bottom top',
       onUpdate: (self) => {
         const v = self.getVelocity();
-        marqueeSpeed = 1 + Math.abs(v) / 2000;
-        const dir = v > 0 ? 1 : -1;
+        const skew = Math.min(Math.max(v / 300, -5), 5);
         gsap.to(track, {
-          timeScale: marqueeSpeed * dir || 1,
+          skewX: skew,
           duration: 0.3,
+          ease: 'power2.out',
           overwrite: true,
+        });
+      }
+    });
+  }
+
+  // ---- Scroll-velocity text skew for large titles ----
+  if (!isMobile) {
+    let currentSkew = 0;
+    ScrollTrigger.create({
+      trigger: 'body',
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const velocity = self.getVelocity();
+        const targetSkew = Math.min(Math.max(velocity / 500, -3), 3);
+        currentSkew += (targetSkew - currentSkew) * 0.1;
+        gsap.set('.section-title, .cta-title, .quote-text', {
+          skewX: currentSkew,
         });
       }
     });
@@ -1182,7 +1277,7 @@ function initAnimations() {
   });
 
   // ============================================
-  // Section visibility
+  // Section visibility — enhanced reveal
   // ============================================
   document.querySelectorAll('.section').forEach(section => {
     ScrollTrigger.create({
@@ -1191,6 +1286,39 @@ function initAnimations() {
       onEnter: () => section.style.opacity = 1,
     });
   });
+
+  // ---- Image parallax for all case images (depth effect) ----
+  document.querySelectorAll('.case-image img').forEach(img => {
+    gsap.to(img, {
+      yPercent: -12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.closest('.case-card'),
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 0.5,
+      }
+    });
+  });
+
+  // ---- Horizontal scroll text for a "wow" reveal ----
+  const marqueeSection = document.querySelector('.marquee');
+  if (marqueeSection && !isMobile) {
+    gsap.fromTo(marqueeSection, {
+      opacity: 0,
+      y: 40,
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: marqueeSection,
+        start: 'top 90%',
+        toggleActions: 'play none none none',
+      }
+    });
+  }
 }
 
 // ============================================
@@ -1398,3 +1526,72 @@ if (form) {
     }, 3000);
   });
 }
+
+// ============================================
+// PAGE TRANSITIONS — Smooth panel reveal
+// ============================================
+function initPageTransitions() {
+  const transition = document.getElementById('page-transition');
+  if (!transition) return;
+
+  const panels = transition.querySelectorAll('.page-transition__panel');
+
+  // Intercept internal links
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    // Skip external, anchor, mailto, tel links
+    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:') || link.target === '_blank') return;
+
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = href;
+
+      transition.classList.add('is-active');
+
+      // Panels slide up
+      gsap.to(panels[0], {
+        scaleY: 1,
+        duration: 0.5,
+        ease: 'power3.inOut',
+      });
+      gsap.to(panels[1], {
+        scaleY: 1,
+        duration: 0.5,
+        ease: 'power3.inOut',
+        delay: 0.05,
+        onComplete: () => {
+          window.location.href = target;
+        }
+      });
+    });
+  });
+
+  // Reverse animation on page load (panels slide out)
+  if (sessionStorage.getItem('page-transitioning')) {
+    sessionStorage.removeItem('page-transitioning');
+    gsap.set(panels, { scaleY: 1, transformOrigin: 'top' });
+    transition.classList.add('is-leaving');
+
+    gsap.to(panels[0], {
+      scaleY: 0,
+      duration: 0.5,
+      ease: 'power3.inOut',
+      delay: 0.15,
+    });
+    gsap.to(panels[1], {
+      scaleY: 0,
+      duration: 0.5,
+      ease: 'power3.inOut',
+      delay: 0.1,
+      onComplete: () => {
+        transition.classList.remove('is-active', 'is-leaving');
+      }
+    });
+  }
+
+  // Mark that we're transitioning before leaving
+  window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem('page-transitioning', '1');
+  });
+}
+initPageTransitions();
