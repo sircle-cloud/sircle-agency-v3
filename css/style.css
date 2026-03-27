@@ -357,67 +357,7 @@ ul { list-style: none; }
 button { border: none; background: none; cursor: pointer; font-family: inherit; }
 address { font-style: normal; }
 
-/* ---------- LOADER ---------- */
-.loader {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: var(--dark-green);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-}
-
-.loader-icon {
-  width: 48px;
-  height: 48px;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-.loader-counter {
-  font-size: 14px;
-  font-weight: 300;
-  color: rgba(184,198,163,0.5);
-  letter-spacing: 0.2em;
-  font-variant-numeric: tabular-nums;
-}
-
-.loader-bar {
-  width: 120px;
-  height: 2px;
-  background: rgba(184,198,163,0.15);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.loader-progress {
-  width: 0;
-  height: 100%;
-  background: var(--gold);
-  border-radius: 2px;
-  animation: loadBar 1.8s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
-}
-
-@keyframes loadBar {
-  0% { width: 0; }
-  60% { width: 70%; }
-  100% { width: 100%; }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.08); opacity: 1; }
-}
-
-.loader.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
-
-/* GSAP handles the slide-up transition now */
+/* Loader removed — animations init directly on load */
 
 /* ---------- NAVIGATION ---------- */
 .nav {
@@ -1098,8 +1038,8 @@ address { font-style: normal; }
   -webkit-backface-visibility: hidden;
 }
 
-/* Gradient text accent for middle line */
-.hero-title .line:nth-child(2) {
+/* Gradient text accent for middle line — applied per char so it works with splitTextIntoChars */
+.hero-title .line:nth-child(2) .char {
   background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 40%, var(--copper-light) 70%, var(--gold-bright) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -1108,10 +1048,9 @@ address { font-style: normal; }
   animation: goldShimmer 8s ease-in-out infinite;
 }
 
-/* Ensure split chars inside gradient line stay transparent so parent gradient shows through */
-.hero-title .line:nth-child(2) .char {
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+/* Before JS splits the text, apply gradient on the line itself */
+.hero-title .line:nth-child(2) {
+  color: var(--gold);
 }
 
 .hero-sub {
@@ -1194,9 +1133,12 @@ address { font-style: normal; }
   .hero-content { padding: 0 24px; }
   .hero-cta { width: 100%; justify-content: center; }
   .hero-title { letter-spacing: -0.03em; margin-bottom: 28px; }
-  .hero-title .line:nth-child(2) {
+  .hero-title .line:nth-child(2),
+  .hero-title .line:nth-child(2) .char {
+    color: var(--gold);
     -webkit-text-fill-color: var(--gold);
     background: none;
+    animation: none;
   }
   .hero-sub { margin-bottom: 36px; }
   .scroll-indicator { bottom: 24px; }
