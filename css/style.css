@@ -1108,6 +1108,12 @@ address { font-style: normal; }
   animation: goldShimmer 8s ease-in-out infinite;
 }
 
+/* Ensure split chars inside gradient line stay transparent so parent gradient shows through */
+.hero-title .line:nth-child(2) .char {
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 .hero-sub {
   font-size: clamp(15px, 1.4vw, 19px);
   color: rgba(184,198,163,0.7);
