@@ -47,7 +47,6 @@
       },
     });
 
-    // Stagger timeline points
     gsap.from('.timeline-point', {
       y: 20,
       opacity: 0,
@@ -77,8 +76,22 @@
     });
   }
 
+  // ---- ECOSYSTEM CARDS HOVER ----
+  const ecoCards = document.querySelectorAll('.ecosystem-card');
+  ecoCards.forEach(card => {
+    if (window.innerWidth > 767) {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--glow-x', `${x}px`);
+        card.style.setProperty('--glow-y', `${y}px`);
+      });
+    }
+  });
+
   // ---- VALUE CARDS HOVER GLOW ----
-  const valueCards = document.querySelectorAll('.value-card');
+  const valueCards = document.querySelectorAll('.value-card--light');
   valueCards.forEach(card => {
     if (window.innerWidth > 767) {
       card.addEventListener('mousemove', (e) => {
@@ -105,28 +118,6 @@
       }
     });
   }
-
-  // ---- NETWORK TAGS STAGGER ----
-  gsap.from('.network-tag', {
-    scale: 0.8,
-    opacity: 0,
-    stagger: 0.06,
-    duration: 0.4,
-    ease: 'back.out(1.7)',
-    scrollTrigger: {
-      trigger: '.network-tags',
-      start: 'top 90%',
-      toggleActions: 'play none none none',
-    }
-  });
-
-  // ---- DUPLICATE MARQUEE TRACKS ----
-  const tracks = document.querySelectorAll('.tools-marquee-track, .tools-marquee-track-reverse');
-  tracks.forEach(track => {
-    if (track) {
-      track.innerHTML += track.innerHTML;
-    }
-  });
 
   // ---- CTA MAGNETIC HOVER ----
   const ctaBtn = document.querySelector('.final-cta .btn-primary');
