@@ -231,25 +231,55 @@
 }
 
 .sircle-exp__services li {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
   color: rgba(208,223,185,0.7);
-  padding-left: 20px;
+  padding: 14px 20px 14px 24px;
   position: relative;
   line-height: 1.5;
   letter-spacing: 0.01em;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: color 0.4s ease;
+  --accent-width: 0%;
 }
 
+/* Gold accent dot */
 .sircle-exp__services li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 9px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-  opacity: 0.6;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--gold), var(--copper-light, #D0B878));
+  opacity: 0.7;
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
+}
+
+/* Animated gold sweep underline */
+.sircle-exp__services li::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--accent-width, 0%);
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold, #F2E2A4), rgba(208,223,185,0.3));
+  opacity: 0.4;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sircle-exp__services li:hover {
+  color: var(--gold);
+  background: rgba(242,226,164,0.04);
+}
+
+.sircle-exp__services li:hover::before {
+  height: 80%;
+  opacity: 1;
 }
 
 /* Bottom CTA */
