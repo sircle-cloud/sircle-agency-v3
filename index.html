@@ -215,72 +215,101 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- SECTION 4: DIENSTEN / SIRCLE MODEL -->
+  <!-- SECTION 4: SIRCLE MODEL — FULLSCREEN SCROLL EXPERIENCE -->
   <!-- ============================================ -->
-  <section class="section section-dark --glow-tr diensten" id="diensten" style="overflow: visible;">
+  <section class="sircle-experience" id="diensten">
     <div class="noise-overlay"></div>
-    <div class="container">
-      <h2 class="section-title reveal-up">ZO WERKEN WIJ</h2>
-      <p class="section-subtitle reveal-up">Het SIRCLE Model: vier fases die samen een cyclus vormen.</p>
-    </div>
-  </section>
+    <div class="grain-overlay"></div>
 
-  <!-- STICKY STEPS SIRCLE MODEL (standalone, no .section wrapper) -->
-  <div class="sticky-steps-wrapper">
-    <div class="sircle-steps" data-sticky-steps-init>
-      <div class="sircle-steps__left">
-        <div class="sircle-steps__item" data-sticky-steps-item data-sticky-steps-item-status="active">
-          <div data-sticky-steps-anchor class="sircle-steps__text">
-            <span class="sircle-steps__num">01</span>
-            <h2 class="sircle-steps__h2">STRATEGY</h2>
-            <p class="sircle-steps__p">Alles begint met richting. Brand strategy, positionering, content strategie en doelgroepbepaling.</p>
-          </div>
+    <!-- Pinned viewport -->
+    <div class="sircle-exp__pin">
+      <!-- Background gradient that shifts per phase -->
+      <div class="sircle-exp__bg"></div>
+
+      <!-- Progress bar -->
+      <div class="sircle-exp__progress">
+        <div class="sircle-exp__progress-fill"></div>
+      </div>
+
+      <!-- Phase navigation dots -->
+      <div class="sircle-exp__nav">
+        <button class="sircle-exp__dot is-active" data-phase="0"><span>01</span></button>
+        <button class="sircle-exp__dot" data-phase="1"><span>02</span></button>
+        <button class="sircle-exp__dot" data-phase="2"><span>03</span></button>
+        <button class="sircle-exp__dot" data-phase="3"><span>04</span></button>
+      </div>
+
+      <!-- Center: SIRCLE model image -->
+      <div class="sircle-exp__model">
+        <div class="sircle-exp__model-glow"></div>
+        <img src="assets/sircle-model/cropped/Strategy Sircle model.png" alt="Strategy" class="sircle-exp__model-img is-active" data-phase="0">
+        <img src="assets/sircle-model/cropped/Production Sircle model.png" alt="Production" class="sircle-exp__model-img" data-phase="1">
+        <img src="assets/sircle-model/cropped/Growth Sircle model.png" alt="Growth" class="sircle-exp__model-img" data-phase="2">
+        <img src="assets/sircle-model/cropped/Care Sircle model.png" alt="Care" class="sircle-exp__model-img" data-phase="3">
+      </div>
+
+      <!-- Left: Phase content -->
+      <div class="sircle-exp__content">
+        <!-- Phase 0: Strategy -->
+        <div class="sircle-exp__phase is-active" data-phase="0">
+          <span class="sircle-exp__label">Het SIRCLE Model</span>
+          <div class="sircle-exp__num">01</div>
+          <h2 class="sircle-exp__title">STRATEGY</h2>
+          <p class="sircle-exp__tagline">Geen pixel zonder plan.</p>
+          <ul class="sircle-exp__services">
+            <li>Brand Strategy & Positionering</li>
+            <li>Merkonderzoek & Analyse</li>
+            <li>Content Strategie</li>
+            <li>Doelgroepbepaling</li>
+          </ul>
         </div>
-        <div class="sircle-steps__item" data-sticky-steps-item data-sticky-steps-item-status="after">
-          <div data-sticky-steps-anchor class="sircle-steps__text">
-            <span class="sircle-steps__num">02</span>
-            <h2 class="sircle-steps__h2">PRODUCTION</h2>
-            <p class="sircle-steps__p">Van strategie naar creatie. Branding, visual identity, film, website design en development.</p>
-          </div>
+        <!-- Phase 1: Production -->
+        <div class="sircle-exp__phase" data-phase="1">
+          <span class="sircle-exp__label">Het SIRCLE Model</span>
+          <div class="sircle-exp__num">02</div>
+          <h2 class="sircle-exp__title">PRODUCTION</h2>
+          <p class="sircle-exp__tagline">Van concept tot meesterwerk.</p>
+          <ul class="sircle-exp__services">
+            <li>Branding & Visual Identity</li>
+            <li>Film & Video Productie</li>
+            <li>Website Design & Development</li>
+            <li>Grafisch Design</li>
+          </ul>
         </div>
-        <div class="sircle-steps__item" data-sticky-steps-item data-sticky-steps-item-status="after">
-          <div data-sticky-steps-anchor class="sircle-steps__text">
-            <span class="sircle-steps__num">03</span>
-            <h2 class="sircle-steps__h2">GROWTH</h2>
-            <p class="sircle-steps__p">Zichtbaarheid en resultaat. SEO, Google Ads, social media strategie en content marketing.</p>
-          </div>
+        <!-- Phase 2: Growth -->
+        <div class="sircle-exp__phase" data-phase="2">
+          <span class="sircle-exp__label">Het SIRCLE Model</span>
+          <div class="sircle-exp__num">03</div>
+          <h2 class="sircle-exp__title">GROWTH</h2>
+          <p class="sircle-exp__tagline">Gevonden worden. Groeien. Domineren.</p>
+          <ul class="sircle-exp__services">
+            <li>SEO & Organische Groei</li>
+            <li>Google Ads & Paid Media</li>
+            <li>Social Media Strategie</li>
+            <li>Content Marketing</li>
+          </ul>
         </div>
-        <div class="sircle-steps__item" data-sticky-steps-item data-sticky-steps-item-status="after">
-          <div data-sticky-steps-anchor class="sircle-steps__text">
-            <span class="sircle-steps__num">04</span>
-            <h2 class="sircle-steps__h2">CARE</h2>
-            <p class="sircle-steps__p">Langetermijn partnership. Hosting, security, updates, performance monitoring en doorontwikkeling.</p>
-          </div>
+        <!-- Phase 3: Care -->
+        <div class="sircle-exp__phase" data-phase="3">
+          <span class="sircle-exp__label">Het SIRCLE Model</span>
+          <div class="sircle-exp__num">04</div>
+          <h2 class="sircle-exp__title">CARE</h2>
+          <p class="sircle-exp__tagline">Wij blijven. Altijd.</p>
+          <ul class="sircle-exp__services">
+            <li>Hosting & Onderhoud</li>
+            <li>Security & Updates</li>
+            <li>Performance Monitoring</li>
+            <li>Doorontwikkeling & Support</li>
+          </ul>
         </div>
       </div>
-      <div class="sircle-steps__right">
-        <div class="sircle-steps__sticky">
-          <div class="sircle-steps__visual" data-step="0">
-            <img src="assets/sircle-model/cropped/Strategy Sircle model.png" alt="Strategy">
-          </div>
-          <div class="sircle-steps__visual" data-step="1">
-            <img src="assets/sircle-model/cropped/Production Sircle model.png" alt="Production">
-          </div>
-          <div class="sircle-steps__visual" data-step="2">
-            <img src="assets/sircle-model/cropped/Growth Sircle model.png" alt="Growth">
-          </div>
-          <div class="sircle-steps__visual" data-step="3">
-            <img src="assets/sircle-model/cropped/Care Sircle model.png" alt="Care">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container" style="padding-bottom: 80px;">
-      <div class="text-center reveal-up">
+
+      <!-- Bottom CTA -->
+      <div class="sircle-exp__cta">
         <a href="diensten.html" class="btn-ghost">Bekijk al onze diensten <span>→</span></a>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- ============================================ -->
   <!-- SECTION 5: CASES -->

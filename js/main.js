@@ -215,57 +215,112 @@ if (hamburger && mobileMenu) {
   });
 }
 
-// ---- SIRCLE STEPS ----
-function initSircleSteps() {
-  const container = document.querySelector("[data-sticky-steps-init]");
-  if (!container) return;
+// ---- SIRCLE EXPERIENCE — Fullscreen pinned scroll ----
+function initSircleExperience() {
+  const section = document.querySelector('.sircle-experience');
+  if (!section) return;
 
-  const items = [...container.querySelectorAll("[data-sticky-steps-item]")];
-  const visuals = [...document.querySelectorAll(".sircle-steps__visual")];
-  if (!items.length) return;
+  const phases = [...section.querySelectorAll('.sircle-exp__phase')];
+  const images = [...section.querySelectorAll('.sircle-exp__model-img')];
+  const dots = [...section.querySelectorAll('.sircle-exp__dot')];
+  const progressFill = section.querySelector('.sircle-exp__progress-fill');
+  const modelGlow = section.querySelector('.sircle-exp__model-glow');
+  const totalPhases = phases.length;
 
-  let currentIndex = 0;
+  let currentPhase = 0;
 
-  function updateSteps() {
-    const viewportCenter = window.innerHeight / 2;
-    let closestIndex = 0;
-    let closestDistance = Infinity;
+  function setPhase(index) {
+    if (index === currentPhase && phases[currentPhase].classList.contains('is-active')) return;
 
-    items.forEach((item, index) => {
-      const anchor = item.querySelector("[data-sticky-steps-anchor]");
-      if (!anchor) return;
-      const rect = anchor.getBoundingClientRect();
-      const anchorCenter = rect.top + rect.height / 2;
-      const distance = Math.abs(viewportCenter - anchorCenter);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = index;
+    // Animate out current
+    phases.forEach((p, i) => {
+      if (i !== index) {
+        p.classList.remove('is-active');
+        p.classList.add('is-exiting');
+        setTimeout(() => p.classList.remove('is-exiting'), 500);
       }
     });
+    images.forEach((img, i) => {
+      img.classList.toggle('is-active', i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === index);
+    });
 
-    if (closestIndex !== currentIndex || currentIndex === 0) {
-      currentIndex = closestIndex;
-      
-      // Update text item statuses
-      items.forEach((item, index) => {
-        let status = "active";
-        if (index < closestIndex) status = "before";
-        if (index > closestIndex) status = "after";
-        item.setAttribute("data-sticky-steps-item-status", status);
-      });
+    // Animate in new
+    requestAnimationFrame(() => {
+      phases[index].classList.add('is-active');
+    });
 
-      // Update visuals
-      visuals.forEach((v, i) => {
-        v.classList.toggle("is-active", i === closestIndex);
+    // Update progress bar
+    if (progressFill) {
+      const progress = index / (totalPhases - 1);
+      gsap.to(progressFill, {
+        y: progress * 150,
+        duration: 0.5,
+        ease: 'power2.out'
       });
     }
+
+    // Shift glow color per phase
+    if (modelGlow) {
+      const glowColors = [
+        'radial-gradient(circle, rgba(143,175,138,0.15) 0%, transparent 65%)',
+        'radial-gradient(circle, rgba(208,223,185,0.18) 0%, transparent 65%)',
+        'radial-gradient(circle, rgba(242,226,164,0.14) 0%, transparent 65%)',
+        'radial-gradient(circle, rgba(180,175,120,0.12) 0%, transparent 65%)'
+      ];
+      modelGlow.style.background = glowColors[index];
+    }
+
+    currentPhase = index;
   }
 
-  window.addEventListener("scroll", updateSteps, { passive: true });
-  window.addEventListener("resize", updateSteps);
-  requestAnimationFrame(updateSteps);
+  // GSAP ScrollTrigger — pin the section and drive phases by scroll
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: '.sircle-exp__pin',
+    pinSpacing: false,
+    onUpdate: (self) => {
+      const progress = self.progress;
+      // Map 0-1 progress to 0-3 phase index
+      // Give each phase equal scroll space
+      const phaseIndex = Math.min(Math.floor(progress * totalPhases), totalPhases - 1);
+      setPhase(phaseIndex);
+    }
+  });
+
+  // Entry animation
+  gsap.from('.sircle-exp__model', {
+    scale: 0.7,
+    opacity: 0,
+    duration: 1.2,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: section,
+      start: 'top 80%',
+      end: 'top 20%',
+      scrub: 1
+    }
+  });
+
+  // Dot click navigation
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      const sectionRect = section.getBoundingClientRect();
+      const sectionTop = window.scrollY + sectionRect.top;
+      const sectionHeight = section.offsetHeight;
+      const targetScroll = sectionTop + (sectionHeight * (i / totalPhases)) + 10;
+      lenis.scrollTo(targetScroll, { duration: 1.2 });
+    });
+  });
+
+  // Set initial state
+  setPhase(0);
 }
-initSircleSteps();
+initSircleExperience();
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
