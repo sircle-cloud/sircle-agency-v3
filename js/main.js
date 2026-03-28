@@ -1347,22 +1347,25 @@ function initAnimations() {
   const trustNumbers = document.querySelectorAll('.trust-number');
   trustNumbers.forEach(el => {
     const text = el.textContent.trim();
-    const match = text.match(/^(\d+)(.*)$/);
+    const match = text.match(/^([\d.]+)(.*)$/);
     if (match) {
-      const num = parseInt(match[1]);
-      const suffix = match[2]; // e.g. "+" or "%"
+      const num = parseFloat(match[1]);
+      const suffix = match[2]; // e.g. "+" or "%" or " ★"
+      const hasDecimal = match[1].includes('.');
+      const decimalPlaces = hasDecimal ? (match[1].split('.')[1] || '').length : 0;
       gsap.from(el, {
         innerText: 0,
         duration: 2,
         ease: 'power2.out',
-        snap: { innerText: 1 },
+        snap: hasDecimal ? { innerText: 0.1 } : { innerText: 1 },
         scrollTrigger: {
           trigger: el,
           start: 'top 90%',
           toggleActions: 'play none none none',
         },
         onUpdate: function() {
-          el.textContent = Math.round(parseFloat(el.textContent)) + suffix;
+          const val = parseFloat(el.textContent);
+          el.textContent = (hasDecimal ? val.toFixed(decimalPlaces) : Math.round(val)) + suffix;
         }
       });
     }
