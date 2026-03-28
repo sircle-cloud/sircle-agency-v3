@@ -111,7 +111,7 @@
 /* Center: SIRCLE model sphere */
 .sircle-exp__model {
   position: absolute;
-  right: 2%;
+  right: 18%;
   top: 50%;
   transform: translateY(-50%);
   width: 72vmin;
