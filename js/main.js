@@ -342,46 +342,66 @@ function initSircleExperience() {
     }
   }
 
-  // GSAP ScrollTrigger — pin and drive phases
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'top top',
-    end: 'bottom bottom',
-    pin: '.sircle-exp__pin',
-    pinSpacing: false,
-    onUpdate: (self) => {
-      const phaseIndex = Math.min(Math.floor(self.progress * totalPhases), totalPhases - 1);
-      setPhase(phaseIndex);
-    }
-  });
-
-  // Entry animation
-  gsap.from('.sircle-exp__model', {
-    scale: 0.7,
-    opacity: 0,
-    duration: 1.2,
-    ease: 'power3.out',
-    scrollTrigger: {
+  // GSAP ScrollTrigger — pin and drive phases (desktop only)
+  if (!isMobile) {
+    ScrollTrigger.create({
       trigger: section,
-      start: 'top 80%',
-      end: 'top 20%',
-      scrub: 1
-    }
-  });
-
-  // Dot click navigation
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      const sectionRect = section.getBoundingClientRect();
-      const sectionTop = window.scrollY + sectionRect.top;
-      const sectionHeight = section.offsetHeight;
-      const targetScroll = sectionTop + (sectionHeight * (i / totalPhases)) + 10;
-      lenis.scrollTo(targetScroll, { duration: 1.2 });
+      start: 'top top',
+      end: 'bottom bottom',
+      pin: '.sircle-exp__pin',
+      pinSpacing: false,
+      onUpdate: (self) => {
+        const phaseIndex = Math.min(Math.floor(self.progress * totalPhases), totalPhases - 1);
+        setPhase(phaseIndex);
+      }
     });
-  });
 
-  // Set initial state
-  setPhase(0);
+    // Entry animation
+    gsap.from('.sircle-exp__model', {
+      scale: 0.7,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%',
+        end: 'top 20%',
+        scrub: 1
+      }
+    });
+
+    // Dot click navigation
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const sectionRect = section.getBoundingClientRect();
+        const sectionTop = window.scrollY + sectionRect.top;
+        const sectionHeight = section.offsetHeight;
+        const targetScroll = sectionTop + (sectionHeight * (i / totalPhases)) + 10;
+        lenis.scrollTo(targetScroll, { duration: 1.2 });
+      });
+    });
+
+    // Set initial state
+    setPhase(0);
+  } else {
+    // Mobile: simple staggered reveal for each phase block
+    phases.forEach((phase, i) => {
+      phase.classList.add('is-active');
+      gsap.from(phase, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: phase,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        }
+      });
+    });
+    // Show first model image
+    if (images[0]) images[0].classList.add('is-active');
+  }
 }
 initSircleExperience();
 

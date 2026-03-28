@@ -294,41 +294,33 @@
 /* ============================================ */
 /* RESPONSIVE                                   */
 /* ============================================ */
-@media screen and (max-width: 991px) {
-  .sircle-experience {
-    height: 400vh;
-  }
 
+/* Tablet: keep pinning but adjust layout */
+@media screen and (max-width: 991px) {
   .sircle-exp__model {
-    position: absolute;
-    right: auto;
-    left: 50%;
-    top: auto;
-    bottom: 8%;
-    transform: translateX(-50%);
-    width: 45vmin;
-    height: 45vmin;
-    opacity: 0.25;
+    right: 5%;
+    width: 55vmin;
+    height: 55vmin;
+    max-width: 500px;
+    max-height: 500px;
   }
 
   .sircle-exp__content {
-    padding-left: 24px;
-    padding-right: 24px;
-    max-width: 100%;
+    padding-left: 80px;
+    max-width: 420px;
   }
 
   .sircle-exp__phase {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 80px;
   }
 
   .sircle-exp__progress {
-    left: 16px;
-    height: 120px;
+    left: 24px;
+    height: 140px;
   }
 
   .sircle-exp__nav {
-    right: 16px;
+    right: 24px;
     gap: 20px;
   }
 
@@ -338,23 +330,130 @@
     font-size: 10px;
   }
 
-  .sircle-exp__num {
-    font-size: clamp(60px, 18vw, 120px);
-  }
-
   .sircle-exp__title {
-    font-size: clamp(36px, 10vw, 64px);
-  }
-
-  .sircle-exp__cta {
-    bottom: 24px;
+    font-size: clamp(36px, 8vw, 64px);
   }
 }
 
-@media screen and (max-width: 480px) {
+/* Mobile: no pinning, stacked layout */
+@media screen and (max-width: 768px) {
+  .sircle-experience {
+    height: auto !important;
+  }
+
+  .sircle-exp__pin {
+    position: relative;
+    height: auto;
+    flex-direction: column;
+    padding: 80px 0 60px;
+  }
+
+  /* Show model at top, centered */
   .sircle-exp__model {
-    width: 60vmin;
-    height: 60vmin;
-    opacity: 0.15;
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 65vw;
+    height: 65vw;
+    max-width: 320px;
+    max-height: 320px;
+    margin: 0 auto 48px;
+    z-index: 5;
+  }
+
+  /* Only show the full model image on mobile */
+  .sircle-exp__model-img {
+    opacity: 0 !important;
+    transform: none !important;
+  }
+  .sircle-exp__model-img:first-child {
+    opacity: 1 !important;
+    position: relative;
+  }
+
+  .sircle-exp__model-glow {
+    display: none;
+  }
+
+  /* Stack all phases vertically */
+  .sircle-exp__content {
+    position: relative;
+    padding: 0 24px;
+    max-width: 100%;
+  }
+
+  .sircle-exp__phase {
+    position: relative !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    padding: 0 0 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid rgba(208,223,185,0.08);
+  }
+
+  .sircle-exp__phase:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .sircle-exp__phase.is-exiting {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .sircle-exp__label {
+    display: none; /* Don't repeat label for each phase on mobile */
+  }
+
+  .sircle-exp__phase:first-child .sircle-exp__label {
+    display: inline-block;
+    margin-bottom: 32px;
+  }
+
+  .sircle-exp__num {
+    font-size: 64px;
+    margin-bottom: -12px;
+  }
+
+  .sircle-exp__title {
+    font-size: clamp(32px, 10vw, 48px);
+  }
+
+  .sircle-exp__tagline {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .sircle-exp__services li {
+    font-size: 15px;
+    padding: 10px 16px 10px 20px;
+    opacity: 1 !important;
+    transform: none !important;
+    color: rgba(208,223,185,0.7) !important;
+    --accent-width: 100% !important;
+  }
+
+  /* Hide progress + nav dots on mobile */
+  .sircle-exp__progress,
+  .sircle-exp__nav {
+    display: none;
+  }
+
+  .sircle-exp__cta {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    text-align: center;
+    padding: 40px 24px 0;
+  }
+
+  .sircle-exp__bg {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 20%, rgba(143,175,138,0.20) 0%, transparent 70%),
+      linear-gradient(180deg, #0D2818 0%, var(--dark-green-deep) 50%, #071A0F 100%) !important;
   }
 }
