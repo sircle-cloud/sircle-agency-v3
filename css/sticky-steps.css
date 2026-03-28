@@ -152,16 +152,21 @@
   position: relative;
   z-index: 8;
   padding-left: 100px;
+  width: 45%;
   max-width: 520px;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
 }
 
 .sircle-exp__phase {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
+  transform: translateY(-50%) translateX(0);
   padding-left: 100px;
+  width: 100%;
   opacity: 0;
-  transform: translateY(40px);
   transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
   will-change: opacity, transform;
@@ -169,13 +174,13 @@
 
 .sircle-exp__phase.is-active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(-50%) translateX(0);
   pointer-events: auto;
 }
 
 .sircle-exp__phase.is-exiting {
   opacity: 0;
-  transform: translateY(-30px);
+  transform: translateY(-55%) translateX(0);
 }
 
 .sircle-exp__label {
@@ -193,31 +198,31 @@
 }
 
 .sircle-exp__num {
-  font-size: clamp(80px, 12vw, 160px);
+  font-size: clamp(56px, 8vw, 100px);
   font-weight: 700;
   line-height: 0.85;
   color: rgba(208,223,185,0.06);
   letter-spacing: -0.04em;
-  margin-bottom: -20px;
+  margin-bottom: -12px;
   user-select: none;
 }
 
 .sircle-exp__title {
-  font-size: clamp(48px, 7vw, 96px);
+  font-size: clamp(40px, 5.5vw, 72px);
   font-weight: 700;
   line-height: 0.9;
   color: var(--white);
   letter-spacing: -0.03em;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   text-transform: uppercase;
 }
 
 .sircle-exp__tagline {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   color: var(--soft-green);
   line-height: 1.5;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   opacity: 0.8;
 }
 
@@ -298,29 +303,30 @@
 /* Tablet: keep pinning but adjust layout */
 @media screen and (max-width: 991px) {
   .sircle-exp__model {
-    right: 5%;
-    width: 55vmin;
-    height: 55vmin;
-    max-width: 500px;
-    max-height: 500px;
+    right: 2%;
+    width: 48vmin;
+    height: 48vmin;
+    max-width: 440px;
+    max-height: 440px;
   }
 
   .sircle-exp__content {
-    padding-left: 80px;
-    max-width: 420px;
+    padding-left: 60px;
+    width: 52%;
+    max-width: 460px;
   }
 
   .sircle-exp__phase {
-    padding-left: 80px;
+    padding-left: 60px;
   }
 
   .sircle-exp__progress {
-    left: 24px;
+    left: 20px;
     height: 140px;
   }
 
   .sircle-exp__nav {
-    right: 24px;
+    right: 20px;
     gap: 20px;
   }
 
@@ -331,7 +337,11 @@
   }
 
   .sircle-exp__title {
-    font-size: clamp(36px, 8vw, 64px);
+    font-size: clamp(32px, 6vw, 52px);
+  }
+
+  .sircle-exp__num {
+    font-size: clamp(48px, 8vw, 80px);
   }
 }
 
