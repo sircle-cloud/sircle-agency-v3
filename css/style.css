@@ -2212,75 +2212,93 @@ address { font-style: normal; }
 /* ============================================ */
 /* LEAD MAGNET */
 /* ============================================ */
-.lead-magnet {
+.journal {
   padding: 140px 0;
 }
 
-.lead-grid {
+.journal-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
-  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
 }
 
-.mockup-wrapper {
-  perspective: 1000px;
+.journal-card {
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(208,223,185,0.08);
+  transition: transform 0.5s var(--ease-out-expo), border-color 0.4s ease;
+  text-decoration: none;
+  color: inherit;
 }
 
-.mockup-img {
-  max-width: 350px;
-  margin: 0 auto;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(8,36,18,0.2);
-  transform: rotateY(-5deg);
-  transition: transform 0.4s ease;
-  animation: mockupFloat 7s ease-in-out infinite;
+.journal-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(208,223,185,0.15);
 }
 
-@keyframes mockupFloat {
-  0%, 100% { transform: rotateY(-5deg) translateY(0); }
-  50% { transform: rotateY(-5deg) translateY(-6px); }
+.journal-card-image {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
 }
 
-.lead-content .section-label { color: var(--bronze); }
-
-.lead-content p {
-  font-size: 17px;
-  line-height: 1.65;
-  color: rgba(208,223,185,0.75);
-  margin-bottom: 32px;
-}
-
-.lead-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 400px;
-}
-
-.lead-input {
+.journal-card-image img {
   width: 100%;
-  padding: 16px 24px;
-  border: 1px solid rgba(208,223,185,0.15);
-  border-radius: 12px;
-  font-family: 'Kulim Park', sans-serif;
-  font-size: 16px;
-  background: rgba(255,255,255,0.06);
-  color: var(--white);
-  transition: border-color 0.3s;
-  outline: none;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.8) brightness(0.7);
+  transition: transform 0.8s var(--ease-out-expo);
 }
 
-.lead-input:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(218,188,106,0.12);
+.journal-card:hover .journal-card-image img {
+  transform: scale(1.06);
 }
-.lead-input::placeholder { color: rgba(208,223,185,0.4); }
+
+.journal-card-content {
+  padding: 28px 28px 32px;
+}
+
+.journal-tag {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sage-green);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.journal-card-content h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.journal-card-content p {
+  font-size: 14px;
+  color: rgba(208,223,185,0.55);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.journal-read {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sage-green);
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+
+.journal-card:hover .journal-read {
+  color: var(--soft-green);
+}
 
 @media (max-width: 900px) {
-  .lead-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
-  .lead-form { margin: 0 auto; }
-  .mockup-img { max-width: 250px; }
+  .journal-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 
 /* ============================================ */
@@ -2469,6 +2487,8 @@ address { font-style: normal; }
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .cta-bg {
@@ -2477,13 +2497,18 @@ address { font-style: normal; }
   z-index: 0;
 }
 
-.cta-bg .bg-texture { opacity: 0.08; }
+.cta-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.6) brightness(0.4);
+}
 
-.cta-bg::after {
-  content: '';
+.cta-bg-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(8,36,18,0.85);
+  background:
+    linear-gradient(to top, rgba(8,36,18,0.95) 0%, rgba(8,36,18,0.6) 40%, rgba(8,36,18,0.4) 100%);
   z-index: 1;
 }
 
@@ -2492,6 +2517,7 @@ address { font-style: normal; }
   z-index: 5;
   text-align: center;
   max-width: 700px;
+  margin: 0 auto;
 }
 
 .cta-title {
