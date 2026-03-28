@@ -946,6 +946,7 @@ address { font-style: normal; }
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: #000;
 }
 
 .hero-bg {
@@ -953,6 +954,7 @@ address { font-style: normal; }
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  background: #000;
 }
 
 .hero-bg-img {
