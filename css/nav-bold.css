@@ -17,7 +17,7 @@
   padding: 20px 48px;
   display: flex;
   position: absolute;
-  transition: background 0.5s ease, backdrop-filter 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+  transition: background 0.5s ease, backdrop-filter 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease, transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 
 .bold-nav__logo {
@@ -226,6 +226,11 @@
   font-size: 14px;
   color: var(--soft-green, #d0dfb9);
   letter-spacing: 0.06em;
+}
+
+/* Hidden state: slide up on scroll down */
+.bold-nav.nav-hidden .bold-nav__bar {
+  transform: translateY(-100%);
 }
 
 /* Scrolled state: Apple glass frosted bar */

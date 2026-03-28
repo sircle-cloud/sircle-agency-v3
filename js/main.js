@@ -149,15 +149,34 @@ window.addEventListener('load', () => {
 // ---- NAVIGATION ----
 const nav = document.getElementById('nav');
 
-// Bold nav scroll state
+// Bold nav scroll state — hide on scroll down, show on scroll up (Red Panda pattern)
+let lastScrollY = 0;
+let navHidden = false;
 window.addEventListener('scroll', () => {
-  if (nav) {
-    if (window.scrollY > 40) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
+  if (!nav) return;
+  const currentY = window.scrollY;
+  const navStatus = document.querySelector('[data-navigation-status]');
+  const menuOpen = navStatus && navStatus.getAttribute('data-navigation-status') === 'active';
+
+  if (currentY > 40) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+    nav.classList.remove('nav-hidden');
+    navHidden = false;
+  }
+
+  // Only hide/show if menu is closed and past hero
+  if (!menuOpen && currentY > 200) {
+    if (currentY > lastScrollY + 5 && !navHidden) {
+      nav.classList.add('nav-hidden');
+      navHidden = true;
+    } else if (currentY < lastScrollY - 5 && navHidden) {
+      nav.classList.remove('nav-hidden');
+      navHidden = false;
     }
   }
+  lastScrollY = currentY;
 });
 
 // Bold fullscreen navigation toggle
