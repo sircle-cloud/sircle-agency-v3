@@ -1314,9 +1314,9 @@ address { font-style: normal; }
 
 .intro-video {
   margin-bottom: 80px;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding: 0 5%;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .video-container {
