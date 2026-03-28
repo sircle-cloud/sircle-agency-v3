@@ -1391,17 +1391,11 @@ address { font-style: normal; }
 .intro-brand {
   font-size: clamp(36px, 5vw, 72px);
   font-weight: 700;
-  color: var(--dark-green);
+  color: var(--mid-green);
   text-align: center;
   margin-bottom: 28px;
   text-transform: lowercase;
   letter-spacing: -0.025em;
-  background: linear-gradient(135deg, var(--bronze) 0%, var(--copper-deep) 30%, var(--bronze) 60%, var(--copper-light) 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: goldShimmer 16s ease-in-out infinite;
   text-rendering: optimizeLegibility;
 }
 
