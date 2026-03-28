@@ -243,68 +243,43 @@ function initSircleExperience() {
     const prevPhase = currentPhase;
     currentPhase = index;
 
-    // Animate out previous phase services
-    if (prevPhase >= 0) {
-      const prevServices = phases[prevPhase].querySelectorAll('.sircle-exp__services li');
-      gsap.to(prevServices, {
-        x: -20,
-        opacity: 0,
-        stagger: 0.03,
-        duration: 0.25,
-        ease: 'power2.in',
-        overwrite: true
-      });
-    }
-
-    // Update phase visibility
+    // Hide ALL phases first, then show only the active one
     phases.forEach((p, i) => {
-      if (i !== index) {
-        p.classList.remove('is-active');
-        p.classList.add('is-exiting');
-        setTimeout(() => p.classList.remove('is-exiting'), 500);
-      }
+      p.classList.remove('is-active');
     });
+    phases[index].classList.add('is-active');
+
     images.forEach((img, i) => img.classList.toggle('is-active', i === index));
     dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
 
-    // Animate in new phase
-    requestAnimationFrame(() => {
-      phases[index].classList.add('is-active');
+    // Animate in services with gold accent
+    const services = phases[index].querySelectorAll('.sircle-exp__services li');
+    gsap.fromTo(services, {
+      x: 20,
+      opacity: 0,
+    }, {
+      x: 0,
+      opacity: 1,
+      stagger: 0.08,
+      duration: 0.4,
+      ease: 'power3.out',
+      delay: 0.1,
+      overwrite: true
+    });
 
-      // Staggered service reveal with gold accent sweep
-      const services = phases[index].querySelectorAll('.sircle-exp__services li');
-      gsap.fromTo(services, {
-        x: 30,
-        opacity: 0,
-      }, {
-        x: 0,
-        opacity: 1,
-        stagger: 0.1,
+    // Gold accent sweep + flash
+    services.forEach((li, i) => {
+      gsap.fromTo(li, { '--accent-width': '0%' }, {
+        '--accent-width': '100%',
         duration: 0.5,
-        ease: 'power3.out',
-        delay: 0.2,
-        overwrite: true
+        delay: 0.2 + i * 0.08,
+        ease: 'power2.out',
       });
-
-      // Animate the gold accent line per service
-      services.forEach((li, i) => {
-        gsap.fromTo(li, {
-          '--accent-width': '0%',
-        }, {
-          '--accent-width': '100%',
-          duration: 0.6,
-          delay: 0.3 + i * 0.1,
-          ease: 'power2.out',
-        });
-        // Flash color on text
-        gsap.fromTo(li, {
-          color: 'rgba(242,226,164,0.9)',
-        }, {
-          color: 'rgba(208,223,185,0.7)',
-          duration: 0.8,
-          delay: 0.3 + i * 0.1,
-          ease: 'power2.out',
-        });
+      gsap.fromTo(li, { color: 'rgba(242,226,164,0.9)' }, {
+        color: 'rgba(208,223,185,0.7)',
+        duration: 0.6,
+        delay: 0.2 + i * 0.08,
+        ease: 'power2.out',
       });
     });
 
