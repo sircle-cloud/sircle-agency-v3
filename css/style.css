@@ -1389,7 +1389,7 @@ address { font-style: normal; }
 .intro-brand {
   font-size: clamp(36px, 5vw, 72px);
   font-weight: 700;
-  color: var(--mid-green);
+  color: var(--dark-green);
   text-align: center;
   margin-bottom: 28px;
   text-transform: lowercase;
