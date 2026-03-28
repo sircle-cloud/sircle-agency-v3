@@ -480,7 +480,7 @@ function initAnimations() {
 
   // ---- HERO: Ken Burns effect via GSAP (slow zoom + pan) ----
   if (!isMobile) {
-    gsap.to('.hero-bg-img', {
+    gsap.to('.hero-bg-video', {
       scale: 1.25,
       xPercent: -3,
       yPercent: -2,
@@ -492,7 +492,7 @@ function initAnimations() {
   }
 
   // Hero parallax depth layers on scroll (foreground faster than background)
-  gsap.to('.hero-bg-img', {
+  gsap.to('.hero-bg-video', {
     yPercent: 35,
     ease: 'none',
     scrollTrigger: {
