@@ -1252,9 +1252,7 @@ address { font-style: normal; }
 .intro { padding-top: 160px; padding-bottom: 140px; }
 
 .intro-bg-image {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  display: none;
 }
 
 .intro .container { position: relative; z-index: 2; }
@@ -1268,9 +1266,8 @@ address { font-style: normal; }
   aspect-ratio: 16 / 9;
   cursor: pointer;
   box-shadow:
-    0 24px 80px rgba(0,0,0,0.4),
-    0 0 0 1px rgba(218,188,106,0.08),
-    0 0 120px rgba(242,226,164,0.04);
+    0 24px 80px rgba(8,36,18,0.15),
+    0 0 0 1px rgba(8,36,18,0.06);
 }
 
 .video-poster {
@@ -1334,12 +1331,12 @@ address { font-style: normal; }
 .intro-brand {
   font-size: clamp(36px, 5vw, 72px);
   font-weight: 700;
-  color: var(--gold);
+  color: var(--dark-green);
   text-align: center;
   margin-bottom: 28px;
   text-transform: lowercase;
   letter-spacing: -0.025em;
-  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 30%, var(--copper-light) 60%, var(--light-gold) 100%);
+  background: linear-gradient(135deg, var(--bronze) 0%, var(--copper-deep) 30%, var(--bronze) 60%, var(--copper-light) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1356,7 +1353,7 @@ address { font-style: normal; }
 .intro-text {
   font-size: 18px;
   line-height: 1.85;
-  color: rgba(254,253,251,0.75);
+  color: var(--mid-grey);
   text-align: center;
   max-width: 660px;
   margin: 0 auto 72px;
@@ -1371,14 +1368,14 @@ address { font-style: normal; }
 }
 
 .pillar {
-  border-top: 1px solid rgba(208,223,185,0.15);
+  border-top: 1px solid rgba(8,36,18,0.1);
   padding-top: 28px;
 }
 
 .pillar h4 {
   font-size: 20px;
   font-weight: 600;
-  color: var(--light-green);
+  color: var(--dark-green);
   margin-bottom: 10px;
   letter-spacing: 0.03em;
 }
@@ -1386,7 +1383,7 @@ address { font-style: normal; }
 .pillar p {
   font-size: 16px;
   line-height: 1.7;
-  color: rgba(184,198,163,0.75);
+  color: var(--mid-grey);
 }
 
 @media (max-width: 767px) {
