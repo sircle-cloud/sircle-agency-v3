@@ -2028,11 +2028,14 @@ address { font-style: normal; }
 }
 
 .about-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 45%;
+  object-position: center center;
   filter: saturate(0.85) contrast(1.05) brightness(0.9);
+  display: block;
 }
 
 .about-image-tint {
