@@ -167,7 +167,13 @@ html { overflow-x: hidden; }
   inset: 0;
   z-index: 100000;
   pointer-events: none;
+  display: none;
+}
+
+.page-transition.is-active,
+.page-transition.is-leaving {
   display: flex;
+  pointer-events: all;
 }
 
 .page-transition__panel {
@@ -183,15 +189,7 @@ html { overflow-x: hidden; }
 }
 
 .page-transition__panel--2 {
-  background: var(--dark-green-deep);
-}
-
-.page-transition.is-active {
-  pointer-events: all;
-}
-
-.page-transition.is-active .page-transition__panel {
-  transform-origin: bottom;
+  background: var(--dark-green);
 }
 
 .page-transition.is-leaving .page-transition__panel {
@@ -2771,7 +2769,8 @@ address { font-style: normal; }
 /* ============================================ */
 .reveal-up {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(24px);
+  filter: blur(4px);
 }
 
 .reveal-clip {

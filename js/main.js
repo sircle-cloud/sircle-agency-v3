@@ -432,22 +432,21 @@ function initAnimations() {
     });
 
     // Set initial state
-    gsap.set(allHeroChars, { y: '120%', opacity: 0, rotateX: -90 });
+    gsap.set(allHeroChars, { y: '100%', opacity: 0 });
 
     heroTl
-      .from('.bold-nav__logo', { y: -20, opacity: 0, duration: 0.6, ease: 'power2.out' })
-      .from('.bold-nav__hamburger', { y: -20, opacity: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+      .from('.bold-nav__logo', { y: -15, opacity: 0, duration: 0.8, ease: 'power2.out' })
+      .from('.bold-nav__hamburger', { y: -15, opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.5')
       .from('.hero-label', {
-        y: 20, opacity: 0, scale: 0.9, duration: 0.7, ease: 'power3.out',
-      }, '-=0.2')
+        y: 15, opacity: 0, duration: 0.8, ease: 'power2.out',
+      }, '-=0.3')
       .to(allHeroChars, {
         y: '0%',
         opacity: 1,
-        rotateX: 0,
-        stagger: 0.02,
-        duration: 1.0,
-        ease: 'power4.out',
-      }, '-=0.4');
+        stagger: 0.025,
+        duration: 1.2,
+        ease: 'power3.out',
+      }, '-=0.5');
   } else if (hasHeroLines && isMobile) {
     // Mobile: simple line reveal
     heroTl
@@ -462,21 +461,19 @@ function initAnimations() {
   // Hero subtitle typing/reveal effect
   const heroSub = document.querySelector('.hero-sub');
   if (heroSub) {
-    const subWords = splitTextIntoWords(heroSub);
-    gsap.set(subWords, { y: 20, opacity: 0, filter: 'blur(8px)' });
-    heroTl.to(subWords, {
+    gsap.set(heroSub, { y: 15, opacity: 0, filter: 'blur(4px)' });
+    heroTl.to(heroSub, {
       y: 0,
       opacity: 1,
       filter: 'blur(0px)',
-      stagger: 0.05,
-      duration: 0.5,
+      duration: 1.0,
       ease: 'power2.out',
-    }, '-=0.4');
+    }, '-=0.6');
   }
 
   heroTl
-    .from('.hero-cta', { y: 30, opacity: 0, scale: 0.9, duration: 0.7, ease: 'back.out(1.5)' }, '-=0.2')
-    .from('.scroll-indicator', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+    .from('.hero-cta', { y: 20, opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4')
+    .from('.scroll-indicator', { opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4');
 
   // ---- HERO: Ken Burns effect via GSAP (slow zoom + pan) ----
   if (!isMobile) {
@@ -664,40 +661,37 @@ function initAnimations() {
     gsap.to(el, {
       y: 0,
       opacity: 1,
-      duration: 0.8,
+      filter: 'blur(0px)',
+      duration: 1.0,
       delay: delay,
-      ease: 'power3.out',
+      ease: 'power2.out',
       scrollTrigger: {
         trigger: el,
-        start: 'top 88%',
+        start: 'top 90%',
         toggleActions: 'play none none none',
       }
     });
   });
 
   // ============================================
-  // SECTION TITLE — Character-split reveal (premium entrance)
+  // SECTION TITLE — Smooth mask reveal
   // ============================================
-  if (!isMobile) {
-    document.querySelectorAll('.section-title.reveal-up, .cta-title.reveal-up').forEach(title => {
-      // Remove the generic reveal-up so it doesn't double-fire
-      title.classList.remove('reveal-up');
-      const chars = splitTextIntoChars(title);
-      gsap.set(chars, { y: '100%', opacity: 0 });
-      gsap.to(chars, {
-        y: '0%',
-        opacity: 1,
-        stagger: 0.02,
-        duration: 0.7,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: title,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        }
-      });
+  document.querySelectorAll('.section-title.reveal-up, .cta-title.reveal-up').forEach(title => {
+    title.classList.remove('reveal-up');
+    gsap.set(title, { opacity: 0, y: 30, filter: 'blur(6px)' });
+    gsap.to(title, {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      duration: 1.2,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: title,
+        start: 'top 88%',
+        toggleActions: 'play none none none',
+      }
     });
-  }
+  });
 
   document.querySelectorAll('.reveal-clip').forEach(el => {
     const delay = parseFloat(el.dataset.delay) || 0;
@@ -1667,20 +1661,20 @@ function initPageTransitions() {
   // Reverse animation on page load (panels slide out)
   if (sessionStorage.getItem('page-transitioning')) {
     sessionStorage.removeItem('page-transitioning');
-    gsap.set(panels, { scaleY: 1, transformOrigin: 'top' });
     transition.classList.add('is-leaving');
+    gsap.set(panels, { scaleY: 1, transformOrigin: 'top' });
 
     gsap.to(panels[0], {
       scaleY: 0,
-      duration: 0.5,
+      duration: 0.6,
       ease: 'power3.inOut',
-      delay: 0.15,
+      delay: 0.1,
     });
     gsap.to(panels[1], {
       scaleY: 0,
-      duration: 0.5,
+      duration: 0.6,
       ease: 'power3.inOut',
-      delay: 0.1,
+      delay: 0.15,
       onComplete: () => {
         transition.classList.remove('is-active', 'is-leaving');
       }
