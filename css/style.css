@@ -1707,7 +1707,7 @@ address { font-style: normal; }
   transform: translateY(-8px) scale(1.01);
 }
 
-/* First and last cards span full width for asymmetric layout */
+/* First card spans full width */
 .case-card:first-child {
   grid-column: 1 / -1;
 }

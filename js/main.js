@@ -995,25 +995,6 @@ function initAnimations() {
   if (casesGrid) {
     const casesCards = casesGrid.querySelectorAll('.case-card');
     
-    // Staggered card reveal with clip-path
-    casesCards.forEach((card, i) => {
-      gsap.fromTo(card, {
-        y: 60,
-        opacity: 0,
-      }, {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        delay: i * 0.12,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        }
-      });
-    });
-
     // Case card hover effects
     casesCards.forEach(card => {
       const img = card.querySelector('.case-image img');
