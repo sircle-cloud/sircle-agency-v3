@@ -111,13 +111,13 @@
 /* Center: SIRCLE model sphere */
 .sircle-exp__model {
   position: absolute;
-  right: 8%;
+  right: 2%;
   top: 50%;
   transform: translateY(-50%);
-  width: 50vmin;
-  height: 50vmin;
-  max-width: 600px;
-  max-height: 600px;
+  width: 72vmin;
+  height: 72vmin;
+  max-width: 840px;
+  max-height: 840px;
   z-index: 5;
 }
 
