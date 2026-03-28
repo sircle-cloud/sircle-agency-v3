@@ -356,21 +356,58 @@ a:focus-visible {
   );
 }
 
-/* Bridges involving SIRCLE experience (dark bg) */
-.sircle-experience + .section-dark::before {
+/* Bridge: SIRCLE experience (dark) → cream section */
+.sircle-experience + .section-cream::before {
   content: '';
   position: absolute;
   top: -2px;
   left: 0;
   right: 0;
-  height: 300px;
+  height: 600px;
   z-index: 2;
   pointer-events: none;
   background: linear-gradient(to bottom,
     rgba(5,16,8,1) 0%,
-    rgba(5,16,8,0.85) 20%,
-    rgba(5,16,8,0.50) 50%,
-    rgba(5,16,8,0.15) 80%,
+    rgba(5,16,8,0.98) 5%,
+    rgba(5,16,8,0.94) 10%,
+    rgba(5,16,8,0.88) 16%,
+    rgba(5,16,8,0.80) 22%,
+    rgba(5,16,8,0.70) 30%,
+    rgba(5,16,8,0.58) 38%,
+    rgba(5,16,8,0.46) 46%,
+    rgba(5,16,8,0.34) 54%,
+    rgba(5,16,8,0.24) 62%,
+    rgba(5,16,8,0.15) 70%,
+    rgba(5,16,8,0.08) 80%,
+    rgba(5,16,8,0.03) 90%,
+    transparent 100%
+  );
+}
+
+/* Cream → Quote section bridge */
+.section-cream + .quote-section::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 600px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(240,235,225,1) 0%,
+    rgba(240,235,225,0.98) 5%,
+    rgba(240,235,225,0.94) 10%,
+    rgba(240,235,225,0.88) 16%,
+    rgba(240,235,225,0.80) 22%,
+    rgba(240,235,225,0.70) 30%,
+    rgba(240,235,225,0.58) 38%,
+    rgba(240,235,225,0.46) 46%,
+    rgba(240,235,225,0.34) 54%,
+    rgba(240,235,225,0.24) 62%,
+    rgba(240,235,225,0.15) 70%,
+    rgba(240,235,225,0.08) 80%,
+    rgba(240,235,225,0.03) 90%,
     transparent 100%
   );
 }
@@ -2004,12 +2041,52 @@ address { font-style: normal; }
   .case-card:first-child { grid-column: 1; }
 }
 
+/* Cases on cream: adapt colors */
+.section-cream .case-card {
+  box-shadow:
+    0 4px 16px rgba(8,36,18,0.08),
+    0 16px 48px rgba(8,36,18,0.12);
+}
+
+.section-cream .case-card:hover {
+  box-shadow:
+    0 8px 24px rgba(8,36,18,0.12),
+    0 32px 80px rgba(8,36,18,0.20),
+    0 0 0 1px rgba(143,175,138,0.15);
+}
+
+.section-cream .btn-ghost {
+  color: var(--mid-green);
+}
+
+.section-cream .btn-ghost:hover {
+  color: var(--dark-green);
+}
+
 /* ---------- MARQUEE ---------- */
 .marquee {
   overflow: hidden;
   padding: 48px 0;
   border-top: 1px solid rgba(208,223,185,0.1);
   border-bottom: 1px solid rgba(208,223,185,0.1);
+}
+
+/* Marquee on cream backgrounds */
+.section-cream .marquee {
+  border-top: 1px solid rgba(8,36,18,0.08);
+  border-bottom: 1px solid rgba(8,36,18,0.08);
+}
+
+.section-cream .marquee-item {
+  color: rgba(8,36,18,0.25);
+}
+
+.section-cream .marquee-item:hover {
+  color: var(--bronze);
+}
+
+.section-cream .marquee-dot {
+  color: rgba(8,36,18,0.15);
 }
 
 .marquee-track {
@@ -2614,9 +2691,9 @@ address { font-style: normal; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 60%, rgba(192,122,78,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 30% 30%, rgba(218,188,106,0.06) 0%, transparent 40%),
-    rgba(8,36,18,0.82);
+    radial-gradient(ellipse at 50% 60%, rgba(208,223,185,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 30%, rgba(242,226,164,0.12) 0%, transparent 40%),
+    rgba(243,239,232,0.92);
   z-index: 1;
 }
 
@@ -2630,18 +2707,17 @@ address { font-style: normal; }
 .cta-title {
   font-size: clamp(36px, 5.5vw, 72px);
   font-weight: 700;
-  color: var(--white);
+  color: var(--dark-green);
   text-transform: uppercase;
   line-height: 1.0;
   letter-spacing: -0.025em;
   margin-bottom: 32px;
   text-rendering: optimizeLegibility;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.12);
 }
 
 .cta-sub {
   font-size: 19px;
-  color: rgba(184,198,163,0.82);
+  color: var(--mid-grey);
   line-height: 1.75;
   margin-bottom: 52px;
   font-weight: 300;
@@ -2652,6 +2728,21 @@ address { font-style: normal; }
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* Final CTA on cream: adapt secondary button */
+.section-cream.final-cta .btn-secondary {
+  color: var(--dark-green);
+  border-color: rgba(8,36,18,0.2);
+}
+
+.section-cream.final-cta .btn-secondary::before {
+  background: var(--dark-green);
+}
+
+.section-cream.final-cta .btn-secondary:hover {
+  color: var(--white);
+  border-color: var(--dark-green);
 }
 
 @media (max-width: 767px) {
