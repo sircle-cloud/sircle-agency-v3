@@ -225,14 +225,38 @@ function initSircleExperience() {
   const dots = [...section.querySelectorAll('.sircle-exp__dot')];
   const progressFill = section.querySelector('.sircle-exp__progress-fill');
   const modelGlow = section.querySelector('.sircle-exp__model-glow');
+  const bgEl = section.querySelector('.sircle-exp__bg');
   const totalPhases = phases.length;
 
-  let currentPhase = 0;
+  let currentPhase = -1;
+
+  // Background gradients per phase — each has unique light direction
+  const bgGradients = [
+    'radial-gradient(ellipse 80% 70% at 15% 20%, rgba(143,175,138,0.28) 0%, transparent 80%), radial-gradient(ellipse 40% 40% at 85% 80%, rgba(143,175,138,0.06) 0%, transparent 60%), linear-gradient(155deg, #122E1C 0%, #0A1F12 30%, #051008 60%, #071A0F 100%)',
+    'radial-gradient(ellipse 75% 65% at 80% 20%, rgba(208,223,185,0.24) 0%, transparent 80%), radial-gradient(ellipse 45% 50% at 15% 75%, rgba(143,175,138,0.08) 0%, transparent 60%), linear-gradient(200deg, #122E1C 0%, #0A1F12 30%, #051008 60%, #071A0F 100%)',
+    'radial-gradient(ellipse 70% 55% at 40% 55%, rgba(242,226,164,0.16) 0%, transparent 75%), radial-gradient(ellipse 50% 50% at 75% 35%, rgba(196,168,84,0.10) 0%, transparent 60%), linear-gradient(145deg, #060F08 0%, #0D2818 25%, #1A3D24 50%, #071A0F 100%)',
+    'radial-gradient(ellipse 90% 50% at 50% 95%, rgba(208,223,185,0.22) 0%, transparent 75%), radial-gradient(ellipse 60% 40% at 30% 85%, rgba(208,223,185,0.12) 0%, transparent 60%), linear-gradient(180deg, #040E08 0%, #071A0F 30%, #0D2818 60%, #1A3D24 100%)'
+  ];
 
   function setPhase(index) {
-    if (index === currentPhase && phases[currentPhase].classList.contains('is-active')) return;
+    if (index === currentPhase) return;
+    const prevPhase = currentPhase;
+    currentPhase = index;
 
-    // Animate out current
+    // Animate out previous phase services
+    if (prevPhase >= 0) {
+      const prevServices = phases[prevPhase].querySelectorAll('.sircle-exp__services li');
+      gsap.to(prevServices, {
+        x: -20,
+        opacity: 0,
+        stagger: 0.03,
+        duration: 0.25,
+        ease: 'power2.in',
+        overwrite: true
+      });
+    }
+
+    // Update phase visibility
     phases.forEach((p, i) => {
       if (i !== index) {
         p.classList.remove('is-active');
@@ -240,43 +264,85 @@ function initSircleExperience() {
         setTimeout(() => p.classList.remove('is-exiting'), 500);
       }
     });
-    images.forEach((img, i) => {
-      img.classList.toggle('is-active', i === index);
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('is-active', i === index);
-    });
+    images.forEach((img, i) => img.classList.toggle('is-active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
 
-    // Animate in new
+    // Animate in new phase
     requestAnimationFrame(() => {
       phases[index].classList.add('is-active');
+
+      // Staggered service reveal with gold accent sweep
+      const services = phases[index].querySelectorAll('.sircle-exp__services li');
+      gsap.fromTo(services, {
+        x: 30,
+        opacity: 0,
+      }, {
+        x: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 0.5,
+        ease: 'power3.out',
+        delay: 0.2,
+        overwrite: true
+      });
+
+      // Animate the gold accent line per service
+      services.forEach((li, i) => {
+        gsap.fromTo(li, {
+          '--accent-width': '0%',
+        }, {
+          '--accent-width': '100%',
+          duration: 0.6,
+          delay: 0.3 + i * 0.1,
+          ease: 'power2.out',
+        });
+        // Flash color on text
+        gsap.fromTo(li, {
+          color: 'rgba(242,226,164,0.9)',
+        }, {
+          color: 'rgba(208,223,185,0.7)',
+          duration: 0.8,
+          delay: 0.3 + i * 0.1,
+          ease: 'power2.out',
+        });
+      });
     });
 
-    // Update progress bar
+    // Animate progress bar
     if (progressFill) {
-      const progress = index / (totalPhases - 1);
       gsap.to(progressFill, {
-        y: progress * 150,
+        y: (index / (totalPhases - 1)) * 150,
         duration: 0.5,
         ease: 'power2.out'
+      });
+    }
+
+    // Shift background gradient
+    if (bgEl) {
+      gsap.to(bgEl, {
+        opacity: 0.6,
+        duration: 0.2,
+        ease: 'power1.in',
+        onComplete: () => {
+          bgEl.style.background = bgGradients[index];
+          gsap.to(bgEl, { opacity: 1, duration: 0.5, ease: 'power2.out' });
+        }
       });
     }
 
     // Shift glow color per phase
     if (modelGlow) {
       const glowColors = [
-        'radial-gradient(circle, rgba(143,175,138,0.15) 0%, transparent 65%)',
-        'radial-gradient(circle, rgba(208,223,185,0.18) 0%, transparent 65%)',
-        'radial-gradient(circle, rgba(242,226,164,0.14) 0%, transparent 65%)',
-        'radial-gradient(circle, rgba(180,175,120,0.12) 0%, transparent 65%)'
+        'radial-gradient(circle, rgba(143,175,138,0.18) 0%, transparent 65%)',
+        'radial-gradient(circle, rgba(208,223,185,0.22) 0%, transparent 65%)',
+        'radial-gradient(circle, rgba(242,226,164,0.18) 0%, transparent 65%)',
+        'radial-gradient(circle, rgba(180,175,120,0.15) 0%, transparent 65%)'
       ];
       modelGlow.style.background = glowColors[index];
     }
-
-    currentPhase = index;
   }
 
-  // GSAP ScrollTrigger — pin the section and drive phases by scroll
+  // GSAP ScrollTrigger — pin and drive phases
   ScrollTrigger.create({
     trigger: section,
     start: 'top top',
@@ -284,10 +350,7 @@ function initSircleExperience() {
     pin: '.sircle-exp__pin',
     pinSpacing: false,
     onUpdate: (self) => {
-      const progress = self.progress;
-      // Map 0-1 progress to 0-3 phase index
-      // Give each phase equal scroll space
-      const phaseIndex = Math.min(Math.floor(progress * totalPhases), totalPhases - 1);
+      const phaseIndex = Math.min(Math.floor(self.progress * totalPhases), totalPhases - 1);
       setPhase(phaseIndex);
     }
   });
@@ -597,6 +660,30 @@ function initAnimations() {
       }
     });
   });
+
+  // ============================================
+  // SECTION TITLE — Character-split reveal (premium entrance)
+  // ============================================
+  if (!isMobile) {
+    document.querySelectorAll('.section-title.reveal-up, .cta-title.reveal-up').forEach(title => {
+      // Remove the generic reveal-up so it doesn't double-fire
+      title.classList.remove('reveal-up');
+      const chars = splitTextIntoChars(title);
+      gsap.set(chars, { y: '100%', opacity: 0 });
+      gsap.to(chars, {
+        y: '0%',
+        opacity: 1,
+        stagger: 0.02,
+        duration: 0.7,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: title,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        }
+      });
+    });
+  }
 
   document.querySelectorAll('.reveal-clip').forEach(el => {
     const delay = parseFloat(el.dataset.delay) || 0;
