@@ -305,180 +305,7 @@ a:focus-visible {
 }
 
 /* ---------- SECTION FLOW TRANSITIONS ---------- */
-/* Gradient bridges between sections for seamless color flow */
-.section-dark + .section-cream::before,
-.section-cream + .section-dark::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  right: 0;
-  height: 600px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.section-dark + .section-cream::before {
-  background: linear-gradient(to bottom,
-    rgba(8,22,16,1) 0%,
-    rgba(8,22,16,0.98) 5%,
-    rgba(8,22,16,0.94) 10%,
-    rgba(8,22,16,0.88) 16%,
-    rgba(8,22,16,0.80) 22%,
-    rgba(8,22,16,0.70) 30%,
-    rgba(8,22,16,0.58) 38%,
-    rgba(8,22,16,0.46) 46%,
-    rgba(8,22,16,0.34) 54%,
-    rgba(8,22,16,0.24) 62%,
-    rgba(8,22,16,0.15) 70%,
-    rgba(8,22,16,0.08) 80%,
-    rgba(8,22,16,0.03) 90%,
-    transparent 100%
-  );
-}
-
-.section-cream + .section-dark::before {
-  background: linear-gradient(to bottom,
-    rgba(240,235,225,1) 0%,
-    rgba(240,235,225,0.98) 5%,
-    rgba(240,235,225,0.94) 10%,
-    rgba(240,235,225,0.88) 16%,
-    rgba(240,235,225,0.80) 22%,
-    rgba(240,235,225,0.70) 30%,
-    rgba(240,235,225,0.58) 38%,
-    rgba(240,235,225,0.46) 46%,
-    rgba(240,235,225,0.34) 54%,
-    rgba(240,235,225,0.24) 62%,
-    rgba(240,235,225,0.15) 70%,
-    rgba(240,235,225,0.08) 80%,
-    rgba(240,235,225,0.03) 90%,
-    transparent 100%
-  );
-}
-
-/* Bridge: SIRCLE experience (dark) → cream section */
-.sircle-experience + .section-cream::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  right: 0;
-  height: 600px;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(to bottom,
-    rgba(5,16,8,1) 0%,
-    rgba(5,16,8,0.98) 5%,
-    rgba(5,16,8,0.94) 10%,
-    rgba(5,16,8,0.88) 16%,
-    rgba(5,16,8,0.80) 22%,
-    rgba(5,16,8,0.70) 30%,
-    rgba(5,16,8,0.58) 38%,
-    rgba(5,16,8,0.46) 46%,
-    rgba(5,16,8,0.34) 54%,
-    rgba(5,16,8,0.24) 62%,
-    rgba(5,16,8,0.15) 70%,
-    rgba(5,16,8,0.08) 80%,
-    rgba(5,16,8,0.03) 90%,
-    transparent 100%
-  );
-}
-
-/* Cream → Quote section bridge */
-.section-cream + .quote-section::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  right: 0;
-  height: 600px;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(to bottom,
-    rgba(240,235,225,1) 0%,
-    rgba(240,235,225,0.98) 5%,
-    rgba(240,235,225,0.94) 10%,
-    rgba(240,235,225,0.88) 16%,
-    rgba(240,235,225,0.80) 22%,
-    rgba(240,235,225,0.70) 30%,
-    rgba(240,235,225,0.58) 38%,
-    rgba(240,235,225,0.46) 46%,
-    rgba(240,235,225,0.34) 54%,
-    rgba(240,235,225,0.24) 62%,
-    rgba(240,235,225,0.15) 70%,
-    rgba(240,235,225,0.08) 80%,
-    rgba(240,235,225,0.03) 90%,
-    transparent 100%
-  );
-}
-
-/* Quote → Cream section bridge */
-.quote-section + .section-cream::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  right: 0;
-  height: 500px;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(to bottom,
-    rgba(26,61,36,1) 0%,
-    rgba(26,61,36,0.90) 10%,
-    rgba(26,61,36,0.70) 25%,
-    rgba(26,61,36,0.45) 45%,
-    rgba(26,61,36,0.20) 65%,
-    rgba(26,61,36,0.06) 85%,
-    transparent 100%
-  );
-}
-
-/* Dark → Lead magnet bridge */
-.section-dark + .lead-magnet::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  right: 0;
-  height: 500px;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(to bottom,
-    rgba(8,22,16,1) 0%,
-    rgba(8,22,16,0.88) 15%,
-    rgba(8,22,16,0.60) 35%,
-    rgba(8,22,16,0.30) 55%,
-    rgba(8,22,16,0.10) 75%,
-    transparent 100%
-  );
-}
-
-/* Lead magnet → dark bridge */
-.lead-magnet + .section-dark::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  right: 0;
-  height: 500px;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(to bottom,
-    rgba(208,223,185,1) 0%,
-    rgba(208,223,185,0.85) 15%,
-    rgba(208,223,185,0.55) 35%,
-    rgba(208,223,185,0.25) 55%,
-    rgba(208,223,185,0.08) 75%,
-    transparent 100%
-  );
-}
-
-/* Bottom fade for outgoing section */
-.section-dark + .section-cream > .container,
-.section-dark + .section-cream > .container-wide {
-  position: relative;
-  z-index: 3;
-}
+/* Clean hard cuts between sections — no gradient bridges */
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; height: auto; display: block; }
@@ -842,90 +669,15 @@ address { font-style: normal; }
   overflow: hidden;
 }
 
-/* ---------- ATMOSPHERIC SECTION BACKGROUNDS ---------- */
-/* Based on Figma branding: directional light, forest-depth gradients with grain */
+/* ---------- SECTION BACKGROUNDS ---------- */
 
 .section-dark {
-  background:
-    radial-gradient(ellipse 70% 60% at 20% 25%, rgba(143,175,138,0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 50% at 80% 75%, rgba(143,175,138,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(63,111,69,0.14) 0%, transparent 100%),
-    linear-gradient(160deg, #0D2818 0%, var(--dark-green-deep) 25%, #071A0F 50%, var(--dark-green-deep) 75%, #0A1E12 100%);
+  background: var(--dark-green);
   color: var(--white);
-  background-size: 100% 100%;
 }
 
-/* Variant: light from upper-left — matches branding gradient 1 */
-.section-dark.--glow-tl {
-  background:
-    radial-gradient(ellipse 80% 70% at 15% 20%, rgba(143,175,138,0.28) 0%, rgba(63,111,69,0.08) 50%, transparent 80%),
-    radial-gradient(ellipse 40% 40% at 85% 80%, rgba(143,175,138,0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(8,36,18,0.3) 0%, transparent 100%),
-    linear-gradient(155deg, #122E1C 0%, #0A1F12 30%, var(--dark-green-deep) 60%, #071A0F 100%);
-}
-
-/* Variant: light from upper-right — matches branding gradient 2 */
-.section-dark.--glow-tr {
-  background:
-    radial-gradient(ellipse 75% 65% at 80% 20%, rgba(143,175,138,0.24) 0%, rgba(63,111,69,0.06) 50%, transparent 80%),
-    radial-gradient(ellipse 45% 50% at 15% 75%, rgba(143,175,138,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(8,36,18,0.25) 0%, transparent 100%),
-    linear-gradient(200deg, #122E1C 0%, #0A1F12 30%, var(--dark-green-deep) 60%, #071A0F 100%);
-}
-
-/* Variant: light from bottom — sage glow rising, matches branding gradient 4 */
-.section-dark.--glow-b {
-  background:
-    radial-gradient(ellipse 80% 50% at 40% 85%, rgba(143,175,138,0.22) 0%, rgba(63,111,69,0.06) 50%, transparent 80%),
-    radial-gradient(ellipse 50% 40% at 70% 15%, rgba(143,175,138,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(8,36,18,0.2) 0%, transparent 100%),
-    linear-gradient(0deg, #122E1C 0%, #0A1F12 30%, var(--dark-green-deep) 60%, #071A0F 100%);
-}
-
-/* Variant: very dark with bottom-right sage spotlight */
-.section-dark.--glow-br {
-  background:
-    radial-gradient(ellipse 55% 50% at 80% 80%, rgba(143,175,138,0.26) 0%, rgba(63,111,69,0.06) 50%, transparent 80%),
-    radial-gradient(ellipse 30% 30% at 15% 20%, rgba(143,175,138,0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 100% at 60% 60%, rgba(5,16,8,0.5) 0%, transparent 100%),
-    linear-gradient(135deg, #040E08 0%, var(--dark-green-deep) 40%, #0A1F12 70%, #0D2818 100%);
-}
-
-/* Variant: dramatic sage-gold diagonal spotlight — cinematisch */
-.section-dark.--glow-gold {
-  background:
-    radial-gradient(ellipse 70% 55% at 40% 55%, rgba(180,175,120,0.22) 0%, rgba(143,175,138,0.10) 40%, transparent 75%),
-    radial-gradient(ellipse 50% 50% at 75% 35%, rgba(196,168,84,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 40% at 15% 15%, rgba(5,16,8,0.6) 0%, transparent 70%),
-    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(8,36,18,0.3) 0%, transparent 100%),
-    linear-gradient(145deg, #060F08 0%, #0D2818 25%, #1A3D24 50%, #162E1C 75%, #071A0F 100%);
-}
-
-/* Variant: bottom bloom — dark top, bright sage flooding from below */
-.section-dark.--glow-bloom {
-  background:
-    radial-gradient(ellipse 90% 50% at 50% 95%, rgba(208,223,185,0.30) 0%, rgba(143,175,138,0.12) 40%, transparent 75%),
-    radial-gradient(ellipse 60% 40% at 30% 85%, rgba(208,223,185,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 70% 10%, rgba(5,16,8,0.5) 0%, transparent 70%),
-    linear-gradient(180deg, #040E08 0%, #071A0F 30%, #0D2818 60%, #1A3D24 100%);
-}
-
-/* Cream variant: sage-gold warmth — soft sage blending into warm gold tones */
-.section-cream.--warm-gold {
-  background:
-    radial-gradient(ellipse 60% 60% at 25% 35%, rgba(208,223,185,0.40) 0%, rgba(208,223,185,0.10) 50%, transparent 80%),
-    radial-gradient(ellipse 55% 55% at 80% 70%, rgba(242,226,164,0.35) 0%, rgba(232,213,144,0.10) 50%, transparent 80%),
-    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(246,238,208,0.20) 0%, transparent 100%),
-    linear-gradient(145deg, #E8E4D8 0%, var(--warm-white) 25%, #F2EDDA 50%, var(--light-gold) 80%, #EDE5C8 100%);
-}
-
-/* Cream sections: sage-tinted light atmosphere — matches branding gradient 3 */
 .section-cream {
-  background:
-    radial-gradient(ellipse 70% 60% at 75% 25%, rgba(208,223,185,0.55) 0%, rgba(208,223,185,0.15) 50%, transparent 80%),
-    radial-gradient(ellipse 50% 50% at 20% 70%, rgba(143,175,138,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(240,255,218,0.15) 0%, transparent 100%),
-    linear-gradient(165deg, var(--cream) 0%, var(--warm-white) 30%, #F5F2EB 60%, var(--cream) 100%);
+  background: var(--cream);
   color: var(--dark-green);
 }
 
@@ -2128,11 +1880,8 @@ address { font-style: normal; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    radial-gradient(ellipse 70% 55% at 30% 35%, rgba(143,175,138,0.30) 0%, rgba(63,111,69,0.08) 50%, transparent 80%),
-    radial-gradient(ellipse 55% 50% at 75% 65%, rgba(208,223,185,0.14) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(58,94,66,0.22) 0%, transparent 100%),
-    linear-gradient(150deg, #1A3D24 0%, var(--mid-green) 40%, #1A3D24 70%, #0D2818 100%);
+  background: var(--dark-green);
+  color: var(--white);
   overflow: hidden;
 }
 
@@ -2416,10 +2165,8 @@ address { font-style: normal; }
 /* LEAD MAGNET */
 /* ============================================ */
 .lead-magnet {
-  background:
-    radial-gradient(ellipse 60% 50% at 25% 40%, rgba(208,223,185,0.40) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 80% 65%, rgba(242,226,164,0.20) 0%, transparent 55%),
-    linear-gradient(155deg, var(--light-green) 0%, #D2DFC2 35%, var(--soft-green) 65%, var(--light-green) 100%);
+  background: var(--cream);
+  color: var(--dark-green);
   padding: 140px 0;
 }
 
