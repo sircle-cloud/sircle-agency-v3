@@ -251,8 +251,8 @@ function initSircleExperience() {
 
   // Background gradients per phase — each has unique light direction
   const bgGradients = [
-    'radial-gradient(ellipse 80% 70% at 15% 20%, rgba(143,175,138,0.28) 0%, transparent 80%), radial-gradient(ellipse 40% 40% at 85% 80%, rgba(143,175,138,0.06) 0%, transparent 60%), linear-gradient(155deg, #122E1C 0%, #0A1F12 30%, #051008 60%, #071A0F 100%)',
-    'radial-gradient(ellipse 75% 65% at 80% 20%, rgba(208,223,185,0.24) 0%, transparent 80%), radial-gradient(ellipse 45% 50% at 15% 75%, rgba(143,175,138,0.08) 0%, transparent 60%), linear-gradient(200deg, #122E1C 0%, #0A1F12 30%, #051008 60%, #071A0F 100%)',
+    'radial-gradient(ellipse 80% 70% at 15% 20%, rgba(143,175,138,0.28) 0%, transparent 80%), radial-gradient(ellipse 40% 40% at 85% 80%, rgba(143,175,138,0.06) 0%, transparent 60%), linear-gradient(155deg, #122E1C 0%, #0A1F12 30%, #040E07 60%, #071A0F 100%)',
+    'radial-gradient(ellipse 75% 65% at 80% 20%, rgba(208,223,185,0.24) 0%, transparent 80%), radial-gradient(ellipse 45% 50% at 15% 75%, rgba(143,175,138,0.08) 0%, transparent 60%), linear-gradient(200deg, #122E1C 0%, #0A1F12 30%, #040E07 60%, #071A0F 100%)',
     'radial-gradient(ellipse 70% 55% at 40% 55%, rgba(242,226,164,0.16) 0%, transparent 75%), radial-gradient(ellipse 50% 50% at 75% 35%, rgba(196,168,84,0.10) 0%, transparent 60%), linear-gradient(145deg, #060F08 0%, #0D2818 25%, #1A3D24 50%, #071A0F 100%)',
     'radial-gradient(ellipse 90% 50% at 50% 95%, rgba(208,223,185,0.22) 0%, transparent 75%), radial-gradient(ellipse 60% 40% at 30% 85%, rgba(208,223,185,0.12) 0%, transparent 60%), linear-gradient(180deg, #040E08 0%, #071A0F 30%, #0D2818 60%, #1A3D24 100%)'
   ];
@@ -595,7 +595,7 @@ function initAnimations() {
             rotateY: x * 12,
             rotateX: -y * 8,
             scale: 1.03,
-            boxShadow: `${-x * 20}px ${-y * 20}px 50px rgba(8,36,18,0.15)`,
+            boxShadow: `${-x * 20}px ${-y * 20}px 50px rgba(7,25,12,0.15)`,
             duration: 0.4,
             ease: 'power2.out',
           });
@@ -605,7 +605,7 @@ function initAnimations() {
             rotateY: 0,
             rotateX: 0,
             scale: 1,
-            boxShadow: '0 4px 32px rgba(8,36,18,0.06)',
+            boxShadow: '0 4px 32px rgba(7,25,12,0.06)',
             duration: 0.6,
             ease: 'elastic.out(1, 0.7)',
           });
@@ -1553,7 +1553,7 @@ if (window.innerWidth > 900) {
       const shadowX = -x * 30;
       const shadowY = -y * 30;
       gsap.to(mockup, {
-        boxShadow: `${shadowX}px ${shadowY}px 60px rgba(8,36,18,0.35)`,
+        boxShadow: `${shadowX}px ${shadowY}px 60px rgba(7,25,12,0.35)`,
         duration: 0.4,
       });
 
@@ -1570,7 +1570,7 @@ if (window.innerWidth > 900) {
       gsap.to(mockup, {
         rotateY: -5,
         rotateX: 0,
-        boxShadow: '0 20px 60px rgba(8,36,18,0.2)',
+        boxShadow: '0 20px 60px rgba(7,25,12,0.2)',
         duration: 0.8,
         ease: 'elastic.out(1, 0.7)',
       });

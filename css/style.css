@@ -19,9 +19,9 @@ html { overflow-x: hidden; }
   --warm-beige: #E9E2D6;
   --beige: #DED6C9;
   /* Greens — from Figma brand book */
-  --dark-green: #082412;
-  --dark-green-deep: #051008;
-  --dark-green-warm: #0D1F16;
+  --dark-green: #07190C;
+  --dark-green-deep: #040E07;
+  --dark-green-warm: #07190C;
   --mid-green: #3F6F45;
   --sage-green: #8FAF8A;
   --soft-green: #D0DFB9;
@@ -425,7 +425,7 @@ address { font-style: normal; }
 .mobile-menu-bg {
   position: absolute;
   inset: 0;
-  background: rgba(8, 36, 18, 0.92);
+  background: rgba(7, 25, 12, 0.92);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
   opacity: 0;
@@ -1324,8 +1324,8 @@ address { font-style: normal; }
   aspect-ratio: 16 / 9;
   cursor: pointer;
   box-shadow:
-    0 24px 80px rgba(8,36,18,0.15),
-    0 0 0 1px rgba(8,36,18,0.06);
+    0 24px 80px rgba(7,25,12,0.15),
+    0 0 0 1px rgba(7,25,12,0.06);
 }
 
 .video-poster {
@@ -1420,7 +1420,7 @@ address { font-style: normal; }
 }
 
 .pillar {
-  border-top: 1px solid rgba(8,36,18,0.1);
+  border-top: 1px solid rgba(7,25,12,0.1);
   padding-top: 28px;
 }
 
@@ -1845,14 +1845,14 @@ address { font-style: normal; }
 /* Cases on cream: adapt colors */
 .section-cream .case-card {
   box-shadow:
-    0 4px 16px rgba(8,36,18,0.08),
-    0 16px 48px rgba(8,36,18,0.12);
+    0 4px 16px rgba(7,25,12,0.08),
+    0 16px 48px rgba(7,25,12,0.12);
 }
 
 .section-cream .case-card:hover {
   box-shadow:
-    0 8px 24px rgba(8,36,18,0.12),
-    0 32px 80px rgba(8,36,18,0.20),
+    0 8px 24px rgba(7,25,12,0.12),
+    0 32px 80px rgba(7,25,12,0.20),
     0 0 0 1px rgba(143,175,138,0.15);
 }
 
@@ -1874,12 +1874,12 @@ address { font-style: normal; }
 
 /* Marquee on cream backgrounds */
 .section-cream .marquee {
-  border-top: 1px solid rgba(8,36,18,0.08);
-  border-bottom: 1px solid rgba(8,36,18,0.08);
+  border-top: 1px solid rgba(7,25,12,0.08);
+  border-bottom: 1px solid rgba(7,25,12,0.08);
 }
 
 .section-cream .marquee-item {
-  color: rgba(8,36,18,0.25);
+  color: rgba(7,25,12,0.25);
 }
 
 .section-cream .marquee-item:hover {
@@ -1887,7 +1887,7 @@ address { font-style: normal; }
 }
 
 .section-cream .marquee-dot {
-  color: rgba(8,36,18,0.15);
+  color: rgba(7,25,12,0.15);
 }
 
 .marquee-track {
@@ -1946,7 +1946,7 @@ address { font-style: normal; }
 .quote-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(58,94,66,0.85) 0%, rgba(8,36,18,0.72) 60%, rgba(10,26,20,0.82) 100%);
+  background: linear-gradient(135deg, rgba(58,94,66,0.85) 0%, rgba(7,25,12,0.72) 60%, rgba(10,26,20,0.82) 100%);
   z-index: 1;
 }
 
@@ -2164,14 +2164,14 @@ address { font-style: normal; }
   width: 40px;
   height: 4px;
   border-radius: 4px;
-  background: rgba(8,36,18,0.12);
+  background: rgba(7,25,12,0.12);
   transition: background 0.3s;
   cursor: pointer;
   position: relative;
   overflow: hidden;
 }
 
-.dot.active { background: rgba(8,36,18,0.08); }
+.dot.active { background: rgba(7,25,12,0.08); }
 
 .dot-progress {
   position: absolute;
@@ -2413,7 +2413,7 @@ address { font-style: normal; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgba(8,36,18,0.95) 0%, rgba(8,36,18,0.6) 40%, rgba(8,36,18,0.4) 100%);
+    linear-gradient(to top, rgba(7,25,12,0.95) 0%, rgba(7,25,12,0.6) 40%, rgba(7,25,12,0.4) 100%);
   z-index: 1;
 }
 
@@ -2646,7 +2646,7 @@ address { font-style: normal; }
   transform: translateY(-50%);
   width: 3px;
   height: 180px;
-  background: rgba(8,36,18,0.06);
+  background: rgba(7,25,12,0.06);
   border-radius: 3px;
   overflow: hidden;
   z-index: 3;
@@ -2724,16 +2724,16 @@ address { font-style: normal; }
 /* --- Service Card Active State Polish --- */
 .sircle-service-card.is-active {
   border-color: rgba(212,185,120,0.4);
-  box-shadow: 0 16px 56px rgba(8,36,18,0.12), 0 0 40px rgba(212,185,120,0.06);
+  box-shadow: 0 16px 56px rgba(7,25,12,0.12), 0 0 40px rgba(212,185,120,0.06);
 }
 
 /* --- Case Card Cinematic Overlay --- */
 .case-overlay {
   background: linear-gradient(
     to top,
-    rgba(8,36,18,0.92) 0%,
-    rgba(8,36,18,0.5) 30%,
-    rgba(8,36,18,0.08) 55%,
+    rgba(7,25,12,0.92) 0%,
+    rgba(7,25,12,0.5) 30%,
+    rgba(7,25,12,0.08) 55%,
     transparent 100%
   );
 }
@@ -2741,9 +2741,9 @@ address { font-style: normal; }
 .case-card:hover .case-overlay {
   background: linear-gradient(
     to top,
-    rgba(8,36,18,0.96) 0%,
-    rgba(8,36,18,0.55) 35%,
-    rgba(8,36,18,0.1) 60%,
+    rgba(7,25,12,0.96) 0%,
+    rgba(7,25,12,0.55) 35%,
+    rgba(7,25,12,0.1) 60%,
     transparent 100%
   );
 }

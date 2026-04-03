@@ -30,9 +30,9 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(8,36,18,0.9) 0%,
-    rgba(8,36,18,0.5) 50%,
-    rgba(8,36,18,0.35) 100%
+    rgba(7,25,12,0.9) 0%,
+    rgba(7,25,12,0.5) 50%,
+    rgba(7,25,12,0.35) 100%
   );
 }
 
@@ -105,7 +105,7 @@
 }
 
 .model-nav-item:hover {
-  background: rgba(8,36,18,0.06);
+  background: rgba(7,25,12,0.06);
   transform: translateY(-4px);
 }
 
@@ -233,12 +233,12 @@
 
 .section-cream .phase-service-card {
   background: var(--white);
-  box-shadow: 0 4px 32px rgba(8,36,18,0.06);
+  box-shadow: 0 4px 32px rgba(7,25,12,0.06);
 }
 
 .section-cream .phase-service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 48px rgba(8,36,18,0.12);
+  box-shadow: 0 12px 48px rgba(7,25,12,0.12);
 }
 
 .service-icon {
@@ -291,7 +291,7 @@
 
 .section-cream .phase-case {
   background: var(--warm-white);
-  border: 1px solid rgba(8,36,18,0.06);
+  border: 1px solid rgba(7,25,12,0.06);
 }
 
 .phase-case-image {

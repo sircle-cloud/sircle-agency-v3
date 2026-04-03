@@ -5,7 +5,7 @@
 .sircle-experience {
   position: relative;
   height: 500vh; /* 5x viewport = intro + 4 phases */
-  background: var(--dark-green-deep, #051008);
+  background: var(--dark-green-deep, #040E07);
 }
 
 .sircle-experience .noise-overlay {
