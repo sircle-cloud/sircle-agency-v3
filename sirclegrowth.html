@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/nav-bold.css">
   <link rel="stylesheet" href="css/sirclecare.css">
 </head>
 <body>
@@ -26,18 +27,30 @@
   </svg>
 
   <!-- NAVIGATION -->
-  <nav class="nav scrolled" id="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <img src="assets/svg/svg-white-logo1.svg" alt="sircle agency" class="nav-logo-img">
+  <nav data-navigation-status="not-active" class="bold-nav" id="nav">
+    <div class="bold-nav__bar">
+      <a href="index.html" class="bold-nav__logo">
+        <img src="assets/svg/svg-white-logo1.svg" alt="sircle agency" class="bold-nav__logo-white">
+        <img src="assets/svg/svg-black-logo1.svg" alt="sircle agency" class="bold-nav__logo-dark">
       </a>
-      <div class="nav-links">
-        <a href="diensten.html">Diensten</a>
-        <a href="werk.html">Werk</a>
-        <a href="over-ons.html">Over ons</a>
-        <a href="contact.html">Contact</a>
+      <button data-navigation-toggle="toggle" class="bold-nav__hamburger">
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+      </button>
+    </div>
+    <div class="bold-nav__tile">
+      <ul class="bold-nav__ul">
+        <li class="bold-nav__li"><a href="index.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Home</span></a></li>
+        <li class="bold-nav__li"><a href="diensten.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Diensten</span></a></li>
+        <li class="bold-nav__li"><a href="werk.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Werk</span></a></li>
+        <li class="bold-nav__li"><a href="over-ons.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Over ons</span></a></li>
+        <li class="bold-nav__li"><a href="contact.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Contact</span></a></li>
+      </ul>
+      <div class="bold-nav__bottom">
+        <p class="bold-nav__word">Den Haag, Nederland</p>
+        <p class="bold-nav__word">hello@sircle.agency</p>
       </div>
-      <a href="contact.html" class="nav-cta">Start een project</a>
     </div>
   </nav>
 
@@ -492,6 +505,8 @@
         if (!isOpen) item.classList.add('open');
       });
     });
+
+    // Nav light/dark swap handled by main.js globally
   </script>
 </body>
 </html>

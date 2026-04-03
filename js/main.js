@@ -1671,3 +1671,28 @@ function initPageTransitions() {
   });
 }
 initPageTransitions();
+
+// ============================================
+// NAV LIGHT/DARK SWAP (global)
+// ============================================
+(function() {
+  const nav = document.querySelector('.bold-nav');
+  if (!nav) return;
+  const sections = document.querySelectorAll('section');
+  if (!sections.length) return;
+  function updateNavTheme() {
+    const navBottom = nav.querySelector('.bold-nav__bar')?.getBoundingClientRect().bottom || 80;
+    let isLight = false;
+    sections.forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top < navBottom && rect.bottom > 0) {
+        if (sec.classList.contains('section-cream') || sec.classList.contains('sc-timeline-section')) {
+          isLight = true;
+        }
+      }
+    });
+    nav.classList.toggle('nav-light', isLight);
+  }
+  window.addEventListener('scroll', updateNavTheme, { passive: true });
+  updateNavTheme();
+})();
