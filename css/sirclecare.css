@@ -771,6 +771,70 @@
   color: var(--mid-green);
 }
 
+/* ---------- PACKAGES ON LIGHT (section-cream) ---------- */
+.section-cream.sc-pricing .sc-pkg {
+  background: #fff;
+  border: 1px solid rgba(7,25,12,0.08);
+}
+.section-cream.sc-pricing .sc-pkg-price {
+  color: var(--dark-green);
+}
+.section-cream.sc-pricing .sc-pkg-price span {
+  color: rgba(7,25,12,0.5);
+}
+.section-cream.sc-pricing .sc-pkg-year {
+  color: rgba(7,25,12,0.45);
+}
+.section-cream.sc-pricing .sc-pkg-desc {
+  color: rgba(7,25,12,0.65);
+}
+.section-cream.sc-pricing .sc-pkg-group-title {
+  color: var(--mid-green);
+  border-top-color: rgba(7,25,12,0.08);
+}
+.section-cream.sc-pricing .sc-pkg-features li.included {
+  color: var(--dark-green);
+}
+.section-cream.sc-pricing .sc-pkg-features li.included::before {
+  color: var(--mid-green);
+}
+.section-cream.sc-pricing .sc-pkg-features li.not-included {
+  color: rgba(7,25,12,0.25);
+}
+.section-cream.sc-pricing .sc-pkg-features li.not-included::before {
+  color: rgba(7,25,12,0.2);
+}
+.section-cream.sc-pricing .sc-pkg-ideal {
+  color: rgba(7,25,12,0.55);
+}
+.section-cream.sc-pricing .sc-pkg-ideal strong {
+  color: var(--dark-green);
+}
+.section-cream.sc-pricing .sc-pkg-btn {
+  color: var(--dark-green);
+  border-color: rgba(7,25,12,0.15);
+}
+.section-cream.sc-pricing .sc-pkg-btn:hover {
+  background: var(--dark-green);
+  color: var(--white);
+}
+.section-cream.sc-pricing .sc-section-title {
+  color: var(--dark-green);
+}
+.section-cream.sc-pricing .sc-label {
+  color: var(--mid-green);
+}
+.section-cream.sc-pricing .sc-section-sub {
+  color: rgba(7,25,12,0.6);
+}
+.section-cream.sc-pricing .sc-pkg-badge {
+  background: rgba(7,25,12,0.06);
+  color: var(--dark-green);
+}
+.section-cream.sc-pricing .sc-popular-tag {
+  background: var(--mid-green);
+}
+
 /* ---------- FINAL CTA ---------- */
 .sc-final-cta {
   position: relative;
