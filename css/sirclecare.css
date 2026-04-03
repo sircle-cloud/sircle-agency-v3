@@ -2,6 +2,19 @@
 /* SIRCLECARE LANDING PAGE STYLES              */
 /* ============================================ */
 
+/* ---------- WIDER CONTAINER FOR SC PAGES ---------- */
+.sc-hero .container,
+.sc-included .container,
+.sc-pricing .container,
+.sc-risks .container,
+.sc-compare .container,
+.sc-faq .container,
+.sc-final-cta .container,
+.sc-software .container {
+  max-width: 1400px;
+  width: 92%;
+}
+
 /* ---------- SHARED ELEMENTS ---------- */
 .sc-label {
   display: inline-block;
@@ -27,7 +40,7 @@
 .sc-section-sub {
   font-size: 18px;
   line-height: 1.6;
-  max-width: 580px;
+  max-width: 760px;
   margin-bottom: 56px;
 }
 
@@ -59,7 +72,7 @@
 .sc-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 720px;
+  max-width: 900px;
 }
 
 .sc-hero h1 {
@@ -185,8 +198,8 @@
 /* ---------- PRICING GRID ---------- */
 .sc-pricing-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
   align-items: stretch;
 }
 
@@ -681,7 +694,7 @@
 
 /* ---------- FAQ ---------- */
 .sc-faq-list {
-  max-width: 760px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
