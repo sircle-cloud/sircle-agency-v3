@@ -4,7 +4,7 @@
 
 .sircle-experience {
   position: relative;
-  height: 500vh; /* 5x viewport = intro + 4 phases */
+  height: 250vh; /* 2.5x viewport = faster scroll through 4 phases */
   background: var(--dark-green-deep, #040E07);
 }
 
