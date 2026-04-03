@@ -901,3 +901,119 @@
   transform: none !important;
   filter: none !important;
 }
+
+/* ============================================ */
+/* DYNAMIC TIMELINE                            */
+/* ============================================ */
+
+.sc-timeline-section .sc-section-title {
+  color: var(--dark-green);
+}
+
+.sc-timeline-section .sc-section-sub {
+  color: var(--mid-grey);
+}
+
+.sc-timeline {
+  position: relative;
+  max-width: 700px;
+  margin: var(--space-xl) auto 0;
+  padding: var(--space-md) 0;
+}
+
+.sc-timeline-line {
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold) 0%, var(--mid-green) 50%, var(--gold) 100%);
+  opacity: 0.4;
+}
+
+.sc-timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+}
+
+.sc-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.sc-timeline-dot {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--dark-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 6px var(--cream), 0 4px 20px rgba(7, 25, 12, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.sc-timeline-item:hover .sc-timeline-dot {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px var(--cream), 0 0 24px rgba(242, 226, 164, 0.3);
+}
+
+.sc-timeline-dot span {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+}
+
+.sc-timeline-content {
+  flex: 1;
+  padding-top: 6px;
+}
+
+.sc-timeline-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dark-green);
+  margin: 0 0 6px 0;
+}
+
+.sc-timeline-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--mid-grey);
+  margin: 0;
+}
+
+/* Animated line fill on scroll */
+.sc-timeline-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, var(--gold), var(--mid-green));
+  transition: height 1.2s ease;
+}
+
+.sc-timeline-section.in-view .sc-timeline-line::after {
+  height: 100%;
+}
+
+/* Mobile: smaller dots */
+@media (max-width: 600px) {
+  .sc-timeline-line { left: 20px; }
+  .sc-timeline-dot { width: 40px; height: 40px; }
+  .sc-timeline-dot span { font-size: 0.75rem; }
+  .sc-timeline-content h3 { font-size: 1rem; }
+  .sc-timeline-content p { font-size: 0.9rem; }
+}
