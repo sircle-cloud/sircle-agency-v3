@@ -154,7 +154,7 @@
 }
 
 .sc-feature {
-  background: var(--white);
+  background: #FAFAF6;
   padding: 36px 32px;
   border-radius: 16px;
   border: 1px solid rgba(12,24,15,0.06);
@@ -773,7 +773,7 @@
 
 /* ---------- PACKAGES ON LIGHT (section-cream) ---------- */
 .section-cream.sc-pricing .sc-pkg {
-  background: #fff;
+  background: #FAFAF6;
   border: 1px solid rgba(12,24,15,0.08);
 }
 .section-cream.sc-pricing .sc-pkg-price {

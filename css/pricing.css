@@ -79,7 +79,7 @@
 /* ---------- PRICING CARD ---------- */
 .pricing-card {
   position: relative;
-  background: var(--white);
+  background: #FAFAF6;
   border: 1px solid var(--warm-beige);
   border-radius: 16px;
   padding: var(--space-lg) var(--space-md);
