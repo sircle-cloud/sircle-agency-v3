@@ -273,10 +273,12 @@
   opacity: 1;
 }
 
-/* Phase CTA buttons */
+/* Phase CTA buttons — gold pill style */
 .sircle-exp__phase-btn {
-  margin-top: 24px;
-  font-size: 14px;
+  margin-top: 28px;
+  font-size: 15px;
+  padding: 16px 36px;
+  border-radius: 60px;
 }
 
 /* Bottom CTA */
