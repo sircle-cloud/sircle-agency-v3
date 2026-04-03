@@ -273,6 +273,12 @@
   opacity: 1;
 }
 
+/* Phase CTA buttons */
+.sircle-exp__phase-btn {
+  margin-top: 24px;
+  font-size: 14px;
+}
+
 /* Bottom CTA */
 .sircle-exp__cta {
   position: absolute;
