@@ -1360,7 +1360,52 @@
   color: var(--dark-green);
 }
 
+/* Results grid (Growth page) */
+.sc-results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.sc-result-card {
+  padding: 40px 32px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(208,223,185,0.1);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.sc-result-num {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.sc-result-label {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.sc-result-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--soft-green);
+  opacity: 0.7;
+  margin: 0;
+}
+
 @media (max-width: 600px) {
+  .sc-results-grid { grid-template-columns: 1fr; }
+  .sc-result-num { font-size: 2.2rem; }
   .sc-testimonials { grid-template-columns: 1fr; }
   .sc-testimonial { padding: 28px; }
   .sc-testimonial blockquote p { font-size: 1rem; }
