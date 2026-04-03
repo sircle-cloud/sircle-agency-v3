@@ -33,6 +33,24 @@
   width: auto;
 }
 
+/* Default: white logo visible, dark logo hidden */
+.bold-nav__logo-dark { display: none; }
+.bold-nav__logo-white { display: block; }
+
+/* Light sections: swap logos */
+.bold-nav.nav-light .bold-nav__logo-white { display: none; }
+.bold-nav.nav-light .bold-nav__logo-dark { display: block; }
+.bold-nav.nav-light .bold-nav__hamburger { color: var(--dark-green, #07190C); }
+
+/* Scrolled + light: frosted cream bar */
+.bold-nav.scrolled.nav-light .bold-nav__bar {
+  background: rgba(243, 239, 232, 0.75);
+  backdrop-filter: blur(40px) saturate(1.4);
+  -webkit-backdrop-filter: blur(40px) saturate(1.4);
+  border-bottom: 1px solid rgba(7, 25, 12, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
 /* Desktop links — hidden, use fullscreen menu only */
 .bold-nav__desktop-links {
   display: none;
