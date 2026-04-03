@@ -1338,6 +1338,28 @@
   opacity: 0.8;
 }
 
+/* Testimonials on cream background */
+.section-cream .sc-testimonial {
+  background: #FAFAF6;
+  border-color: rgba(12,24,15,0.08);
+}
+
+.section-cream .sc-testimonial blockquote p {
+  color: var(--mid-grey);
+}
+
+.section-cream .sc-testimonial-author strong {
+  color: var(--dark-green);
+}
+
+.section-cream .sc-testimonial-author span {
+  color: var(--mid-green);
+}
+
+.section-cream .sc-client-name {
+  color: var(--dark-green);
+}
+
 @media (max-width: 600px) {
   .sc-testimonials { grid-template-columns: 1fr; }
   .sc-testimonial { padding: 28px; }
