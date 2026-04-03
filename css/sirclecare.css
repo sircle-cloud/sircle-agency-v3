@@ -786,3 +786,21 @@
   gap: 16px;
   flex-wrap: wrap;
 }
+
+/* ============================================ */
+/* SUBPAGE REVEAL FALLBACK                     */
+/* Forces reveal-up content visible on scroll  */
+/* ============================================ */
+.sc-hero .reveal-up,
+.sc-hero .hero-reveal,
+.sc-included .reveal-up,
+.sc-pricing .reveal-up,
+.sc-risks .reveal-up,
+.sc-compare .reveal-up,
+.sc-faq .reveal-up,
+.sc-final-cta .reveal-up,
+.sc-software .reveal-up {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
