@@ -710,6 +710,8 @@
 }
 
 .sc-faq-question svg {
+  width: 20px;
+  height: 20px;
   color: var(--mid-green);
   flex-shrink: 0;
   transition: transform 0.3s ease;
