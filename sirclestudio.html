@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SircleStudio — Film, Design & Web Development | sircle.agency</title>
-  <meta name="description" content="Van concept tot meesterwerk. Branding, film, webdesign en grafisch ontwerp — premium producties die je merk onvergetelijk maken.">
+  <title>SircleStudio — Film, Design & Branding | sircle.agency</title>
+  <meta name="description" content="Branding, film, webdesign en visual identity. Van strategie tot eindproduct — projectmatig of als creatief abonnement.">
+  <meta property="og:title" content="SircleStudio — Film, Design & Branding">
+  <meta property="og:description" content="Branding, film, webdesign en visual identity. Van strategie tot eindproduct.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sircle.agency/sirclestudio">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/sirclecare.css">
-  <link rel="stylesheet" href="css/diensten.css">
-  <link rel="stylesheet" href="css/landing-shared.css">
 </head>
 <body>
 
+  <!-- NOISE SVG FILTER -->
   <svg style="position:absolute;width:0;height:0">
     <filter id="noise">
       <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
@@ -38,452 +41,335 @@
     </div>
   </nav>
 
+  <!-- ============================================ -->
   <!-- HERO -->
-  <section class="sc-hero lp-hero">
+  <!-- ============================================ -->
+  <section class="sc-hero">
     <div class="noise-overlay"></div>
-    <div class="lp-hero-bg">
-      <img src="assets/images/ryunosuke-kikuno-DNKKdn1Q8Dw-unsplash.jpg" alt="" class="lp-hero-bg-img">
-    </div>
     <div class="container">
       <div class="sc-hero-content">
         <span class="sc-label hero-reveal">SIRCLESTUDIO</span>
-        <h1 class="hero-reveal">VAN CONCEPT<br>TOT MEESTERWERK.</h1>
-        <p class="sc-hero-sub hero-reveal">Branding, film, webdesign en grafisch ontwerp. Wij creëren premium producties die je merk onvergetelijk maken.</p>
+        <h1 class="sc-hero-title hero-reveal">VAN CONCEPT<br>TOT MEESTERWERK.</h1>
+        <p class="sc-hero-sub hero-reveal">Branding, film, webdesign en visual identity. Wij vertellen het verhaal van jouw merk — strategie-gedreven, cinematic en op maat.</p>
         <div class="sc-hero-actions hero-reveal">
-          <a href="#diensten" class="btn-primary btn-large">Bekijk diensten <span class="btn-arrow">→</span></a>
-          <a href="contact.html" class="btn-secondary">Start een project</a>
+          <a href="#pakketten" class="btn-primary btn-large">Bekijk pakketten <span class="btn-arrow">→</span></a>
+          <a href="contact.html" class="btn-ghost">Vrijblijvend gesprek</a>
+        </div>
+        <div class="sc-hero-stats hero-reveal">
+          <div class="sc-stat">
+            <span class="sc-stat-num">50+</span>
+            <span class="sc-stat-label">Merken geholpen</span>
+          </div>
+          <div class="sc-stat">
+            <span class="sc-stat-num">8 jaar</span>
+            <span class="sc-stat-label">Ervaring</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <section class="lp-stats-bar">
-    <div class="container">
-      <div class="lp-stats-grid">
-        <div class="lp-stat">
-          <span class="lp-stat-num">50+</span>
-          <span class="lp-stat-label">Projecten geleverd</span>
-        </div>
-        <div class="lp-stat-divider"></div>
-        <div class="lp-stat">
-          <span class="lp-stat-num">4K+</span>
-          <span class="lp-stat-label">Cinema kwaliteit</span>
-        </div>
-        <div class="lp-stat-divider"></div>
-        <div class="lp-stat">
-          <span class="lp-stat-num">100%</span>
-          <span class="lp-stat-label">Maatwerk</span>
-        </div>
-        <div class="lp-stat-divider"></div>
-        <div class="lp-stat">
-          <span class="lp-stat-num">6+</span>
-          <span class="lp-stat-label">Jaar ervaring</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WAT WE DOEN -->
+  <!-- ============================================ -->
+  <!-- WHAT WE DO -->
+  <!-- ============================================ -->
   <section class="section section-cream sc-included">
     <div class="noise-overlay"></div>
     <div class="container">
-      <span class="sc-label" style="color: var(--mid-green);">Ons werk</span>
-      <h2 class="sc-section-title reveal-up">STRATEGIE WORDT ZICHTBAAR</h2>
-      <p class="sc-section-sub reveal-up">Hier wordt het tastbaar. Wij combineren design, film en technologie om merkervaringen te creëren die blijven hangen.</p>
+      <span class="sc-label reveal-up">Wat we maken</span>
+      <h2 class="sc-section-title reveal-up">STRATEGIE-GEDREVEN PRODUCTIE</h2>
+      <p class="sc-section-sub reveal-up">Elk project begint met een heldere richting. Geen pixel zonder plan, geen frame zonder verhaal.</p>
 
       <div class="sc-features-grid">
         <div class="sc-feature reveal-up" data-delay="0.1">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
-          <h3>Filmmaker-DNA</h3>
-          <p>Wij denken in beeld en verhaal. Van concept tot eindproduct — cinematic storytelling als kern.</p>
+          <h3>Branding & Visual Identity</h3>
+          <p>Logo, kleuren, typografie, beeldtaal. Een complete visuele identiteit die je merk onmiskenbaar maakt.</p>
         </div>
         <div class="sc-feature reveal-up" data-delay="0.15">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><polygon points="10,8 16,11 10,14"/></svg>
           </div>
-          <h3>Pixel Perfect</h3>
-          <p>Geen templates, geen shortcuts. Elk ontwerp is maatwerk — tot op de laatste pixel.</p>
+          <h3>Film & Video</h3>
+          <p>Brand films, commercials, aftermovies, social content. Cinematic storytelling die je merk tot leven brengt.</p>
         </div>
         <div class="sc-feature reveal-up" data-delay="0.2">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/><circle cx="8" cy="6" r="1"/><circle cx="12" cy="6" r="1"/></svg>
           </div>
-          <h3>Code als Fundament</h3>
-          <p>Websites die niet alleen mooi zijn, maar ook razendsnel laden, converteren en groeien.</p>
+          <h3>Website Design & Development</h3>
+          <p>Custom websites die converteren. Animaties, UX en performance — geen templates, alleen maatwerk.</p>
         </div>
         <div class="sc-feature reveal-up" data-delay="0.25">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
           </div>
-          <h3>Alles onder één dak</h3>
-          <p>Eén team, één visie. Van branding tot film, van website tot social content — consistent en on-brand.</p>
+          <h3>Grafisch Design</h3>
+          <p>Presentaties, verpakkingen, social templates, drukwerk. Consistent en on-brand.</p>
         </div>
         <div class="sc-feature reveal-up" data-delay="0.3">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
           </div>
-          <h3>Strategie-gedreven</h3>
-          <p>Geen pixel zonder plan. Elke creatieve keuze is onderbouwd door merkstrategie en doelgroepinzicht.</p>
+          <h3>Content Creatie</h3>
+          <p>Fotografie, motion graphics, social content en animaties. Alles vanuit een visuele strategie.</p>
         </div>
         <div class="sc-feature reveal-up" data-delay="0.35">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
           </div>
-          <h3>Premium Kwaliteit</h3>
-          <p>Wij leveren op het niveau dat je verwacht van een top-bureau — zonder het prijskaartje van een Randstad-bureau.</p>
+          <h3>Brand Strategy</h3>
+          <p>Positionering, doelgroepbepaling, merkarchitectuur en tone of voice. De basis voor alles.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CASE: ANOTHER LABEL (FILM) -->
-  <section class="section section-dark lp-case-section">
+  <!-- ============================================ -->
+  <!-- PRICING -->
+  <!-- ============================================ -->
+  <section class="section section-dark sc-pricing" id="pakketten">
     <div class="noise-overlay"></div>
     <div class="container">
-      <div class="phase-case reveal-up">
-        <div class="phase-case-image">
-          <img src="assets/images/ryunosuke-kikuno-k-et4YBccRs-unsplash.jpg" alt="Another Label brand film case">
-        </div>
-        <div class="phase-case-content">
-          <span class="phase-case-label">Case: Brand Film</span>
-          <h3>Another Label</h3>
-          <p>"Een complete rebrand inclusief brand film die het verschil maakte op de beursvloer."</p>
-          <div class="lp-case-stats">
-            <div class="lp-case-stat">
-              <span class="lp-case-stat-num">4K</span>
-              <span class="lp-case-stat-label">Cinema kwaliteit</span>
-            </div>
-            <div class="lp-case-stat">
-              <span class="lp-case-stat-num">2 wk</span>
-              <span class="lp-case-stat-label">Productietijd</span>
-            </div>
-            <div class="lp-case-stat">
-              <span class="lp-case-stat-num">100K+</span>
-              <span class="lp-case-stat-label">Views</span>
-            </div>
-          </div>
-          <a href="werk.html" class="btn-ghost">Bekijk case <span>→</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
+      <span class="sc-label reveal-up">Pakketten</span>
+      <h2 class="sc-section-title reveal-up">KIES JOUW AANPAK</h2>
+      <p class="sc-section-sub reveal-up">Eenmalig project of doorlopend creatief abonnement — wij passen ons aan jouw tempo aan.</p>
 
-  <!-- DIENSTEN -->
-  <section class="section section-cream sc-pricing" id="diensten">
-    <div class="noise-overlay"></div>
-    <div class="container">
-      <span class="sc-label" style="color: var(--mid-green);">Diensten</span>
-      <h2 class="sc-section-title reveal-up">WAT WE MAKEN</h2>
-      <p class="sc-section-sub reveal-up">Van visuele identiteit tot cinematic brand films — elk project is uniek, elk resultaat is premium.</p>
+      <div class="sc-pricing-grid">
 
-      <div class="sc-pricing-grid" style="grid-template-columns: repeat(2, 1fr);">
-
-        <!-- BRANDING -->
+        <!-- SINGLE PROJECT -->
         <div class="sc-pkg reveal-up" data-delay="0.1">
           <div class="sc-pkg-top">
-            <span class="sc-pkg-badge sc-badge-pro">BRANDING</span>
-            <div class="sc-pkg-price" style="font-size: 28px;">Branding & Visual Identity</div>
-            <p class="sc-pkg-desc">Logo, kleuren, typografie, beeldtaal — een complete visuele identiteit die je merk onmiskenbaar maakt.</p>
+            <span class="sc-pkg-badge sc-badge-basic">Project</span>
+            <div class="sc-pkg-price">Op maat</div>
+            <p class="sc-pkg-year">Eenmalig</p>
+            <p class="sc-pkg-desc">Een afgebakend project met helder doel, vaste prijs en deadline.</p>
           </div>
           <div class="sc-pkg-features">
             <div class="sc-pkg-group-title">Wat je krijgt</div>
             <ul>
-              <li class="included">Logo design (primair + variaties)</li>
-              <li class="included">Kleurenpalet & typografie</li>
-              <li class="included">Beeldtaal & fotografie richtlijnen</li>
-              <li class="included">Brand guidelines document</li>
-              <li class="included">Social media templates</li>
-              <li class="included">Visitekaartjes & briefpapier</li>
-              <li class="included">Brand strategy & positionering</li>
+              <li class="included">Briefing & strategiesessie</li>
+              <li class="included">Creatief concept + moodboard</li>
+              <li class="included">2 feedbackrondes</li>
+              <li class="included">Alle bronbestanden</li>
+            </ul>
+            <div class="sc-pkg-group-title">Geschikt voor</div>
+            <ul>
+              <li class="included">Logo & branding</li>
+              <li class="included">Eenmalige video/film</li>
+              <li class="included">Website redesign</li>
+              <li class="included">Campagne assets</li>
+            </ul>
+            <div class="sc-pkg-group-title">Doorlooptijd</div>
+            <ul>
+              <li class="included">Branding: 4-6 weken</li>
+              <li class="included">Website: 4-8 weken</li>
+              <li class="included">Film: 2-8 weken</li>
             </ul>
           </div>
           <div class="sc-pkg-bottom">
-            <p class="sc-pkg-ideal"><strong>Ideaal voor:</strong> Startups, rebrands, bedrijven die serieus willen worden genomen</p>
-            <a href="contact.html" class="sc-pkg-btn">Start branding project →</a>
+            <p class="sc-pkg-ideal"><strong>Ideaal voor:</strong> Eenmalige trajecten, rebrandings, launches</p>
+            <a href="contact.html" class="sc-pkg-btn">Vraag offerte aan →</a>
           </div>
         </div>
 
-        <!-- FILM & VIDEO -->
+        <!-- CREATIVE RETAINER (popular) -->
         <div class="sc-pkg sc-pkg-popular reveal-up" data-delay="0.2">
-          <div class="sc-popular-tag">Ons DNA</div>
-          <div class="sc-pkg-top" style="padding-top: 52px;">
-            <span class="sc-pkg-badge sc-badge-plus">FILM</span>
-            <div class="sc-pkg-price" style="font-size: 28px;">Film & Video Productie</div>
-            <p class="sc-pkg-desc">Brand films, commercials, social video — cinematic storytelling die je merk tot leven brengt.</p>
+          <div class="sc-popular-tag">Meest gekozen</div>
+          <div class="sc-pkg-top">
+            <span class="sc-pkg-badge sc-badge-pro">Retainer</span>
+            <div class="sc-pkg-price">€1.495<span>/mnd</span></div>
+            <p class="sc-pkg-year">€17.940 per jaar</p>
+            <p class="sc-pkg-desc">Doorlopend creatief partnership. Vast team, vaste uren, flexibele inzet.</p>
           </div>
           <div class="sc-pkg-features">
-            <div class="sc-pkg-group-title">Wat je krijgt</div>
+            <div class="sc-pkg-group-title">Uren & Inzet</div>
             <ul>
-              <li class="included">Concept & script development</li>
-              <li class="included">Professionele filmproductie (4K+)</li>
-              <li class="included">Brand films & commercials</li>
-              <li class="included">Social media video content</li>
-              <li class="included">Drone opnames</li>
-              <li class="included">Kleurgrading & post-productie</li>
-              <li class="included">Motion graphics & animatie</li>
-              <li class="included">Muziek & sound design</li>
+              <li class="included">20 uur creatief werk per maand</li>
+              <li class="included">Flexibel inzetbaar (design, video, web)</li>
+              <li class="included">Dedicated creatief team</li>
+              <li class="included">Ongebruikte uren: 1 maand meerolbaar</li>
+            </ul>
+            <div class="sc-pkg-group-title">Inclusief</div>
+            <ul>
+              <li class="included">Maandelijkse strategy call (45 min)</li>
+              <li class="included">Prioriteit op planning</li>
+              <li class="included">Brand consistency check</li>
+              <li class="included">Alle bronbestanden</li>
+            </ul>
+            <div class="sc-pkg-group-title">Support</div>
+            <ul>
+              <li class="included">Max 1 werkdag respons</li>
+              <li class="included">Direct contact via e-mail</li>
+              <li class="not-included">Telefonisch/WhatsApp</li>
             </ul>
           </div>
           <div class="sc-pkg-bottom">
-            <p class="sc-pkg-ideal"><strong>Ideaal voor:</strong> Brand awareness, social campagnes, bedrijfspresentaties, events</p>
-            <a href="contact.html" class="sc-pkg-btn sc-pkg-btn-primary">Start filmproject →</a>
+            <p class="sc-pkg-ideal"><strong>Ideaal voor:</strong> Bedrijven met doorlopende creatieve behoefte</p>
+            <a href="contact.html" class="sc-pkg-btn sc-pkg-btn-primary">Kies Retainer →</a>
           </div>
         </div>
 
-        <!-- WEBDESIGN -->
+        <!-- FULL SERVICE -->
         <div class="sc-pkg reveal-up" data-delay="0.3">
           <div class="sc-pkg-top">
-            <span class="sc-pkg-badge sc-badge-basic">WEB</span>
-            <div class="sc-pkg-price" style="font-size: 28px;">Website Design & Development</div>
-            <p class="sc-pkg-desc">Custom websites die converteren. Geen templates maar maatwerk — gebouwd voor snelheid en resultaat.</p>
+            <span class="sc-pkg-badge sc-badge-custom">Full Service</span>
+            <div class="sc-pkg-price">€2.995<span>/mnd</span></div>
+            <p class="sc-pkg-year">€35.940 per jaar</p>
+            <p class="sc-pkg-desc">Jouw externe creatieve afdeling. Strategie, productie en content in een.</p>
           </div>
           <div class="sc-pkg-features">
-            <div class="sc-pkg-group-title">Wat je krijgt</div>
+            <div class="sc-pkg-group-title">Uren & Inzet</div>
             <ul>
-              <li class="included">UX/UI design (Figma)</li>
-              <li class="included">Custom WordPress development</li>
-              <li class="included">Bricks Builder of custom code</li>
-              <li class="included">Responsive design (alle devices)</li>
-              <li class="included">GSAP animaties & micro-interactions</li>
-              <li class="included">SEO-technische basis</li>
-              <li class="included">CMS training & documentatie</li>
-              <li class="included">Performance optimalisatie</li>
+              <li class="included">40 uur creatief werk per maand</li>
+              <li class="included">Alle disciplines (branding, film, web, design)</li>
+              <li class="included">Dedicated team van 2-3 specialisten</li>
+              <li class="included">Ongebruikte uren: 2 maanden meerolbaar</li>
+            </ul>
+            <div class="sc-pkg-group-title">Inclusief</div>
+            <ul>
+              <li class="included">2x/mnd strategy calls (60 min)</li>
+              <li class="included">Content kalender & planning</li>
+              <li class="included">Brand management</li>
+              <li class="included">1 video productie per maand</li>
+            </ul>
+            <div class="sc-pkg-group-title">Support</div>
+            <ul>
+              <li class="included">Priority support (4 uur respons)</li>
+              <li class="included">Direct WhatsApp/Slack kanaal</li>
+              <li class="included">Maandelijks strategiegesprek</li>
             </ul>
           </div>
           <div class="sc-pkg-bottom">
-            <p class="sc-pkg-ideal"><strong>Ideaal voor:</strong> Bedrijfssites, portfolio's, webshops, portalen</p>
-            <a href="contact.html" class="sc-pkg-btn">Start webproject →</a>
-          </div>
-        </div>
-
-        <!-- GRAFISCH DESIGN -->
-        <div class="sc-pkg reveal-up" data-delay="0.4">
-          <div class="sc-pkg-top">
-            <span class="sc-pkg-badge sc-badge-custom">DESIGN</span>
-            <div class="sc-pkg-price" style="font-size: 28px;">Grafisch Design</div>
-            <p class="sc-pkg-desc">Van presentaties tot verpakkingen, van social templates tot drukwerk — consistent en on-brand.</p>
-          </div>
-          <div class="sc-pkg-features">
-            <div class="sc-pkg-group-title">Wat je krijgt</div>
-            <ul>
-              <li class="included">Presentatie design</li>
-              <li class="included">Social media content templates</li>
-              <li class="included">Drukwerk (flyers, brochures, posters)</li>
-              <li class="included">Verpakkingsontwerp</li>
-              <li class="included">Infographics & data visualisatie</li>
-              <li class="included">Advertentie design</li>
-              <li class="included">Illustratie & iconografie</li>
-            </ul>
-          </div>
-          <div class="sc-pkg-bottom">
-            <p class="sc-pkg-ideal"><strong>Ideaal voor:</strong> Marketing materiaal, events, productlanceringen, beurzen</p>
-            <a href="contact.html" class="sc-pkg-btn">Start design project →</a>
+            <p class="sc-pkg-ideal"><strong>Ideaal voor:</strong> Scale-ups en bedrijven zonder eigen creatief team</p>
+            <a href="contact.html" class="sc-pkg-btn">Kies Full Service →</a>
           </div>
         </div>
 
       </div>
+
+      <p style="text-align: center; color: var(--sage-green); font-size: 0.85rem; margin-top: var(--space-xl); font-weight: 300;">Alle prijzen excl. BTW. Minimale looptijd retainer/full service: 6 maanden.</p>
     </div>
   </section>
 
-  <!-- SOCIAL PROOF / TESTIMONIALS -->
-  <section class="section section-dark lp-testimonials">
-    <div class="noise-overlay"></div>
-    <div class="lp-testimonial-bg">
-      <img src="assets/images/daniel-mirlea-eQzLUXisfgA-unsplash.jpg" alt="" class="lp-hero-bg-img">
-    </div>
-    <div class="container">
-      <span class="sc-label reveal-up">Wat klanten zeggen</span>
-      <h2 class="sc-section-title reveal-up">MERKEN DIE WE GEBOUWD HEBBEN</h2>
-      <div class="lp-testimonial-grid">
-        <div class="lp-testimonial reveal-up" data-delay="0.1">
-          <div class="lp-testimonial-quote">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" opacity="0.3"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
-            <p>"Van een leeg pand naar een merk dat leeft. De branding, de film, de website — alles klopt."</p>
-          </div>
-          <div class="lp-testimonial-author">
-            <strong>World Skate Center</strong>
-            <span>Branding & Film</span>
-          </div>
-        </div>
-        <div class="lp-testimonial reveal-up" data-delay="0.2">
-          <div class="lp-testimonial-quote">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" opacity="0.3"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
-            <p>"De website die ze voor ons gebouwd hebben overtreft alles wat we verwacht hadden. Modern, snel en precies on-brand."</p>
-          </div>
-          <div class="lp-testimonial-author">
-            <strong>22qMinded</strong>
-            <span>Branding & Webshop</span>
-          </div>
-        </div>
-        <div class="lp-testimonial reveal-up" data-delay="0.3">
-          <div class="lp-testimonial-quote">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32" opacity="0.3"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
-            <p>"De brand film was het visitekaartje dat we nodig hadden. Cinematic kwaliteit, maar toch dichtbij en persoonlijk."</p>
-          </div>
-          <div class="lp-testimonial-author">
-            <strong>Another Label</strong>
-            <span>Brand Film</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASE: KANSLOKAAL (BRANDING + WEB) -->
-  <section class="section section-cream lp-case-section">
-    <div class="noise-overlay"></div>
-    <div class="container">
-      <div class="phase-case reveal-up">
-        <div class="phase-case-image">
-          <img src="assets/images/dario-bronnimann-y51ZjAmV3_k-unsplash.jpg" alt="Kanslokaal branding case">
-        </div>
-        <div class="phase-case-content">
-          <span class="phase-case-label">Case: Branding & Web</span>
-          <h3>Kanslokaal</h3>
-          <p>"Complete branding en website voor een nieuw concept in de Haagse horecascene. Van nul naar lancering in 6 weken."</p>
-          <div class="lp-case-stats">
-            <div class="lp-case-stat">
-              <span class="lp-case-stat-num">6 wk</span>
-              <span class="lp-case-stat-label">Doorlooptijd</span>
-            </div>
-            <div class="lp-case-stat">
-              <span class="lp-case-stat-num">Full</span>
-              <span class="lp-case-stat-label">Brand + Web + Film</span>
-            </div>
-          </div>
-          <a href="werk.html" class="btn-ghost" style="border-color: var(--mid-green); color: var(--mid-green);">Bekijk case <span>→</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASE: VLIJT (WEB) -->
-  <section class="section section-dark lp-case-section">
-    <div class="noise-overlay"></div>
-    <div class="container">
-      <div class="phase-case reveal-up" style="direction: rtl;">
-        <div class="phase-case-content" style="direction: ltr;">
-          <span class="phase-case-label">Case: Webdesign</span>
-          <h3>VLIJT Tandartsen</h3>
-          <p>"Een premium website die de warmte van de praktijk vertaalt naar een digitale ervaring. Met op maat gebouwd CRM-portaal."</p>
-          <div class="lp-case-stats">
-            <div class="lp-case-stat">
-              <span class="lp-case-stat-num">3</span>
-              <span class="lp-case-stat-label">Talen</span>
-            </div>
-            <div class="lp-case-stat">
-              <span class="lp-case-stat-num">CRM</span>
-              <span class="lp-case-stat-label">Patiëntportaal</span>
-            </div>
-          </div>
-          <a href="werk.html" class="btn-ghost">Bekijk case <span>→</span></a>
-        </div>
-        <div class="phase-case-image" style="direction: ltr;">
-          <img src="assets/images/planet-volumes-AScLcUpWWVs-unsplash.jpg" alt="VLIJT Tandartsen website case">
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- ============================================ -->
   <!-- WERKWIJZE -->
-  <section class="section section-cream sc-compare">
+  <!-- ============================================ -->
+  <section class="section section-cream sc-included">
     <div class="noise-overlay"></div>
     <div class="container">
-      <span class="sc-label" style="color: var(--mid-green);">Werkwijze</span>
+      <span class="sc-label reveal-up">Werkwijze</span>
       <h2 class="sc-section-title reveal-up">VAN BRIEFING TOT OPLEVERING</h2>
+      <p class="sc-section-sub reveal-up">Elk project volgt dezelfde zorgvuldige aanpak. Helder, efficient en zonder verrassingen.</p>
 
-      <div class="sc-features-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="sc-features-grid" style="max-width: 900px; margin: 0 auto;">
         <div class="sc-feature reveal-up" data-delay="0.1">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
-          <h3>01. Briefing</h3>
-          <p>We luisteren. Wat is het doel? Wie is de doelgroep? Wat is het gevoel dat je wilt overbrengen?</p>
+          <h3>01. Kennismaking</h3>
+          <p>Vrijblijvend gesprek over je merk, doelen en verwachtingen. We luisteren eerst.</p>
         </div>
         <div class="sc-feature reveal-up" data-delay="0.15">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
           </div>
-          <h3>02. Concept</h3>
-          <p>We presenteren concepten, moodboards en eerste visuals. Samen kiezen we de richting.</p>
+          <h3>02. Strategie & Concept</h3>
+          <p>Onderzoek, positionering en creatief concept. De basis voor alles wat we maken.</p>
         </div>
         <div class="sc-feature reveal-up" data-delay="0.2">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
           </div>
           <h3>03. Productie</h3>
-          <p>Design, film, development — wij brengen het concept tot leven met premium kwaliteit.</p>
+          <p>Design, film, development. Met feedbackrondes tot het klopt.</p>
         </div>
         <div class="sc-feature reveal-up" data-delay="0.25">
           <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <h3>04. Oplevering</h3>
-          <p>Alle bestanden, guidelines en bronmaterialen — netjes en compleet. En wij blijven beschikbaar.</p>
+          <p>Alle bestanden, richtlijnen en assets netjes opgeleverd. Klaar voor lancering.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============================================ -->
   <!-- FAQ -->
+  <!-- ============================================ -->
   <section class="section section-dark sc-faq">
     <div class="noise-overlay"></div>
     <div class="container">
       <span class="sc-label reveal-up">Veelgestelde vragen</span>
-      <h2 class="sc-section-title reveal-up">GOED OM TE WETEN</h2>
+      <h2 class="sc-section-title reveal-up">OVER SIRCLESTUDIO</h2>
 
       <div class="sc-faq-list">
         <div class="sc-faq-item reveal-up">
-          <button class="sc-faq-question"><span>Wat kost een project?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="sc-faq-answer"><p>Elk project is uniek. Een branding traject begint vanaf €3.000, een website vanaf €5.000, een brand film vanaf €2.500. In een vrijblijvend gesprek bespreken we je wensen en maken een offerte op maat.</p></div>
+          <button class="sc-faq-question">
+            <span>Wat kost een eenmalig project?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="sc-faq-answer">
+            <p>Dat hangt af van de scope. Een branding traject start vanaf circa €3.500, een website vanaf €4.000 en een brand film vanaf €2.500. Na een kennismakingsgesprek maken we een heldere offerte — geen verborgen kosten.</p>
+          </div>
         </div>
         <div class="sc-faq-item reveal-up">
-          <button class="sc-faq-question"><span>Hoe lang duurt een project?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="sc-faq-answer"><p>Een branding traject duurt gemiddeld 4-6 weken, een website 6-10 weken, een filmproductie 2-6 weken. We stemmen de planning altijd af op jouw deadlines.</p></div>
+          <button class="sc-faq-question">
+            <span>Wat is een creatief retainer?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="sc-faq-answer">
+            <p>Een vast maandelijks budget aan creatieve uren die je flexibel kunt inzetten. Deze maand een video nodig? Volgende maand social content? Met een retainer heb je een vast team klaarstaan zonder telkens een nieuw project te starten.</p>
+          </div>
         </div>
         <div class="sc-faq-item reveal-up">
-          <button class="sc-faq-question"><span>Kan ik een losse dienst afnemen of moet ik alles combineren?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="sc-faq-answer"><p>Je kunt elke dienst los afnemen. Maar de magie zit in de combinatie: een website met matching brand film en social content is altijd sterker dan losse onderdelen. Wij adviseren wat het beste werkt voor jouw situatie.</p></div>
+          <button class="sc-faq-question">
+            <span>Hoe lang duurt een gemiddeld project?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="sc-faq-answer">
+            <p>Een branding traject duurt gemiddeld 4-6 weken. Een website 4-8 weken. Filmprojecten varieren van 2 weken tot enkele maanden, afhankelijk van de complexiteit en postproductie.</p>
+          </div>
         </div>
         <div class="sc-faq-item reveal-up">
-          <button class="sc-faq-question"><span>Bouwen jullie ook webshops?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="sc-faq-answer"><p>Ja. We bouwen WooCommerce webshops met Bricks Builder — volledig custom. Inclusief productbeheer, betalingsintegraties (iDEAL, Stripe, Apple Pay) en koppelingen met je boekhouding.</p></div>
+          <button class="sc-faq-question">
+            <span>Werken jullie met een vast team?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="sc-faq-answer">
+            <p>Ja. Sebas is je vaste aanspreekpunt en regisseert elk project. Afhankelijk van het type werk schakelen we vaste specialisten in voor camera, editing, development of design.</p>
+          </div>
         </div>
         <div class="sc-faq-item reveal-up">
-          <button class="sc-faq-question"><span>Wie is het team achter de producties?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="sc-faq-answer"><p>SircleCreative werkt met een compact kernteam en een select netwerk van specialisten. Jij hebt altijd één vast aanspreekpunt. Geen lagen, geen ruis — directe lijnen en persoonlijke betrokkenheid.</p></div>
-        </div>
-        <div class="sc-faq-item reveal-up">
-          <button class="sc-faq-question"><span>Wat na oplevering? Wie onderhoudt mijn website?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg></button>
-          <div class="sc-faq-answer"><p>Daarvoor hebben we <a href="sirclecare.html" style="color:var(--gold);text-decoration:underline;">SircleCare</a> — ons hosting & onderhoudsprogramma. Hosting, security, updates en support vanaf €79/maand. Zodat jij je kunt focussen op je business.</p></div>
+          <button class="sc-faq-question">
+            <span>Kan ik losse onderdelen afnemen?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="sc-faq-answer">
+            <p>Zeker. Je kunt kiezen voor alleen een video, alleen een website, of een compleet traject. Het Project-pakket is precies daarvoor. Wij adviseren je graag wat het meeste impact heeft.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============================================ -->
   <!-- CTA -->
-  <section class="section section-dark sc-final-cta">
-    <div class="sc-cta-bg">
-      <img src="assets/images/soham-banerjee-5sJfsX2D3mM-unsplash.jpg" alt="" class="bg-texture">
-      <div class="noise-overlay"></div>
-    </div>
-    <div class="grain-overlay"></div>
-    <div class="container">
-      <div class="sc-cta-content">
-        <h2 class="reveal-up">LATEN WE<br>IETS MAKEN.</h2>
-        <p class="reveal-up">Elk groot project begint met een gesprek. Vertel ons over je merk en ontdek wat we samen kunnen creëren.</p>
-        <div class="sc-cta-buttons reveal-up">
-          <a href="contact.html" class="btn-primary btn-large">Plan een gesprek <span class="btn-arrow">→</span></a>
-          <a href="tel:+31852129145" class="btn-secondary">+31 85 212 91 45</a>
-        </div>
-      </div>
+  <!-- ============================================ -->
+  <section class="section section-cream sc-final-cta">
+    <div class="noise-overlay"></div>
+    <div class="container" style="text-align: center;">
+      <h2 class="sc-section-title reveal-up">KLAAR OM TE BEGINNEN?</h2>
+      <p class="sc-section-sub reveal-up" style="margin-bottom: var(--space-lg);">Vertel ons over je project. We luisteren eerst en komen dan met een helder voorstel.</p>
+      <a href="contact.html" class="btn-primary btn-large reveal-up" style="border-radius:60px;">Plan een gesprek <span class="btn-arrow">→</span></a>
     </div>
   </section>
 
+  <!-- ============================================ -->
   <!-- FOOTER -->
+  <!-- ============================================ -->
   <footer class="footer">
     <div class="noise-overlay"></div>
     <div class="container">
@@ -502,9 +388,9 @@
           <h4>Diensten</h4>
           <nav>
             <a href="diensten.html#strategy">Strategy</a>
-            <a href="sirclestudio.html">Production</a>
-            <a href="sirclegrowth.html">Growth</a>
-            <a href="sirclecare.html">Care</a>
+            <a href="diensten.html#production">Production</a>
+            <a href="diensten.html#growth">Growth</a>
+            <a href="diensten.html#care">Care</a>
           </nav>
         </div>
         <div class="footer-col">
@@ -516,10 +402,13 @@
           </nav>
         </div>
       </div>
-      <div class="footer-bottom"><p>© 2026 sircle.agency · Privacybeleid</p></div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 sircle.agency &middot; Privacybeleid</p>
+      </div>
     </div>
   </footer>
 
+  <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
@@ -529,7 +418,9 @@
       btn.addEventListener('click', () => {
         const item = btn.closest('.sc-faq-item');
         const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.sc-faq-item.open').forEach(o => o.classList.remove('open'));
+        document.querySelectorAll('.sc-faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+        });
         if (!isOpen) item.classList.add('open');
       });
     });
