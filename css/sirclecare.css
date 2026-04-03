@@ -1031,3 +1031,317 @@
   .sc-timeline-content h3 { font-size: 1rem; }
   .sc-timeline-content p { font-size: 0.9rem; }
 }
+
+/* ============================================ */
+/* PORTFOLIO SHOWCASE                          */
+/* ============================================ */
+
+.sc-portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: var(--space-xl);
+}
+
+.sc-portfolio-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.sc-portfolio-large {
+  grid-column: span 2;
+}
+
+.sc-portfolio-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.sc-portfolio-large .sc-portfolio-image {
+  aspect-ratio: 21/9;
+}
+
+.sc-portfolio-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.sc-portfolio-item:hover .sc-portfolio-image img {
+  transform: scale(1.05);
+}
+
+.sc-portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12,24,15,0.8) 0%, transparent 60%);
+  transition: opacity 0.4s ease;
+}
+
+.sc-portfolio-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+}
+
+.sc-portfolio-info h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 0 0 8px;
+}
+
+.sc-portfolio-tags {
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+.sc-portfolio-item a {
+  text-decoration: none;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .sc-portfolio-grid { grid-template-columns: 1fr; }
+  .sc-portfolio-large { grid-column: span 1; }
+  .sc-portfolio-large .sc-portfolio-image { aspect-ratio: 16/9; }
+  .sc-portfolio-info { padding: 20px; }
+  .sc-portfolio-info h3 { font-size: 1.1rem; }
+}
+
+/* ============================================ */
+/* WEB (RE)DESIGN & DEVELOPMENT SECTION        */
+/* ============================================ */
+
+.sc-webdev-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.sc-webdev-content .sc-section-title {
+  color: var(--dark-green);
+}
+
+.sc-webdev-content .sc-section-sub {
+  color: var(--mid-grey);
+}
+
+.sc-webdev-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: var(--space-lg);
+}
+
+.sc-webdev-feature {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.sc-webdev-feature svg {
+  flex-shrink: 0;
+  color: var(--mid-green);
+  margin-top: 2px;
+}
+
+.sc-webdev-feature strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark-green);
+  margin-bottom: 4px;
+}
+
+.sc-webdev-feature p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--mid-grey);
+  margin: 0;
+}
+
+.sc-webdev-visual {
+  position: relative;
+}
+
+.sc-webdev-img-main {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(12,24,15,0.15);
+}
+
+.sc-webdev-img-float {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 45%;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(12,24,15,0.2);
+  border: 3px solid var(--cream);
+}
+
+/* Sircle Solutions bridge */
+.sc-solutions-bridge {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: var(--space-xl);
+  padding: 32px 40px;
+  background: #FAFAF6;
+  border-radius: 16px;
+  border: 1px solid rgba(12,24,15,0.08);
+}
+
+.sc-solutions-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark-green);
+  border-radius: 12px;
+  color: var(--gold);
+}
+
+.sc-solutions-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark-green);
+  margin: 0 0 6px;
+}
+
+.sc-solutions-content p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--mid-grey);
+  margin: 0;
+}
+
+.sc-solutions-link {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--mid-green);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.sc-solutions-link:hover {
+  color: var(--dark-green);
+}
+
+.sc-solutions-link span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.sc-solutions-link:hover span {
+  transform: translate(3px, -3px);
+}
+
+@media (max-width: 900px) {
+  .sc-webdev-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .sc-webdev-img-float { position: relative; bottom: auto; left: auto; width: 60%; margin-top: -40px; }
+  .sc-solutions-bridge { flex-direction: column; text-align: center; padding: 24px; }
+}
+
+/* ============================================ */
+/* SOCIAL PROOF / TESTIMONIALS                 */
+/* ============================================ */
+
+.sc-testimonials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: var(--space-xl);
+}
+
+.sc-testimonial {
+  padding: 40px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(208,223,185,0.1);
+  border-radius: 20px;
+}
+
+.sc-testimonial blockquote {
+  margin: 0;
+}
+
+.sc-testimonial blockquote p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: var(--soft-green);
+  margin: 0 0 24px;
+}
+
+.sc-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sc-testimonial-author strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--white);
+  font-style: normal;
+}
+
+.sc-testimonial-author span {
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+.sc-client-logos {
+  text-align: center;
+}
+
+.sc-logos-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.sc-client-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--soft-green);
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.sc-client-name:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+  .sc-testimonials { grid-template-columns: 1fr; }
+  .sc-testimonial { padding: 28px; }
+  .sc-testimonial blockquote p { font-size: 1rem; }
+  .sc-logos-row { gap: 24px; }
+  .sc-client-name { font-size: 0.85rem; }
+}
