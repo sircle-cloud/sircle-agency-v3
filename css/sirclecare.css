@@ -751,6 +751,26 @@
   line-height: 1.7;
 }
 
+/* ---------- FAQ LIGHT THEME (section-cream) ---------- */
+.section-cream.sc-faq .sc-faq-item {
+  border-bottom-color: rgba(7,25,12,0.12);
+}
+.section-cream.sc-faq .sc-faq-question span {
+  color: var(--dark-green);
+}
+.section-cream.sc-faq .sc-faq-question svg {
+  color: var(--dark-green);
+}
+.section-cream.sc-faq .sc-faq-answer p {
+  color: rgba(7,25,12,0.7);
+}
+.section-cream.sc-faq .sc-section-title {
+  color: var(--dark-green);
+}
+.section-cream.sc-faq .sc-label {
+  color: var(--mid-green);
+}
+
 /* ---------- FINAL CTA ---------- */
 .sc-final-cta {
   position: relative;
