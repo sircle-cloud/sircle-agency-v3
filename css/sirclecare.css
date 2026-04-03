@@ -903,6 +903,43 @@
 }
 
 /* ============================================ */
+/* BOLD-NAV LIGHT SECTION ADAPTATION           */
+/* ============================================ */
+
+/* Default: show white logo, hide dark logo */
+.bold-nav__logo-dark { display: none; }
+.bold-nav__logo-white { display: block; }
+
+/* When nav has .nav-light class (over cream sections) */
+.bold-nav.nav-light .bold-nav__logo-white { display: none; }
+.bold-nav.nav-light .bold-nav__logo-dark { display: block; }
+.bold-nav.nav-light .bold-nav__hamburger { color: var(--dark-green); }
+.bold-nav.nav-light .bold-nav__hamburger-bar { background: var(--dark-green); }
+
+/* Scrolled + light: frosted cream bar */
+.bold-nav.scrolled.nav-light .bold-nav__bar {
+  background: rgba(243, 239, 232, 0.75);
+  backdrop-filter: blur(40px) saturate(1.4);
+  -webkit-backdrop-filter: blur(40px) saturate(1.4);
+  border-bottom: 1px solid rgba(7, 25, 12, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================ */
+/* NO PURE WHITE: USE CREAM EVERYWHERE         */
+/* ============================================ */
+
+/* Section backgrounds: cream not white */
+.section-cream {
+  background: var(--cream) !important;
+}
+
+/* Feature cards on cream sections: slightly lighter than cream */
+.section-cream .sc-feature {
+  background: #FAFAF6;
+}
+
+/* ============================================ */
 /* DYNAMIC TIMELINE                            */
 /* ============================================ */
 
