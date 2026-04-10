@@ -28,30 +28,7 @@ if (timelineLine) {
   });
 }
 
-// --- Phase number counter animation ---
-document.querySelectorAll('.phase-number-big').forEach(num => {
-  const target = num.dataset.count;
-  
-  ScrollTrigger.create({
-    trigger: num,
-    start: 'top 80%',
-    once: true,
-    onEnter: () => {
-      gsap.from(num, {
-        textContent: '00',
-        duration: 1.2,
-        ease: 'power2.out',
-        snap: { textContent: 1 },
-        onUpdate: function() {
-          num.textContent = String(Math.round(parseFloat(num.textContent))).padStart(2, '0');
-        },
-        onComplete: () => {
-          num.textContent = target;
-        }
-      });
-    }
-  });
-});
+// --- Phase numbers are static (no counter animation) ---
 
 // --- Sticky phase headers on scroll (subtle) ---
 document.querySelectorAll('.phase-intro h2').forEach(h2 => {
