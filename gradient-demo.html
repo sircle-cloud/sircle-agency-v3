@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sircle Gradient Backgrounds — v3 Branding</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/gradient-backgrounds.css">
+  <style>
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .demo-card {
+      position: relative;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .demo-label {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 10;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+    }
+    .demo-hero {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .demo-hero h1 {
+      position: relative;
+      z-index: 10;
+      font-size: 64px;
+      letter-spacing: 0.15em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .demo-hero .sub {
+      position: relative;
+      z-index: 10;
+      font-size: 18px;
+      color: var(--cream);
+      letter-spacing: 0.3em;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body style="background: var(--black); color: var(--cream); font-family: inherit;">
+
+  <div style="padding: 60px 40px 20px; text-align: center;">
+    <h1 style="font-size: 28px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white);">
+      Animated Gradients — v3 Branding
+    </h1>
+    <p style="color: var(--mid-grey); margin-top: 8px; font-size: 14px; letter-spacing: 0.05em;">
+      Sage green · Gold · Copper — matching Sircle Agency v3
+    </p>
+  </div>
+
+  <!-- Hero demo -->
+  <div class="demo-hero" style="margin: 20px 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);">
+    <div class="gradient-orbs">
+      <div class="gradient-orb gradient-orb--1"></div>
+      <div class="gradient-orb gradient-orb--2"></div>
+      <div class="gradient-orb gradient-orb--3"></div>
+    </div>
+    <div style="text-align: center;">
+      <h1>Sircle</h1>
+      <div class="sub">CREATIVE AGENCY</div>
+    </div>
+  </div>
+
+  <!-- Option cards -->
+  <div class="demo-grid">
+    <div class="demo-card">
+      <div class="gradient-orbs">
+        <div class="gradient-orb gradient-orb--1"></div>
+        <div class="gradient-orb gradient-orb--2"></div>
+        <div class="gradient-orb gradient-orb--3"></div>
+      </div>
+      <div class="demo-label">1. Floating Orbs</div>
+    </div>
+
+    <div class="demo-card gradient-mesh">
+      <div class="demo-label">2. Mesh Gradient</div>
+    </div>
+
+    <div class="demo-card gradient-accent">
+      <div class="demo-label">3. Gold Accent Line</div>
+    </div>
+
+    <div class="demo-card" style="background: var(--dark-grey);">
+      <div class="gradient-orbs" style="position: absolute; inset: 0;">
+        <div class="gradient-orb gradient-orb--1"></div>
+        <div class="gradient-orb gradient-orb--2"></div>
+      </div>
+      <div class="demo-label">4. Minimal (2 orbs)</div>
+    </div>
+  </div>
+
+</body>
+</html>

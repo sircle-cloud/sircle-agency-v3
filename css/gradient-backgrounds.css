@@ -1,0 +1,124 @@
+/* ============================================ */
+/* SIRCLE — Animated Gradient Backgrounds      */
+/* Matches v3 branding: sage, gold, copper      */
+/* ============================================ */
+
+/* === Option 1: Floating Orbs (recommended) === */
+/* Usage: <div class="gradient-orbs"><div class="gradient-orb gradient-orb--1"></div>...</div> */
+.gradient-orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--dark-grey, #1C1E1D);
+  z-index: 0;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.gradient-orb--1 {
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(143, 175, 138, 0.15) 0%, transparent 70%);
+  top: -10%;
+  left: -5%;
+  animation: orbFloat1 12s ease-in-out infinite;
+}
+
+.gradient-orb--2 {
+  width: 40%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(242, 226, 164, 0.08) 0%, transparent 70%);
+  bottom: -15%;
+  right: -5%;
+  animation: orbFloat2 14s ease-in-out infinite;
+}
+
+.gradient-orb--3 {
+  width: 35%;
+  height: 45%;
+  background: radial-gradient(circle, rgba(184, 154, 90, 0.06) 0%, transparent 70%);
+  top: 40%;
+  left: 35%;
+  animation: orbFloat3 10s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(8%, 12%) scale(1.1); }
+  66% { transform: translate(-5%, 8%) scale(0.95); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-10%, -8%) scale(1.12); }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(12%, -10%) scale(1.15); }
+}
+
+
+/* === Option 2: Subtle Mesh Gradient === */
+/* Usage: <section class="gradient-mesh">...</section> */
+.gradient-mesh {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(143, 175, 138, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(242, 226, 164, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(184, 154, 90, 0.05) 0%, transparent 50%),
+    var(--dark-grey, #1C1E1D);
+  background-size: 200% 200%, 200% 200%, 200% 200%, 100% 100%;
+  animation: meshShift 15s ease infinite;
+}
+
+@keyframes meshShift {
+  0%, 100% { background-position: 0% 50%, 100% 0%, 50% 100%, 0% 0%; }
+  33% { background-position: 100% 50%, 0% 100%, 50% 0%, 0% 0%; }
+  66% { background-position: 50% 0%, 50% 50%, 0% 50%, 0% 0%; }
+}
+
+
+/* === Option 3: Gold Accent Line === */
+/* Usage: <section class="gradient-accent">...</section> */
+.gradient-accent {
+  position: relative;
+  background: var(--dark-grey, #1C1E1D);
+  overflow: hidden;
+}
+
+.gradient-accent::before {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold, #F2E2A4), transparent);
+  bottom: 45%;
+  left: 20%;
+  opacity: 0.2;
+  animation: accentSweep 8s ease-in-out infinite;
+}
+
+.gradient-accent::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(143, 175, 138, 0.1) 0%, transparent 60%);
+  animation: accentPulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes accentSweep {
+  0%, 100% { opacity: 0.08; transform: scaleX(0.4); }
+  50% { opacity: 0.25; transform: scaleX(1); }
+}
+
+@keyframes accentPulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
