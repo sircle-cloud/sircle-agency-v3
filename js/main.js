@@ -26,7 +26,7 @@ function splitTextIntoWords(el) {
     span.appendChild(inner);
     el.appendChild(span);
     if (i < words.length - 1) {
-      el.appendChild(document.createTextNode('\u00A0'));
+      el.appendChild(document.createTextNode(' '));
     }
   });
   return el.querySelectorAll('.word-inner');
