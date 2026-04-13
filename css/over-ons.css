@@ -301,7 +301,7 @@
   color: var(--soft-green);
 }
 
-/* ---- Photo Strip ---- */
+/* ---- Photo Strip (continuous marquee) ---- */
 .team-photo-strip {
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
@@ -310,17 +310,38 @@
 }
 
 .team-strip-row {
-  display: flex;
-  gap: 16px;
-  width: max-content;
+  overflow: hidden;
 }
 
 .team-strip-row--left {
   margin-bottom: 16px;
 }
 
-.team-strip-row--right {
-  margin-left: -100px;
+.team-strip-track {
+  display: flex;
+  width: max-content;
+}
+
+.team-strip-row--left .team-strip-track {
+  animation: stripLeft 45s linear infinite;
+}
+
+.team-strip-row--right .team-strip-track {
+  animation: stripRight 45s linear infinite;
+}
+
+.team-photo-strip:hover .team-strip-track {
+  animation-play-state: paused;
+}
+
+@keyframes stripLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes stripRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 .team-strip-item {
@@ -330,6 +351,7 @@
   height: 270px;
   border-radius: 16px;
   overflow: hidden;
+  margin-right: 16px;
 }
 
 .team-strip-item img {
@@ -460,6 +482,11 @@
     height: 230px;
   }
 
+  .team-strip-row--left .team-strip-track,
+  .team-strip-row--right .team-strip-track {
+    animation-duration: 40s;
+  }
+
   .values-grid,
   .ecosystem-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -522,14 +549,16 @@
   .team-strip-item {
     width: 260px;
     height: 190px;
-  }
-
-  .team-strip-row {
-    gap: 12px;
+    margin-right: 12px;
   }
 
   .team-strip-row--left {
     margin-bottom: 12px;
+  }
+
+  .team-strip-row--left .team-strip-track,
+  .team-strip-row--right .team-strip-track {
+    animation-duration: 35s;
   }
 
   .team-strip-tag {

@@ -104,51 +104,16 @@
     }
   });
 
-  // ---- TEAM PHOTO STRIP PARALLAX ----
-  const stripLeft = document.querySelector('.team-strip-row--left');
-  const stripRight = document.querySelector('.team-strip-row--right');
-
-  if (stripLeft && stripRight) {
-    const stripDistance = window.innerWidth > 767 ? 300 : 150;
-
-    gsap.fromTo(stripLeft,
-      { x: 100 },
-      {
-        x: -stripDistance,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.team-photo-strip',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 0.4,
-        }
-      }
-    );
-
-    gsap.fromTo(stripRight,
-      { x: -stripDistance },
-      {
-        x: 100,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.team-photo-strip',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 0.4,
-        }
-      }
-    );
-
-    // Staggered entrance for individual items
-    const allItems = document.querySelectorAll('.team-strip-item');
-    gsap.from(allItems, {
+  // ---- TEAM PHOTO STRIP ENTRANCE ----
+  const photoStrip = document.querySelector('.team-photo-strip');
+  if (photoStrip) {
+    gsap.from(photoStrip, {
       opacity: 0,
-      scale: 0.88,
-      stagger: 0.06,
-      duration: 0.8,
+      y: 40,
+      duration: 1,
       ease: 'power3.out',
       scrollTrigger: {
-        trigger: '.team-photo-strip',
+        trigger: photoStrip,
         start: 'top 85%',
         toggleActions: 'play none none none',
       }
