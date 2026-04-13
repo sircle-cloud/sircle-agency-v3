@@ -161,6 +161,9 @@
 }
 
 /* ---------- ECOSYSTEM ---------- */
+.ecosystem-section .section-title { color: var(--white); }
+.ecosystem-section .section-subtitle { color: var(--soft-green); max-width: 640px; margin: 0 auto; }
+
 .ecosystem-section {
   padding: 140px 0;
 }

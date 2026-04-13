@@ -32,7 +32,7 @@
   </div>
 
   <!-- NOISE SVG FILTER -->
-  <svg style="position:absolute;width:0;height:0">
+  <svg class="svg-defs">
     <filter id="noise">
       <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
@@ -136,10 +136,10 @@
   <!-- ============================================ -->
   <!-- SECTION 2: PAIN POINTS -->
   <!-- ============================================ -->
-  <section class="section section-dark pain-points" id="probleem" style="overflow:hidden">
-    <img src="assets/images/bennie-bates-U5TwLXog25g-unsplash.jpg" alt="" class="bg-texture" loading="lazy" style="opacity:0.06">
+  <section class="section section-dark pain-points" id="probleem">
+    <img src="assets/images/bennie-bates-U5TwLXog25g-unsplash.jpg" alt="" class="bg-texture bg-texture--light" loading="lazy">
     <div class="noise-overlay"></div>
-    <div class="container-wide" style="position:relative;z-index:2">
+    <div class="container-wide content-above">
       <div class="pain-header">
         <div class="section-label reveal-up">Herkenbaar?</div>
         <h2 class="section-title reveal-up">HERKEN JE DIT?</h2>
@@ -434,7 +434,7 @@
         </div>
       </div>
 
-      <div class="text-center reveal-up" style="margin-top:48px">
+      <div class="text-center reveal-up mt-xl">
         <a href="werk.html" class="btn-ghost">Bekijk alle cases <span>→</span></a>
       </div>
     </div>
@@ -443,16 +443,16 @@
   <!-- ============================================ -->
   <!-- SECTION 6: OVER ONS -->
   <!-- ============================================ -->
-  <section class="section section-dark about" id="over" style="overflow:hidden">
-    <img src="assets/images/hans-AiWjPpR-kfU-unsplash.jpg" alt="" class="bg-texture" loading="lazy" style="opacity:0.08">
+  <section class="section section-dark about" id="over">
+    <img src="assets/images/hans-AiWjPpR-kfU-unsplash.jpg" alt="" class="bg-texture" loading="lazy">
     <div class="noise-overlay"></div>
-    <div class="section-glow section-glow--green" style="top:-10%;right:-5%"></div>
-    <div class="section-glow section-glow--gold" style="bottom:10%;left:-8%"></div>
+    <div class="section-glow section-glow--green"></div>
+    <div class="section-glow section-glow--gold"></div>
     <div class="container">
       <div class="about-grid">
         <div class="about-image reveal-scale">
           <img src="assets/cases/sebas-photo-1.jpg" alt="Sebas Vreeken" loading="lazy">
-          <img src="assets/images/drazen-nesic-5yAiQJtKgYs-unsplash.jpg" alt="Team at work" class="about-image-secondary" loading="lazy" style="margin-top:16px;border-radius:12px;width:100%;filter:saturate(0.85) contrast(1.05) brightness(0.9)">
+          <img src="assets/images/drazen-nesic-5yAiQJtKgYs-unsplash.jpg" alt="Team at work" class="about-image-secondary" loading="lazy">
         </div>
         <div class="about-content">
           <div class="section-label reveal-up">Over ons</div>
@@ -474,10 +474,10 @@
   <!-- ============================================ -->
   <!-- SECTION 8: TESTIMONIALS (ECHTE REVIEWS) -->
   <!-- ============================================ -->
-  <section class="section section-cream testimonials" id="reviews" style="position:relative;overflow:hidden">
-    <img src="assets/images/danielle-suijkerbuijk-_VGtRB7Hx50-unsplash.jpg" alt="" class="bg-texture" loading="lazy" style="opacity:0.06;mix-blend-mode:multiply">
+  <section class="section section-cream testimonials" id="reviews">
+    <img src="assets/images/danielle-suijkerbuijk-_VGtRB7Hx50-unsplash.jpg" alt="" class="bg-texture bg-texture--light bg-texture--multiply" loading="lazy">
     <div class="noise-overlay"></div>
-    <div class="container-narrow" style="position:relative;z-index:2">
+    <div class="container-narrow content-above">
       <div class="section-label reveal-up">Resultaten</div>
       <h2 class="section-title reveal-up">WAT KLANTEN ZEGGEN</h2>
       <div class="testimonial-carousel">
@@ -562,10 +562,10 @@
   <!-- ============================================ -->
   <!-- SECTION 9: JOURNAL -->
   <!-- ============================================ -->
-  <section class="section section-dark journal" id="journal" style="overflow:hidden">
-    <img src="assets/images/imkara-visual-5MYmQGEzi7Q-unsplash.jpg" alt="" class="bg-texture" loading="lazy" style="opacity:0.06">
+  <section class="section section-dark journal" id="journal">
+    <img src="assets/images/imkara-visual-5MYmQGEzi7Q-unsplash.jpg" alt="" class="bg-texture bg-texture--light" loading="lazy">
     <div class="noise-overlay"></div>
-    <div class="container-wide" style="position:relative;z-index:2">
+    <div class="container-wide content-above">
       <div class="section-header">
         <div class="section-label reveal-up">Journal</div>
         <h2 class="section-title reveal-up">INZICHTEN & INSPIRATIE</h2>
@@ -611,8 +611,8 @@
   <!-- ============================================ -->
   <!-- SECTION 10: SIRCLE SOLUTIONS CTA -->
   <!-- ============================================ -->
-  <section class="section section-cream solutions-cta" id="solutions" style="position:relative;overflow:hidden">
-    <img src="assets/images/toa-heftiba-CXt0MJI-fQc-unsplash.jpg" alt="" class="bg-texture" loading="lazy" style="opacity:0.08;mix-blend-mode:multiply">
+  <section class="section section-cream solutions-cta" id="solutions">
+    <img src="assets/images/toa-heftiba-CXt0MJI-fQc-unsplash.jpg" alt="" class="bg-texture bg-texture--multiply" loading="lazy">
     <div class="noise-overlay"></div>
     <div class="container-wide">
       <div class="solutions-grid">
@@ -621,8 +621,8 @@
           <h2 class="section-title reveal-up">CUSTOM SOFTWARE.<br>DEDICATED TEAMS.</h2>
           <p class="solutions-sub reveal-up">Naast strategie en creatie bouwen wij ook custom software. Gebouwd door ons eigen dev-team.</p>
           <a href="https://sirclesolutions.nl" target="_blank" class="btn-primary solutions-btn reveal-up">Bekijk Sircle Solutions <span class="btn-arrow">→</span></a>
-          <div class="solutions-image reveal-up" data-delay="0.2" style="margin-top:32px">
-            <img src="assets/images/getty-images-J7W-NJFbq1c-unsplash.jpg" alt="Development team" loading="lazy" style="width:100%;border-radius:12px;filter:saturate(0.85) contrast(1.05) brightness(0.9)">
+          <div class="solutions-image reveal-up" data-delay="0.2">
+            <img src="assets/images/getty-images-J7W-NJFbq1c-unsplash.jpg" alt="Development team" loading="lazy">
           </div>
         </div>
         <div class="solutions-right reveal-up">

@@ -35,7 +35,7 @@
   </div>
 
   <!-- NOISE SVG FILTER -->
-  <svg style="position:absolute;width:0;height:0"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></svg>
+  <svg class="svg-defs"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></svg>
 
   <!-- BOLD FULLSCREEN NAVIGATION -->
   <nav data-navigation-status="not-active" class="bold-nav" id="nav">
@@ -82,10 +82,10 @@
   </nav>
 
   <!-- ======= JOURNAL HERO ======= -->
-  <section class="journal-hero section-dark" style="position:relative;overflow:hidden">
-    <img src="assets/images/getty-images-vc5OR2-Sa38-unsplash.jpg" alt="" class="bg-texture" style="opacity:0.14">
+  <section class="journal-hero section-dark section">
+    <img src="assets/images/getty-images-vc5OR2-Sa38-unsplash.jpg" alt="" class="bg-texture bg-texture--strong" loading="lazy">
     <div class="noise-overlay"></div>
-    <div class="container" style="position:relative;z-index:2">
+    <div class="container content-above">
       <span class="journal-hero__label reveal-up">Insights & Artikelen</span>
       <h1 class="journal-hero__title reveal-up" data-delay="0.1">Journal</h1>
       <p class="journal-hero__subtitle reveal-up" data-delay="0.2">Praktische inzichten over merkstrategie, webdesign, SEO en groeimarketing. Geschreven voor ondernemers die hun merk naar een hoger niveau willen tillen.</p>
@@ -280,10 +280,10 @@
   </section>
 
   <!-- ======= CTA ======= -->
-  <section class="journal-cta section-dark" style="position:relative;overflow:hidden">
-    <img src="assets/images/karolina-grabowska-xMHFY0DNZ6Q-unsplash.jpg" alt="" class="bg-texture" style="opacity:0.12">
+  <section class="journal-cta section-dark section">
+    <img src="assets/images/karolina-grabowska-xMHFY0DNZ6Q-unsplash.jpg" alt="" class="bg-texture bg-texture--medium" loading="lazy">
     <div class="noise-overlay"></div>
-    <div class="container" style="position:relative;z-index:2">
+    <div class="container content-above">
       <h2 class="reveal-up">Klaar om je merk te laten groeien?</h2>
       <p class="reveal-up" data-delay="0.1">Neem contact op voor een vrijblijvend strategiegesprek.</p>
       <a href="contact.html" class="btn-primary reveal-up" data-delay="0.2">Neem contact op</a>

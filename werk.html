@@ -44,6 +44,8 @@
     .werk-cta h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 20px; }
     .werk-cta p { font-size: 18px; color: var(--soft-green); margin-bottom: 36px; font-weight: 300; }
     .coming-soon-badge { display: inline-block; background: rgba(242,226,164,0.15); color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; margin-top: 8px; }
+    .portfolio-card--static { cursor: default; }
+    .werk-grid-section { padding-top: 0; }
     @media (max-width: 767px) {
       .portfolio-grid { grid-template-columns: 1fr; }
       .portfolio-card.featured { grid-column: 1; aspect-ratio: 4/3; }
@@ -66,7 +68,7 @@
     <div class="cursor-label">Bekijk</div>
   </div>
 
-  <svg style="position:absolute;width:0;height:0">
+  <svg class="svg-defs">
     <filter id="noise">
       <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
       <feColorMatrix type="saturate" values="0"/>
@@ -118,10 +120,10 @@
   </nav>
 
   <!-- HERO -->
-  <section class="section section-dark werk-hero" style="position:relative;overflow:hidden">
-    <img src="assets/images/drazen-nesic-0-cA3A9lRhE-unsplash.jpg" alt="" class="bg-texture" style="opacity:0.15">
+  <section class="section section-dark werk-hero">
+    <img src="assets/images/drazen-nesic-0-cA3A9lRhE-unsplash.jpg" alt="" class="bg-texture bg-texture--strong" loading="lazy">
     <div class="noise-overlay"></div>
-    <div class="container" style="position:relative;z-index:2">
+    <div class="container content-above">
       <div class="section-label reveal-up">Portfolio</div>
       <h1 class="section-title reveal-up">GESELECTEERD WERK</h1>
       <p class="reveal-up">Een selectie van projecten waar we trots op zijn. Van merkstrategie tot film, van branding tot digitale groei.</p>
@@ -129,7 +131,7 @@
   </section>
 
   <!-- FILTERS + GRID -->
-  <section class="section section-dark" style="padding-top: 0;">
+  <section class="section section-dark werk-grid-section">
     <div class="noise-overlay"></div>
     <div class="container-wide">
 
@@ -166,7 +168,7 @@
         </a>
 
         <!-- WORLD SKATE CENTER — Coming Soon -->
-        <div class="portfolio-card" data-categories="strategy production" style="cursor: default;">
+        <div class="portfolio-card" data-categories="strategy production" class="portfolio-card--static">
           <img src="assets/images/dario-bronnimann-y51ZjAmV3_k-unsplash.jpg" alt="World Skate Center" loading="lazy">
           <div class="portfolio-card-overlay"></div>
           <div class="portfolio-card-info">
@@ -232,7 +234,7 @@
         </a>
 
         <!-- KONE — Coming Soon -->
-        <div class="portfolio-card featured" data-categories="production" style="cursor: default;">
+        <div class="portfolio-card featured" data-categories="production" class="portfolio-card--static">
           <img src="assets/images/planet-volumes-AScLcUpWWVs-unsplash.jpg" alt="KONE" loading="lazy">
           <div class="portfolio-card-overlay"></div>
           <div class="portfolio-card-info">
@@ -267,10 +269,10 @@
   </section>
 
   <!-- CTA -->
-  <section class="section section-dark werk-cta" style="position:relative;overflow:hidden">
-    <img src="assets/images/andrew-petrischev-J3wcdFQIuyQ-unsplash.jpg" alt="" class="bg-texture" style="opacity:0.12">
+  <section class="section section-dark werk-cta">
+    <img src="assets/images/andrew-petrischev-J3wcdFQIuyQ-unsplash.jpg" alt="" class="bg-texture bg-texture--medium" loading="lazy">
     <div class="noise-overlay"></div>
-    <div class="container" style="position:relative;z-index:2">
+    <div class="container content-above">
       <h2 class="reveal-up">KLAAR VOOR JOUW VERHAAL?</h2>
       <p class="reveal-up">Laat ons weten wat je nodig hebt. We denken graag mee.</p>
       <a href="contact.html" class="btn-primary btn-large reveal-up">Plan een gesprek <span class="btn-arrow">→</span></a>
