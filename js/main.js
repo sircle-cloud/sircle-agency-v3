@@ -710,6 +710,65 @@ function initAnimations() {
   });
 
   // ============================================
+  // REVEAL-SCALE — Image zoom-out with clip reveal (cinema feel)
+  // ============================================
+  document.querySelectorAll('.reveal-scale').forEach(el => {
+    const delay = parseFloat(el.dataset.delay) || 0;
+    gsap.to(el, {
+      opacity: 1,
+      scale: 1,
+      clipPath: 'inset(0% 0% 0% 0%)',
+      duration: 1.4,
+      delay: delay,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      }
+    });
+  });
+
+  // ============================================
+  // REVEAL-SLIDE — Horizontal mask wipe from left
+  // ============================================
+  document.querySelectorAll('.reveal-slide').forEach(el => {
+    const delay = parseFloat(el.dataset.delay) || 0;
+    gsap.to(el, {
+      opacity: 1,
+      clipPath: 'inset(0 0% 0 0)',
+      duration: 1.2,
+      delay: delay,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      }
+    });
+  });
+
+  // ============================================
+  // SCRUB-HIGHLIGHT — Word-by-word opacity scrub on scroll (Form&Fun / OSMO style)
+  // ============================================
+  document.querySelectorAll('.scrub-highlight').forEach(title => {
+    const words = splitTextIntoWords(title);
+    gsap.set(words, { opacity: 0.15 });
+    words.forEach((word, i) => {
+      gsap.to(word, {
+        opacity: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: title,
+          start: () => `top ${75 - i * 2.5}%`,
+          end: () => `top ${65 - i * 2.5}%`,
+          scrub: 0.5,
+        }
+      });
+    });
+  });
+
+  // ============================================
   // Video container scale
   // ============================================
   gsap.from('.video-container', {

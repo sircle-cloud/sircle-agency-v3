@@ -625,7 +625,7 @@ address { font-style: normal; }
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.06;
+  opacity: 0.08;
   filter: url(#noise);
   width: 100%;
   height: 100%;
@@ -633,7 +633,7 @@ address { font-style: normal; }
 }
 
 .section-cream .noise-overlay {
-  opacity: 0.035;
+  opacity: 0.05;
   mix-blend-mode: multiply;
 }
 
@@ -641,7 +641,7 @@ address { font-style: normal; }
 .grain-overlay {
   position: absolute;
   inset: -20%;
-  opacity: 0.024;
+  opacity: 0.04;
   pointer-events: none;
   z-index: 2;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -2718,6 +2718,62 @@ address { font-style: normal; }
 .reveal-clip {
   opacity: 0;
   clip-path: inset(100% 0 0 0);
+}
+
+/* Image reveal: scale down + clip from center */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(1.15);
+  clip-path: inset(8% 8% 8% 8%);
+  will-change: transform, clip-path, opacity;
+}
+
+/* Horizontal slide reveal (mask wipe from left) */
+.reveal-slide {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  will-change: clip-path, opacity;
+}
+
+/* Section title word-by-word scrub highlight (initial dim state) */
+.scrub-highlight .word-inner {
+  opacity: 0.15;
+  transition: none;
+}
+
+/* Link hover underline animation (scaleX from right) */
+.hover-underline {
+  position: relative;
+  text-decoration: none;
+}
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Button arrow slide on hover */
+.btn-primary .btn-arrow,
+.btn-ghost span,
+.btn-secondary span {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-primary:hover .btn-arrow,
+.btn-ghost:hover span,
+.btn-secondary:hover span {
+  transform: translateX(6px);
 }
 
 /* Ensure positioned sections stack correctly */
