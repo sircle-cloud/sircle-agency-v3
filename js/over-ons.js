@@ -104,19 +104,41 @@
     }
   });
 
-  // ---- TEAM IMAGE PARALLAX ----
-  const teamImg = document.querySelector('.team-image img');
-  if (teamImg) {
-    gsap.to(teamImg, {
-      yPercent: -10,
-      ease: 'none',
+  // ---- TEAM MOSAIC ANIMATION ----
+  const mosaicItems = document.querySelectorAll('.team-mosaic-item');
+  if (mosaicItems.length) {
+    gsap.from(mosaicItems, {
+      y: 60,
+      opacity: 0,
+      scale: 0.92,
+      stagger: 0.1,
+      duration: 0.9,
+      ease: 'power3.out',
       scrollTrigger: {
-        trigger: '.team-image',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 0.5,
+        trigger: '.team-mosaic',
+        start: 'top 82%',
+        toggleActions: 'play none none none',
       }
     });
+
+    // Subtle parallax on each mosaic image
+    if (window.innerWidth > 767) {
+      mosaicItems.forEach((item, i) => {
+        const img = item.querySelector('img');
+        if (img) {
+          gsap.to(img, {
+            yPercent: (i % 2 === 0) ? -8 : -12,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 0.5,
+            }
+          });
+        }
+      });
+    }
   }
 
   // ---- CTA MAGNETIC HOVER ----

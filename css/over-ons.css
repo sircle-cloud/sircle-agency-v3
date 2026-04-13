@@ -278,48 +278,94 @@
   margin-bottom: 16px;
 }
 
-/* ---------- TEAM / FOUNDER ---------- */
+/* ---------- TEAM / NETWORK ---------- */
 .team-section {
   padding: 140px 0 120px;
 }
 
-.team-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+.team-intro {
+  margin-bottom: 64px;
 }
 
-.team-image {
+.team-intro-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 32px;
+  max-width: 960px;
+}
+
+.team-intro-cols p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--soft-green);
+}
+
+/* ---- Mosaic Grid ---- */
+.team-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 220px;
+  gap: 16px;
+}
+
+.team-mosaic-item:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+.team-mosaic-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+.team-mosaic-item:nth-child(3) { grid-column: 3; grid-row: 1; }
+.team-mosaic-item:nth-child(4) { grid-column: 2; grid-row: 2; }
+.team-mosaic-item:nth-child(5) { grid-column: 3; grid-row: 2 / 4; }
+.team-mosaic-item:nth-child(6) { grid-column: 1 / 3; grid-row: 3; }
+
+.team-mosaic-item {
+  position: relative;
   border-radius: 16px;
   overflow: hidden;
 }
 
-.team-image img {
+.team-mosaic-item img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
   filter: saturate(0.85) contrast(1.05) brightness(0.9);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
-.team-role {
-  font-size: 18px;
+.team-mosaic-item:hover img {
+  transform: scale(1.05);
+  filter: saturate(1) contrast(1.05) brightness(0.95);
+}
+
+.team-mosaic-tag {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(8, 36, 18, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--gold);
-  font-weight: 500;
-  margin-bottom: 24px;
-  margin-top: -12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(242, 226, 164, 0.15);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.team-text p {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--soft-green);
-  margin-bottom: 20px;
+.team-mosaic-item:hover .team-mosaic-tag {
+  opacity: 1;
+  transform: translateY(0);
 }
 
+/* ---- Stats ---- */
 .team-stats {
   display: flex;
   gap: 40px;
-  margin-top: 40px;
+  margin-top: 64px;
   padding-top: 32px;
   border-top: 1px solid rgba(208,223,185,0.1);
 }
@@ -342,21 +388,6 @@
   color: var(--soft-green);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-.team-image-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 16px;
-}
-.team-gallery-img {
-  width: 100%;
-  border-radius: 12px;
-  display: block;
-  aspect-ratio: 3/2;
-  object-fit: cover;
-  filter: saturate(0.85) contrast(1.05) brightness(0.9);
 }
 
 /* ---------- APPROACH / WERKWIJZE ---------- */
@@ -417,18 +448,13 @@
     object-fit: cover;
   }
 
-  .team-grid {
+  .team-intro-cols {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 20px;
   }
 
-  .team-image {
-    max-height: 50vh;
-  }
-
-  .team-image img {
-    height: 50vh;
-    object-fit: cover;
+  .team-mosaic {
+    grid-auto-rows: 200px;
   }
 
   .values-grid,
@@ -486,9 +512,25 @@
     font-size: 10px;
   }
 
-  .origin-grid,
-  .team-grid {
+  .origin-grid {
     gap: 40px;
+  }
+
+  .team-mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 160px;
+  }
+
+  .team-mosaic-item:nth-child(1) { grid-column: 1 / -1; grid-row: auto; }
+  .team-mosaic-item:nth-child(2) { grid-column: auto; grid-row: auto; }
+  .team-mosaic-item:nth-child(3) { grid-column: auto; grid-row: auto; }
+  .team-mosaic-item:nth-child(4) { grid-column: auto; grid-row: auto; }
+  .team-mosaic-item:nth-child(5) { grid-column: auto; grid-row: auto; }
+  .team-mosaic-item:nth-child(6) { grid-column: 1 / -1; grid-row: auto; }
+
+  .team-mosaic-tag {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .team-stats {
