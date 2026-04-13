@@ -301,28 +301,38 @@
   color: var(--soft-green);
 }
 
-/* ---- Mosaic Grid ---- */
-.team-mosaic {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 220px;
-  gap: 16px;
+/* ---- Photo Strip ---- */
+.team-photo-strip {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  overflow: hidden;
+  position: relative;
 }
 
-.team-mosaic-item:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
-.team-mosaic-item:nth-child(2) { grid-column: 2; grid-row: 1; }
-.team-mosaic-item:nth-child(3) { grid-column: 3; grid-row: 1; }
-.team-mosaic-item:nth-child(4) { grid-column: 2; grid-row: 2; }
-.team-mosaic-item:nth-child(5) { grid-column: 3; grid-row: 2 / 4; }
-.team-mosaic-item:nth-child(6) { grid-column: 1 / 3; grid-row: 3; }
+.team-strip-row {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+}
 
-.team-mosaic-item {
+.team-strip-row--left {
+  margin-bottom: 16px;
+}
+
+.team-strip-row--right {
+  margin-left: -100px;
+}
+
+.team-strip-item {
   position: relative;
+  flex-shrink: 0;
+  width: 380px;
+  height: 270px;
   border-radius: 16px;
   overflow: hidden;
 }
 
-.team-mosaic-item img {
+.team-strip-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -331,16 +341,16 @@
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
-.team-mosaic-item:hover img {
-  transform: scale(1.05);
+.team-strip-item:hover img {
+  transform: scale(1.06);
   filter: saturate(1) contrast(1.05) brightness(0.95);
 }
 
-.team-mosaic-tag {
+.team-strip-tag {
   position: absolute;
-  bottom: 16px;
-  left: 16px;
-  background: rgba(8, 36, 18, 0.7);
+  bottom: 14px;
+  left: 14px;
+  background: rgba(8, 36, 18, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: var(--gold);
@@ -351,14 +361,6 @@
   padding: 6px 14px;
   border-radius: 100px;
   border: 1px solid rgba(242, 226, 164, 0.15);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.team-mosaic-item:hover .team-mosaic-tag {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* ---- Stats ---- */
@@ -453,8 +455,9 @@
     gap: 20px;
   }
 
-  .team-mosaic {
-    grid-auto-rows: 200px;
+  .team-strip-item {
+    width: 320px;
+    height: 230px;
   }
 
   .values-grid,
@@ -516,21 +519,24 @@
     gap: 40px;
   }
 
-  .team-mosaic {
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 160px;
+  .team-strip-item {
+    width: 260px;
+    height: 190px;
   }
 
-  .team-mosaic-item:nth-child(1) { grid-column: 1 / -1; grid-row: auto; }
-  .team-mosaic-item:nth-child(2) { grid-column: auto; grid-row: auto; }
-  .team-mosaic-item:nth-child(3) { grid-column: auto; grid-row: auto; }
-  .team-mosaic-item:nth-child(4) { grid-column: auto; grid-row: auto; }
-  .team-mosaic-item:nth-child(5) { grid-column: auto; grid-row: auto; }
-  .team-mosaic-item:nth-child(6) { grid-column: 1 / -1; grid-row: auto; }
+  .team-strip-row {
+    gap: 12px;
+  }
 
-  .team-mosaic-tag {
-    opacity: 1;
-    transform: translateY(0);
+  .team-strip-row--left {
+    margin-bottom: 12px;
+  }
+
+  .team-strip-tag {
+    font-size: 10px;
+    padding: 5px 10px;
+    bottom: 10px;
+    left: 10px;
   }
 
   .team-stats {
