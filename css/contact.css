@@ -88,17 +88,17 @@
 }
 
 /* Calendly link */
-.contact-calendly {
+.contact-cta-call {
   margin-bottom: 40px;
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(208,223,185,0.12);
 }
 
-.contact-calendly .contact-detail-label {
+.contact-cta-call .contact-detail-label {
   margin-bottom: 16px;
 }
 
-.contact-cal-btn {
+.contact-call-btn {
   gap: 12px;
   padding: 14px 28px;
   font-size: 15px;
@@ -106,13 +106,20 @@
   color: var(--soft-green);
 }
 
-.contact-cal-btn:hover {
+.contact-call-btn:hover {
   border-color: var(--gold);
   color: var(--gold);
 }
 
-.contact-cal-btn svg {
+.contact-call-btn svg {
   flex-shrink: 0;
+}
+
+.contact-cta-hint {
+  margin-top: 12px;
+  font-size: 14px;
+  color: rgba(208,223,185,0.5);
+  font-weight: 300;
 }
 
 /* Social links */
