@@ -44,8 +44,37 @@
   margin-bottom: 56px;
 }
 
+/* Centered section headers (proof, results, etc.) */
+.sc-centered .sc-label {
+  display: block;
+  text-align: center;
+}
+.sc-centered .sc-section-title {
+  text-align: center;
+}
+.sc-centered .sc-section-sub {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .section-dark .sc-section-sub { color: var(--soft-green); }
 .section-cream .sc-section-sub { color: var(--mid-grey); }
+
+/* ---------- CONTENT Z-INDEX (above bg-textures) ---------- */
+.sc-included > .container,
+.sc-proof > .container,
+.sc-pricing > .container,
+.sc-risks > .container,
+.sc-compare > .container,
+.sc-faq > .container,
+.sc-final-cta > .container,
+.sc-software > .container,
+.sc-webdev > .container,
+.sc-portfolio > .container {
+  position: relative;
+  z-index: 2;
+}
 
 /* ---------- HERO ---------- */
 /* ---------- HERO BACKGROUND IMAGE ---------- */
@@ -161,10 +190,32 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ---------- HERO VISUAL ACCENT ---------- */
+.sc-hero-visual {
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38%;
+  max-width: 520px;
+  z-index: 1;
+  opacity: 0.2;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+  pointer-events: none;
+}
+.sc-hero-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: brightness(1.2) saturate(0.8);
+}
+
 @media (max-width: 767px) {
   .sc-hero { padding: 100px 0 60px; min-height: 80vh; }
   .sc-hero-stats { gap: 32px; }
   .sc-stat-num { font-size: 26px; }
+  .sc-hero-visual { display: none; }
 }
 
 /* ---------- FEATURES GRID ---------- */
