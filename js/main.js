@@ -1454,6 +1454,36 @@ function initAnimations() {
       }
     });
   }
+
+  // ============================================
+  // SOLUTIONS — Animated code blocks fly in
+  // ============================================
+  const codeFloats = document.querySelectorAll('.code-float');
+  if (codeFloats.length) {
+    codeFloats.forEach((block, i) => {
+      const fromX = i === 1 ? 60 : -60;
+      gsap.fromTo(block, {
+        opacity: 0,
+        y: 50,
+        x: fromX,
+        scale: 0.9,
+      }, {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        scale: 1,
+        duration: 1,
+        delay: i * 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.solutions-code-viz',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        onComplete: () => block.classList.add('is-visible'),
+      });
+    });
+  }
 }
 
 // ============================================

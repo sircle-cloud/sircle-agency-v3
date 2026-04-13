@@ -623,11 +623,48 @@
       <div class="solutions-grid">
         <div class="solutions-left">
           <div class="section-label reveal-up">Sircle Solutions</div>
-          <h2 class="section-title reveal-up">CUSTOM SOFTWARE.<br>DEDICATED TEAMS.</h2>
+          <h2 class="section-title reveal-up">CUSTOM SOFTWARE<br>OPLOSSINGEN.</h2>
           <p class="solutions-sub reveal-up">Strategie en creatie zijn pas het begin. Met ons eigen development-team bouwen we de digitale producten die jouw bedrijf écht vooruit helpen — van complexe platforms tot slimme automatiseringen.</p>
           <a href="https://sirclesolutions.nl" target="_blank" class="btn-primary solutions-btn reveal-up">Bekijk Sircle Solutions <span class="btn-arrow">→</span></a>
-          <div class="solutions-image reveal-up" data-delay="0.2">
-            <img src="assets/branding/team/dev-team-coding.webp" alt="Development team aan het werk" loading="lazy">
+
+          <!-- Animated code visualization -->
+          <div class="solutions-code-viz">
+            <div class="code-float code-float--1">
+              <div class="code-float-header">
+                <span class="code-dot code-dot--red"></span>
+                <span class="code-dot code-dot--yellow"></span>
+                <span class="code-dot code-dot--green"></span>
+                <span class="code-float-lang">React</span>
+              </div>
+              <pre><code><span class="code-kw">const</span> <span class="code-fn">Dashboard</span> = () => {
+  <span class="code-kw">const</span> [data] = <span class="code-fn">useAPI</span>(<span class="code-str">'/analytics'</span>);
+  <span class="code-kw">return</span> &lt;<span class="code-fn">Chart</span> data={data} /&gt;;
+};</code></pre>
+            </div>
+            <div class="code-float code-float--2">
+              <div class="code-float-header">
+                <span class="code-dot code-dot--red"></span>
+                <span class="code-dot code-dot--yellow"></span>
+                <span class="code-dot code-dot--green"></span>
+                <span class="code-float-lang">Python</span>
+              </div>
+              <pre><code><span class="code-kw">@app</span>.route(<span class="code-str">'/api/bookings'</span>)
+<span class="code-kw">def</span> <span class="code-fn">create_booking</span>(data):
+    booking = Booking.<span class="code-fn">create</span>(data)
+    <span class="code-kw">return</span> jsonify(booking)</code></pre>
+            </div>
+            <div class="code-float code-float--3">
+              <div class="code-float-header">
+                <span class="code-dot code-dot--red"></span>
+                <span class="code-dot code-dot--yellow"></span>
+                <span class="code-dot code-dot--green"></span>
+                <span class="code-float-lang">SQL</span>
+              </div>
+              <pre><code><span class="code-kw">SELECT</span> users.name, COUNT(orders.id)
+<span class="code-kw">FROM</span> users
+<span class="code-kw">JOIN</span> orders <span class="code-kw">ON</span> users.id = orders.user_id
+<span class="code-kw">GROUP BY</span> users.name;</code></pre>
+            </div>
           </div>
         </div>
         <div class="solutions-right reveal-up">
