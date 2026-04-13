@@ -431,14 +431,15 @@ function initAnimations() {
       allHeroChars.push(...chars);
     });
 
-    // Set initial state
+    // Set initial state (chars hidden, title container visible for layout)
+    gsap.set('.hero-title', { opacity: 1 });
     gsap.set(allHeroChars, { y: '100%', opacity: 0 });
 
     heroTl
       .from('.bold-nav__logo', { y: -15, opacity: 0, duration: 0.8, ease: 'power2.out' })
       .from('.bold-nav__hamburger', { y: -15, opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.5')
-      .from('.hero-label', {
-        y: 15, opacity: 0, duration: 0.8, ease: 'power2.out',
+      .fromTo('.hero-label', { y: 15, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 0.8, ease: 'power2.out',
       }, '-=0.3')
       .to(allHeroChars, {
         y: '0%',
@@ -449,20 +450,20 @@ function initAnimations() {
       }, '-=0.5');
   } else if (hasHeroLines && isMobile) {
     // Mobile: simple line reveal
+    gsap.set('.hero-title', { opacity: 1 });
     heroTl
       .from('.bold-nav__logo', { y: -20, opacity: 0, duration: 0.6, ease: 'power2.out' })
-      .from('.hero-label', { y: 15, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.2')
-      .from('.hero-title .line', {
-        y: '100%', opacity: 0, stagger: 0.15, duration: 0.9, ease: 'power3.out'
+      .fromTo('.hero-label', { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.2')
+      .fromTo('.hero-title .line', { y: '100%', opacity: 0 }, {
+        y: '0%', opacity: 1, stagger: 0.15, duration: 0.9, ease: 'power3.out'
       }, '-=0.3');
   }
   // No hero lines (case pages etc): nav stays fully visible, no animation
 
-  // Hero subtitle typing/reveal effect
+  // Hero subtitle reveal
   const heroSub = document.querySelector('.hero-sub');
   if (heroSub) {
-    gsap.set(heroSub, { y: 15, opacity: 0, filter: 'blur(4px)' });
-    heroTl.to(heroSub, {
+    heroTl.fromTo(heroSub, { y: 15, opacity: 0, filter: 'blur(4px)' }, {
       y: 0,
       opacity: 1,
       filter: 'blur(0px)',
@@ -472,8 +473,8 @@ function initAnimations() {
   }
 
   heroTl
-    .from('.hero-cta', { y: 20, opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4')
-    .from('.scroll-indicator', { opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4');
+    .fromTo('.hero-cta', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.4')
+    .fromTo('.scroll-indicator', { opacity: 0 }, { opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.4');
 
   // ---- HERO: Ken Burns effect via GSAP (slow zoom + pan) ----
   if (!isMobile) {
@@ -1693,18 +1694,15 @@ if (form) {
 }
 
 // ============================================
-// PAGE TRANSITIONS — Smooth panel reveal
+// PAGE TRANSITIONS — Clean fade
 // ============================================
 function initPageTransitions() {
   const transition = document.getElementById('page-transition');
   if (!transition) return;
 
-  const panels = transition.querySelectorAll('.page-transition__panel');
-
   // Intercept internal links
   document.querySelectorAll('a[href]').forEach(link => {
     const href = link.getAttribute('href');
-    // Skip external, anchor, mailto, tel links
     if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:') || link.target === '_blank') return;
 
     link.addEventListener('click', (e) => {
@@ -1713,17 +1711,11 @@ function initPageTransitions() {
 
       transition.classList.add('is-active');
 
-      // Panels slide up
-      gsap.to(panels[0], {
-        scaleY: 1,
-        duration: 0.5,
-        ease: 'power3.inOut',
-      });
-      gsap.to(panels[1], {
-        scaleY: 1,
-        duration: 0.5,
-        ease: 'power3.inOut',
-        delay: 0.05,
+      // Fade to dark green, then navigate
+      gsap.to(transition, {
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.inOut',
         onComplete: () => {
           window.location.href = target;
         }
@@ -1731,25 +1723,20 @@ function initPageTransitions() {
     });
   });
 
-  // Reverse animation on page load (panels slide out)
+  // On arrival: if we came via transition, fade out the overlay
   if (sessionStorage.getItem('page-transitioning')) {
     sessionStorage.removeItem('page-transitioning');
     transition.classList.add('is-leaving');
-    gsap.set(panels, { scaleY: 1, transformOrigin: 'top' });
+    gsap.set(transition, { opacity: 1 });
 
-    gsap.to(panels[0], {
-      scaleY: 0,
-      duration: 0.6,
-      ease: 'power3.inOut',
-      delay: 0.1,
-    });
-    gsap.to(panels[1], {
-      scaleY: 0,
-      duration: 0.6,
-      ease: 'power3.inOut',
+    gsap.to(transition, {
+      opacity: 0,
+      duration: 0.5,
       delay: 0.15,
+      ease: 'power2.out',
       onComplete: () => {
         transition.classList.remove('is-active', 'is-leaving');
+        transition.style.visibility = 'hidden';
       }
     });
   }

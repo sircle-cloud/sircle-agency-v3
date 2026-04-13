@@ -167,33 +167,24 @@ html { overflow-x: hidden; }
   inset: 0;
   z-index: 100000;
   pointer-events: none;
-  display: none;
+  background: var(--dark-green);
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
 }
 
-.page-transition.is-active,
-.page-transition.is-leaving {
-  display: flex;
+.page-transition.is-active {
+  visibility: visible;
   pointer-events: all;
 }
 
+.page-transition.is-leaving {
+  visibility: visible;
+}
+
+/* Panels no longer needed — kept for HTML compatibility */
 .page-transition__panel {
-  width: 50%;
-  height: 100%;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  will-change: transform;
-}
-
-.page-transition__panel--1 {
-  background: var(--dark-green);
-}
-
-.page-transition__panel--2 {
-  background: var(--dark-green);
-}
-
-.page-transition.is-leaving .page-transition__panel {
-  transform-origin: top;
+  display: none;
 }
 
 html {
@@ -1036,6 +1027,15 @@ address { font-style: normal; }
   text-align: center;
   max-width: 1200px;
   padding: 0 48px;
+}
+
+/* Hide hero elements until JS animates them — prevents FOUC */
+.hero .hero-title,
+.hero .hero-label,
+.hero .hero-sub,
+.hero .hero-cta,
+.hero .scroll-indicator {
+  opacity: 0;
 }
 
 .hero-title {
