@@ -631,6 +631,34 @@ address { font-style: normal; }
 .bg-texture--medium { opacity: 0.12; }
 .bg-texture--strong { opacity: 0.15; }
 .bg-texture--multiply { mix-blend-mode: multiply; }
+.bg-texture--gradient { opacity: 0.35; filter: none; }
+.bg-texture--gradient-strong { opacity: 0.55; filter: none; }
+.bg-texture--gradient-hero { opacity: 0.6; filter: none; }
+
+/* ---------- SECTION ACCENT IMAGES ---------- */
+.section-accent {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.section-accent img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+.section-accent--corner {
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  height: 400px;
+  opacity: 0.08;
+  mask-image: radial-gradient(ellipse at 100% 100%, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 100% 100%, black 30%, transparent 70%);
+}
+@media (max-width: 767px) {
+  .section-accent--corner { width: 200px; height: 200px; }
+}
 
 /* ---------- NOISE OVERLAY ---------- */
 .noise-overlay {
