@@ -323,11 +323,11 @@
 }
 
 .team-strip-row--left .team-strip-track {
-  animation: stripLeft 55s linear infinite;
+  animation: stripLeft 65s linear infinite;
 }
 
 .team-strip-row--right .team-strip-track {
-  animation: stripRight 55s linear infinite;
+  animation: stripRight 65s linear infinite;
 }
 
 .team-photo-strip:hover .team-strip-track {
