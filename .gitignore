@@ -21,6 +21,9 @@ assets/figma/*.png
 # Exclude large gradient PNGs (keep JPGs which are smaller)
 assets/gradients/Gradient*.png
 
+# Dependencies
+node_modules/
+
 # OS files
 .DS_Store
 __MACOSX/
