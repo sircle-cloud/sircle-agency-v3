@@ -378,32 +378,43 @@ function initSircleExperience() {
     // Set initial state
     setPhase(0);
   } else {
-    // Mobile: stacked cards — each phase gets its own inline model image
+    // Mobile: stacked cards — each phase gets its own inline model image.
+    // DOM manipulation is kept separate from GSAP so the layout still works
+    // even if GSAP fails to load (slow connection, CDN outage, etc).
     phases.forEach((phase, i) => {
       phase.classList.add('is-active');
 
       // Inject a per-phase model image at the top of each phase card.
       // This replaces the broken single top-level model on mobile.
-      if (images[i]) {
+      if (images[i] && !phase.querySelector('.sircle-exp__phase-img')) {
         const mobileImg = images[i].cloneNode(true);
         mobileImg.classList.add('sircle-exp__phase-img');
         mobileImg.classList.remove('sircle-exp__model-img');
         mobileImg.removeAttribute('data-phase');
         phase.insertBefore(mobileImg, phase.firstChild);
       }
-
-      gsap.from(phase, {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: phase,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        }
-      });
     });
+
+    // GSAP reveal animation — wrapped in try/catch so failures don't break layout
+    try {
+      if (typeof gsap !== 'undefined' && gsap.from) {
+        phases.forEach((phase) => {
+          gsap.from(phase, {
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: phase,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            }
+          });
+        });
+      }
+    } catch (err) {
+      console.warn('[sircle-experience] animation failed, layout still works:', err);
+    }
   }
 }
 initSircleExperience();
