@@ -1882,6 +1882,50 @@ address { font-style: normal; }
 @media (max-width: 900px) {
   .cases-grid { grid-template-columns: 1fr; }
   .case-card:first-child { grid-column: 1; }
+
+  /* Consistent aspect ratio across all cards on mobile/tablet */
+  .case-image,
+  .case-card:first-child .case-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Atmospheric treatment on mobile: blur makes the screenshot's own
+     hero-headline unreadable, so the card's <h3> is the only title.
+     The website's colours + composition still come through as an ambient
+     backdrop for the card info. */
+  .case-image img {
+    filter: blur(5px) saturate(0.55) brightness(0.3) contrast(1.25);
+    height: 100%;
+    object-position: center center;
+    transform: scale(1.12); /* hide blur edge bleed */
+  }
+  .case-card:hover .case-image img {
+    filter: blur(3px) saturate(0.7) brightness(0.4) contrast(1.15);
+    transform: scale(1.14);
+  }
+
+  /* Solid dark band under the info so the h3 is always legible */
+  .case-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(5,16,11,0.98) 0%,
+      rgba(5,16,11,0.92) 40%,
+      rgba(5,16,11,0.65) 65%,
+      rgba(5,16,11,0.3) 85%,
+      transparent 100%
+    );
+  }
+
+  /* Reveal the info panel at rest — no hover on touch devices */
+  .case-info {
+    opacity: 1;
+    transform: translateY(0);
+    padding: 24px 24px;
+  }
+  .case-info h3 {
+    font-size: 22px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
 }
 
 /* Cases on cream: adapt colors */

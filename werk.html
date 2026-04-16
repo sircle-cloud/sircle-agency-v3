@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=32">
+  <link rel="stylesheet" href="css/style.css?v=33">
   <link rel="stylesheet" href="css/nav-bold.css?v=14">
   <style>
     .werk-hero { padding: 180px 0 80px; text-align: center; }
@@ -54,8 +54,39 @@
     .portfolio-card--static { cursor: default; }
     .werk-grid-section { padding-top: 0; }
     @media (max-width: 767px) {
-      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
       .portfolio-card.featured { grid-column: 1; aspect-ratio: 4/3; }
+      /* Atmospheric treatment: blur makes the screenshot's own hero text
+         unreadable so the portfolio-card-info <h3> is the only title. */
+      .portfolio-card img {
+        filter: blur(5px) saturate(0.55) brightness(0.3) contrast(1.25);
+        transform: scale(1.12); /* hide blur edge bleed */
+      }
+      .portfolio-card:hover img {
+        filter: blur(3px) saturate(0.7) brightness(0.4) contrast(1.15);
+        transform: scale(1.14);
+      }
+      /* Make sure the info panel is visible at rest on touch devices */
+      .portfolio-card-info {
+        opacity: 1;
+        transform: translateY(0);
+        padding: 20px 24px;
+      }
+      .portfolio-card-info h3 {
+        font-size: 22px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      }
+      /* Overlay covers more of the image for readability */
+      .portfolio-card-overlay {
+        background: linear-gradient(
+          to top,
+          rgba(7,25,12,0.98) 0%,
+          rgba(7,25,12,0.92) 40%,
+          rgba(7,25,12,0.65) 65%,
+          rgba(7,25,12,0.3) 85%,
+          transparent 100%
+        );
+      }
       .results-bar { flex-wrap: wrap; gap: 24px; }
       .result-item { flex: 1 1 40%; }
     }
