@@ -19,31 +19,41 @@ const SITES = [
     id: 'vlijt',
     label: 'VLIJT Tandartsen',
     url: 'https://vlijttandartsen.nl',
+    // Case detail page expects vlijt-web-1.jpg through vlijt-web-6.jpg
+    sections: 6,
   },
   {
     id: '22qminded',
     label: '22qMinded',
     url: 'https://22qminded.com',
+    sections: 5,
   },
   {
     id: 'casper-bouman',
     label: 'Casper Bouman',
     url: 'https://www.casperbouman.com',
+    // Case detail page uses casper-web-1.jpg through casper-web-6.jpg
+    sections: 6,
+    // The asset filenames use "casper-" prefix (not "casper-bouman-")
+    assetPrefix: 'casper',
   },
   {
     id: 'dudok',
     label: 'Dudok Consulting',
     url: 'https://dudokconsulting.nl',
+    sections: 5,
   },
   {
     id: 'kanslokaal',
     label: 'Kanslokaal',
     url: 'https://kanslokaal.nl',
+    sections: 5,
   },
   {
     id: 'breinwijzers',
     label: 'Breinwijzers',
     url: 'https://breinwijzers.nl',
+    sections: 5,
   },
 ];
 
@@ -321,7 +331,113 @@ async function injectPopupBlockerCSS(context) {
   });
 }
 
-async function captureSite(browser, site, outDir) {
+// Take N viewport screenshots anchored on actual content sections of the page.
+// Avoids the blank-padding-between-sections problem of pure scroll-based capture.
+// Saves as {prefix}-web-1.jpg, {prefix}-web-2.jpg, etc. in the asset dir.
+async function captureScrollSections(page, assetDir, prefix, count) {
+  const viewportH = await page.evaluate(() => window.innerHeight);
+
+  // Find content-rich anchor points: all h2s/h3s/sections that have substantial
+  // text or images below them. We filter to only elements that are "anchors"
+  // for visible content.
+  const anchors = await page.evaluate(() => {
+    const candidates = Array.from(document.querySelectorAll(
+      'section, header, main > div, h1, h2, .hero, [class*="hero" i], [class*="section" i]'
+    ));
+    return candidates
+      .map((el) => {
+        const r = el.getBoundingClientRect();
+        const textLen = (el.innerText || '').replace(/\s+/g, ' ').length;
+        const imgCount = el.querySelectorAll('img').length;
+        return {
+          top: Math.round(r.top + window.scrollY),
+          height: Math.round(r.height),
+          tag: el.tagName.toLowerCase(),
+          textLen,
+          imgCount,
+        };
+      })
+      .filter((a) => a.height > 300 && (a.textLen > 50 || a.imgCount > 0))
+      .sort((a, b) => a.top - b.top);
+  });
+
+  const totalHeight = await page.evaluate(() => Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight
+  ));
+  console.log(`    page height=${totalHeight}, ${anchors.length} content anchors found`);
+
+  // Pick N anchors that are roughly evenly spread across the page
+  const picked = [];
+  if (anchors.length >= count) {
+    // Space them evenly through the anchor list
+    for (let i = 0; i < count; i++) {
+      const idx = Math.floor((anchors.length * i) / count);
+      picked.push(anchors[idx]);
+    }
+  } else {
+    // Not enough anchors — use what we have, then fill with linear positions
+    picked.push(...anchors);
+    const maxScroll = Math.max(0, totalHeight - viewportH);
+    while (picked.length < count) {
+      const idx = picked.length;
+      picked.push({ top: Math.round((maxScroll * idx) / count), height: 0, tag: 'scroll' });
+    }
+  }
+
+  // De-duplicate positions that are within 200px of each other
+  const deduped = [];
+  for (const p of picked) {
+    if (!deduped.some((d) => Math.abs(d.top - p.top) < 200)) deduped.push(p);
+  }
+  // Pad if dedup left us short
+  while (deduped.length < count) {
+    const lastTop = deduped.length ? deduped[deduped.length - 1].top : 0;
+    deduped.push({ top: Math.min(totalHeight - viewportH, lastTop + viewportH), height: 0, tag: 'pad' });
+  }
+
+  for (let i = 0; i < count; i++) {
+    const anchor = deduped[i];
+    // Scroll so the anchor is ~20% from the top of the viewport (looks more natural)
+    const scrollY = Math.max(0, anchor.top - Math.round(viewportH * 0.05));
+    await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), scrollY);
+    await page.waitForTimeout(1100);
+
+    const outPath = path.join(assetDir, `${prefix}-web-${i + 1}.jpg`);
+    await page.screenshot({ path: outPath, type: 'jpeg', quality: 86 });
+    const sizeKB = +(fs.statSync(outPath).size / 1024).toFixed(0);
+
+    // Retry if screenshot is suspiciously small (likely mostly blank).
+    // Threshold raised to 120 KB — mostly-white blank frames compress to ~80-100 KB.
+    if (sizeKB < 120) {
+      console.log(`    ⚠  ${path.basename(outPath)} is only ${sizeKB} KB (likely blank), retrying…`);
+      let bestSize = sizeKB;
+      // Try a few offsets to find a content-rich frame
+      for (const offset of [0.5, -0.4, 1.0, -0.8]) {
+        const retryY = Math.max(0, Math.min(totalHeight - viewportH, scrollY + Math.round(viewportH * offset)));
+        await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), retryY);
+        await page.waitForTimeout(1200);
+        await page.screenshot({ path: outPath, type: 'jpeg', quality: 86 });
+        const newSize = +(fs.statSync(outPath).size / 1024).toFixed(0);
+        if (newSize > bestSize + 40) {
+          bestSize = newSize;
+          console.log(`    ✓ ${path.basename(outPath)} (retry offset=${offset}, ${newSize} KB)`);
+          if (newSize >= 150) break;
+        }
+      }
+      if (bestSize < 120) {
+        console.log(`    ⚠  ${path.basename(outPath)} still only ${bestSize} KB — best frame we found`);
+      }
+    } else {
+      console.log(`    ✓ ${path.basename(outPath)} (scrollY=${scrollY}, ${sizeKB} KB)`);
+    }
+  }
+
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(400);
+}
+
+async function captureSite(browser, site, outDir, assetDir) {
   console.log(`\n→ ${site.label} (${site.url})`);
 
   // ---- Desktop hero + full page ----
@@ -352,6 +468,13 @@ async function captureSite(browser, site, outDir) {
   const fullPath = path.join(outDir, `${site.id}-full.jpg`);
   await desktopPage.screenshot({ path: fullPath, type: 'jpeg', quality: 85, fullPage: true });
   console.log(`    ✓ full: ${path.basename(fullPath)} (${(fs.statSync(fullPath).size / 1024).toFixed(0)} KB)`);
+
+  // Scroll-based sections for case detail pages — saved directly into
+  // assets/cases/ to replace the old dirty screenshots.
+  if (site.sections && assetDir) {
+    const prefix = site.assetPrefix || site.id;
+    await captureScrollSections(desktopPage, assetDir, prefix, site.sections);
+  }
 
   await desktopCtx.close();
 
@@ -389,6 +512,7 @@ async function captureSite(browser, site, outDir) {
 async function main() {
   const only = process.argv.find(a => a.startsWith('--only='))?.split('=')[1];
   const outDir = path.resolve(__dirname, '../assets/cases/screenshots');
+  const assetDir = path.resolve(__dirname, '../assets/cases'); // for -web-N.jpg files
   fs.mkdirSync(outDir, { recursive: true });
 
   const browser = await chromium.launch({ headless: true });
@@ -402,7 +526,7 @@ async function main() {
 
   for (const site of targets) {
     try {
-      await captureSite(browser, site, outDir);
+      await captureSite(browser, site, outDir, assetDir);
     } catch (err) {
       console.error(`    ✗ failed: ${site.label} — ${err.message}`);
     }
@@ -410,6 +534,7 @@ async function main() {
 
   await browser.close();
   console.log(`\nDone. Screenshots saved to ${path.relative(process.cwd(), outDir)}/`);
+  console.log(`Scroll sections saved to ${path.relative(process.cwd(), assetDir)}/`);
 }
 
 main().catch(err => {
