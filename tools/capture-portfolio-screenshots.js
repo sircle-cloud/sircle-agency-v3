@@ -43,8 +43,12 @@ const SITES = [
 ];
 
 // Cookie banner selectors — ordered from most specific to most generic.
-// Tries each in turn; the first one that's visible gets clicked.
 const COOKIE_DISMISS_SELECTORS = [
+  // Cookiebot-specific
+  '#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll',
+  '#CybotCookiebotDialogBodyButtonAccept',
+  // OneTrust
+  '#onetrust-accept-btn-handler',
   // Common button text patterns (Dutch + English)
   'button:has-text("Accepteer alle")',
   'button:has-text("Alles accepteren")',
@@ -58,41 +62,70 @@ const COOKIE_DISMISS_SELECTORS = [
   'button:has-text("OK")',
   'button:has-text("Sluiten")',
   // Common class/id patterns
-  '#onetrust-accept-btn-handler',
   '.cookie-accept',
   '.accept-cookies',
   '#cookie-accept',
   '[data-cookieconsent="accept"]',
   '[aria-label="Accept cookies"]',
   '.cc-btn.cc-allow',
-  // Cookiebot-specific
-  '#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll',
-  '#CybotCookiebotDialogBodyButtonAccept',
   // Generic fallback
   'a:has-text("Accepteer alle")',
   'a:has-text("Akkoord")',
 ];
 
+// Popup / newsletter / promo modal dismissal selectors.
+// Used after cookie banners — these are "Nee bedankt", X icons, etc.
+const POPUP_DISMISS_SELECTORS = [
+  'button[aria-label="Close" i]',
+  'button[aria-label="Sluiten" i]',
+  'button[aria-label*="close" i]',
+  'button[aria-label*="dismiss" i]',
+  'button[title*="close" i]',
+  'button[title*="sluiten" i]',
+  '.modal-close',
+  '.popup-close',
+  '.close-modal',
+  '.modal__close',
+  '.close-button',
+  '[class*="closeButton"]',
+  '[class*="CloseButton"]',
+  '[data-dismiss="modal"]',
+  'button:has-text("Nee bedankt")',
+  'button:has-text("Niet nu")',
+  'button:has-text("Misschien later")',
+  'button:has-text("No thanks")',
+  'button:has-text("Maybe later")',
+  'a:has-text("Nee bedankt")',
+  // Generic close-X patterns
+  'button:has-text("✕")',
+  'button:has-text("✖")',
+  'button:has-text("×")',
+  // Common library patterns
+  '.fancybox-close',
+  '.fancybox-close-small',
+  '.mfp-close',
+  '.popmake-close',
+  '.optinmonster-popup-close',
+  '.elementor-popup-close',
+  '.brz-popup-close',
+];
+
 async function dismissCookieBanner(page) {
-  // Give the banner time to render
   await page.waitForTimeout(1500);
 
   for (const selector of COOKIE_DISMISS_SELECTORS) {
     try {
       const el = page.locator(selector).first();
-      if (await el.isVisible({ timeout: 500 }).catch(() => false)) {
+      if (await el.isVisible({ timeout: 400 }).catch(() => false)) {
         await el.click({ timeout: 2000 });
-        console.log(`    ↳ dismissed via: ${selector}`);
-        // Wait for banner to animate out
+        console.log(`    ↳ cookie dismissed via: ${selector}`);
         await page.waitForTimeout(800);
         return true;
       }
-    } catch {
-      // try next selector
-    }
+    } catch {}
   }
 
-  // Last-resort: try to find any element with "cookie" in class/id and hide it
+  // Last-resort: hide any cookie/consent container by class/id name
   await page.evaluate(() => {
     const candidates = document.querySelectorAll(
       '[class*="cookie" i], [id*="cookie" i], [class*="consent" i], [id*="consent" i]'
@@ -104,8 +137,183 @@ async function dismissCookieBanner(page) {
       }
     });
   });
-
   return false;
+}
+
+async function dismissPopups(page) {
+  // Some popups appear after a delay (intent-to-leave, time-based). Wait a bit.
+  await page.waitForTimeout(1500);
+
+  let dismissed = 0;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    let didClick = false;
+    for (const selector of POPUP_DISMISS_SELECTORS) {
+      try {
+        const elements = page.locator(selector);
+        const count = await elements.count();
+        for (let i = 0; i < count; i++) {
+          const el = elements.nth(i);
+          if (await el.isVisible({ timeout: 200 }).catch(() => false)) {
+            await el.click({ timeout: 2000, force: true }).catch(() => {});
+            console.log(`    ↳ popup dismissed via: ${selector}`);
+            dismissed++;
+            didClick = true;
+            await page.waitForTimeout(500);
+            break;
+          }
+        }
+        if (didClick) break;
+      } catch {}
+    }
+    if (!didClick) break;
+  }
+
+  // Fallback: hide any element that looks like a fixed-position modal overlay
+  await page.evaluate(() => {
+    const all = document.querySelectorAll('*');
+    for (const el of all) {
+      const cs = getComputedStyle(el);
+      if (cs.position !== 'fixed' && cs.position !== 'absolute') continue;
+      const rect = el.getBoundingClientRect();
+      // Heuristic: large centered overlay covering >40% of viewport in both axes,
+      // with high z-index, and not part of the navigation
+      const coversBigChunk =
+        rect.width > window.innerWidth * 0.4 &&
+        rect.height > window.innerHeight * 0.4 &&
+        rect.height < window.innerHeight * 0.95;
+      const z = parseInt(cs.zIndex, 10) || 0;
+      const className = (el.className && el.className.toString && el.className.toString().toLowerCase()) || '';
+      const id = (el.id || '').toLowerCase();
+      const isModalish =
+        /modal|popup|overlay|dialog|lightbox|optin|newsletter|signup/.test(className + ' ' + id);
+      if (coversBigChunk && (z > 100 || isModalish)) {
+        el.style.setProperty('display', 'none', 'important');
+      }
+    }
+    // Also remove any backdrop scrim
+    document.querySelectorAll('[class*="backdrop" i], [class*="overlay" i]').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.width > window.innerWidth * 0.8 && rect.height > window.innerHeight * 0.8) {
+        el.style.setProperty('display', 'none', 'important');
+      }
+    });
+  });
+
+  return dismissed;
+}
+
+async function gotoWithRetry(page, url, maxAttempts = 3) {
+  let lastErr;
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      return true;
+    } catch (err) {
+      lastErr = err;
+      console.warn(`    ! attempt ${attempt}/${maxAttempts} failed: ${err.message.split('\n')[0]}`);
+      if (attempt < maxAttempts) {
+        await page.waitForTimeout(2000 * attempt); // exponential-ish backoff
+      }
+    }
+  }
+  throw lastErr;
+}
+
+async function prepareForScreenshot(page) {
+  await dismissCookieBanner(page);
+  await dismissPopups(page);
+  // Scroll to top in case any earlier interaction shifted it
+  await page.evaluate(() => window.scrollTo(0, 0));
+  // Final wait so animations + lazy-loaded images settle
+  await page.waitForTimeout(1500);
+}
+
+// Block known popup/marketing-modal providers entirely so they never appear.
+// This is the most reliable way to handle iframe-based popups (Klaviyo, MailerLite,
+// OptinMonster, Sumo, etc.) that don't respond to DOM dismiss attempts.
+const BLOCKED_DOMAINS = [
+  'klaviyo.com',
+  'klaviyo.net',
+  'mailerlite.com',
+  'optinmonster.com',
+  'sumo.com',
+  'getsitecontrol.com',
+  'mailmunch.com',
+  'sleeknote.com',
+  'wisepops.com',
+  'privy.com',
+  'omnisend.com',
+  'getdrip.com',
+  'hotjar.com', // also blocks recording overlays
+  'intercom.io',
+  'crisp.chat',
+  'tawk.to',
+];
+
+async function blockPopupProviders(context) {
+  await context.route('**/*', async (route) => {
+    const url = route.request().url();
+    if (BLOCKED_DOMAINS.some(d => url.includes(d))) {
+      await route.abort();
+    } else {
+      await route.continue();
+    }
+  });
+}
+
+// Inject CSS at the earliest possible moment so popups never appear, even if
+// they're built into the page itself (not iframes). This runs before any
+// page script, so popups are hidden the moment they render.
+async function injectPopupBlockerCSS(context) {
+  await context.addInitScript(() => {
+    const css = `
+      /* Hide common popup/modal/newsletter overlays */
+      [class*="popup" i],
+      [class*="Popup" i],
+      [class*="modal" i]:not([class*="modal-content"]):not([class*="modal-body"]),
+      [class*="newsletter" i]:not(footer [class*="newsletter" i]),
+      [class*="signup" i]:not(footer [class*="signup" i]),
+      [class*="optin" i],
+      [class*="lightbox" i],
+      [id*="popup" i],
+      [id*="newsletter" i],
+      [id*="optin" i],
+      .pum-overlay,
+      .pum-container,
+      .popmake,
+      .popmake-overlay,
+      .elementor-popup-modal,
+      .elementor-location-popup,
+      .brz-popup2,
+      .fancybox-container,
+      .mfp-container,
+      div[role="dialog"],
+      div[aria-modal="true"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      /* Make sure body scroll isn't locked by popup scripts */
+      html, body {
+        overflow: auto !important;
+        position: static !important;
+      }
+    `;
+    const inject = () => {
+      if (!document.documentElement) return;
+      const style = document.createElement('style');
+      style.id = '__popup_blocker__';
+      style.textContent = css;
+      document.documentElement.appendChild(style);
+    };
+    inject();
+    // Also run after DOM is ready in case the early injection missed something
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', inject);
+    }
+  });
 }
 
 async function captureSite(browser, site, outDir) {
@@ -114,49 +322,37 @@ async function captureSite(browser, site, outDir) {
   // ---- Desktop hero + full page ----
   const desktopCtx = await browser.newContext({
     viewport: { width: 1440, height: 900 },
-    deviceScaleFactor: 2, // retina quality
+    deviceScaleFactor: 2,
     locale: 'nl-NL',
     ignoreHTTPSErrors: true,
   });
+  await blockPopupProviders(desktopCtx);
+  await injectPopupBlockerCSS(desktopCtx);
   const desktopPage = await desktopCtx.newPage();
 
   try {
-    await desktopPage.goto(site.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    // Then try to wait for the network to settle, but don't block on it
-    await desktopPage.waitForLoadState('networkidle', { timeout: 8000 }).catch(() => {});
+    await gotoWithRetry(desktopPage, site.url);
   } catch (err) {
-    console.warn(`    ! navigation issue, continuing: ${err.message}`);
+    console.error(`    ✗ desktop navigation gave up: ${err.message.split('\n')[0]}`);
+    await desktopCtx.close();
+    return;
   }
 
-  await dismissCookieBanner(desktopPage);
-  // Let animations settle
-  await desktopPage.waitForTimeout(1500);
+  await prepareForScreenshot(desktopPage);
 
-  // Hero shot
   const heroPath = path.join(outDir, `${site.id}-hero.jpg`);
-  await desktopPage.screenshot({
-    path: heroPath,
-    type: 'jpeg',
-    quality: 88,
-  });
-  console.log(`    ✓ hero: ${path.basename(heroPath)}`);
+  await desktopPage.screenshot({ path: heroPath, type: 'jpeg', quality: 88 });
+  console.log(`    ✓ hero: ${path.basename(heroPath)} (${(fs.statSync(heroPath).size / 1024).toFixed(0)} KB)`);
 
-  // Full-page shot
   const fullPath = path.join(outDir, `${site.id}-full.jpg`);
-  await desktopPage.screenshot({
-    path: fullPath,
-    type: 'jpeg',
-    quality: 85,
-    fullPage: true,
-  });
-  const fullSize = (fs.statSync(fullPath).size / 1024).toFixed(0);
-  console.log(`    ✓ full: ${path.basename(fullPath)} (${fullSize} KB)`);
+  await desktopPage.screenshot({ path: fullPath, type: 'jpeg', quality: 85, fullPage: true });
+  console.log(`    ✓ full: ${path.basename(fullPath)} (${(fs.statSync(fullPath).size / 1024).toFixed(0)} KB)`);
 
   await desktopCtx.close();
 
   // ---- Mobile shot ----
   const mobileCtx = await browser.newContext({
-    viewport: { width: 390, height: 844 }, // iPhone 14
+    viewport: { width: 390, height: 844 },
     deviceScaleFactor: 3,
     locale: 'nl-NL',
     ignoreHTTPSErrors: true,
@@ -164,23 +360,23 @@ async function captureSite(browser, site, outDir) {
       'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 ' +
       '(KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
   });
+  await blockPopupProviders(mobileCtx);
+  await injectPopupBlockerCSS(mobileCtx);
   const mobilePage = await mobileCtx.newPage();
 
   try {
-    await mobilePage.goto(site.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await mobilePage.waitForLoadState('networkidle', { timeout: 8000 }).catch(() => {});
-  } catch {}
+    await gotoWithRetry(mobilePage, site.url);
+  } catch (err) {
+    console.error(`    ✗ mobile navigation gave up: ${err.message.split('\n')[0]}`);
+    await mobileCtx.close();
+    return;
+  }
 
-  await dismissCookieBanner(mobilePage);
-  await mobilePage.waitForTimeout(1500);
+  await prepareForScreenshot(mobilePage);
 
   const mobilePath = path.join(outDir, `${site.id}-mobile.jpg`);
-  await mobilePage.screenshot({
-    path: mobilePath,
-    type: 'jpeg',
-    quality: 88,
-  });
-  console.log(`    ✓ mobile: ${path.basename(mobilePath)}`);
+  await mobilePage.screenshot({ path: mobilePath, type: 'jpeg', quality: 88 });
+  console.log(`    ✓ mobile: ${path.basename(mobilePath)} (${(fs.statSync(mobilePath).size / 1024).toFixed(0)} KB)`);
 
   await mobileCtx.close();
 }
