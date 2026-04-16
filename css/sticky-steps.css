@@ -349,32 +349,24 @@
     padding: 80px 0 60px;
   }
 
-  /* Show model at top, centered */
+  /* Hide the top-level rotating model on mobile — each phase gets its own
+     inline image instead (injected by main.js). The previous approach with
+     :first-child was broken because .sircle-exp__model-glow is the first child. */
   .sircle-exp__model {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 65vw;
-    height: 65vw;
-    max-width: 320px;
-    max-height: 320px;
-    margin: 0 auto 48px;
-    z-index: 5;
-  }
-
-  /* Only show the full model image on mobile */
-  .sircle-exp__model-img {
-    opacity: 0 !important;
-    transform: none !important;
-  }
-  .sircle-exp__model-img:first-child {
-    opacity: 1 !important;
-    position: relative;
-  }
-
-  .sircle-exp__model-glow {
     display: none;
+  }
+
+  /* Per-phase inline model image — clean card-style visual */
+  .sircle-exp__phase-img {
+    display: block;
+    width: 60vw;
+    max-width: 280px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    margin: 0 auto 28px;
+    opacity: 1;
+    filter: drop-shadow(0 10px 30px rgba(143,175,138,0.15));
   }
 
   /* Stack all phases vertically */

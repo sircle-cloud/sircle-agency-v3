@@ -10,9 +10,10 @@
     "test:all": "vitest run && html-validate \"*.html\" \"werk/*.html\""
   },
   "devDependencies": {
-    "vitest": "^3.1.1",
-    "jsdom": "^26.0.0",
     "@playwright/test": "^1.50.0",
-    "html-validate": "^9.4.0"
+    "glob": "^13.0.6",
+    "html-validate": "^9.4.0",
+    "jsdom": "^26.0.0",
+    "vitest": "^3.1.1"
   }
 }

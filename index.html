@@ -9,12 +9,20 @@
   <meta property="og:description" content="Creative agency uit Den Haag. Strategie, film, design en groei. Alles onder één dak.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sircle.agency">
+  <meta property="og:image" content="https://sircle.agency/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sircle.agency/assets/og-image.jpg">
+  <link rel="canonical" href="https://sircle.agency/">
+  <link rel="icon" type="image/svg+xml" href="assets/svg/svg-black-S.svg">
+  <link rel="apple-touch-icon" href="assets/svg/svg-black-S.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=31">
   <link rel="stylesheet" href="css/nav-bold.css?v=14">
-  <link rel="stylesheet" href="css/sticky-steps.css?v=12">
+  <link rel="stylesheet" href="css/sticky-steps.css?v=13">
 </head>
 <body>
 
@@ -52,7 +60,7 @@
         <a href="over-ons.html">Over ons</a>
         <a href="contact.html">Contact</a>
       </div>
-      <button data-navigation-toggle="toggle" class="bold-nav__hamburger">
+      <button type="button" data-navigation-toggle="toggle" aria-label="Menu openen" class="bold-nav__hamburger">
         <div class="bold-nav__hamburger-bar"></div>
         <div class="bold-nav__hamburger-bar"></div>
         <div class="bold-nav__hamburger-bar"></div>
@@ -236,10 +244,10 @@
 
       <!-- Phase navigation dots -->
       <div class="sircle-exp__nav">
-        <button class="sircle-exp__dot is-active" data-phase="0"><span>01</span></button>
-        <button class="sircle-exp__dot" data-phase="1"><span>02</span></button>
-        <button class="sircle-exp__dot" data-phase="2"><span>03</span></button>
-        <button class="sircle-exp__dot" data-phase="3"><span>04</span></button>
+        <button type="button" class="sircle-exp__dot is-active" data-phase="0" aria-label="Toon fase 1"><span>01</span></button>
+        <button type="button" class="sircle-exp__dot" data-phase="1" aria-label="Toon fase 2"><span>02</span></button>
+        <button type="button" class="sircle-exp__dot" data-phase="2" aria-label="Toon fase 3"><span>03</span></button>
+        <button type="button" class="sircle-exp__dot" data-phase="3" aria-label="Toon fase 4"><span>04</span></button>
       </div>
 
       <!-- Center: SIRCLE model image -->
@@ -354,14 +362,14 @@
           </a>
         </div>
         <div class="case-card case-medium">
-          <a href="#">
+          <a href="werk/dudok-consulting.html">
             <div class="case-image">
-              <img src="assets/cases/stoneborn-1.jpg" alt="World Skate Center" loading="lazy">
+              <img src="assets/cases/dudok-hero.jpg" alt="Dudok Consulting" loading="lazy">
               <div class="case-overlay"></div>
             </div>
             <div class="case-info">
-              <h3>World Skate Center</h3>
-              <span class="case-tags">Branding · Film · Web</span>
+              <h3>Dudok Consulting</h3>
+              <span class="case-tags">Photo · Video · Web · Care</span>
             </div>
           </a>
         </div>
@@ -554,12 +562,12 @@
         </div>
       </div>
       <div class="carousel-dots">
-        <button class="dot active" data-slide="0"><span class="dot-progress"></span></button>
-        <button class="dot" data-slide="1"><span class="dot-progress"></span></button>
-        <button class="dot" data-slide="2"><span class="dot-progress"></span></button>
-        <button class="dot" data-slide="3"><span class="dot-progress"></span></button>
-        <button class="dot" data-slide="4"><span class="dot-progress"></span></button>
-        <button class="dot" data-slide="5"><span class="dot-progress"></span></button>
+        <button type="button" class="dot active" data-slide="0" aria-label="Ga naar testimonial 1"><span class="dot-progress"></span></button>
+        <button type="button" class="dot" data-slide="1" aria-label="Ga naar testimonial 2"><span class="dot-progress"></span></button>
+        <button type="button" class="dot" data-slide="2" aria-label="Ga naar testimonial 3"><span class="dot-progress"></span></button>
+        <button type="button" class="dot" data-slide="3" aria-label="Ga naar testimonial 4"><span class="dot-progress"></span></button>
+        <button type="button" class="dot" data-slide="4" aria-label="Ga naar testimonial 5"><span class="dot-progress"></span></button>
+        <button type="button" class="dot" data-slide="5" aria-label="Ga naar testimonial 6"><span class="dot-progress"></span></button>
       </div>
     </div>
   </section>
@@ -802,6 +810,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=17"></script>
+  <script src="js/main.js?v=18"></script>
 </body>
 </html>

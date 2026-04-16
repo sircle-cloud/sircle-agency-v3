@@ -8,9 +8,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 
 /**
- * Extracted validation logic from contact.js lines 66–81.
+ * Extracted validation logic from contact.js.
  * Returns { valid, errors } where errors maps field names to booleans.
+ *
+ * Uses the same email regex as production: requires local part, @, domain with TLD.
  */
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 function validateContactForm({ name, email }) {
   const errors = { name: false, email: false };
   let valid = true;
@@ -20,7 +24,7 @@ function validateContactForm({ name, email }) {
     valid = false;
   }
 
-  if (!email || !email.trim() || !email.includes('@')) {
+  if (!email || !EMAIL_REGEX.test(email.trim())) {
     errors.email = true;
     valid = false;
   }
@@ -92,15 +96,34 @@ describe('Contact form validation', () => {
       expect(result.errors.email).toBe(true);
     });
 
-    // Note: the current validation only checks for @ — these document the weak spots
-    it('accepts email with @ but no domain (weak validation)', () => {
+    // These tests verify the hardened regex rejects inputs the old @-only check accepted
+    it('rejects email with @ but no domain', () => {
       const result = validateContactForm({ name: 'Test', email: 'user@' });
-      expect(result.valid).toBe(true); // current behavior — should arguably fail
+      expect(result.valid).toBe(false);
+      expect(result.errors.email).toBe(true);
     });
 
-    it('accepts email with @ at start (weak validation)', () => {
+    it('rejects email with @ but no local part', () => {
       const result = validateContactForm({ name: 'Test', email: '@domain.com' });
-      expect(result.valid).toBe(true); // current behavior — should arguably fail
+      expect(result.valid).toBe(false);
+      expect(result.errors.email).toBe(true);
+    });
+
+    it('rejects email without a TLD', () => {
+      const result = validateContactForm({ name: 'Test', email: 'user@localhost' });
+      expect(result.valid).toBe(false);
+    });
+
+    it('rejects email with spaces', () => {
+      const result = validateContactForm({ name: 'Test', email: 'user @domain.com' });
+      expect(result.valid).toBe(false);
+    });
+
+    it('accepts common Dutch business emails', () => {
+      expect(validateContactForm({ name: 'T', email: 'hallo@sircle.agency' }).valid).toBe(true);
+      expect(validateContactForm({ name: 'T', email: 'info@bedrijf.nl' }).valid).toBe(true);
+      expect(validateContactForm({ name: 'T', email: 'jan.de.vries@example.co.uk' }).valid).toBe(true);
+      expect(validateContactForm({ name: 'T', email: 'user+tag@domain.com' }).valid).toBe(true);
     });
   });
 
@@ -151,7 +174,7 @@ describe('Contact form DOM behavior', () => {
   });
 
   /**
-   * Simulates the validation + error-class logic from contact.js lines 60–81.
+   * Simulates the validation + error-class logic from contact.js.
    */
   function runFormValidation(formEl) {
     formEl.querySelectorAll('.form-group.error').forEach(g => g.classList.remove('error'));
@@ -165,7 +188,7 @@ describe('Contact form DOM behavior', () => {
       valid = false;
     }
 
-    if (!email.value.trim() || !email.value.includes('@')) {
+    if (!EMAIL_REGEX.test(email.value.trim())) {
       email.closest('.form-group').classList.add('error');
       valid = false;
     }
@@ -181,7 +204,7 @@ describe('Contact form DOM behavior', () => {
     expect(emailGroup.classList.contains('error')).toBe(false);
   });
 
-  it('adds .error to email group when email lacks @', () => {
+  it('adds .error to email group when email is malformed', () => {
     nameField.value = 'Test User';
     emailField.value = 'invalid';
     runFormValidation(form);

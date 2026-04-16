@@ -378,9 +378,20 @@ function initSircleExperience() {
     // Set initial state
     setPhase(0);
   } else {
-    // Mobile: simple staggered reveal for each phase block
+    // Mobile: stacked cards — each phase gets its own inline model image
     phases.forEach((phase, i) => {
       phase.classList.add('is-active');
+
+      // Inject a per-phase model image at the top of each phase card.
+      // This replaces the broken single top-level model on mobile.
+      if (images[i]) {
+        const mobileImg = images[i].cloneNode(true);
+        mobileImg.classList.add('sircle-exp__phase-img');
+        mobileImg.classList.remove('sircle-exp__model-img');
+        mobileImg.removeAttribute('data-phase');
+        phase.insertBefore(mobileImg, phase.firstChild);
+      }
+
       gsap.from(phase, {
         y: 40,
         opacity: 0,
@@ -393,8 +404,6 @@ function initSircleExperience() {
         }
       });
     });
-    // Show first model image
-    if (images[0]) images[0].classList.add('is-active');
   }
 }
 initSircleExperience();
