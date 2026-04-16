@@ -40,6 +40,11 @@ const SITES = [
     label: 'Kanslokaal',
     url: 'https://kanslokaal.nl',
   },
+  {
+    id: 'breinwijzers',
+    label: 'Breinwijzers',
+    url: 'https://breinwijzers.nl',
+  },
 ];
 
 // Cookie banner selectors — ordered from most specific to most generic.

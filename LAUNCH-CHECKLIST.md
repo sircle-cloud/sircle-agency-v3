@@ -101,6 +101,17 @@ Het formulier is klaar, maar heeft een backend-endpoint nodig.
 
 ### 🟡 Belangrijk maar niet blokkerend
 
+#### 5a. Stoneborn visuals vernieuwen (Figma → assets)
+Ik kon de Figma-files voor Stoneborn + Casper Bouman niet direct ophalen —
+Figma blokkeert screenshot-toegang vanaf deze sandbox (403 CloudFront).
+**Wat ik nodig heb:** exporteer de frames die je mooi vindt als PNG/JPG uit Figma
+(`File → Export → 2x PNG`), en zet ze in `assets/cases/` met namen als
+`stoneborn-figma-1.jpg`, `casper-figma-1.jpg`, etc. Ik update dan de case pages.
+
+Figma links voor referentie:
+- Stoneborn: https://www.figma.com/design/npV6YTa75woG0efgAOXhrV/STONEBORN---SIRCLECREATIVE
+- Casper Bouman: https://www.figma.com/design/qMaIUwcSoizZ9n3sCR22Qg/Casper-Bouman
+
 #### 6. Marquee client check
 Op de homepage staat een scrollende marquee met:
 > VLIJT · Redbull · KONE · Dudok · World Skate Center · Casper Bouman · Kanslokaal · 22qMinded · Oceans of Energy · Stoneborn · Breinwijzers
