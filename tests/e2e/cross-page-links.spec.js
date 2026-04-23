@@ -20,6 +20,7 @@ const caseStudies = [
   '/werk/22qminded.html',
   '/werk/breinwijzers.html',
   '/werk/kone.html',
+  '/werk/oceans-of-energy.html',
 ];
 
 test.describe('Cross-page link integrity', () => {
