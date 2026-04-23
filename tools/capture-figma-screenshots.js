@@ -11,11 +11,6 @@ const fs = require('fs');
 
 const FIGMA_FILES = [
   {
-    id: 'stoneborn',
-    label: 'Stoneborn',
-    url: 'https://www.figma.com/design/npV6YTa75woG0efgAOXhrV/STONEBORN---SIRCLECREATIVE?node-id=0-1&t=SQJiVBteum584IJg-1',
-  },
-  {
     id: 'casper-bouman',
     label: 'Casper Bouman',
     url: 'https://www.figma.com/design/qMaIUwcSoizZ9n3sCR22Qg/Casper-Bouman?node-id=0-1&t=5diHet66nXXJJLaA-1',

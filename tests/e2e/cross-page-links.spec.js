@@ -19,7 +19,7 @@ const caseStudies = [
   '/werk/dudok-consulting.html',
   '/werk/22qminded.html',
   '/werk/breinwijzers.html',
-  '/werk/stoneborn.html',
+  '/werk/kone.html',
 ];
 
 test.describe('Cross-page link integrity', () => {
