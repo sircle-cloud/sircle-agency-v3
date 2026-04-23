@@ -21,6 +21,7 @@ const caseStudies = [
   '/werk/breinwijzers.html',
   '/werk/kone.html',
   '/werk/oceans-of-energy.html',
+  '/werk/newlong.html',
 ];
 
 test.describe('Cross-page link integrity', () => {
