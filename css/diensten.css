@@ -72,18 +72,19 @@
 }
 
 /* ---------- SIRCLE MODEL INTERACTIVE ---------- */
-.diensten-model { padding: 120px 0; }
+.diensten-model { padding: 96px 0; }
 
 .model-interactive {
   text-align: center;
-  margin-top: 48px;
+  margin-top: 24px;
 }
 
 .model-image-large {
-  max-width: 700px;
+  max-width: 880px;
   width: 100%;
-  margin: 0 auto 48px;
-  border-radius: 16px;
+  margin: 0 auto 32px;
+  border-radius: 0;
+  display: block;
 }
 
 .model-nav {
