@@ -75,30 +75,28 @@
   <!-- ============================================ -->
   <!-- HERO -->
   <!-- ============================================ -->
-  <section class="sc-hero">
-    <div class="sc-hero-bg">
-      <img src="assets/branding/abstract/abstract-spheres.webp" alt="" class="sc-hero-bg-abstract" loading="lazy">
-      <img src="assets/branding/gradients/gradient-6.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
-      <div class="noise-overlay"></div>
+  <link rel="stylesheet" href="css/sirclepakket.css">
+  <section class="sp-hero">
+    <div class="sp-hero__bg">
+      <img src="assets/images/soham-banerjee-5sJfsX2D3mM-unsplash.jpg" alt="" class="sp-hero__bg-photo" loading="eager">
+      <img src="assets/branding/abstract/abstract-spheres.webp" alt="" class="sp-hero__bg-spiral" loading="lazy" onerror="this.style.display='none'">
     </div>
-    <div class="container">
-      <div class="sc-hero-content">
-        <span class="sc-label hero-reveal">SIRCLECARE</span>
-        <h1 class="hero-reveal">JOUW WEBSITE.<br>ONZE ZORG.</h1>
-        <p class="sc-hero-sub hero-reveal">Premium hosting, proactief onderhoud en persoonlijke support. Zodat jij kunt focussen op wat écht belangrijk is: je business laten groeien.</p>
-        <div class="sc-hero-actions hero-reveal">
-          <a href="#pakketten" class="btn-primary btn-large">Bekijk pakketten <span class="btn-arrow">→</span></a>
-          <a href="contact.html" class="btn-secondary">Vrijblijvend gesprek</a>
+    <div class="sp-hero__content">
+      <span class="sp-hero__label hero-reveal">SircleCare</span>
+      <h1 class="sp-hero__title hero-reveal">Jouw website.<span class="sp-hero__title-accent">Onze zorg.</span></h1>
+      <p class="sp-hero__subtitle hero-reveal">Premium hosting, proactief onderhoud en persoonlijke support. Zodat jij kunt focussen op wat écht belangrijk is: je business laten groeien.</p>
+      <div class="sp-hero__actions hero-reveal">
+        <a href="#pakketten" class="sp-hero__cta">Bekijk pakketten <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="contact.html" class="sp-hero__cta-secondary">Vrijblijvend gesprek →</a>
+      </div>
+      <div class="sp-hero__stats hero-reveal">
+        <div class="sp-hero__stat">
+          <span class="sp-hero__stat-num">99.9%</span>
+          <span class="sp-hero__stat-label">Uptime</span>
         </div>
-        <div class="sc-hero-stats hero-reveal">
-          <div class="sc-stat">
-            <span class="sc-stat-num">99.9%</span>
-            <span class="sc-stat-label">Uptime</span>
-          </div>
-          <div class="sc-stat">
-            <span class="sc-stat-num">24/7</span>
-            <span class="sc-stat-label">Monitoring</span>
-          </div>
+        <div class="sp-hero__stat">
+          <span class="sp-hero__stat-num">24/7</span>
+          <span class="sp-hero__stat-label">Monitoring</span>
         </div>
       </div>
     </div>
@@ -689,7 +687,6 @@
   </section>
 
   <!-- UPSELL: SIRCLE PAKKET -->
-  <link rel="stylesheet" href="css/sirclepakket.css">
   <section class="sp-upsell">
     <div class="sp-upsell__container">
       <div class="sp-upsell__inner">

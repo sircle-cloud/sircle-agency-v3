@@ -30,6 +30,13 @@
 .sp-hero__subtitle { font-size:20px; line-height:1.65; color:rgba(255,255,255,0.82); margin:0 0 40px 0; max-width:580px; font-weight:300; }
 .sp-hero__cta { display:inline-flex; align-items:center; gap:10px; color:#0B2713; text-decoration:none; font-weight:700; padding:16px 32px; border-radius:999px; background:#d4af64; transition:transform .25s ease, box-shadow .25s ease, background .25s ease; }
 .sp-hero__cta:hover { background:#c49a50; transform:translateY(-2px); box-shadow:0 12px 32px rgba(212,175,100,0.28); }
+.sp-hero__actions { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+.sp-hero__cta-secondary { display:inline-flex; align-items:center; gap:8px; padding:16px 24px; color:#fff; text-decoration:none; font-weight:500; font-size:0.95rem; opacity:0.75; transition:opacity .2s ease; }
+.sp-hero__cta-secondary:hover { opacity:1; }
+.sp-hero__stats { display:flex; gap:48px; flex-wrap:wrap; margin-top:56px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.15); max-width:720px; }
+.sp-hero__stat { display:flex; flex-direction:column; }
+.sp-hero__stat-num { font-size:32px; font-weight:700; color:#d4af64; line-height:1; }
+.sp-hero__stat-label { font-size:13px; color:rgba(255,255,255,0.7); margin-top:6px; letter-spacing:0.2px; }
 
 /* =====================================================
    Generic "premium section" wrappers
