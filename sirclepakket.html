@@ -23,27 +23,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/nav-bold.css">
   <link rel="stylesheet" href="css/sirclecare.css">
-  <style>
-    /* ==== SIRCLE Pakket specifics (works alongside sirclecare.css) ==== */
-    .sp-single-pkg-wrap { max-width:720px; margin:0 auto; }
-    .sp-motor-cycle { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:var(--space-md); }
-    .sp-motor-cycle span { display:inline-flex; align-items:center; gap:8px; padding:10px 18px; background:rgba(212,175,100,0.12); border:1px solid rgba(212,175,100,0.35); border-radius:999px; color:#d4af64; font-size:0.9rem; font-weight:600; letter-spacing:0.6px; }
-    .sp-motor-cycle small { opacity:0.7; font-size:0.72rem; }
-    .sp-anchor { max-width:520px; margin:var(--space-md) auto 0 auto; padding:18px 24px; background:rgba(212,175,100,0.08); border:1px dashed rgba(212,175,100,0.4); border-radius:14px; font-size:0.95rem; color:#5a4a28; line-height:1.55; text-align:center; }
-    .sp-anchor strong { color:#8a6a2a; white-space:nowrap; }
-    .sp-addons-card { max-width:860px; margin:var(--space-xl) auto 0 auto; padding:40px 48px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:20px; }
-    .sp-addons-card__label { font-size:0.78rem; letter-spacing:1.6px; text-transform:uppercase; color:#d4af64; font-weight:700; margin-bottom:10px; }
-    .sp-addons-card__title { font-size:1.5rem; font-weight:700; color:#fff; margin-bottom:10px; }
-    .sp-addons-card__intro { font-size:0.98rem; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:24px; }
-    .sp-addons-card__list { list-style:none; padding:0; margin:0; }
-    .sp-addons-card__list li { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:0.98rem; color:rgba(255,255,255,0.88); }
-    .sp-addons-card__list li:last-child { border-bottom:none; }
-    .sp-addons-card__list li strong { color:#d4af64; white-space:nowrap; font-weight:700; }
-    @media (max-width:640px) {
-      .sp-addons-card { padding:28px 24px; }
-      .sp-addons-card__list li { flex-direction:column; align-items:flex-start; gap:4px; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/sirclepakket.css">
 </head>
 <body>
 
@@ -55,7 +35,7 @@
     </filter>
   </svg>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (from sirclestrategy.html pattern) -->
   <nav data-navigation-status="not-active" class="bold-nav" id="nav">
     <div class="bold-nav__bar">
       <a href="index.html" class="bold-nav__logo">
@@ -94,192 +74,208 @@
   </nav>
 
   <!-- ============================================ -->
-  <!-- HERO -->
+  <!-- HERO with Unsplash background -->
   <!-- ============================================ -->
-  <section class="sc-hero">
-    <div class="sc-hero-bg">
-      <img src="assets/branding/abstract/abstract-spiral.webp" alt="" class="sc-hero-bg-abstract" loading="lazy">
-      <img src="assets/branding/gradients/gradient-5.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
-      <div class="noise-overlay"></div>
+  <section class="sp-hero">
+    <div class="sp-hero__bg">
+      <img src="assets/images/benoit-deschasaux-0tHVrVOJ1qU-unsplash.jpg" alt="" loading="eager">
     </div>
-    <div class="container">
-      <div class="sc-hero-content">
-        <span class="sc-label hero-reveal">HET SIRCLE PAKKET</span>
-        <h1 class="sc-hero-title hero-reveal">JOUW MARKETING-<br>MOTOR. ALTIJD AAN.</h1>
-        <p class="sc-hero-sub hero-reveal">Eén partner. Eén team. Eén factuur. Wij bouwen en draaien je volledige marketing-motor: strategie, productie, campagnes en onderhoud. Jij ondernemt, wij zorgen dat alles loopt.</p>
-        <div class="sc-hero-actions hero-reveal">
-          <a href="contact.html" class="btn-primary btn-large">Plan kennismaking <span class="btn-arrow">→</span></a>
-          <a href="#pakket" class="btn-ghost">Bekijk wat erin zit</a>
+    <div class="sp-hero__content">
+      <span class="sp-hero__label">Het SIRCLE Pakket</span>
+      <h1 class="sp-hero__title">Jouw volledige marketing-<br>en creatieve afdeling.<br>Zonder team aan te nemen.</h1>
+      <p class="sp-hero__subtitle">Eén partner. Eén team. Eén factuur. Wij bouwen en draaien je volledige marketing-motor: strategie, productie, campagnes en onderhoud. Altijd in beweging, altijd geolied. Jij ondernemt, wij zorgen dat alles loopt.</p>
+      <a href="#pakket" class="sp-hero__cta">Bekijk wat erin zit <span>↓</span></a>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- VOOR WIE — editorial 2x2 -->
+  <!-- ============================================ -->
+  <section class="sp-section sp-section--cream">
+    <div class="sp-noise"></div>
+    <div class="sp-section__container">
+      <div class="sp-section__header">
+        <span class="sp-section__eyebrow" style="color:#8a7a52">Voor wie is dit?</span>
+        <h2 class="sp-section__title">Herken je jezelf hierin?</h2>
+        <p class="sp-section__text">Het SIRCLE Pakket is gebouwd voor groeiende bedrijven die klaar zijn met versnipperde bureaus en losse freelancers.</p>
+      </div>
+
+      <div class="sp-painfor">
+
+        <div class="sp-painfor__item">
+          <div class="sp-painfor__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <h3 class="sp-painfor__title">Marketing is versnipperd</h3>
+          <p class="sp-painfor__text">Je bedrijf groeit, maar je marketing loopt via 3 freelancers en 2 bureautjes die niet met elkaar praten.</p>
         </div>
+
+        <div class="sp-painfor__item">
+          <div class="sp-painfor__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="sp-painfor__title">Fulltime team is te groot</h3>
+          <p class="sp-painfor__text">Je wil serieus werk maken van merk, content en campagnes, maar een marketingmanager aannemen voelt nog te vroeg.</p>
+        </div>
+
+        <div class="sp-painfor__item">
+          <div class="sp-painfor__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="sp-painfor__title">Je verliest tijd aan aansturen</h3>
+          <p class="sp-painfor__text">Briefen, afstemmen, nabellen. Veel tijd gaat op aan regelen, weinig tijd blijft over voor ondernemen.</p>
+        </div>
+
+        <div class="sp-painfor__item">
+          <div class="sp-painfor__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8 7.1 17.2 8 11.7 4 7.8l5.5-.8L12 2z"/></svg>
+          </div>
+          <h3 class="sp-painfor__title">Je wil samenhang</h3>
+          <p class="sp-painfor__text">Consistente output, een merk dat klopt op elk kanaal, iemand die meedenkt over groei. Niet alleen uitvoert.</p>
+        </div>
+
+      </div>
+
+      <p class="sp-painfor__close">Dan is het SIRCLE Pakket voor jou gebouwd.</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- 5 PIJLERS (met motor-cyclus intro) -->
+  <!-- ============================================ -->
+  <section class="sp-section sp-section--dark" id="pakket">
+    <div class="sp-noise"></div>
+    <div class="sp-glow sp-glow--gold" style="top:-10%;right:-15%"></div>
+    <div class="sp-section__container">
+
+      <div class="sp-motor">
+        <span class="sp-section__eyebrow">Het SIRCLE Model in actie</span>
+        <h2 class="sp-section__title">Je marketing-motor draait elke dag</h2>
+        <p class="sp-section__text">Dit pakket is geen losse diensten naast elkaar. Het is de volledige SIRCLE-cyclus die continu doordraait: we werken vanuit strategie, draaien non-stop productie, rollen campagnes uit en onderhouden alles wat live staat. En we draaien de strategie bij als de markt dat vraagt.</p>
+        <div class="sp-motor__cycle">
+          <span class="sp-motor__step"><span class="sp-motor__step-num">01</span> Strategy</span>
+          <span class="sp-motor__arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+          <span class="sp-motor__step"><span class="sp-motor__step-num">02</span> Production</span>
+          <span class="sp-motor__arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+          <span class="sp-motor__step"><span class="sp-motor__step-num">03</span> Growth</span>
+          <span class="sp-motor__arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+          <span class="sp-motor__step"><span class="sp-motor__step-num">04</span> Care</span>
+        </div>
+      </div>
+
+      <div class="sp-section__header" style="margin-top:80px;">
+        <span class="sp-section__eyebrow">Wat krijg je</span>
+        <h2 class="sp-section__title">Alles wat je nodig hebt. Onder één dak.</h2>
+        <p class="sp-section__text">Vijf pijlers die samen de motor vormen. <strong style="color:#fff;">Inclusief volledige SEO, je website, hosting en onderhoud.</strong> Geen losse contracten voor development of hosting, geen extra facturen. Alles door één team.</p>
+      </div>
+
+      <div class="sp-pillars">
+
+        <div class="sp-pillar">
+          <div class="sp-pillar__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <h3 class="sp-pillar__title">Strategy &amp; Brand</h3>
+          <p class="sp-pillar__subtitle">We houden koers</p>
+          <ul class="sp-pillar__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Kwartaal-strategiesessie (90 min)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Maandelijkse strategy call (30 min)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Brand consistency monitoring</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Campagne-briefings &amp; review</li>
+          </ul>
+        </div>
+
+        <div class="sp-pillar">
+          <div class="sp-pillar__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.12a1.64 1.64 0 0 1 1.67-1.68h1.99c3.05 0 5.56-2.5 5.56-5.56C21.96 6.01 17.46 2 12 2z"/></svg>
+          </div>
+          <h3 class="sp-pillar__title">Creative &amp; Content</h3>
+          <p class="sp-pillar__subtitle">Jouw creatieve team</p>
+          <ul class="sp-pillar__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>24 uur creatief werk/mnd (flex)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>8 social posts + 2 reels/mnd</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Content shoot (halve dag/mnd)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 videoproductie per kwartaal</li>
+          </ul>
+        </div>
+
+        <div class="sp-pillar">
+          <div class="sp-pillar__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <h3 class="sp-pillar__title">Growth &amp; Marketing</h3>
+          <p class="sp-pillar__subtitle">Groei die klopt</p>
+          <ul class="sp-pillar__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Volledige SEO (techniek + content + links)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>4 blogposts/mnd, SEO-geoptimaliseerd</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Google Ads: 2 campagnes, tot €5k spend</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Social media strategie</li>
+          </ul>
+        </div>
+
+        <div class="sp-pillar">
+          <div class="sp-pillar__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="sp-pillar__title">Website &amp; Infra</h3>
+          <p class="sp-pillar__subtitle">Je site blijft top</p>
+          <ul class="sp-pillar__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pro hosting + onderhoud (Care Pro)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Maandelijkse website-updates</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>4 landingpages/jaar flex</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>24/7 performance monitoring</li>
+          </ul>
+        </div>
+
+        <div class="sp-pillar">
+          <div class="sp-pillar__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="sp-pillar__title">Account Management</h3>
+          <p class="sp-pillar__subtitle">Geen ticket-systeem</p>
+          <ul class="sp-pillar__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Dedicated AM (Sebas)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Wekelijkse update per mail</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Directe WhatsApp-lijn</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Kwartaalrapport met resultaten</li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- ============================================ -->
-  <!-- HET SIRCLE MODEL IN ACTIE -->
+  <!-- PRIJS + EXTRAS -->
   <!-- ============================================ -->
-  <section class="section section-dark sc-proof sc-centered">
-    <div class="noise-overlay"></div>
-    <div class="container content-above">
-      <span class="sc-label reveal-up">Het SIRCLE Model in actie</span>
-      <h2 class="sc-section-title reveal-up">DE CYCLUS DIE BLIJFT DRAAIEN</h2>
-      <p class="sc-section-sub reveal-up">Dit pakket is geen losse diensten naast elkaar. Het is de volledige SIRCLE-cyclus die continu doordraait. We werken vanuit strategie, draaien non-stop productie, rollen campagnes uit en onderhouden alles wat live staat. De strategie draaien we bij als de markt dat vraagt.</p>
-
-      <div class="sp-motor-cycle reveal-up">
-        <span><small>01</small> Strategy</span>
-        <span><small>02</small> Production</span>
-        <span><small>03</small> Growth</span>
-        <span><small>04</small> Care</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================ -->
-  <!-- DE 5 PIJLERS -->
-  <!-- ============================================ -->
-  <section class="section section-cream sc-included" id="pakket">
-    <img src="assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
-    <div class="noise-overlay"></div>
-    <div class="container">
-      <span class="sc-label reveal-up">Wat krijg je</span>
-      <h2 class="sc-section-title reveal-up">ALLES ONDER ÉÉN DAK</h2>
-      <p class="sc-section-sub reveal-up">Vijf pijlers die samen de motor vormen. <strong>Inclusief volledige SEO, je website, hosting en onderhoud.</strong> Geen losse contracten voor development of hosting, geen extra facturen. Alles door één team.</p>
-
-      <div class="sc-features-grid">
-        <div class="sc-feature reveal-up" data-delay="0.1">
-          <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-          </div>
-          <h3>Strategy &amp; Brand</h3>
-          <p>Kwartaal-strategiesessie (90 min), maandelijkse strategy call, brand consistency monitoring en campagne-briefings. We houden koers.</p>
-        </div>
-        <div class="sc-feature reveal-up" data-delay="0.15">
-          <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.84-.44-1.13-.29-.29-.44-.65-.44-1.12a1.64 1.64 0 0 1 1.67-1.68h1.99c3.05 0 5.56-2.5 5.56-5.56C21.96 6.01 17.46 2 12 2z"/></svg>
-          </div>
-          <h3>Creative &amp; Content</h3>
-          <p>24 uur creatief werk per maand (flex), 8 social posts + 2 reels, halve dag content shoot en 1 videoproductie per kwartaal.</p>
-        </div>
-        <div class="sc-feature reveal-up" data-delay="0.2">
-          <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          </div>
-          <h3>Growth &amp; Marketing</h3>
-          <p>Volledige SEO (techniek, content, links), 4 blogposts per maand en Google Ads management met 2 campagnes tot €5.000 ad spend.</p>
-        </div>
-        <div class="sc-feature reveal-up" data-delay="0.25">
-          <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3>Website &amp; Infra</h3>
-          <p>Pro hosting + onderhoud, maandelijkse website-updates, 4 landingpages per jaar flex inzetbaar en 24/7 performance monitoring.</p>
-        </div>
-        <div class="sc-feature reveal-up" data-delay="0.3">
-          <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <h3>Account Management</h3>
-          <p>Sebas als vaste contactpersoon, wekelijkse update per mail, directe WhatsApp-lijn en kwartaalrapport met resultaten.</p>
-        </div>
-        <div class="sc-feature reveal-up" data-delay="0.35">
-          <div class="sc-feature-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M12 3v18"/><path d="M3 12h18"/></svg>
-          </div>
-          <h3>Onboarding &amp; Integratie</h3>
-          <p>Eerste week is onboarding: kennismaking, toegangen, brand-check. Vanaf dag 8 leveren we eerste output. Geen maanden wachten.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================ -->
-  <!-- WAAROM PAKKET VS LOS -->
-  <!-- ============================================ -->
-  <section class="section section-dark sc-proof sc-centered">
-    <div class="noise-overlay"></div>
-    <div class="container content-above">
-      <span class="sc-label reveal-up">Waarom het pakket</span>
-      <h2 class="sc-section-title reveal-up">ÉÉN PAKKET, NIET DRIE BUREAUS</h2>
-      <p class="sc-section-sub reveal-up">Klanten die eerst met losse partijen werkten, kozen uiteindelijk voor dit pakket om deze redenen.</p>
-
-      <div class="sc-results-grid">
-        <div class="sc-result-card reveal-up" data-delay="0.1">
-          <div class="sc-result-num">1</div>
-          <div class="sc-result-label">Aanspreekpunt</div>
-          <p>Geen vier accountmanagers die elkaar tegenspreken. Eén persoon die alles weet.</p>
-        </div>
-        <div class="sc-result-card reveal-up" data-delay="0.15">
-          <div class="sc-result-num">5</div>
-          <div class="sc-result-label">Pijlers verbonden</div>
-          <p>Strategie, content, ads en website praten met elkaar. Alles versterkt elkaar, niets verzandt.</p>
-        </div>
-        <div class="sc-result-card reveal-up" data-delay="0.2">
-          <div class="sc-result-num">24/7</div>
-          <div class="sc-result-label">Motor draait</div>
-          <p>Altijd iemand aan het ontwikkelen, monitoren en optimaliseren. Je marketing staat nooit stil.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================ -->
-  <!-- PRICING -->
-  <!-- ============================================ -->
-  <section class="section section-cream sc-pricing" id="pakketten">
-    <img src="assets/branding/gradients/gradient-7.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
-    <div class="noise-overlay"></div>
-    <div class="container">
-      <span class="sc-label reveal-up">Investering</span>
-      <h2 class="sc-section-title reveal-up">ÉÉN PRIJS. GEEN VERRASSINGEN.</h2>
-      <p class="sc-section-sub reveal-up">Alle vijf pijlers inbegrepen. Minimum 6 maanden, daarna maandelijks opzegbaar.</p>
-
-      <div class="sc-pricing-grid sp-single-pkg-wrap">
-
-        <div class="sc-pkg sc-pkg-popular reveal-up" data-delay="0.1">
-          <div class="sc-popular-tag">All-in pakket</div>
-          <div class="sc-pkg-top">
-            <span class="sc-pkg-badge sc-badge-pro">SIRCLE Pakket</span>
-            <div class="sc-pkg-price">€9.500<span>/mnd</span></div>
-            <p class="sc-pkg-year">€114.000 per jaar · minimum 6 maanden</p>
-            <p class="sc-pkg-desc">Jouw volledige marketing- en creatieve afdeling. Eén team, één factuur, altijd in beweging.</p>
-          </div>
-          <div class="sc-pkg-features">
-            <div class="sc-pkg-group-title">Alle 5 pijlers inbegrepen</div>
-            <ul>
-              <li class="included">Strategy &amp; brand (kwartaal-sessies + maandelijkse calls)</li>
-              <li class="included">24u creatief/mnd + content shoot + video per kwartaal</li>
-              <li class="included">Volledige SEO + 4 blogposts/mnd</li>
-              <li class="included">Google Ads: 2 campagnes, tot €5.000 ad spend/mnd</li>
-              <li class="included">Website, hosting &amp; maandelijkse updates</li>
-              <li class="included">4 landingpages per jaar (flex inzetbaar)</li>
-              <li class="included">Dedicated AM (Sebas) + directe WhatsApp-lijn</li>
-              <li class="included">Wekelijkse updates + kwartaalrapport</li>
-            </ul>
-          </div>
-          <div class="sc-pkg-bottom">
-            <p class="sc-pkg-ideal"><strong>Ideaal voor:</strong> Groeiende MKB-bedrijven (10-50 man) die één partner willen in plaats van versnipperde bureaus en freelancers</p>
-            <a href="contact.html" class="sc-pkg-btn sc-pkg-btn-primary">Plan kennismaking →</a>
-          </div>
-        </div>
-
+  <section class="sp-section sp-section--cream">
+    <div class="sp-noise"></div>
+    <div class="sp-section__container">
+      <div class="sp-section__header">
+        <span class="sp-section__eyebrow" style="color:#8a7a52">Prijs</span>
+        <h2 class="sp-section__title">Eén prijs. Geen verrassingen.</h2>
       </div>
 
-      <p class="sp-anchor reveal-up">Dit apart inkopen bij drie bureaus: <strong>±€14.000/mnd</strong>.<br>Bij ons: één team, één factuur, <strong>€9.500</strong>.</p>
-    </div>
-  </section>
+      <div class="sp-price">
+        <span class="sp-price__badge">All-in pakket</span>
+        <div>
+          <span class="sp-price__amount">€9.500</span>
+          <span class="sp-price__period">/mnd</span>
+        </div>
+        <p class="sp-price__terms">
+          excl. BTW · minimum 6 maanden · daarna maandelijks opzegbaar<br>
+          Alle 5 pijlers inbegrepen. Geen setup fee.
+        </p>
+        <p class="sp-price__anchor">Dit apart inkopen bij drie bureaus: <strong>±€14.000/mnd</strong>.<br>Bij ons: één team, één factuur, €9.500.</p>
+        <a href="contact.html" class="sp-price__cta">Plan kennismaking <span>→</span></a>
+        <p class="sp-price__note">Vrijblijvend gesprek van 30 minuten</p>
+      </div>
 
-  <!-- ============================================ -->
-  <!-- ADD-ONS / EXCLUSIEF -->
-  <!-- ============================================ -->
-  <section class="section section-dark sc-pricing" id="add-ons">
-    <div class="noise-overlay"></div>
-    <div class="container">
-      <span class="sc-label reveal-up">Exclusief · optioneel bovenop</span>
-      <h2 class="sc-section-title reveal-up">WAT ER NIET IN ZIT</h2>
-      <p class="sc-section-sub reveal-up">Alles hieronder is optioneel en wordt alleen toegevoegd als je het wil. Transparant, vooraf afgesproken, geen verrassingen op je factuur.</p>
-
-      <div class="sp-addons-card reveal-up">
-        <ul class="sp-addons-card__list">
+      <div class="sp-extras">
+        <p class="sp-extras__label">Exclusief · optioneel bovenop</p>
+        <h3 class="sp-extras__title">Wat er niet in zit</h3>
+        <p class="sp-extras__intro">Alles hieronder is optioneel en wordt alleen toegevoegd als je het wil. Transparant, vooraf afgesproken, geen verrassingen op je factuur.</p>
+        <ul class="sp-extras__list">
           <li><span>Extra advertentieplatform (Meta, LinkedIn of TikTok)</span><strong>+€495/mnd per platform</strong></li>
           <li><span>Ad spend boven €5.000/mnd</span><strong>10% management fee over meerdere</strong></li>
           <li><span>Extra landingpage buiten de 4 per jaar</span><strong>€750 per pagina</strong></li>
@@ -290,7 +286,59 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- FAQ -->
+  <!-- WAAROM PAKKET vs LOS (5 items, 3+2) -->
+  <!-- ============================================ -->
+  <section class="sp-section sp-section--dark">
+    <div class="sp-noise"></div>
+    <div class="sp-glow sp-glow--green" style="bottom:-15%;left:-15%"></div>
+    <div class="sp-section__container">
+      <div class="sp-section__header">
+        <span class="sp-section__eyebrow">Waarom het pakket</span>
+        <h2 class="sp-section__title">Waarom één pakket, en niet drie losse bureaus?</h2>
+      </div>
+
+      <div class="sp-compare">
+        <div class="sp-compare__item">
+          <div class="sp-compare__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h3 class="sp-compare__title">Eén aanspreekpunt</h3>
+          <p class="sp-compare__text">Geen vier accountmanagers die elkaar tegenspreken. Eén persoon die alles weet.</p>
+        </div>
+        <div class="sp-compare__item">
+          <div class="sp-compare__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="sp-compare__title">Dedicated team</h3>
+          <p class="sp-compare__text">Jouw merk wordt geen nummer in de wachtrij. Je team kent je door en door.</p>
+        </div>
+        <div class="sp-compare__item">
+          <div class="sp-compare__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <h3 class="sp-compare__title">Geïntegreerd</h3>
+          <p class="sp-compare__text">Strategie, content, ads en website praten met elkaar. Alles versterkt elkaar.</p>
+        </div>
+        <div class="sp-compare__item">
+          <div class="sp-compare__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3 class="sp-compare__title">Directe WhatsApp</h3>
+          <p class="sp-compare__text">Korte vraag? App Sebas direct. Geen ticket, geen 24u response-tijd.</p>
+        </div>
+        <div class="sp-compare__item">
+          <div class="sp-compare__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 18 3 22 9 12 22 2 9"/><line x1="11" y1="3" x2="7" y2="9"/><line x1="13" y1="3" x2="17" y2="9"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+          </div>
+          <h3 class="sp-compare__title">Meer waarde dan de som</h3>
+          <p class="sp-compare__text">Los afgenomen: ~€9.100. In het pakket: €9.500 incl. dedicated team en directe lijnen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FAQ (using site's sc-faq system) -->
   <!-- ============================================ -->
   <section class="section section-cream sc-faq">
     <div class="noise-overlay"></div>
