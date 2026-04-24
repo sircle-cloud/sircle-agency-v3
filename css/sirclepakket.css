@@ -25,7 +25,7 @@
 .sp-hero__content { position:relative; z-index:3; width:90%; max-width:1200px; margin:0 auto; }
 .sp-hero__content > * { max-width:900px; }
 .sp-hero__label { display:inline-block; font-size:13px; letter-spacing:2.4px; text-transform:uppercase; color:#d4af64; padding:8px 18px; border:1px solid rgba(212,175,100,0.4); border-radius:999px; margin-bottom:32px; font-weight:600; background:rgba(212,175,100,0.06); backdrop-filter:blur(6px); }
-.sp-hero__title { font-size:clamp(40px, 7vw, 88px); font-weight:700; line-height:1.0; margin-bottom:28px; color:#fff; text-transform:uppercase; letter-spacing:-0.03em; }
+.sp-hero__title { font-size:clamp(40px, 7vw, 88px); font-weight:700; line-height:0.95; margin-bottom:28px; color:#fff; text-transform:uppercase; letter-spacing:-0.05em; word-spacing:-0.08em; }
 .sp-hero__title-accent { display:block; color:#d4af64; margin-top:0.12em; }
 .sp-hero__subtitle { font-size:20px; line-height:1.65; color:rgba(255,255,255,0.82); margin:0 0 40px 0; max-width:580px; font-weight:300; }
 .sp-hero__cta { display:inline-flex; align-items:center; gap:10px; color:#0B2713; text-decoration:none; font-weight:700; padding:16px 32px; border-radius:999px; background:#d4af64; transition:transform .25s ease, box-shadow .25s ease, background .25s ease; }
