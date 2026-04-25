@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — pagina niet gevonden | sircle.agency</title>
+  <meta name="description" content="Verdwaald op sircle.agency? Speel even een rondje Sircle-Snake en vind je weg terug naar home.">
+  <meta name="robots" content="noindex,follow">
+  <meta property="og:title" content="404 — pagina niet gevonden | sircle.agency">
+  <meta property="og:description" content="Verdwaald op sircle.agency? Speel even een rondje Sircle-Snake en vind je weg terug naar home.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://sircle.agency/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="assets/svg/svg-black-S.svg">
+  <link rel="apple-touch-icon" href="assets/svg/svg-black-S.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=33">
+  <link rel="stylesheet" href="css/nav-bold.css?v=14">
+  <link rel="stylesheet" href="css/sirclepakket.css">
+
+  <style>
+    /* ───────── 404 / Sircle-Snake ───────── */
+    .notfound {
+      min-height: 100vh;
+      background: var(--dark-green);
+      color: var(--cream);
+      padding: 140px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .notfound__container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 880px) {
+      .notfound__container { grid-template-columns: 1fr; gap: 48px; }
+    }
+    .notfound__intro { max-width: 520px; }
+    .notfound__eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #d4af64;
+      border: 1px solid rgba(212, 175, 100, 0.4);
+      border-radius: 999px;
+      padding: 8px 16px;
+      margin-bottom: 24px;
+    }
+    .notfound__title {
+      font-family: 'Kulim Park', sans-serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin: 0 0 24px;
+    }
+    .notfound__title .sp-hero__title-accent {
+      display: block;
+      color: #d4af64;
+      margin-top: 0.12em;
+    }
+    .notfound__subtitle {
+      font-size: 18px;
+      line-height: 1.55;
+      color: rgba(243, 239, 232, 0.78);
+      margin: 0 0 32px;
+    }
+    .notfound__home {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #d4af64;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212, 175, 100, 0.4);
+      padding-bottom: 4px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .notfound__home:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* Game panel */
+    .snake {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .snake__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(243, 239, 232, 0.6);
+    }
+    .snake__top strong {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 18px;
+      margin-left: 8px;
+      letter-spacing: 0;
+    }
+    .snake__canvas-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.6),
+                  0 0 0 1px rgba(242, 226, 164, 0.08);
+      background: #0C180F;
+    }
+    #snake-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .snake-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(12, 24, 15, 0.86);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      transition: opacity 0.25s;
+    }
+    .snake-overlay--hidden {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+    .snake-overlay__title {
+      font-family: 'Kulim Park', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 12px;
+    }
+    .snake-overlay__body {
+      font-size: 15px;
+      line-height: 1.5;
+      color: rgba(243, 239, 232, 0.78);
+      max-width: 320px;
+      margin: 0 0 24px;
+    }
+    .snake-overlay__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #d4af64;
+      color: #0C180F;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      font-family: 'Kulim Park', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: transform 0.15s, background 0.2s;
+    }
+    .snake-overlay__cta:hover { background: var(--gold); transform: translateY(-1px); }
+
+    .snake__controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .snake__btn {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(243, 239, 232, 0.25);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-family: 'Kulim Park', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .snake__btn:hover { border-color: #d4af64; color: #d4af64; }
+    .snake__btn--primary {
+      background: #d4af64;
+      color: #0C180F;
+      border-color: #d4af64;
+    }
+    .snake__btn--primary:hover { background: var(--gold); border-color: var(--gold); color: #0C180F; }
+
+    /* Mobile dpad */
+    .snake__dpad {
+      display: none;
+      grid-template-columns: repeat(3, 56px);
+      grid-template-rows: repeat(3, 56px);
+      gap: 6px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    @media (max-width: 720px) {
+      .snake__dpad { display: grid; }
+    }
+    .snake__dpad-btn {
+      background: rgba(243, 239, 232, 0.06);
+      border: 1px solid rgba(243, 239, 232, 0.2);
+      color: var(--cream);
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .snake__dpad-btn:active { background: rgba(212, 175, 100, 0.2); border-color: #d4af64; }
+    .snake__dpad-btn--up { grid-column: 2; grid-row: 1; }
+    .snake__dpad-btn--left { grid-column: 1; grid-row: 2; }
+    .snake__dpad-btn--right { grid-column: 3; grid-row: 2; }
+    .snake__dpad-btn--down { grid-column: 2; grid-row: 3; }
+
+    .snake__status {
+      margin: 0 0 12px;
+      font-size: 13px;
+      color: rgba(243, 239, 232, 0.55);
+      text-align: center;
+      letter-spacing: 0.04em;
+      min-height: 18px;
+      transition: color 0.2s;
+    }
+    .snake__status--active { color: #d4af64; }
+    .snake__hint {
+      margin-top: 18px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      color: rgba(243, 239, 232, 0.45);
+    }
+    @media (max-width: 720px) {
+      .snake__hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BOLD FULLSCREEN NAVIGATION (kopie van index.html) -->
+  <nav data-navigation-status="not-active" class="bold-nav" id="nav">
+    <div class="bold-nav__bar">
+      <a href="index.html" class="bold-nav__logo">
+        <img src="assets/svg/svg-white-logo1.svg" alt="sircle agency" class="bold-nav__logo-white">
+        <img src="assets/svg/svg-black-logo1.svg" alt="sircle agency" class="bold-nav__logo-dark">
+      </a>
+      <div class="bold-nav__desktop-links">
+        <a href="diensten.html">Diensten</a>
+        <a href="werk.html">Werk</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button type="button" data-navigation-toggle="toggle" aria-label="Menu openen" class="bold-nav__hamburger">
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+      </button>
+    </div>
+    <div class="bold-nav__tile">
+      <ul class="bold-nav__ul">
+        <li class="bold-nav__li"><a href="index.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Home</span></a></li>
+        <li class="bold-nav__li"><a href="diensten.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Diensten</span></a></li>
+        <li class="bold-nav__li"><a href="werk.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Werk</span></a></li>
+        <li class="bold-nav__li"><a href="over-ons.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Over ons</span></a></li>
+        <li class="bold-nav__li"><a href="contact.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Contact</span></a></li>
+      </ul>
+      <div class="bold-nav__bottom">
+        <div class="bold-nav__bottom-left">
+          <p class="bold-nav__word">Den Haag, Nederland</p>
+          <a href="tel:+31852129145" class="bold-nav__word bold-nav__phone">+31 85 212 91 45</a>
+        </div>
+        <div class="bold-nav__bottom-right">
+          <div class="bold-nav__socials">
+            <a href="https://www.linkedin.com/company/sirclecreative" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.instagram.com/sircle.agency" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/@sirclecreative" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </div>
+          <a href="mailto:hello@sircle.agency" class="bold-nav__word">hello@sircle.agency</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 404 SECTIE -->
+  <section class="notfound">
+    <div class="notfound__container">
+
+      <div class="notfound__intro">
+        <span class="notfound__eyebrow">404 — pagina niet gevonden</span>
+        <h1 class="notfound__title">Verdwaald?<span class="sp-hero__title-accent">Speel even mee.</span></h1>
+        <p class="notfound__subtitle">Deze pagina bestaat niet (meer). Maar je bent nu hier — pak even een rondje Sircle-Snake. <strong style="color:#d4af64;font-weight:600;">Doel:</strong> eet 20 gouden stippen. <strong style="color:#d4af64;font-weight:600;">Vermijd:</strong> de cijfers 4-0-4 én jezelf. Druk een pijltoets om te bewegen.</p>
+        <a href="index.html" class="notfound__home">Of ga direct terug naar home →</a>
+      </div>
+
+      <div class="snake">
+        <div class="snake__top">
+          <span>Score <strong id="snake-score">0</strong> / 20</span>
+          <span>Highscore <strong id="snake-highscore">0</strong></span>
+        </div>
+        <p class="snake__status" id="snake-status">Klaar? Druk Start spelen.</p>
+
+        <div class="snake__canvas-wrap">
+          <canvas id="snake-canvas" width="480" height="480"
+                  aria-label="Sircle-Snake minigame. Gebruik pijltoetsen of WASD om te bewegen, spatie om te pauzeren."
+                  role="img"></canvas>
+
+          <div class="snake-overlay" id="snake-overlay">
+            <h2 class="snake-overlay__title">Sircle-Snake</h2>
+            <p class="snake-overlay__body">Eet 20 gouden stippen. Raak de cijfers 4-0-4 niet, en bijt niet in je eigen staart.</p>
+            <button type="button" class="snake-overlay__cta">Start spelen</button>
+          </div>
+        </div>
+
+        <div class="snake__controls">
+          <button type="button" class="snake__btn snake__btn--primary" id="snake-start">Start</button>
+          <button type="button" class="snake__btn" id="snake-pause">Pauze</button>
+          <a href="index.html" class="snake__btn">Naar home</a>
+        </div>
+
+        <div class="snake__dpad" aria-hidden="true">
+          <button type="button" class="snake__dpad-btn snake__dpad-btn--up" data-snake-dir="up" aria-label="Omhoog">↑</button>
+          <button type="button" class="snake__dpad-btn snake__dpad-btn--left" data-snake-dir="left" aria-label="Links">←</button>
+          <button type="button" class="snake__dpad-btn snake__dpad-btn--right" data-snake-dir="right" aria-label="Rechts">→</button>
+          <button type="button" class="snake__dpad-btn snake__dpad-btn--down" data-snake-dir="down" aria-label="Omlaag">↓</button>
+        </div>
+
+        <p class="snake__hint">Pijltoetsen of WASD · Spatie = pauze</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER (kopie van index.html) -->
+  <footer class="footer">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="index.html"><img src="assets/svg/svg-white-logo1.svg" alt="sircle agency" class="footer-logo"></a>
+          <address>
+            Zwaardstraat 16<br>
+            2584 TX Den Haag
+          </address>
+          <div class="footer-contact">
+            <a href="mailto:hello@sircle.agency">hello@sircle.agency</a>
+            <a href="tel:+31852129145">+31 85 212 91 45</a>
+          </div>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/sirclecreative" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.instagram.com/sircle.agency" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/@sirclecreative" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <p class="footer-tagline">"Every brand has a story worth telling."</p>
+          <div class="footer-divider"></div>
+          <h4>Diensten</h4>
+          <nav>
+            <a href="sirclestrategy.html">SircleStrategy</a>
+            <a href="sirclestudio.html">SircleStudio</a>
+            <a href="sirclegrowth.html">SircleGrowth</a>
+            <a href="sirclecare.html">SircleCare</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Pagina's</h4>
+          <nav>
+            <a href="werk.html">Werk</a>
+            <a href="over-ons.html">Over ons</a>
+            <a href="journal.html">Journal</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <div class="footer-divider"></div>
+          <a href="https://sirclesolutions.nl" class="footer-external" target="_blank">Sircle Solutions</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 sircle.agency · <a href="privacy.html" class="footer-link-subtle">Privacybeleid</a> &middot; <a href="voorwaarden.html" class="footer-link-subtle">Algemene voorwaarden</a></p>
+        <p class="footer-legal">KVK: 78204240</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="js/main.js?v=19"></script>
+  <script src="js/snake-404.js?v=20260425c"></script>
+</body>
+</html>
