@@ -200,6 +200,9 @@
 .sp-promo__cta-primary:hover { background:#c49a50; transform:translateY(-2px); box-shadow:0 12px 32px rgba(212,175,100,0.28); }
 .sp-promo__cta-secondary { display:inline-flex; align-items:center; gap:8px; padding:16px 24px; color:#fff; text-decoration:none; font-weight:500; font-size:0.95rem; opacity:0.75; transition:opacity .2s ease; }
 .sp-promo__cta-secondary:hover { opacity:1; }
+.sp-promo__alt { margin:20px 0 0; font-size:0.9rem; color:rgba(255,255,255,0.6); }
+.sp-promo__alt a { color:#d4af64; text-decoration:none; border-bottom:1px solid rgba(212,175,100,0.4); padding-bottom:1px; transition:border-color .2s, color .2s; }
+.sp-promo__alt a:hover { color:#F2E2A4; border-color:#F2E2A4; }
 
 .sp-promo__card { background:linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%); border:1px solid rgba(255,255,255,0.12); border-radius:24px; padding:48px; backdrop-filter:blur(20px); }
 .sp-promo__card-label { font-size:0.78rem; letter-spacing:1.6px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:10px; }
@@ -238,6 +241,25 @@
   .sp-upsell { padding:40px 0; }
   .sp-upsell__inner { padding:24px; gap:20px; }
   .sp-upsell__title { font-size:1.2rem; }
+}
+
+/* =====================================================
+   PROJECTEN/MAATWERK NOTE — for service pages
+   Soft text-only block before sp-upsell band
+   ===================================================== */
+.sc-projects-note { padding:48px 0 16px; background:#fff; }
+.sc-projects-note__container { max-width:780px; width:92%; margin:0 auto; text-align:center; }
+.sc-projects-note__eyebrow { font-size:0.72rem; letter-spacing:1.8px; text-transform:uppercase; color:#d4af64; font-weight:700; margin:0 0 10px; }
+.sc-projects-note__title { font-size:1.35rem; font-weight:700; color:#0B2713; line-height:1.3; margin:0 0 12px; }
+.sc-projects-note__text { font-size:0.95rem; color:rgba(11,39,19,0.7); line-height:1.6; margin:0 0 22px; max-width:580px; margin-left:auto; margin-right:auto; }
+.sc-projects-note__cta { display:inline-flex; align-items:center; gap:8px; color:#0B2713; text-decoration:none; font-weight:600; font-size:0.95rem; border-bottom:1px solid rgba(11,39,19,0.4); padding-bottom:2px; transition:border-color .2s, color .2s; }
+.sc-projects-note__cta:hover { color:#d4af64; border-color:#d4af64; }
+.sc-projects-note__cta svg { transition:transform .2s; }
+.sc-projects-note__cta:hover svg { transform:translateX(3px); }
+
+@media (max-width:640px) {
+  .sc-projects-note { padding:36px 0 12px; }
+  .sc-projects-note__title { font-size:1.15rem; }
 }
 
 /* =====================================================
