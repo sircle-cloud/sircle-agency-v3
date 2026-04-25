@@ -2,6 +2,26 @@
 /* DIENSTEN PAGE STYLES                        */
 /* ============================================ */
 
+/* Phase-CTA alt line — "ook per project" */
+.phase-cta__alt {
+  margin: 16px 0 0;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+.section-dark .phase-cta__alt { color: rgba(243, 239, 232, 0.6); }
+.section-cream .phase-cta__alt { color: rgba(11, 39, 19, 0.6); }
+.phase-cta__alt a {
+  color: #d4af64;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(212, 175, 100, 0.4);
+  padding-bottom: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.phase-cta__alt a:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
 /* ---------- HERO ---------- */
 .diensten-hero {
   position: relative;
