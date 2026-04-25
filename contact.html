@@ -242,10 +242,16 @@
 
         <!-- RIGHT: Form -->
         <div class="contact-form-wrapper reveal-up" data-delay="0.2">
-          <!-- IMPORTANT: replace the action URL with your real Formspree endpoint
-               (or other backend). Sign up at https://formspree.io, create a form,
-               and paste the endpoint here. Without this, submissions are NOT sent. -->
-          <form class="contact-form" id="contact-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID" method="POST" novalidate>
+          <!-- Submissions worden afgehandeld door Web3Forms en doorgestuurd naar
+               hello@sirclecreative.com (later hello@sircle.agency). 250 free/mnd. -->
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="09f4704b-a2b3-46c9-b8ad-3acdff9f7c33">
+            <input type="hidden" name="subject" value="Nieuw bericht via sircle.agency contactformulier">
+            <input type="hidden" name="from_name" value="sircle.agency">
+            <input type="hidden" name="redirect" value="false">
+            <!-- Honeypot anti-spam: bots vullen dit veld in, mensen niet -->
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
             <div class="form-group">
               <label for="name">Naam *</label>
               <input type="text" id="name" name="name" required autocomplete="name" placeholder="Je volledige naam">
