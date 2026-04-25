@@ -2,6 +2,17 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Fix relative paths when GitHub Pages serves this 404 for a non-existent
+    // deeppath (e.g. /sirclegrowth.html/404). Without a base, css/js/assets
+    // would resolve against the fake folder. Set base per host: github.io
+    // staging keeps the project subpath, sircle.agency works from root.
+    (function(){
+      var prefix = '/';
+      if (location.hostname === 'sircle-cloud.github.io') prefix = '/sircle-agency-v3/';
+      document.write('<base href="' + prefix + '">');
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 — pagina niet gevonden | sircle.agency</title>
   <meta name="description" content="Verdwaald op sircle.agency? Speel even een rondje Sircle-Snake en vind je weg terug naar home.">
