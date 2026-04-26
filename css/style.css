@@ -1980,7 +1980,7 @@ address { font-style: normal; }
   display: flex;
   gap: 32px;
   white-space: nowrap;
-  animation: marqueeScroll 25s linear infinite;
+  animation: marqueeScroll 37.5s linear infinite;
   width: max-content;
 }
 
