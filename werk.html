@@ -40,6 +40,8 @@
     .portfolio-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 32px 80px rgba(0,0,0,0.35); }
     .portfolio-card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8) brightness(0.75); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.6s ease; }
     .portfolio-card:hover img { transform: scale(1.05); filter: saturate(0.9) brightness(0.85); }
+    .portfolio-card .case-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none; z-index: 1; transition: opacity 0.5s ease; }
+    .portfolio-card:hover .case-video { opacity: 1; }
     .portfolio-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,25,12,0.9) 0%, rgba(7,25,12,0.3) 40%, transparent 100%); z-index: 1; }
     .portfolio-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; z-index: 2; transform: translateY(8px); opacity: 0.85; transition: all 0.5s cubic-bezier(0.16,1,0.3,1); }
     .portfolio-card:hover .portfolio-card-info { transform: translateY(0); opacity: 1; }
@@ -268,6 +270,7 @@
         <!-- VLIJT TANDARTSEN -->
         <a href="werk/vlijt-tandartsen.html" class="portfolio-card featured" data-categories="strategy production growth">
           <img src="assets/cases/screenshots/vlijt-hero.jpg" alt="VLIJT Tandartsen — vlijttandartsen.nl" loading="lazy">
+          <video class="case-video" src="assets/cases/vlijt-reel.mp4" muted loop playsinline preload="none"></video>
           <div class="portfolio-card-overlay"></div>
           <div class="portfolio-card-info">
             <h3>VLIJT Tandartsen</h3>

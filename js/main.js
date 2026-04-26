@@ -1792,3 +1792,18 @@ initPageTransitions();
   window.addEventListener('scroll', updateNavTheme, { passive: true });
   updateNavTheme();
 })();
+
+// ---- CASE CARD HOVER VIDEOS ----
+(function () {
+  document.querySelectorAll('.case-video').forEach(function (video) {
+    const card = video.closest('.case-card, .sc-portfolio-item, .sp-proof__case, .portfolio-card');
+    if (!card) return;
+    card.addEventListener('mouseenter', function () {
+      video.play().catch(function () {});
+    });
+    card.addEventListener('mouseleave', function () {
+      video.pause();
+      video.currentTime = 0;
+    });
+  });
+})();

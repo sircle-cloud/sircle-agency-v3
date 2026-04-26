@@ -1950,6 +1950,44 @@ address { font-style: normal; }
   color: var(--dark-green);
 }
 
+/* ---------- CASE HOVER VIDEO ---------- */
+.case-image,
+.sc-portfolio-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.case-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.case-card:hover .case-video,
+.sc-portfolio-item:hover .case-video {
+  opacity: 1;
+}
+
+/* sp-proof__case (sirclepakket) hover video */
+.sp-proof__case {
+  position: relative;
+  overflow: hidden;
+}
+
+.sp-proof__case .case-video {
+  border-radius: inherit;
+}
+
+.sp-proof__case:hover .case-video {
+  opacity: 1;
+}
+
 /* ---------- MARQUEE ---------- */
 .marquee {
   overflow: hidden;
