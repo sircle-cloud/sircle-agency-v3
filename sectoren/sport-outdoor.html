@@ -39,23 +39,30 @@
     .zorg-card-info h3 { font-size: 22px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }
     .zorg-card-info .tags { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
     .zorg-card-info p { font-size: 14px; color: var(--soft-green); margin-top: 10px; line-height: 1.55; }
-    @media (max-width: 767px) {
-      .zorg-cases-grid { grid-template-columns: 1fr; gap: 16px; }
-    }
-    .zorg-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: var(--space-lg) auto 0; }
-    .zorg-pillar { padding: 28px 24px; background: rgba(12,24,15,0.04); border: 1px solid rgba(12,24,15,0.08); border-radius: 16px; transition: background 0.3s ease, border-color 0.3s ease; }
-    .zorg-pillar:hover { background: rgba(12,24,15,0.07); border-color: rgba(212,175,100,0.4); }
-    .zorg-pillar__num { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: var(--cream); background: var(--dark-green); padding: 3px 10px; border-radius: 100px; margin-bottom: 12px; }
-    .zorg-pillar h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark-green); margin: 0 0 10px; }
-    .zorg-pillar p { font-size: 0.92rem; color: rgba(12,24,15,0.72); line-height: 1.55; margin: 0; }
-    .zorg-pillar a.zorg-pillar__link { display: inline-block; margin-top: 12px; color: #b8923f; font-size: 0.82rem; font-weight: 600; text-decoration: none; }
-    .zorg-pillar a.zorg-pillar__link:hover { color: var(--dark-green); }
-    @media (max-width: 900px) {
-      .zorg-pillars { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 540px) {
-      .zorg-pillars { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 767px) { .zorg-cases-grid { grid-template-columns: 1fr; gap: 16px; } }
+    .zorg-challenges { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 980px; margin: var(--space-lg) auto 0; }
+    .zorg-challenge { padding: 28px 26px; background: rgba(12,24,15,0.04); border: 1px solid rgba(12,24,15,0.08); border-radius: 16px; transition: background 0.3s ease, border-color 0.3s ease; }
+    .zorg-challenge:hover { background: rgba(12,24,15,0.07); border-color: rgba(212,175,100,0.4); }
+    .zorg-challenge h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark-green); margin: 0 0 10px; }
+    .zorg-challenge p { font-size: 0.9rem; color: rgba(12,24,15,0.72); line-height: 1.55; margin: 0; }
+    @media (max-width: 767px) { .zorg-challenges { grid-template-columns: 1fr; } }
+    .zorg-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: var(--space-lg) auto 0; padding: 40px 0; border-top: 1px solid rgba(212,175,100,0.3); border-bottom: 1px solid rgba(212,175,100,0.3); }
+    .zorg-stat { text-align: center; }
+    .zorg-stat__num { display: block; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: var(--gold); margin-bottom: 8px; line-height: 1; }
+    .zorg-stat__label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft-green); }
+    @media (max-width: 600px) { .zorg-stats { grid-template-columns: 1fr; gap: 32px; } }
+    .zorg-whyus { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 32px; max-width: 880px; margin: var(--space-lg) auto 0; }
+    .zorg-whyus-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; }
+    .zorg-whyus-item svg { flex-shrink: 0; color: var(--mid-green); margin-top: 4px; }
+    .zorg-whyus-item strong { display: block; font-size: 1rem; color: var(--dark-green); margin-bottom: 4px; }
+    .zorg-whyus-item p { font-size: 0.9rem; color: rgba(12,24,15,0.72); line-height: 1.5; margin: 0; }
+    @media (max-width: 767px) { .zorg-whyus { grid-template-columns: 1fr; gap: 8px; } }
+    .zorg-testimonial { padding: var(--space-xl) 0; text-align: center; }
+    .zorg-testimonial__quote { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 300; line-height: 1.45; color: var(--white); font-style: italic; margin: 0 auto 32px; max-width: 820px; }
+    .zorg-testimonial__quote::before { content: "\201C"; color: var(--gold); margin-right: 6px; font-style: normal; }
+    .zorg-testimonial__quote::after { content: "\201D"; color: var(--gold); margin-left: 6px; font-style: normal; }
+    .zorg-testimonial__author { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); }
+    .zorg-testimonial__author span { color: var(--soft-green); font-weight: 400; text-transform: none; letter-spacing: 0; }
   </style>
   <script type="application/ld+json">
 {
@@ -137,15 +144,46 @@
     </div>
   </section>
 
-  <!-- OPLOSSINGEN -->
+  <!-- INDUSTRY CHALLENGES -->
   <section class="section section-cream sc-included">
-    <img src="../assets/branding/gradients/gradient-1.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <img src="../assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
     <div class="noise-overlay"></div>
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <span class="sc-label reveal-up">Onze oplossingen</span>
+        <span class="sc-label reveal-up">Uitdagingen in sport & outdoor</span>
+        <h2 class="sc-section-title reveal-up">VAN PRESTATIE NAAR PLATFORM</h2>
+        <p class="sc-section-sub reveal-up">Topsporters en coaches hebben prestaties — maar geen positionering. Een persoonlijk merk vraagt om dezelfde discipline als een corporate.</p>
+      </div>
+      <div class="zorg-challenges reveal-up">
+        <div class="zorg-challenge">
+          <h3>Prestatie ≠ positionering</h3>
+          <p>Topsporter zijn is één ding. Aantrekkelijk worden voor sponsors, speakers-bureaus en publiek vraagt om bewuste merkopbouw.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Sponsors verwachten platform</h3>
+          <p>Niet alleen Insta-volgers, maar een professioneel platform met media-kit, cases en pers-content.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Verhaal vertellen op niveau</h3>
+          <p>Sportbeelden zijn ge-commodified. Je merk onderscheidt zich door cinematic kwaliteit en een eigen verhaal.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Carrière-fase begeleiden</h3>
+          <p>Actieve carrière, transitie of na-loopbaan — elk vraagt om een ander platform en andere positionering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPLOSSINGEN -->
+  <section class="section section-cream sc-included">
+    <img src="../assets/branding/gradients/gradient-5.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Onze oplossingen voor sport & outdoor</span>
         <h2 class="sc-section-title reveal-up">WAT WE VOOR SPORT & OUTDOOR BOUWEN</h2>
-        <p class="sc-section-sub reveal-up">Drie pijlers waarmee topsporters, coaches en outdoor-merken hun verhaal omzetten in een professioneel platform.</p>
+        <p class="sc-section-sub reveal-up">Vijf pijlers waarmee topsporters, coaches en outdoor-merken hun verhaal omzetten in een professioneel platform.</p>
       </div>
       <div class="sc-webdev-features reveal-up" style="max-width: 880px; margin: var(--space-lg) auto 0;">
         <div class="sc-webdev-feature">
@@ -169,44 +207,88 @@
             <p>Schaalbaar voor instellingen, events en booking. Van persoonlijke website tot multi-event platform.</p>
           </div>
         </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <div>
+            <strong>Persoonlijke branding</strong>
+            <p>Een merkidentiteit die past bij wie je bent én bij waar je heen wil. Niet generiek, niet copy-paste.</p>
+          </div>
+        </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <div>
+            <strong>Sponsor & boekings-funnels</strong>
+            <p>SEO en content die speakers-bureaus, sponsors en evenementen-organisatoren naar je toe trekken.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SIRCLE MODEL -->
-  <section class="section section-cream sc-included">
-    <img src="../assets/branding/gradients/gradient-7.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+  <!-- STATS -->
+  <section class="section section-dark sc-proof">
+    <img src="../assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
     <div class="noise-overlay"></div>
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <span class="sc-label reveal-up">Het SIRCLE Model voor sport & outdoor</span>
-        <h2 class="sc-section-title reveal-up">VAN PRESTATIE TOT PLATFORM</h2>
-        <p class="sc-section-sub reveal-up">Vier pijlers, één team. Strategie, productie, groei en beheer — afgestemd op de carrière en het ritme van topsport.</p>
+        <span class="sc-label reveal-up" style="color: var(--gold);">Waarom Sircle voor sport & outdoor</span>
+        <h2 class="sc-section-title reveal-up" style="color: var(--white);">SPECIALISTEN MET TRACK-RECORD</h2>
+        <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">Niet zomaar een agency. Een partner die de praktijk en doelgroepen écht kent.</p>
       </div>
-      <div class="zorg-pillars reveal-up">
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">01</span>
-          <h3>Strategy</h3>
-          <p>Persoonlijke positionering die je onderscheidt voor sponsors, partners én publiek.</p>
-          <a href="../sirclestrategy.html" class="zorg-pillar__link">Bekijk SircleStrategy →</a>
+      <div class="zorg-stats reveal-up">
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">Olympisch niveau</span>
+          <span class="zorg-stat__label">Track-record (Casper Bouman)</span>
         </div>
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">02</span>
-          <h3>Production</h3>
-          <p>Cinematische films en strakke websites die premium voelen — passend bij topsport.</p>
-          <a href="../sirclestudio.html" class="zorg-pillar__link">Bekijk SircleStudio →</a>
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">Cinematic</span>
+          <span class="zorg-stat__label">Eigen film-team</span>
         </div>
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">03</span>
-          <h3>Growth</h3>
-          <p>SEO en social die je bereik en boekingen voor speakers en evenementen vergroten.</p>
-          <a href="../sirclegrowth.html" class="zorg-pillar__link">Bekijk SircleGrowth →</a>
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">Speaker-ready</span>
+          <span class="zorg-stat__label">Platforms die boekingen genereren</span>
         </div>
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">04</span>
-          <h3>Care</h3>
-          <p>Doorlopend onderhoud van site, media-kit en content. Altijd up-to-date met seizoensresultaten.</p>
-          <a href="../sirclecare.html" class="zorg-pillar__link">Bekijk SircleCare →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section section-cream sc-included">
+    <img src="../assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Onze sterktes voor sport & outdoor</span>
+        <h2 class="sc-section-title reveal-up">WAT JE VAN ONS MAG VERWACHTEN</h2>
+      </div>
+      <div class="zorg-whyus reveal-up">
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Topsport-ervaring</strong>
+            <p>Casper Bouman — 2× wereldkampioen windsurfen, Olympisch bondscoach. We kennen het niveau.</p>
+          </div>
+        </div>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Cinematic film-DNA</strong>
+            <p>Onze films werken in zowel sport als sponsorpresentaties. Beide niveaus tegelijk.</p>
+          </div>
+        </div>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Persoonlijke merk-strategie</strong>
+            <p>We bouwen niet alleen een logo. We bouwen een verhaal dat je carrière dient — nu en straks.</p>
+          </div>
+        </div>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Platform-thinking</strong>
+            <p>Website, media-kit, social en pers-content als één geheel. Klaar voor sponsors, speakers, partners.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -214,11 +296,11 @@
 
   <!-- CASES -->
   <section class="section section-dark sc-proof" id="cases">
-    <img src="../assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <img src="../assets/branding/gradients/gradient-7.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
     <div class="noise-overlay"></div>
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <span class="sc-label reveal-up" style="color: var(--gold);">Werk in Sport & Outdoor</span>
+        <span class="sc-label reveal-up" style="color: var(--gold);">Werk in sport & outdoor</span>
         <h2 class="sc-section-title reveal-up" style="color: var(--white);">SPORT & OUTDOOR CASES</h2>
         <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">Van wereldkampioen windsurfen tot urban skate-venue. Persoonlijke merken en instellingen op het hoogste niveau.</p>
       </div>
@@ -254,6 +336,16 @@
       <div style="text-align: center; margin-top: var(--space-lg);">
         <a href="../werk.html" class="btn-ghost" style="color: var(--cream); border-color: rgba(242,226,164,0.4);">Bekijk al ons werk <span>→</span></a>
       </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section section-dark zorg-testimonial">
+    <img src="../assets/branding/gradients/gradient-1.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <p class="zorg-testimonial__quote reveal-up">Sebas heeft de Stichting Outdoor Therapie enorm geholpen. De professionaliteit was meteen hoog. Hij inspireert en brengt andere bedrijven naar een hoger level.</p>
+      <p class="zorg-testimonial__author reveal-up" data-delay="0.1">Manouk Vernij <span>· Outdoor Therapie</span></p>
     </div>
   </section>
 

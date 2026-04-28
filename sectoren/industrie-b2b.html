@@ -39,23 +39,30 @@
     .zorg-card-info h3 { font-size: 22px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }
     .zorg-card-info .tags { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
     .zorg-card-info p { font-size: 14px; color: var(--soft-green); margin-top: 10px; line-height: 1.55; }
-    @media (max-width: 767px) {
-      .zorg-cases-grid { grid-template-columns: 1fr; gap: 16px; }
-    }
-    .zorg-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: var(--space-lg) auto 0; }
-    .zorg-pillar { padding: 28px 24px; background: rgba(12,24,15,0.04); border: 1px solid rgba(12,24,15,0.08); border-radius: 16px; transition: background 0.3s ease, border-color 0.3s ease; }
-    .zorg-pillar:hover { background: rgba(12,24,15,0.07); border-color: rgba(212,175,100,0.4); }
-    .zorg-pillar__num { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: var(--cream); background: var(--dark-green); padding: 3px 10px; border-radius: 100px; margin-bottom: 12px; }
-    .zorg-pillar h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark-green); margin: 0 0 10px; }
-    .zorg-pillar p { font-size: 0.92rem; color: rgba(12,24,15,0.72); line-height: 1.55; margin: 0; }
-    .zorg-pillar a.zorg-pillar__link { display: inline-block; margin-top: 12px; color: #b8923f; font-size: 0.82rem; font-weight: 600; text-decoration: none; }
-    .zorg-pillar a.zorg-pillar__link:hover { color: var(--dark-green); }
-    @media (max-width: 900px) {
-      .zorg-pillars { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 540px) {
-      .zorg-pillars { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 767px) { .zorg-cases-grid { grid-template-columns: 1fr; gap: 16px; } }
+    .zorg-challenges { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 980px; margin: var(--space-lg) auto 0; }
+    .zorg-challenge { padding: 28px 26px; background: rgba(12,24,15,0.04); border: 1px solid rgba(12,24,15,0.08); border-radius: 16px; transition: background 0.3s ease, border-color 0.3s ease; }
+    .zorg-challenge:hover { background: rgba(12,24,15,0.07); border-color: rgba(212,175,100,0.4); }
+    .zorg-challenge h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark-green); margin: 0 0 10px; }
+    .zorg-challenge p { font-size: 0.9rem; color: rgba(12,24,15,0.72); line-height: 1.55; margin: 0; }
+    @media (max-width: 767px) { .zorg-challenges { grid-template-columns: 1fr; } }
+    .zorg-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: var(--space-lg) auto 0; padding: 40px 0; border-top: 1px solid rgba(212,175,100,0.3); border-bottom: 1px solid rgba(212,175,100,0.3); }
+    .zorg-stat { text-align: center; }
+    .zorg-stat__num { display: block; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: var(--gold); margin-bottom: 8px; line-height: 1; }
+    .zorg-stat__label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft-green); }
+    @media (max-width: 600px) { .zorg-stats { grid-template-columns: 1fr; gap: 32px; } }
+    .zorg-whyus { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 32px; max-width: 880px; margin: var(--space-lg) auto 0; }
+    .zorg-whyus-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; }
+    .zorg-whyus-item svg { flex-shrink: 0; color: var(--mid-green); margin-top: 4px; }
+    .zorg-whyus-item strong { display: block; font-size: 1rem; color: var(--dark-green); margin-bottom: 4px; }
+    .zorg-whyus-item p { font-size: 0.9rem; color: rgba(12,24,15,0.72); line-height: 1.5; margin: 0; }
+    @media (max-width: 767px) { .zorg-whyus { grid-template-columns: 1fr; gap: 8px; } }
+    .zorg-testimonial { padding: var(--space-xl) 0; text-align: center; }
+    .zorg-testimonial__quote { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 300; line-height: 1.45; color: var(--white); font-style: italic; margin: 0 auto 32px; max-width: 820px; }
+    .zorg-testimonial__quote::before { content: "\201C"; color: var(--gold); margin-right: 6px; font-style: normal; }
+    .zorg-testimonial__quote::after { content: "\201D"; color: var(--gold); margin-left: 6px; font-style: normal; }
+    .zorg-testimonial__author { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); }
+    .zorg-testimonial__author span { color: var(--soft-green); font-weight: 400; text-transform: none; letter-spacing: 0; }
   </style>
   <script type="application/ld+json">
 {
@@ -137,15 +144,46 @@
     </div>
   </section>
 
-  <!-- OPLOSSINGEN -->
+  <!-- INDUSTRY CHALLENGES -->
   <section class="section section-cream sc-included">
-    <img src="../assets/branding/gradients/gradient-1.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <img src="../assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
     <div class="noise-overlay"></div>
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <span class="sc-label reveal-up">Onze oplossingen</span>
+        <span class="sc-label reveal-up">Uitdagingen in industrie & B2B</span>
+        <h2 class="sc-section-title reveal-up">COMPLEXE PRODUCTEN, LANGE SALES-CYCLES</h2>
+        <p class="sc-section-sub reveal-up">Industriële en B2B-spelers verkopen niet via een impulsknop. Inhoud, vertrouwen en lange consideratie-fasen vragen om gerichte content.</p>
+      </div>
+      <div class="zorg-challenges reveal-up">
+        <div class="zorg-challenge">
+          <h3>Technische propositie helder vertalen</h3>
+          <p>Engineers begrijpen het. Inkopers, CFO's en eindgebruikers niet. Eén site moet meerdere talen spreken.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Lange sales-cycles ondersteunen</h3>
+          <p>Een deal komt na 6-18 maanden touchpoints. Content moet die hele reis voeden — niet alleen de eerste klik.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Internationaal bereik bouwen</h3>
+          <p>Klanten in EU, US en Asia verwachten lokaal niveau. Multi-language sites zijn uitdaging én noodzaak.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Sales-team enabelen</h3>
+          <p>Marketing levert leads, sales gebruikt verouderde decks. De gap tussen die twee is dé groeibottleneck.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPLOSSINGEN -->
+  <section class="section section-cream sc-included">
+    <img src="../assets/branding/gradients/gradient-5.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Onze oplossingen voor industrie & B2B</span>
         <h2 class="sc-section-title reveal-up">WAT WE VOOR INDUSTRIE & B2B BOUWEN</h2>
-        <p class="sc-section-sub reveal-up">Drie pijlers die complexe propositie omzetten in begrijpelijke verhalen — en bezoekers in pipeline.</p>
+        <p class="sc-section-sub reveal-up">Vijf pijlers die complexe propositie omzetten in begrijpelijke verhalen — en bezoekers in pipeline.</p>
       </div>
       <div class="sc-webdev-features reveal-up" style="max-width: 880px; margin: var(--space-lg) auto 0;">
         <div class="sc-webdev-feature">
@@ -169,44 +207,88 @@
             <p>Brand kits die multi-market consistent toepassen. Master-files, design systems en governance — schaalbaar.</p>
           </div>
         </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+          <div>
+            <strong>Sales collateral & decks</strong>
+            <p>Pitch-decks, brochures en case studies die je sales-team daadwerkelijk gebruikt. On-brand, up-to-date, downloadbaar.</p>
+          </div>
+        </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><polygon points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <div>
+            <strong>Content & lead-nurturing</strong>
+            <p>Whitepapers, LinkedIn content en e-mail-flows die qualified pipeline opbouwen tijdens lange consideratie-fasen.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SIRCLE MODEL -->
+  <!-- STATS -->
+  <section class="section section-dark sc-proof">
+    <img src="../assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up" style="color: var(--gold);">Waarom Sircle voor industrie & b2b</span>
+        <h2 class="sc-section-title reveal-up" style="color: var(--white);">SPECIALISTEN MET TRACK-RECORD</h2>
+        <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">Niet zomaar een agency. Een partner die de praktijk en doelgroepen écht kent.</p>
+      </div>
+      <div class="zorg-stats reveal-up">
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">6+</span>
+          <span class="zorg-stat__label">Industrie & B2B cases</span>
+        </div>
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">Multi-language</span>
+          <span class="zorg-stat__label">Sites en content standaard</span>
+        </div>
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">Internationaal</span>
+          <span class="zorg-stat__label">EU + US + Asia ervaring</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
   <section class="section section-cream sc-included">
     <img src="../assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
     <div class="noise-overlay"></div>
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <span class="sc-label reveal-up">Het SIRCLE Model voor industrie & B2B</span>
-        <h2 class="sc-section-title reveal-up">VAN PROPOSITIE TOT PIPELINE</h2>
-        <p class="sc-section-sub reveal-up">Vier pijlers, één team. Strategie, productie, groei en beheer — afgestemd op B2B-sales-cycles.</p>
+        <span class="sc-label reveal-up">Onze sterktes voor industrie & B2B</span>
+        <h2 class="sc-section-title reveal-up">WAT JE VAN ONS MAG VERWACHTEN</h2>
       </div>
-      <div class="zorg-pillars reveal-up">
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">01</span>
-          <h3>Strategy</h3>
-          <p>Heldere propositie en messaging-architectuur voor complexe producten en doelgroepen.</p>
-          <a href="../sirclestrategy.html" class="zorg-pillar__link">Bekijk SircleStrategy →</a>
+      <div class="zorg-whyus reveal-up">
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>B2B & industrie ervaring</strong>
+            <p>KONE, Newlong, Oceans of Energy, DCSA, Mapiq — we kennen het ritme van complexe sales.</p>
+          </div>
         </div>
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">02</span>
-          <h3>Production</h3>
-          <p>Websites, brand films en sales-collateral die je sales-team daadwerkelijk gebruikt.</p>
-          <a href="../sirclestudio.html" class="zorg-pillar__link">Bekijk SircleStudio →</a>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Filmmaker DNA</strong>
+            <p>Brand films van cinematic kwaliteit die lange sales-cycles versterken. Geen corporate sleep video's.</p>
+          </div>
         </div>
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">03</span>
-          <h3>Growth</h3>
-          <p>SEO, content en LinkedIn-strategie die qualified pipeline opbouwen.</p>
-          <a href="../sirclegrowth.html" class="zorg-pillar__link">Bekijk SircleGrowth →</a>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Multi-language CMS</strong>
+            <p>Websites die EU + US + Asia bedienen vanuit één systeem. Geen governance-chaos.</p>
+          </div>
         </div>
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">04</span>
-          <h3>Care</h3>
-          <p>Multi-language CMS, doorlopend onderhoud en site governance op enterprise niveau.</p>
-          <a href="../sirclecare.html" class="zorg-pillar__link">Bekijk SircleCare →</a>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Sales-marketing alignment</strong>
+            <p>We bouwen niet alleen marketing-content, maar ook sales-collateral. De hele funnel.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -214,11 +296,11 @@
 
   <!-- CASES -->
   <section class="section section-dark sc-proof" id="cases">
-    <img src="../assets/branding/gradients/gradient-5.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <img src="../assets/branding/gradients/gradient-7.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
     <div class="noise-overlay"></div>
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <span class="sc-label reveal-up" style="color: var(--gold);">Werk in Industrie & B2B</span>
+        <span class="sc-label reveal-up" style="color: var(--gold);">Werk in industrie & b2b</span>
         <h2 class="sc-section-title reveal-up" style="color: var(--white);">INDUSTRIE & B2B PROJECTEN</h2>
         <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">Van wereldwijde fabrikant tot offshore innovator. Cases waar techniek, merk en sales samenkomen.</p>
       </div>
@@ -281,6 +363,16 @@
       <div style="text-align: center; margin-top: var(--space-lg);">
         <a href="../werk.html" class="btn-ghost" style="color: var(--cream); border-color: rgba(242,226,164,0.4);">Bekijk al ons werk <span>→</span></a>
       </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section section-dark zorg-testimonial">
+    <img src="../assets/branding/gradients/gradient-1.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <p class="zorg-testimonial__quote reveal-up">No detail is left out, exactly as no problem is left unattended. They truly show that they value their customers. Cannot recommend enough.</p>
+      <p class="zorg-testimonial__author reveal-up" data-delay="0.1">Sebastian Rafiroiu <span>· Newlong</span></p>
     </div>
   </section>
 

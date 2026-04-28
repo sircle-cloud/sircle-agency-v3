@@ -39,23 +39,30 @@
     .zorg-card-info h3 { font-size: 22px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }
     .zorg-card-info .tags { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
     .zorg-card-info p { font-size: 14px; color: var(--soft-green); margin-top: 10px; line-height: 1.55; }
-    @media (max-width: 767px) {
-      .zorg-cases-grid { grid-template-columns: 1fr; gap: 16px; }
-    }
-    .zorg-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: var(--space-lg) auto 0; }
-    .zorg-pillar { padding: 28px 24px; background: rgba(12,24,15,0.04); border: 1px solid rgba(12,24,15,0.08); border-radius: 16px; transition: background 0.3s ease, border-color 0.3s ease; }
-    .zorg-pillar:hover { background: rgba(12,24,15,0.07); border-color: rgba(212,175,100,0.4); }
-    .zorg-pillar__num { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: var(--cream); background: var(--dark-green); padding: 3px 10px; border-radius: 100px; margin-bottom: 12px; }
-    .zorg-pillar h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark-green); margin: 0 0 10px; }
-    .zorg-pillar p { font-size: 0.92rem; color: rgba(12,24,15,0.72); line-height: 1.55; margin: 0; }
-    .zorg-pillar a.zorg-pillar__link { display: inline-block; margin-top: 12px; color: #b8923f; font-size: 0.82rem; font-weight: 600; text-decoration: none; }
-    .zorg-pillar a.zorg-pillar__link:hover { color: var(--dark-green); }
-    @media (max-width: 900px) {
-      .zorg-pillars { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 540px) {
-      .zorg-pillars { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 767px) { .zorg-cases-grid { grid-template-columns: 1fr; gap: 16px; } }
+    .zorg-challenges { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 980px; margin: var(--space-lg) auto 0; }
+    .zorg-challenge { padding: 28px 26px; background: rgba(12,24,15,0.04); border: 1px solid rgba(12,24,15,0.08); border-radius: 16px; transition: background 0.3s ease, border-color 0.3s ease; }
+    .zorg-challenge:hover { background: rgba(12,24,15,0.07); border-color: rgba(212,175,100,0.4); }
+    .zorg-challenge h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark-green); margin: 0 0 10px; }
+    .zorg-challenge p { font-size: 0.9rem; color: rgba(12,24,15,0.72); line-height: 1.55; margin: 0; }
+    @media (max-width: 767px) { .zorg-challenges { grid-template-columns: 1fr; } }
+    .zorg-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: var(--space-lg) auto 0; padding: 40px 0; border-top: 1px solid rgba(212,175,100,0.3); border-bottom: 1px solid rgba(212,175,100,0.3); }
+    .zorg-stat { text-align: center; }
+    .zorg-stat__num { display: block; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: var(--gold); margin-bottom: 8px; line-height: 1; }
+    .zorg-stat__label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft-green); }
+    @media (max-width: 600px) { .zorg-stats { grid-template-columns: 1fr; gap: 32px; } }
+    .zorg-whyus { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 32px; max-width: 880px; margin: var(--space-lg) auto 0; }
+    .zorg-whyus-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; }
+    .zorg-whyus-item svg { flex-shrink: 0; color: var(--mid-green); margin-top: 4px; }
+    .zorg-whyus-item strong { display: block; font-size: 1rem; color: var(--dark-green); margin-bottom: 4px; }
+    .zorg-whyus-item p { font-size: 0.9rem; color: rgba(12,24,15,0.72); line-height: 1.5; margin: 0; }
+    @media (max-width: 767px) { .zorg-whyus { grid-template-columns: 1fr; gap: 8px; } }
+    .zorg-testimonial { padding: var(--space-xl) 0; text-align: center; }
+    .zorg-testimonial__quote { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 300; line-height: 1.45; color: var(--white); font-style: italic; margin: 0 auto 32px; max-width: 820px; }
+    .zorg-testimonial__quote::before { content: "\201C"; color: var(--gold); margin-right: 6px; font-style: normal; }
+    .zorg-testimonial__quote::after { content: "\201D"; color: var(--gold); margin-left: 6px; font-style: normal; }
+    .zorg-testimonial__author { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); }
+    .zorg-testimonial__author span { color: var(--soft-green); font-weight: 400; text-transform: none; letter-spacing: 0; }
   </style>
   <script type="application/ld+json">
 {
@@ -137,15 +144,46 @@
     </div>
   </section>
 
-  <!-- OPLOSSINGEN -->
+  <!-- INDUSTRY CHALLENGES -->
   <section class="section section-cream sc-included">
     <img src="../assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
     <div class="noise-overlay"></div>
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <span class="sc-label reveal-up">Onze oplossingen</span>
+        <span class="sc-label reveal-up">Uitdagingen in vastgoed</span>
+        <h2 class="sc-section-title reveal-up">DE COMPLEXITEIT ACHTER ELKE DEAL</h2>
+        <p class="sc-section-sub reveal-up">Vastgoed beweegt snel, maar je merkpositie hapert? Daar zit vaak meer achter dan alleen prijs of locatie.</p>
+      </div>
+      <div class="zorg-challenges reveal-up">
+        <div class="zorg-challenge">
+          <h3>Premium positionering vasthouden</h3>
+          <p>Het verschil tussen high-end en mid-market zit in subtiele design-keuzes. Kleine ontsporingen in beeld of tone of voice ondermijnen de prijspositie.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Internationaal én lokaal merk</h3>
+          <p>Globale klanten verwachten internationale uitstraling, lokale partners willen herkenbaarheid. Eén merk, twee niveaus.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Listings verkopen niet meer alleen</h3>
+          <p>Pure foto's en plattegronden volstaan niet meer. Bezoekers willen sfeer, verhaal en betrouwbaarheid voelen.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Snelle markt, trage marketing</h3>
+          <p>Kansen openen en sluiten in dagen. Marketing- en content-cycle moet meebewegen, niet maandenlang traineren.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPLOSSINGEN -->
+  <section class="section section-cream sc-included">
+    <img src="../assets/branding/gradients/gradient-5.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Onze oplossingen voor vastgoed</span>
         <h2 class="sc-section-title reveal-up">WAT WE VOOR VASTGOED BOUWEN</h2>
-        <p class="sc-section-sub reveal-up">Drie pijlers waarmee vastgoedmerken zich onderscheiden — van eerste impressie tot getekende deal.</p>
+        <p class="sc-section-sub reveal-up">Vijf pijlers waarmee vastgoedmerken zich onderscheiden — van eerste impressie tot getekende deal.</p>
       </div>
       <div class="sc-webdev-features reveal-up" style="max-width: 880px; margin: var(--space-lg) auto 0;">
         <div class="sc-webdev-feature">
@@ -163,50 +201,94 @@
           </div>
         </div>
         <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <div>
+            <strong>High-end fotografie & video</strong>
+            <p>Cinematic property tours en lifestyle-content. Beelden die tonen wat tekst niet kan vertellen.</p>
+          </div>
+        </div>
+        <div class="sc-webdev-feature">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           <div>
             <strong>Lead-gen voor brokers</strong>
             <p>SEO, content en campagnes die kopers en huurders aantrekken. Mijlpalen, niet vanity-metrics.</p>
           </div>
         </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          <div>
+            <strong>Multi-language platforms</strong>
+            <p>Internationaal CMS-architectuur. Eén systeem, meerdere markten — zonder governance-chaos.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SIRCLE MODEL -->
-  <section class="section section-cream sc-included">
-    <img src="../assets/branding/gradients/gradient-5.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+  <!-- STATS -->
+  <section class="section section-dark sc-proof">
+    <img src="../assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
     <div class="noise-overlay"></div>
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <span class="sc-label reveal-up">Het SIRCLE Model voor vastgoed</span>
-        <h2 class="sc-section-title reveal-up">VAN POSITIONERING TOT DEAL</h2>
-        <p class="sc-section-sub reveal-up">Vier pijlers, één team. Strategie, productie, groei en beheer — afgestemd op vastgoedcyclussen.</p>
+        <span class="sc-label reveal-up" style="color: var(--gold);">Waarom Sircle voor vastgoed</span>
+        <h2 class="sc-section-title reveal-up" style="color: var(--white);">SPECIALISTEN MET TRACK-RECORD</h2>
+        <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">Niet zomaar een agency. Een partner die de praktijk en doelgroepen écht kent.</p>
       </div>
-      <div class="zorg-pillars reveal-up">
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">01</span>
-          <h3>Strategy</h3>
-          <p>Positionering die past bij de marktsegmentatie. Premium, mid-market of internationaal.</p>
-          <a href="../sirclestrategy.html" class="zorg-pillar__link">Bekijk SircleStrategy →</a>
+      <div class="zorg-stats reveal-up">
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">3+</span>
+          <span class="zorg-stat__label">Vastgoedmerken bediend</span>
         </div>
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">02</span>
-          <h3>Production</h3>
-          <p>Branding en website die signature-status uitstralen. Fotografie, typografie, microcopy.</p>
-          <a href="../sirclestudio.html" class="zorg-pillar__link">Bekijk SircleStudio →</a>
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">Premium</span>
+          <span class="zorg-stat__label">Brand-niveau standaard</span>
         </div>
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">03</span>
-          <h3>Growth</h3>
-          <p>SEO en campagnes die qualified leads opleveren. Niet zomaar bezoekers.</p>
-          <a href="../sirclegrowth.html" class="zorg-pillar__link">Bekijk SircleGrowth →</a>
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">4–6 wkn</span>
+          <span class="zorg-stat__label">Doorlooptijd brand-applications</span>
         </div>
-        <div class="zorg-pillar">
-          <span class="zorg-pillar__num">04</span>
-          <h3>Care</h3>
-          <p>Doorlopend onderhoud van portfolio-systemen, listings en CMS. Geen IT-stress.</p>
-          <a href="../sirclecare.html" class="zorg-pillar__link">Bekijk SircleCare →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section section-cream sc-included">
+    <img src="../assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Onze sterktes voor vastgoed</span>
+        <h2 class="sc-section-title reveal-up">WAT JE VAN ONS MAG VERWACHTEN</h2>
+      </div>
+      <div class="zorg-whyus reveal-up">
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Bewezen vastgoed-track-record</strong>
+            <p>Frank Knight, JLL en Savills — wij begrijpen het premium segment van internationale spelers.</p>
+          </div>
+        </div>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Premium design DNA</strong>
+            <p>Onze ontwerpers werken op het niveau dat luxury vastgoed verdient. Geen template-uitstraling.</p>
+          </div>
+        </div>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Multi-language CMS expertise</strong>
+            <p>Schaalbare platforms die meerdere markten en talen aankunnen, zonder dat content-managers vastlopen.</p>
+          </div>
+        </div>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Lokale + internationale SEO</strong>
+            <p>Vindbaar in Den Haag én bij Londense investeerders. Twee strategieën, één merk.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -218,7 +300,7 @@
     <div class="noise-overlay"></div>
     <div class="container">
       <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-        <span class="sc-label reveal-up" style="color: var(--gold);">Werk in Vastgoed</span>
+        <span class="sc-label reveal-up" style="color: var(--gold);">Werk in vastgoed</span>
         <h2 class="sc-section-title reveal-up" style="color: var(--white);">VASTGOEDMERKEN DIE WIJ BEDIENEN</h2>
         <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">Strategische adviseurs van internationale allure. Onze grafische bijdragen — variërend van presentaties tot brochures — versterken hun marktpositie.</p>
       </div>
@@ -254,6 +336,16 @@
       <div style="text-align: center; margin-top: var(--space-lg);">
         <a href="../werk.html" class="btn-ghost" style="color: var(--cream); border-color: rgba(242,226,164,0.4);">Bekijk al ons werk <span>→</span></a>
       </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section section-dark zorg-testimonial">
+    <img src="../assets/branding/gradients/gradient-1.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <p class="zorg-testimonial__quote reveal-up">Prima geholpen bij het uitrollen van de marketing strategie en onlangs hebben we zelfs een geheel nieuwe website gelanceerd. Zijn kwaliteiten? To-the-point, snel, creatief, eerlijk en transparant.</p>
+      <p class="zorg-testimonial__author reveal-up" data-delay="0.1">Gwen Dudok van Heel <span>· Dudok Consulting</span></p>
     </div>
   </section>
 
