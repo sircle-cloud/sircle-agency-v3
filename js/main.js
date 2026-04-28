@@ -1795,7 +1795,7 @@ initPageTransitions();
 
 // ---- CASE CARD HOVER VIDEOS ----
 (function () {
-  document.querySelectorAll('.case-video').forEach(function (video) {
+  document.querySelectorAll('.hover-reel').forEach(function (video) {
     const card = video.closest('.case-card, .sc-portfolio-item, .sp-proof__case, .portfolio-card');
     if (!card) return;
     card.addEventListener('mouseenter', function () {

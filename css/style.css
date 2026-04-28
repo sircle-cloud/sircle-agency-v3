@@ -1957,7 +1957,7 @@ address { font-style: normal; }
   overflow: hidden;
 }
 
-.case-video {
+.hover-reel {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1969,8 +1969,8 @@ address { font-style: normal; }
   transition: opacity 0.5s ease;
 }
 
-.case-card:hover .case-video,
-.sc-portfolio-item:hover .case-video {
+.case-card:hover .hover-reel,
+.sc-portfolio-item:hover .hover-reel {
   opacity: 1;
 }
 
@@ -1980,11 +1980,11 @@ address { font-style: normal; }
   overflow: hidden;
 }
 
-.sp-proof__case .case-video {
+.sp-proof__case .hover-reel {
   border-radius: inherit;
 }
 
-.sp-proof__case:hover .case-video {
+.sp-proof__case:hover .hover-reel {
   opacity: 1;
 }
 
