@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zorg — sircle.agency | Marketing voor klinieken & zorginstellingen</title>
+  <meta name="description" content="Strategie, branding en groei voor klinieken, zorginstellingen en medische platforms. Van eerste consult tot online vindbaarheid.">
+  <meta property="og:title" content="Zorg — sircle.agency">
+  <meta property="og:description" content="Strategie, branding en groei voor klinieken, zorginstellingen en medische platforms.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sircle.agency/sectoren/zorg.html">
+  <meta property="og:image" content="https://sircle.agency/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sircle.agency/assets/og-image.jpg">
+  <link rel="canonical" href="https://sircle.agency/sectoren/zorg.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/svg/svg-black-S.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="../assets/favicons/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=34">
+  <link rel="stylesheet" href="../css/nav-bold.css?v=14">
+  <link rel="stylesheet" href="../css/sirclecare.css?v=2">
+  <link rel="stylesheet" href="../css/sirclepakket.css">
+  <style>
+    /* Zorg-specifieke layout — portfolio cards in subfolder */
+    .zorg-cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: var(--space-lg) auto 0; }
+    .zorg-card { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), box-shadow 0.7s ease; display: block; text-decoration: none; cursor: pointer; }
+    .zorg-card.zorg-card--static { cursor: default; }
+    .zorg-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 32px 80px rgba(0,0,0,0.35); }
+    .zorg-card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8) brightness(0.7); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.6s ease; }
+    .zorg-card:hover img { transform: scale(1.05); filter: saturate(0.9) brightness(0.8); }
+    .zorg-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,25,12,0.92) 0%, rgba(7,25,12,0.4) 45%, transparent 100%); z-index: 1; }
+    .zorg-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px; z-index: 2; }
+    .zorg-card-info h3 { font-size: 22px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }
+    .zorg-card-info .tags { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+    .zorg-card-info p { font-size: 14px; color: var(--soft-green); margin-top: 10px; line-height: 1.55; }
+    @media (max-width: 767px) {
+      .zorg-cases-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+    /* Pillar grid for SIRCLE Model link */
+    .zorg-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: var(--space-lg) auto 0; }
+    .zorg-pillar { padding: 28px 24px; background: rgba(12,24,15,0.04); border: 1px solid rgba(12,24,15,0.08); border-radius: 16px; transition: background 0.3s ease, border-color 0.3s ease; }
+    .zorg-pillar:hover { background: rgba(12,24,15,0.07); border-color: rgba(212,175,100,0.4); }
+    .zorg-pillar__num { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: var(--cream); background: var(--dark-green); padding: 3px 10px; border-radius: 100px; margin-bottom: 12px; }
+    .zorg-pillar h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark-green); margin: 0 0 10px; }
+    .zorg-pillar p { font-size: 0.92rem; color: rgba(12,24,15,0.72); line-height: 1.55; margin: 0; }
+    .zorg-pillar a.zorg-pillar__link { display: inline-block; margin-top: 12px; color: #b8923f; font-size: 0.82rem; font-weight: 600; text-decoration: none; }
+    .zorg-pillar a.zorg-pillar__link:hover { color: var(--dark-green); }
+    @media (max-width: 900px) {
+      .zorg-pillars { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .zorg-pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+  <!-- SCHEMA.ORG JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Zorg — sircle.agency",
+  "url": "https://sircle.agency/sectoren/zorg.html",
+  "description": "Strategie, branding en groei voor klinieken, zorginstellingen en medische platforms.",
+  "inLanguage": "nl",
+  "isPartOf": { "@id": "https://sircle.agency/#website" }
+}
+  </script>
+</head>
+<body>
+
+  <!-- PAGE TRANSITION OVERLAY -->
+  <div class="page-transition" id="page-transition">
+    <div class="page-transition__panel page-transition__panel--1"></div>
+    <div class="page-transition__panel page-transition__panel--2"></div>
+  </div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <div class="cursor-label">Bekijk</div>
+  </div>
+
+  <!-- NOISE SVG FILTER -->
+  <svg class="svg-defs"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></svg>
+
+  <!-- NAVIGATION -->
+  <nav data-navigation-status="not-active" class="bold-nav" id="nav">
+    <div class="bold-nav__bar">
+      <a href="../index.html" class="bold-nav__logo">
+        <img src="../assets/svg/svg-white-logo1.svg" alt="sircle agency" class="bold-nav__logo-white">
+        <img src="../assets/svg/svg-black-logo1.svg" alt="sircle agency" class="bold-nav__logo-dark">
+      </a>
+      <div class="bold-nav__desktop-links">
+        <a href="../diensten.html">Diensten</a>
+        <a href="../werk.html">Werk</a>
+        <a href="../over-ons.html">Over ons</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+      <button type="button" data-navigation-toggle="toggle" aria-label="Menu openen" class="bold-nav__hamburger">
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+      </button>
+    </div>
+    <div class="bold-nav__tile">
+      <ul class="bold-nav__ul">
+        <li class="bold-nav__li"><a href="../index.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Home</span></a></li>
+        <li class="bold-nav__li"><a href="../diensten.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Diensten</span></a></li>
+        <li class="bold-nav__li"><a href="../werk.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Werk</span></a></li>
+        <li class="bold-nav__li"><a href="../over-ons.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Over ons</span></a></li>
+        <li class="bold-nav__li"><a href="../contact.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Contact</span></a></li>
+      </ul>
+      <div class="bold-nav__bottom">
+        <div class="bold-nav__bottom-left">
+          <p class="bold-nav__word">Den Haag, Nederland</p>
+          <a href="tel:+31852129145" class="bold-nav__word bold-nav__phone">+31 85 212 91 45</a>
+        </div>
+        <div class="bold-nav__bottom-right">
+          <a href="mailto:hello@sircle.agency" class="bold-nav__word">hello@sircle.agency</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- HERO -->
+  <!-- ============================================ -->
+  <section class="sp-hero">
+    <img src="../assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <span class="sp-hero__eyebrow"><span class="sp-hero__eyebrow-dot"></span> Sectoren · Zorg</span>
+      <h1 class="sp-hero__title hero-reveal">Merken die behandelen<span class="sp-hero__title-accent">Wij helpen patiënten vinden</span></h1>
+      <p class="sp-hero__sub">Strategie, branding en groei voor klinieken, zorginstellingen en medische platforms. Van eerste consult tot online vindbaarheid.</p>
+      <div class="sp-hero__ctas">
+        <a href="../contact.html" class="sp-hero__cta-primary">Plan een kennismaking <span>→</span></a>
+        <a href="#cases" class="sp-hero__cta-secondary">Bekijk zorg-cases →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- PIJNPUNTEN IN DE ZORG -->
+  <!-- ============================================ -->
+  <section class="section section-cream sc-included">
+    <img src="../assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Herkenbaar?</span>
+        <h2 class="sc-section-title reveal-up">DE ZORG VRAAGT MEER DAN ZORG</h2>
+        <p class="sc-section-sub reveal-up">Goede zorg leveren is één ding. Online gevonden worden, vertrouwen wekken én groeien is een vak apart.</p>
+      </div>
+
+      <div class="sc-webdev-features reveal-up" style="max-width: 880px; margin: var(--space-lg) auto 0;">
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/></svg>
+          <div>
+            <strong>Patiëntenwerving stagneert</strong>
+            <p>Mond-tot-mond werkt nog, maar online vindt niemand jullie. Concurrentie 2 km verderop staat wél bovenaan in Google.</p>
+          </div>
+        </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/></svg>
+          <div>
+            <strong>De website voelt verouderd</strong>
+            <p>Niet meer in lijn met hoe modern, persoonlijk of vakkundig jullie zorg is. Eerste indruk klopt niet meer met wie jullie zijn.</p>
+          </div>
+        </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <strong>Onduidelijk verhaal</strong>
+            <p>Wat onderscheidt jullie eigenlijk? Waarom kiezen patiënten voor jullie en niet voor die andere kliniek? Het antwoord is er — maar onzichtbaar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- ONZE AANPAK — SIRCLE MODEL VOOR DE ZORG -->
+  <!-- ============================================ -->
+  <section class="section section-cream sc-included">
+    <img src="../assets/branding/gradients/gradient-5.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Het SIRCLE Model voor de zorg</span>
+        <h2 class="sc-section-title reveal-up">VAN POSITIONERING TOT PATIËNTEN</h2>
+        <p class="sc-section-sub reveal-up">Vier pijlers, één team. Strategie, productie, groei en beheer — afgestemd op de zorgpraktijk.</p>
+      </div>
+
+      <div class="zorg-pillars reveal-up">
+        <div class="zorg-pillar">
+          <span class="zorg-pillar__num">01</span>
+          <h3>Strategy</h3>
+          <p>Positionering die patiënten herkennen. Wat onderscheidt jullie, voor wie zijn jullie er, en hoe vertel je dat in één zin?</p>
+          <a href="../sirclestrategy.html" class="zorg-pillar__link">Bekijk SircleStrategy →</a>
+        </div>
+        <div class="zorg-pillar">
+          <span class="zorg-pillar__num">02</span>
+          <h3>Production</h3>
+          <p>Branding en website die vertrouwen wekken. Heldere navigatie, professionele fotografie, drempelloos contact.</p>
+          <a href="../sirclestudio.html" class="zorg-pillar__link">Bekijk SircleStudio →</a>
+        </div>
+        <div class="zorg-pillar">
+          <span class="zorg-pillar__num">03</span>
+          <h3>Growth</h3>
+          <p>Lokale SEO, Google Ads en content die patiënten aantrekken. Gemeten in afspraken, niet in clicks.</p>
+          <a href="../sirclegrowth.html" class="zorg-pillar__link">Bekijk SircleGrowth →</a>
+        </div>
+        <div class="zorg-pillar">
+          <span class="zorg-pillar__num">04</span>
+          <h3>Care</h3>
+          <p>Doorlopend beheer van site, security en content. Geen IT-gedoe — wij houden alles draaiend.</p>
+          <a href="../sirclecare.html" class="zorg-pillar__link">Bekijk SircleCare →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- CASES UIT DE ZORG -->
+  <!-- ============================================ -->
+  <section class="section section-dark sc-proof" id="cases">
+    <img src="../assets/branding/gradients/gradient-7.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up" style="color: var(--gold);">Werk in de zorg</span>
+        <h2 class="sc-section-title reveal-up" style="color: var(--white);">ZORG-MERKEN DIE WIJ BOUWDEN</h2>
+        <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">Van tandartsenketen tot universitair medisch centrum. Elk merk anders, elke aanpak op maat.</p>
+      </div>
+
+      <div class="zorg-cases-grid reveal-up">
+
+        <a href="../werk/vlijt-tandartsen.html" class="zorg-card">
+          <img src="../assets/cases/screenshots/vlijt-hero.jpg" alt="VLIJT Tandartsen — vlijttandartsen.nl" loading="lazy">
+          <video class="hover-reel" src="../assets/cases/vlijt-reel.mp4" muted loop playsinline preload="none"></video>
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>VLIJT Tandartsen</h3>
+            <span class="tags">Branding · Web · SEO · Growth</span>
+            <p>Volledige merkstrategie en website. 150–200 nieuwe patiënten per maand.</p>
+          </div>
+        </a>
+
+        <a href="../werk/22qminded.html" class="zorg-card">
+          <img src="../assets/cases/screenshots/22qminded-hero.jpg" alt="22qMinded — 22qminded.com" loading="lazy">
+          <video class="hover-reel" src="../assets/cases/22qminded-reel.mp4" muted loop playsinline preload="none"></video>
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>22qMinded</h3>
+            <span class="tags">Branding · Web · WooCommerce · Care</span>
+            <p>Membership platform voor de 22q-gemeenschap. Webinars, trainingen en coaching.</p>
+          </div>
+        </a>
+
+        <a href="../werk/lumc.html" class="zorg-card">
+          <img src="../assets/cases/screenshots/lumc-hero.jpg" alt="LUMC — animatiefilms" loading="lazy">
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>LUMC</h3>
+            <span class="tags">Animation · Medical Content</span>
+            <p>Animatiefilms over stamceltransplantatie voor patiënten en hun gezin.</p>
+          </div>
+        </a>
+
+        <a href="../werk/breinwijzers.html" class="zorg-card">
+          <img src="../assets/cases/screenshots/breinwijzers-hero.jpg" alt="Breinwijzers — breinwijzers.nl" loading="lazy">
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>Breinwijzers</h3>
+            <span class="tags">Web · WooCommerce · Leerplatform · Care</span>
+            <p>Online leeromgeving voor diagnostiek-professionals. Supervisie, cursussen en masterclasses.</p>
+          </div>
+        </a>
+
+        <div class="zorg-card zorg-card--static">
+          <img src="../assets/branding/gradients/gradient-2.webp" alt="Vivium Zorggroep" loading="lazy">
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>Vivium Zorggroep</h3>
+            <span class="tags">Film · Documentaire · Brand Content</span>
+            <p>Mini-docu's over Naarderheem en de mensen die daar het verschil maken.</p>
+          </div>
+        </div>
+
+        <div class="zorg-card zorg-card--static">
+          <img src="../assets/branding/gradients/gradient-4.webp" alt="Fit in Wassenaar" loading="lazy">
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>Fit in Wassenaar</h3>
+            <span class="tags">Video · Educatie · Content Series</span>
+            <p>Educatieve video-serie rond beweging, taal, mondmotoriek en gezond ouder worden.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-lg);">
+        <a href="../werk.html" class="btn-ghost" style="color: var(--cream); border-color: rgba(242,226,164,0.4);">Bekijk al ons werk <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FINAL CTA -->
+  <!-- ============================================ -->
+  <section class="section section-cream">
+    <img src="../assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center; padding: var(--space-lg) 0;">
+        <span class="sc-label reveal-up">Klaar om te groeien?</span>
+        <h2 class="sc-section-title reveal-up">PLAN EEN GESPREK</h2>
+        <p class="sc-section-sub reveal-up" style="margin-bottom: var(--space-md);">Een vrijblijvend gesprek van 30 minuten. We luisteren, denken mee en delen waar de quick wins zitten — voor jouw zorgorganisatie specifiek.</p>
+        <a href="../contact.html" class="btn-primary btn-large btn-pill">Plan kennismaking <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="../index.html"><img src="../assets/svg/svg-white-logo1.svg" alt="sircle agency" class="footer-logo"></a>
+          <address>Zwaardstraat 16<br>2584 TX Den Haag</address>
+          <div class="footer-contact">
+            <a href="mailto:hello@sircle.agency">hello@sircle.agency</a>
+            <a href="tel:+31852129145">+31 85 212 91 45</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Diensten</h4>
+          <nav>
+            <a href="../sirclestrategy.html">SircleStrategy</a>
+            <a href="../sirclestudio.html">SircleStudio</a>
+            <a href="../sirclegrowth.html">SircleGrowth</a>
+            <a href="../sirclecare.html">SircleCare</a>
+            <a href="../sirclepakket.html">SIRCLE Pakket</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Sectoren</h4>
+          <nav>
+            <a href="zorg.html">Zorg</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Pagina's</h4>
+          <nav>
+            <a href="../werk.html">Werk</a>
+            <a href="../over-ons.html">Over ons</a>
+            <a href="../journal.html">Journal</a>
+            <a href="../contact.html">Contact</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 sircle.agency · <a href="../privacy.html" class="footer-link-subtle">Privacybeleid</a> · <a href="../voorwaarden.html" class="footer-link-subtle">Algemene voorwaarden</a></p>
+        <p class="footer-legal">KVK: 78204240</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="../js/main.js?v=19"></script>
+</body>
+</html>
