@@ -814,9 +814,29 @@
   line-height: 1.7;
 }
 
-/* ---------- FAQ LIGHT THEME (section-cream) ---------- */
+/* ---------- FAQ LIGHT THEME (section-cream) — premium card style ---------- */
+.section-cream.sc-faq .sc-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 .section-cream.sc-faq .sc-faq-item {
-  border-bottom-color: rgba(12,24,15,0.12);
+  border-bottom: none;
+  background: rgba(12,24,15,0.03);
+  border: 1px solid rgba(12,24,15,0.08);
+  border-radius: 14px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.section-cream.sc-faq .sc-faq-item:hover {
+  background: rgba(12,24,15,0.05);
+  border-color: rgba(212,175,100,0.4);
+}
+.section-cream.sc-faq .sc-faq-item.open {
+  background: rgba(12,24,15,0.05);
+  border-color: rgba(212,175,100,0.55);
+}
+.section-cream.sc-faq .sc-faq-question {
+  padding: 22px 26px;
 }
 .section-cream.sc-faq .sc-faq-question span {
   color: var(--dark-green);
@@ -824,8 +844,11 @@
 .section-cream.sc-faq .sc-faq-question svg {
   color: var(--dark-green);
 }
+.section-cream.sc-faq .sc-faq-item.open .sc-faq-answer {
+  padding: 0 26px 22px;
+}
 .section-cream.sc-faq .sc-faq-answer p {
-  color: rgba(12,24,15,0.7);
+  color: rgba(12,24,15,0.72);
 }
 .section-cream.sc-faq .sc-section-title {
   color: var(--dark-green);

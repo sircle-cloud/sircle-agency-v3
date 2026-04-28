@@ -247,19 +247,20 @@
    PROJECTEN/MAATWERK NOTE — for service pages
    Soft text-only block before sp-upsell band
    ===================================================== */
-.sc-projects-note { padding:48px 0 16px; background:#fff; }
-.sc-projects-note__container { max-width:780px; width:92%; margin:0 auto; text-align:center; }
-.sc-projects-note__eyebrow { font-size:0.72rem; letter-spacing:1.8px; text-transform:uppercase; color:#d4af64; font-weight:700; margin:0 0 10px; }
-.sc-projects-note__title { font-size:1.35rem; font-weight:700; color:#0B2713; line-height:1.3; margin:0 0 12px; }
-.sc-projects-note__text { font-size:0.95rem; color:rgba(11,39,19,0.7); line-height:1.6; margin:0 0 22px; max-width:580px; margin-left:auto; margin-right:auto; }
-.sc-projects-note__cta { display:inline-flex; align-items:center; gap:8px; color:#0B2713; text-decoration:none; font-weight:600; font-size:0.95rem; border-bottom:1px solid rgba(11,39,19,0.4); padding-bottom:2px; transition:border-color .2s, color .2s; }
-.sc-projects-note__cta:hover { color:#d4af64; border-color:#d4af64; }
+.sc-projects-note { padding:80px 0 96px; background:#F4ECD8; }
+.sc-projects-note__container { max-width:760px; width:92%; margin:0 auto; text-align:center; padding:56px 48px; background:rgba(255,255,255,0.5); border:1px solid rgba(11,39,19,0.08); border-radius:20px; }
+.sc-projects-note__eyebrow { font-size:0.72rem; letter-spacing:1.8px; text-transform:uppercase; color:#b8923f; font-weight:700; margin:0 0 12px; }
+.sc-projects-note__title { font-size:1.5rem; font-weight:700; color:#0B2713; line-height:1.3; margin:0 0 14px; }
+.sc-projects-note__text { font-size:0.98rem; color:rgba(11,39,19,0.72); line-height:1.65; margin:0 0 28px; max-width:560px; margin-left:auto; margin-right:auto; }
+.sc-projects-note__cta { display:inline-flex; align-items:center; gap:10px; color:#0B2713; text-decoration:none; font-weight:600; font-size:0.95rem; padding:14px 28px; border:1.5px solid rgba(11,39,19,0.4); border-radius:100px; background:transparent; transition:background .25s ease, border-color .25s ease, color .25s ease; }
+.sc-projects-note__cta:hover { background:#0B2713; border-color:#0B2713; color:#F2E2A4; }
 .sc-projects-note__cta svg { transition:transform .2s; }
 .sc-projects-note__cta:hover svg { transform:translateX(3px); }
 
 @media (max-width:640px) {
-  .sc-projects-note { padding:36px 0 12px; }
-  .sc-projects-note__title { font-size:1.15rem; }
+  .sc-projects-note { padding:56px 0 64px; }
+  .sc-projects-note__container { padding:40px 24px; }
+  .sc-projects-note__title { font-size:1.2rem; }
 }
 
 /* =====================================================
