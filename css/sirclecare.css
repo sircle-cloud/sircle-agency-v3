@@ -1241,8 +1241,8 @@
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: var(--gold);
-  background: rgba(212, 175, 100, 0.12);
+  color: var(--cream);
+  background: var(--dark-green);
   padding: 3px 10px;
   border-radius: 100px;
   margin-bottom: 8px;
@@ -1252,18 +1252,18 @@
 /* Deliverable label (→ Brand Discovery Document) */
 .sc-step-deliverable {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--gold);
+  color: var(--dark-green);
   margin: 0 0 8px 0;
-  font-style: italic;
 }
 
 .sc-step-deliverable::before {
   content: "→ ";
+  color: #b8923f;
   margin-right: 2px;
-  font-style: normal;
+  font-weight: 700;
 }
 
 .sc-webdev-visual {
