@@ -2817,6 +2817,8 @@ address { font-style: normal; }
   width: 16px;
   height: 16px;
   fill: currentColor;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
   transition: transform 0.3s ease;
 }
 
