@@ -5,7 +5,7 @@
 /* HERO */
 .case-hero {
   position: relative;
-  min-height: 70vh;
+  min-height: 80vh;
   display: flex;
   align-items: flex-end;
   padding: 0 0 80px;
@@ -19,7 +19,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.7) brightness(0.5);
+  filter: saturate(0.85) brightness(0.7);
 }
 .case-hero-overlay {
   position: absolute;
@@ -201,7 +201,7 @@
 
 /* IMAGES */
 .case-image-full {
-  margin: 48px 0;
+  margin: 72px 0;
   border-radius: 14px;
   overflow: hidden;
 }
@@ -222,14 +222,80 @@
 .case-image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin: 48px 0;
+  gap: 24px;
+  margin: 72px 0;
 }
 .case-image-grid img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
+}
+
+/* TAGS ROW (free-standing, no card-box, replaces scope-tags inside scope-box) */
+.case-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 32px 0 48px;
+  padding: 0;
+}
+.case-tags-row span {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  border: 1px solid rgba(212,175,100,0.35);
+  border-radius: 100px;
+  background: transparent;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.case-tags-row span:hover {
+  background: rgba(212,175,100,0.08);
+  border-color: rgba(212,175,100,0.55);
+}
+
+/* LIVE PROJECT CTA (free-standing block above next-case) */
+.case-live-cta {
+  margin: 96px 0 48px;
+  padding: 56px 48px;
+  border-top: 1px solid rgba(212,175,100,0.18);
+  border-bottom: 1px solid rgba(212,175,100,0.18);
+  text-align: center;
+}
+.case-live-cta__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--soft-green);
+  opacity: 0.6;
+  margin-bottom: 16px;
+}
+.case-live-cta__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  text-decoration: none;
+  transition: gap 0.3s ease;
+}
+.case-live-cta__link:hover {
+  gap: 28px;
+}
+.case-live-cta__link .arrow {
+  font-size: 0.85em;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+.case-live-cta__link:hover .arrow {
+  transform: translateX(6px);
 }
 
 /* RESULTS */
@@ -291,13 +357,13 @@
   font-style: normal;
 }
 
-/* SCOPE */
+/* SCOPE — minimal credits row only (legacy variant retained for backwards compat) */
 .case-scope {
-  margin: 64px 0;
-  padding: 48px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 14px;
-  border: 1px solid rgba(208,223,185,0.08);
+  margin: 48px 0 24px;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border: none;
 }
 .case-scope h3 {
   font-size: 14px;
@@ -323,15 +389,16 @@
   border: 1px solid rgba(208,223,185,0.1);
 }
 .scope-credits {
-  padding-top: 24px;
-  border-top: 1px solid rgba(208,223,185,0.1);
+  padding-top: 0;
+  border-top: none;
 }
 .scope-credits p {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--soft-green);
-  line-height: 1.8;
+  line-height: 1.7;
   font-weight: 300;
-  opacity: 0.7;
+  opacity: 0.55;
+  letter-spacing: 0.02em;
 }
 
 /* NEXT CASE */
@@ -375,7 +442,7 @@
 /* RESPONSIVE */
 @media (max-width: 767px) {
   .case-hero {
-    min-height: 50vh;
+    min-height: 60vh;
     padding-bottom: 48px;
   }
   .case-title {
@@ -383,6 +450,14 @@
   }
   .case-features {
     grid-template-columns: 1fr;
+  }
+  .case-image-full {
+    margin: 48px 0;
+  }
+  .case-image-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 48px 0;
   }
   .results-grid {
     grid-template-columns: 1fr;
@@ -392,7 +467,18 @@
     padding: 24px;
   }
   .case-scope {
-    padding: 24px;
+    padding: 0;
+  }
+  .case-tags-row {
+    margin: 24px 0 36px;
+  }
+  .case-tags-row span {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+  .case-live-cta {
+    margin: 64px 0 32px;
+    padding: 36px 16px;
   }
   .case-meta {
     gap: 12px;
