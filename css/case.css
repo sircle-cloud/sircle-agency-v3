@@ -10,6 +10,9 @@
   align-items: flex-end;
   padding: 0 0 80px;
 }
+@supports (min-height: 100dvh) {
+  .case-hero { min-height: 80dvh; }
+}
 .case-hero-bg {
   position: absolute;
   inset: 0;
@@ -801,8 +804,11 @@
 /* RESPONSIVE */
 @media (max-width: 767px) {
   .case-hero {
-    min-height: 60vh;
+    min-height: 100vh;
     padding-bottom: 48px;
+  }
+  @supports (min-height: 100dvh) {
+    .case-hero { min-height: 100dvh; }
   }
   .case-title {
     font-size: 36px;
