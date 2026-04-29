@@ -95,6 +95,19 @@
   color: var(--soft-green);
   line-height: 1.8;
   font-weight: 300;
+  margin: 0 0 20px;
+}
+.case-block p:last-child {
+  margin-bottom: 0;
+}
+.case-block p strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+.case-block p em {
+  color: var(--white);
+  font-style: italic;
+  font-weight: 300;
 }
 .case-block--compact {
   margin-bottom: 48px;
