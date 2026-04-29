@@ -719,12 +719,12 @@ function initAnimations() {
     gsap.to(el, {
       clipPath: 'inset(0 0 0 0)',
       opacity: 1,
-      duration: 1.0,
+      duration: 0.6,
       delay: delay,
-      ease: 'power3.out',
+      ease: 'power2.out',
       scrollTrigger: {
         trigger: el,
-        start: 'top 85%',
+        start: 'top 95%',
         toggleActions: 'play none none none',
       }
     });
