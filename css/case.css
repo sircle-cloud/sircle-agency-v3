@@ -401,7 +401,7 @@
   letter-spacing: 0.02em;
 }
 
-/* NEXT CASE */
+/* NEXT CASE (legacy — kept for cases not yet migrated to .case-nav) */
 .case-next {
   padding: 80px 0;
   border-top: 1px solid rgba(208,223,185,0.08);
@@ -437,6 +437,99 @@
 }
 .case-next-link:hover .btn-arrow {
   transform: translateX(8px);
+}
+
+/* CASE NAVIGATION (prev + next side-by-side, integrated with content) */
+.case-nav {
+  padding: 72px 0 96px;
+  border-top: 1px solid rgba(212,175,100,0.18);
+  background: transparent;
+}
+.case-nav__inner {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.case-nav__link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 32px;
+  text-decoration: none;
+  color: var(--white);
+  transition: background 0.4s ease;
+  border-radius: 8px;
+}
+.case-nav__link:hover {
+  background: rgba(212,175,100,0.04);
+}
+.case-nav__link--prev {
+  text-align: left;
+  align-items: flex-start;
+}
+.case-nav__link--next {
+  text-align: right;
+  align-items: flex-end;
+}
+.case-nav__divider {
+  width: 1px;
+  background: rgba(212,175,100,0.18);
+  align-self: stretch;
+  flex-shrink: 0;
+}
+.case-nav__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  opacity: 0.65;
+  font-weight: 600;
+}
+.case-nav__title {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--white);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.case-nav__link--prev:hover .case-nav__title {
+  transform: translateX(-6px);
+}
+.case-nav__link--next:hover .case-nav__title {
+  transform: translateX(6px);
+}
+.case-nav__placeholder {
+  flex: 1;
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .case-nav {
+    padding: 48px 0 64px;
+  }
+  .case-nav__inner {
+    flex-direction: column;
+    gap: 0;
+  }
+  .case-nav__divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+  .case-nav__link {
+    padding: 24px 16px;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .case-nav__link--next {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
 
 /* RESPONSIVE */
