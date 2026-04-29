@@ -832,14 +832,14 @@
   }
   .results-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 10px;
   }
   .result-big {
-    font-size: 28px;
+    font-size: 24px;
     letter-spacing: -0.01em;
   }
   .result-card {
-    padding: 20px 10px;
+    padding: 18px 8px;
   }
   .result-desc {
     font-size: 12px;
