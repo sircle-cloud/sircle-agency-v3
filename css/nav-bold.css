@@ -33,6 +33,11 @@
   width: auto;
 }
 
+@media (min-width: 768px) {
+  .bold-nav__logo { height: 46px; }
+  .bold-nav__logo img { height: 46px; }
+}
+
 /* Default: white logo visible, dark logo hidden */
 .bold-nav__logo-dark { display: none; }
 .bold-nav__logo-white { display: block; }
