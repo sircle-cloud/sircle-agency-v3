@@ -1082,11 +1082,15 @@ address { font-style: normal; }
   color: rgba(184,198,163,0.7);
   line-height: 1.8;
   margin-bottom: 48px;
-  max-width: 480px;
+  max-width: none;
   margin-left: auto;
   margin-right: auto;
   letter-spacing: 0.02em;
   font-weight: 300;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .hero-sub { white-space: normal; max-width: 480px; }
 }
 
 .hero-cta { font-size: 17px; }
