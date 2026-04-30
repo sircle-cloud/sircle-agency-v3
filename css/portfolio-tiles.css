@@ -1,83 +1,51 @@
 /* ============================================
-   PORTFOLIO TILES — 5Four-stijl presentation cards
+   PORTFOLIO TILES — minimal component
+   Custom-designed tile-image (5Four-stijl) +
+   title/tags below. No device-frame, no overlay.
    ============================================ */
 
 .portfolio-tile {
-  --tile-bg: #F2E2A4;
-  --tile-accent: rgba(0, 0, 0, 0.04);
   display: block;
   text-decoration: none;
   position: relative;
   cursor: pointer;
 }
 
-.portfolio-tile__frame {
-  background: var(--tile-bg);
-  aspect-ratio: 5 / 4;
-  border-radius: 20px;
-  padding: 60px 60px 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
+.portfolio-tile__media {
   position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #1a1a1a;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.7s ease;
 }
 
-.portfolio-tile__frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at 50% 100%,
-    var(--tile-accent) 0%,
-    transparent 60%
-  );
-  pointer-events: none;
-}
-
-.portfolio-tile:hover .portfolio-tile__frame {
+.portfolio-tile:hover .portfolio-tile__media {
   transform: translateY(-6px);
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.25);
 }
 
-/* Laptop device mockup */
-.portfolio-tile__device {
-  width: 78%;
-  background: #1a1a1a;
-  border-radius: 14px 14px 4px 4px;
-  padding: 14px 14px 0;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22),
-              0 8px 20px rgba(0, 0, 0, 0.12);
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  z-index: 2;
-}
-
-.portfolio-tile:hover .portfolio-tile__device {
-  transform: translateY(-8px);
-}
-
-.portfolio-tile__screen {
+.portfolio-tile__image {
   width: 100%;
-  display: block;
-  aspect-ratio: 16 / 10;
+  height: 100%;
   object-fit: cover;
-  object-position: top center;
-  border-radius: 4px 4px 0 0;
-  background: #000;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Optional hover-reel video inside device */
+.portfolio-tile:hover .portfolio-tile__image {
+  transform: scale(1.03);
+}
+
+/* Optional hover-reel video */
 .portfolio-tile__reel {
   position: absolute;
-  inset: 14px 14px 0 14px;
-  width: calc(100% - 28px);
-  aspect-ratio: 16 / 10;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: top center;
-  border-radius: 4px 4px 0 0;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
@@ -89,8 +57,8 @@
 
 /* Meta below tile */
 .portfolio-tile__meta {
-  margin-top: 24px;
-  padding: 0 6px;
+  margin-top: 20px;
+  padding: 0 4px;
 }
 
 .portfolio-tile__title {
@@ -112,13 +80,8 @@
 }
 
 /* Featured = wider tile (full row) */
-.portfolio-tile.is-featured .portfolio-tile__frame {
+.portfolio-tile.is-featured .portfolio-tile__media {
   aspect-ratio: 21 / 9;
-  padding: 80px 80px 0;
-}
-
-.portfolio-tile.is-featured .portfolio-tile__device {
-  width: 56%;
 }
 
 .portfolio-tile.is-featured .portfolio-tile__title {
@@ -127,22 +90,16 @@
 
 /* Mobile */
 @media (max-width: 767px) {
-  .portfolio-tile__frame {
-    aspect-ratio: 4 / 3;
-    padding: 36px 36px 0;
+  .portfolio-tile__media {
     border-radius: 14px;
   }
-  .portfolio-tile__device {
-    width: 88%;
-  }
-  .portfolio-tile.is-featured .portfolio-tile__frame {
+  .portfolio-tile.is-featured .portfolio-tile__media {
     aspect-ratio: 4 / 3;
-    padding: 36px 36px 0;
-  }
-  .portfolio-tile.is-featured .portfolio-tile__device {
-    width: 88%;
   }
   .portfolio-tile__title {
     font-size: 20px;
+  }
+  .portfolio-tile__meta {
+    margin-top: 16px;
   }
 }
