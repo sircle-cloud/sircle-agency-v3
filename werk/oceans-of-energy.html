@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="../css/style.css?v=36">
   <link rel="stylesheet" href="../css/case.css?v=12">
   <link rel="stylesheet" href="../css/nav-bold.css?v=14">
+  <link rel="stylesheet" href="../css/lightbox-gallery.css?v=1">
   <!-- SCHEMA.ORG JSON-LD (auto-generated) -->
   <script type="application/ld+json">
 {
@@ -135,8 +136,7 @@
   <!-- ============================================ -->
   <section class="case-hero">
     <div class="case-hero-bg">
-      <!-- PLACEHOLDER: replace with real Oceans of Energy hero photo -->
-      <img src="../assets/cases/oceans-hero.jpg" alt="Oceans of Energy — Offshore Solar" class="case-hero-img">
+      <img src="../assets/cases/oceans/oceans-01-hero.jpg" alt="Oceans of Energy — Offshore Solar op de Noordzee" class="case-hero-img">
       <div class="case-hero-overlay"></div><div class="noise-overlay"></div>
     </div>
     <div class="container">
@@ -185,6 +185,50 @@
           <iframe src="https://player.vimeo.com/video/1004226826?h=03d04a17bb&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
+
+      <!-- ============================================ -->
+      <!-- BEHIND THE SCENES — image gallery met lightbox -->
+      <!-- ============================================ -->
+      <section class="case-gallery reveal-up">
+        <div class="case-gallery__intro">
+          <span class="case-gallery__label">Behind the scenes</span>
+          <h2 class="case-gallery__title">Op zee, in beeld</h2>
+          <p class="case-gallery__sub">Van drone-shots boven de Noordzee tot het werk op de panelen zelf — de ruwe realiteit achter de cinematische edits.</p>
+        </div>
+
+        <div class="case-gallery__grid">
+          <button type="button" class="case-gallery__item case-gallery__item--hero" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-01-hero.jpg">
+            <img src="../assets/cases/oceans/oceans-01-hero.jpg" alt="Drijvend zonnepark naast windturbines op de Noordzee" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--wide" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-02-vessel-pov.jpg">
+            <img src="../assets/cases/oceans/oceans-02-vessel-pov.jpg" alt="Service-vessel met crane en team — zonnepark op horizon" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--small" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-03-walking-panels.jpg">
+            <img src="../assets/cases/oceans/oceans-03-walking-panels.jpg" alt="Werkers op de drijvende zonnepanelen" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--full" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-04-wide-sunny.jpg">
+            <img src="../assets/cases/oceans/oceans-04-wide-sunny.jpg" alt="Wide shot van zonnepark met windmolens en service-boten" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--half" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-05-aerial-vessel.jpg">
+            <img src="../assets/cases/oceans/oceans-05-aerial-vessel.jpg" alt="Aerial — zonnepark met service-vessel langszij" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--half" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-06-aerial-wind.jpg">
+            <img src="../assets/cases/oceans/oceans-06-aerial-wind.jpg" alt="Drone-view zonnepark in offshore wind farm" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--wide" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-07-goldhour.jpg">
+            <img src="../assets/cases/oceans/oceans-07-goldhour.jpg" alt="Golden hour — service-vessel bij turbine-base" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--small" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-10-silhouette.jpg">
+            <img src="../assets/cases/oceans/oceans-10-silhouette.jpg" alt="Silhouette teamlid met windmolens en boten" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--half" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-08-team-water.jpg">
+            <img src="../assets/cases/oceans/oceans-08-team-water.jpg" alt="Team werkt aan installatie in golvend water" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--half" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-09-anchor.jpg">
+            <img src="../assets/cases/oceans/oceans-09-anchor.jpg" alt="Anchor-werk vanaf de Severn Supporter" loading="lazy">
+          </button>
+        </div>
+      </section>
 
       <div class="case-results reveal-up">
         <h2>Wat we leverden</h2>
@@ -292,5 +336,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="../js/main.js?v=19"></script>
+  <script src="../js/lightbox-gallery.js?v=1"></script>
 </body>
 </html>
