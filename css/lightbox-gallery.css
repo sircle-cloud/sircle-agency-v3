@@ -101,14 +101,16 @@
   aspect-ratio: 4 / 3;
 }
 
+/* Portrait companion to --wide. span=2, aspect 2/3 → height matches --wide */
 .case-gallery__item--small {
   grid-column: span 2;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 2 / 3;
 }
 
+/* span=3, aspect 3/2 → matches its own height in 2-up rows */
 .case-gallery__item--half {
   grid-column: span 3;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
 }
 
 .case-gallery__item--full {
