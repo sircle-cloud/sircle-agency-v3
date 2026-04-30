@@ -1085,7 +1085,7 @@ address { font-style: normal; }
   max-width: none;
   margin-left: auto;
   margin-right: auto;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   font-weight: 300;
   white-space: nowrap;
 }
