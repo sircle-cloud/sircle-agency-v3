@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=43">
+  <link rel="stylesheet" href="css/style.css?v=44">
   <link rel="stylesheet" href="css/nav-bold.css?v=16">
   <link rel="stylesheet" href="css/portfolio-tiles.css?v=3">
   <style>
@@ -63,13 +63,13 @@
     @media (max-width: 767px) {
       .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
       .portfolio-card.featured { grid-column: 1; aspect-ratio: 4/3; }
-      /* Mobile: lichte filter zodat overlay-tekst leesbaar blijft, maar visuals zichtbaar */
+      /* Mobile: GEEN filter — visuals zichtbaar */
       .portfolio-card img {
-        filter: saturate(0.95) brightness(0.9);
+        filter: none;
         transform: none;
       }
       .portfolio-card:hover img {
-        filter: saturate(1) brightness(1);
+        filter: none;
         transform: scale(1.03);
       }
       /* Make sure the info panel is visible at rest on touch devices */
@@ -86,10 +86,9 @@
       .portfolio-card-overlay {
         background: linear-gradient(
           to top,
-          rgba(7,25,12,0.85) 0%,
-          rgba(7,25,12,0.45) 40%,
-          rgba(7,25,12,0.15) 70%,
-          transparent 100%
+          rgba(7,25,12,0.7) 0%,
+          rgba(7,25,12,0.3) 30%,
+          transparent 60%
         );
       }
       .results-bar { flex-wrap: wrap; gap: 24px; }

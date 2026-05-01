@@ -1915,26 +1915,25 @@ address { font-style: normal; }
     aspect-ratio: 4 / 3;
   }
 
-  /* Mobile: lichte filter, visuals blijven zichtbaar (was: blur 5px brightness 0.3) */
+  /* Mobile: GEEN filter — visuals onverzwakt zichtbaar */
   .case-image img {
-    filter: saturate(0.95) brightness(0.9);
+    filter: none;
     height: 100%;
     object-position: center center;
     transform: none;
   }
   .case-card:hover .case-image img {
-    filter: saturate(1) brightness(1);
+    filter: none;
     transform: scale(1.03);
   }
 
-  /* Lichte gradient onderaan voor h3-readability */
+  /* Subtiele gradient alleen onderaan voor h3-readability */
   .case-overlay {
     background: linear-gradient(
       to top,
-      rgba(5,16,11,0.85) 0%,
-      rgba(5,16,11,0.45) 40%,
-      rgba(5,16,11,0.15) 70%,
-      transparent 100%
+      rgba(5,16,11,0.7) 0%,
+      rgba(5,16,11,0.3) 30%,
+      transparent 60%
     );
   }
 
