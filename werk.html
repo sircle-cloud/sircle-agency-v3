@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=46">
+  <link rel="stylesheet" href="css/style.css?v=47">
   <link rel="stylesheet" href="css/nav-bold.css?v=16">
   <link rel="stylesheet" href="css/portfolio-tiles.css?v=3">
   <style>
@@ -72,27 +72,22 @@
         filter: none;
         transform: scale(1.03);
       }
-      /* Make sure the info panel is visible at rest on touch devices */
+      /* Mobile: GEEN overlay-balkje — titel komt onder de image als losse meta */
+      .portfolio-card { aspect-ratio: auto !important; overflow: visible; border-radius: 0; }
+      .portfolio-card img,
+      .portfolio-card .hover-reel { aspect-ratio: 4/3; border-radius: 14px; overflow: hidden; display: block; }
+      .portfolio-card-overlay { display: none; }
       .portfolio-card-info {
-        opacity: 1;
-        transform: translateY(0);
-        padding: 20px 24px;
+        position: static !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        padding: 16px 4px 0 !important;
       }
       .portfolio-card-info h3 {
-        font-size: 22px;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-      }
-      /* Overlay smooth fade, geen visible edge */
-      .portfolio-card-overlay {
-        background: linear-gradient(
-          to top,
-          rgba(7,25,12,0.7),
-          rgba(7,25,12,0)
-        );
-      }
-      /* Mobile: card-info volledig static, geen reveal-up bar bij scroll */
-      .portfolio-card-info {
-        transition: none !important;
+        font-size: 20px;
+        text-shadow: none;
+        color: var(--white);
       }
       .results-bar { flex-wrap: wrap; gap: 24px; }
       .result-item { flex: 1 1 40%; }

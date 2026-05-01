@@ -1932,23 +1932,22 @@ address { font-style: normal; }
     transform: scale(1.03);
   }
 
-  /* Subtiele gradient alleen onderaan voor h3-readability — smooth fade, geen visible edge */
-  .case-overlay {
-    background: linear-gradient(
-      to top,
-      rgba(5,16,11,0.7),
-      rgba(5,16,11,0)
-    );
-  }
-  /* Mobile: case-info volledig static, geen transitions (was reveal-bar bij scroll) */
+  /* Mobile: GEEN overlay-bar — alleen text-shadow voor h3-readability */
+  .case-overlay { display: none; }
   .case-info {
     transition: none !important;
+    background: none !important;
+    padding: 16px 4px 0 !important;
+    position: static !important;
   }
-  /* Geen extra dark vignet binnen card op mobile */
+  .case-info h3 {
+    color: var(--white);
+    text-shadow: none;
+  }
+  .case-card { aspect-ratio: auto !important; }
+  .case-image { aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; }
   .case-image::before,
-  .case-image::after {
-    display: none;
-  }
+  .case-image::after { display: none; }
 
   /* Reveal the info panel at rest — no hover on touch devices */
   .case-info {
