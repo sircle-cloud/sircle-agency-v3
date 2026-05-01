@@ -2804,8 +2804,30 @@ address { font-style: normal; }
    (allison-saeng-wgJHevxlPio-unsplash.jpg) that wasn't tracked in git.
    The overlay was only 4% opacity, not visually significant. */
 
-.footer .container { position: relative; z-index: 2; }
-.footer .noise-overlay { z-index: 1; }
+.footer .container {
+  position: relative;
+  z-index: 2;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.footer .noise-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1;
+  pointer-events: none;
+}
+.footer-grid,
+.footer-col,
+.footer-bottom,
+.footer-col h4,
+.footer-col nav,
+.footer-col nav a,
+.footer-tagline,
+.footer-contact a,
+.footer-socials a {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
 
 .footer-grid {
   display: grid;
