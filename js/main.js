@@ -1074,10 +1074,10 @@ function initAnimations() {
   // ============================================
   const casesGrid = document.querySelector('.cases-grid');
   
-  if (casesGrid) {
+  if (casesGrid && !isMobile) {
+    // Hover-effects alleen op desktop. iOS triggert mouseleave bij touch/scroll
+    // wat een verticale "balkje"-animatie van .case-info veroorzaakte.
     const casesCards = casesGrid.querySelectorAll('.case-card');
-    
-    // Case card hover effects
     casesCards.forEach(card => {
       const img = card.querySelector('.case-image img');
       const info = card.querySelector('.case-info');
