@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css?v=51">
-  <link rel="stylesheet" href="../css/case.css?v=12">
+  <link rel="stylesheet" href="../css/case.css?v=13">
   <link rel="stylesheet" href="../css/nav-bold.css?v=16">
   <!-- SCHEMA.ORG JSON-LD (auto-generated) -->
   <script type="application/ld+json">
@@ -139,8 +139,7 @@
   <!-- ============================================ -->
   <section class="case-hero">
     <div class="case-hero-bg">
-      <!-- PLACEHOLDER: replace with real KONE hero photo once provided -->
-      <img src="../assets/cases/kone-hero.jpg" alt="KONE — Film & Video Production" class="case-hero-img">
+      <img src="../assets/cases/kone/kone-esc-8.jpg" alt="KONE — Schiphol shoot, behind-the-scenes met camera-rig en interviewee bij KONE Lift" class="case-hero-img">
       <div class="case-hero-overlay"></div><div class="noise-overlay"></div>
     </div>
     <div class="container">
@@ -179,23 +178,53 @@
 
       <div class="case-video">
         <p class="case-video-label">KONE Safety Video</p>
-        <div class="video-wrapper">
-          <iframe src="https://player.vimeo.com/video/1143411785?h=ae3bdabef9&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-wrapper video-thumb" data-vimeo-src="https://player.vimeo.com/video/1143411785?h=ae3bdabef9&autoplay=1&title=0&byline=0&portrait=0">
+          <img src="../assets/cases/kone/kone-safety-1.jpg" alt="KONE Safety Video — interview-shoot in productiehal" loading="lazy">
+          <button type="button" class="video-play-btn" aria-label="Speel KONE Safety Video af">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" stroke="currentColor" stroke-width="2"/><polygon points="26,20 44,32 26,44" fill="currentColor"/></svg>
+          </button>
         </div>
+      </div>
+
+      <!-- Gallery break: two cinematic Schiphol stills -->
+      <div class="case-image-grid">
+        <img src="../assets/cases/kone/kone-esc-1.jpg" alt="KONE Schiphol shoot — DOP achter Sony FX cinema camera" loading="lazy">
+        <img src="../assets/cases/kone/kone-esc-9.jpg" alt="KONE Schiphol shoot — interview-set bij KONE Lift" loading="lazy">
       </div>
 
       <div class="case-video">
         <p class="case-video-label">Set the Future — Short Film</p>
-        <div class="video-wrapper">
-          <iframe src="https://player.vimeo.com/video/993436303?h=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-wrapper video-thumb" data-vimeo-src="https://player.vimeo.com/video/993436303?h=0&autoplay=1&title=0&byline=0&portrait=0">
+          <img src="../assets/cases/kone/kone-safety-3.jpg" alt="Set the Future — close-up Sony cinema camera op tripod" loading="lazy">
+          <button type="button" class="video-play-btn" aria-label="Speel Set the Future Short Film af">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" stroke="currentColor" stroke-width="2"/><polygon points="26,20 44,32 26,44" fill="currentColor"/></svg>
+          </button>
         </div>
+      </div>
+
+      <!-- Gallery break: production crew shots -->
+      <div class="case-image-grid">
+        <img src="../assets/cases/kone/kone-safety-5.jpg" alt="KONE Set the Future — camera-operator achter cinema camera" loading="lazy">
+        <img src="../assets/cases/kone/kone-safety-2.jpg" alt="KONE shoot — Sebas met klembord op set" loading="lazy">
       </div>
 
       <div class="case-video">
         <p class="case-video-label">Set the Future — Aftermovie 2023</p>
-        <div class="video-wrapper">
-          <iframe src="https://player.vimeo.com/video/993440241?h=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-wrapper video-thumb" data-vimeo-src="https://player.vimeo.com/video/993440241?h=0&autoplay=1&title=0&byline=0&portrait=0">
+          <img src="../assets/cases/kone/kone-esc-12.jpg" alt="Set the Future Aftermovie — wide shot van set op Schiphol" loading="lazy">
+          <button type="button" class="video-play-btn" aria-label="Speel Set the Future Aftermovie 2023 af">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" stroke="currentColor" stroke-width="2"/><polygon points="26,20 44,32 26,44" fill="currentColor"/></svg>
+          </button>
         </div>
+      </div>
+
+      <!-- Behind the scenes gallery -->
+      <div class="case-image-full">
+        <img src="../assets/cases/kone/kone-esc-3.jpg" alt="KONE Schiphol shoot — wide setup met camera, jib en presentator" loading="lazy">
+      </div>
+      <div class="case-image-grid">
+        <img src="../assets/cases/kone/kone-esc-5.jpg" alt="KONE Schiphol shoot — detail shot crew" loading="lazy">
+        <img src="../assets/cases/kone/kone-esc-13.jpg" alt="KONE Schiphol shoot — productie still" loading="lazy">
       </div>
 
       <div class="case-results reveal-up">
@@ -306,5 +335,22 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="../js/main.js?v=19"></script>
+  <script>
+    // Click-to-play video thumbnails
+    document.querySelectorAll('.video-thumb').forEach(thumb => {
+      const src = thumb.dataset.vimeoSrc;
+      if (!src) return;
+      const handler = () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+        iframe.setAttribute('allowfullscreen', '');
+        thumb.innerHTML = '';
+        thumb.appendChild(iframe);
+        thumb.style.cursor = 'default';
+      };
+      thumb.addEventListener('click', handler);
+    });
+  </script>
 </body>
 </html>
