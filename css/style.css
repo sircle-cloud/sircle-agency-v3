@@ -192,6 +192,8 @@ html {
   scroll-behavior: auto; /* Lenis handles smooth scroll */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--dark-green);
+  color-scheme: dark;
 }
 
 body {
