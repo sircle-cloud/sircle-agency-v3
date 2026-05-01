@@ -208,9 +208,14 @@ body.is-safari #cursor { display: none; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .marquee-track,
+  /* Marquee + team-strip blijven draaien — slow ambient motion is niet hinderlijk */
+  .marquee-track {
+    animation-duration: 200s !important;
+    animation-iteration-count: infinite !important;
+  }
   .team-strip-track {
-    animation-play-state: paused !important;
+    animation-duration: 60s !important;
+    animation-iteration-count: infinite !important;
   }
 }
 
