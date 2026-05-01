@@ -2022,7 +2022,7 @@ address { font-style: normal; }
   display: flex;
   gap: 32px;
   white-space: nowrap;
-  animation: marqueeScroll 120s linear infinite;
+  animation: marqueeScroll 200s linear infinite;
   width: max-content;
 }
 
