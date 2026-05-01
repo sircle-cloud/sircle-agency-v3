@@ -46,14 +46,16 @@ function splitTextIntoChars(el) {
   return el.querySelectorAll('.char');
 }
 
-// ---- DETECT MOBILE ----
+// ---- DETECT MOBILE + SAFARI ----
 const isMobile = window.innerWidth < 768;
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+if (isSafari) document.body.classList.add('is-safari');
 
 // ---- LENIS SMOOTH SCROLL ----
-const lenis = new Lenis({
-  duration: 1.0,
+const lenis = window.lenis = new Lenis({
+  duration: isSafari ? 0.6 : 1.0,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothWheel: true,
+  smoothWheel: !isSafari, // native scroll op Safari (smoother trackpad)
   wheelMultiplier: 1.0,
   touchMultiplier: 1.5,
   infinite: false,
@@ -69,7 +71,7 @@ lenis.on('scroll', ScrollTrigger.update);
 
 // ---- CUSTOM CURSOR ----
 function initCustomCursor() {
-  if (isMobile) return;
+  if (isMobile || isSafari) return; // Safari native cursor is beter — geen jank-fight
 
   const cursor = document.getElementById('cursor');
   if (!cursor) return;
@@ -1764,6 +1766,17 @@ function initPageTransitions() {
   // Mark that we're transitioning before leaving
   window.addEventListener('beforeunload', () => {
     sessionStorage.setItem('page-transitioning', '1');
+  });
+
+  // Safari bfcache fix: bij back-button restored Safari de DOM-state met overlay nog actief.
+  // Reset 'm bij elk pageshow event waar persisted=true (= uit bfcache).
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) {
+      transition.classList.remove('is-active', 'is-leaving');
+      transition.style.opacity = '0';
+      transition.style.visibility = 'hidden';
+      sessionStorage.removeItem('page-transitioning');
+    }
   });
 }
 initPageTransitions();

@@ -39,11 +39,13 @@
     show(index);
     overlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    if (window.lenis && typeof window.lenis.stop === 'function') window.lenis.stop();
   }
 
   function close() {
     overlay.classList.remove('is-open');
     document.body.style.overflow = '';
+    if (window.lenis && typeof window.lenis.start === 'function') window.lenis.start();
   }
 
   items.forEach((item, idx) => {
