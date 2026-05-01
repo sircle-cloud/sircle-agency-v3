@@ -1445,19 +1445,23 @@ function initAnimations() {
     });
   });
 
-  // ---- Image parallax for all case images (depth effect) ----
-  document.querySelectorAll('.case-image img').forEach(img => {
-    gsap.to(img, {
-      yPercent: -12,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: img.closest('.case-card'),
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 0.5,
-      }
+  // ---- Image parallax for all case images (depth effect) — desktop only ----
+  // Op mobiel veroorzaakt yPercent: -12 een zichtbaar "balkje" effect omdat
+  // de image-edge door de overlay-gradient heen schuift bij scroll.
+  if (!isMobile) {
+    document.querySelectorAll('.case-image img').forEach(img => {
+      gsap.to(img, {
+        yPercent: -12,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: img.closest('.case-card'),
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 0.5,
+        }
+      });
     });
-  });
+  }
 
   // ---- Horizontal scroll text for a "wow" reveal ----
   const marqueeSection = document.querySelector('.marquee');
