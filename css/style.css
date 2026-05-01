@@ -1927,14 +1927,22 @@ address { font-style: normal; }
     transform: scale(1.03);
   }
 
-  /* Subtiele gradient alleen onderaan voor h3-readability */
+  /* Subtiele gradient alleen onderaan voor h3-readability — smooth fade, geen visible edge */
   .case-overlay {
     background: linear-gradient(
       to top,
-      rgba(5,16,11,0.7) 0%,
-      rgba(5,16,11,0.3) 30%,
-      transparent 60%
+      rgba(5,16,11,0.7),
+      rgba(5,16,11,0)
     );
+  }
+  /* Mobile: case-info volledig static, geen transitions (was reveal-bar bij scroll) */
+  .case-info {
+    transition: none !important;
+  }
+  /* Geen extra dark vignet binnen card op mobile */
+  .case-image::before,
+  .case-image::after {
+    display: none;
   }
 
   /* Reveal the info panel at rest — no hover on touch devices */

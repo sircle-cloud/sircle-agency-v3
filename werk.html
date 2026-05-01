@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=44">
+  <link rel="stylesheet" href="css/style.css?v=45">
   <link rel="stylesheet" href="css/nav-bold.css?v=16">
   <link rel="stylesheet" href="css/portfolio-tiles.css?v=3">
   <style>
@@ -82,14 +82,17 @@
         font-size: 22px;
         text-shadow: 0 2px 8px rgba(0,0,0,0.6);
       }
-      /* Overlay alleen onderaan voor h3-readability */
+      /* Overlay smooth fade, geen visible edge */
       .portfolio-card-overlay {
         background: linear-gradient(
           to top,
-          rgba(7,25,12,0.7) 0%,
-          rgba(7,25,12,0.3) 30%,
-          transparent 60%
+          rgba(7,25,12,0.7),
+          rgba(7,25,12,0)
         );
+      }
+      /* Mobile: card-info volledig static, geen reveal-up bar bij scroll */
+      .portfolio-card-info {
+        transition: none !important;
       }
       .results-bar { flex-wrap: wrap; gap: 24px; }
       .result-item { flex: 1 1 40%; }
