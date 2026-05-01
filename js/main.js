@@ -168,8 +168,8 @@ window.addEventListener('scroll', () => {
     navHidden = false;
   }
 
-  // Only hide/show if menu is closed and past hero
-  if (!menuOpen && currentY > 200) {
+  // Only hide/show on desktop (op mobiel storend — logo lijkt te verdwijnen)
+  if (!isMobile && !menuOpen && currentY > 200) {
     if (currentY > lastScrollY + 5 && !navHidden) {
       nav.classList.add('nav-hidden');
       navHidden = true;
@@ -177,6 +177,11 @@ window.addEventListener('scroll', () => {
       nav.classList.remove('nav-hidden');
       navHidden = false;
     }
+  }
+  // Mobile: zorg dat nav-hidden nooit blijft hangen
+  if (isMobile && navHidden) {
+    nav.classList.remove('nav-hidden');
+    navHidden = false;
   }
   lastScrollY = currentY;
 });
