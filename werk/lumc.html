@@ -74,7 +74,7 @@
 
   <section class="case-hero">
     <div class="case-hero-bg">
-      <img src="../assets/cases/screenshots/lumc-hero.jpg" alt="LUMC" class="case-hero-img">
+      <video autoplay muted loop playsinline preload="metadata" class="case-hero-img" src="../assets/cases/lumc/lumc-hero-video.mp4"></video>
       <div class="case-hero-overlay"></div><div class="noise-overlay"></div>
     </div>
     <div class="container">
@@ -109,23 +109,49 @@
 
       <div class="case-video">
         <p class="case-video-label">Wat is een stamceltransplantatie? (1/3)</p>
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/b0Pwm9MM_BA?rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-wrapper video-thumb" data-yt-src="https://www.youtube.com/embed/b0Pwm9MM_BA?rel=0&autoplay=1">
+          <img src="../assets/cases/lumc/lumc-still-7.jpg" alt="Wat is een stamceltransplantatie — animatie still" loading="lazy">
+          <button type="button" class="video-play-btn" aria-label="Speel video 1 af">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" stroke="currentColor" stroke-width="2"/><polygon points="26,20 44,32 26,44" fill="currentColor"/></svg>
+          </button>
         </div>
+      </div>
+
+      <!-- Stills break: 2-up -->
+      <div class="case-image-grid">
+        <img src="../assets/cases/lumc/lumc-still-8.jpg" alt="LUMC animatie — donor stamcellen detail" loading="lazy">
+        <img src="../assets/cases/lumc/lumc-still-5.jpg" alt="LUMC animatie — bloedcellen + computer scène" loading="lazy">
       </div>
 
       <div class="case-video">
         <p class="case-video-label">In het Ziekenhuis (2/3)</p>
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/HwTpZa9lSew?rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-wrapper video-thumb" data-yt-src="https://www.youtube.com/embed/HwTpZa9lSew?rel=0&autoplay=1">
+          <img src="../assets/cases/lumc/lumc-still-1.jpg" alt="In het Ziekenhuis — animatie still met arts, kind en ouders" loading="lazy">
+          <button type="button" class="video-play-btn" aria-label="Speel video 2 af">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" stroke="currentColor" stroke-width="2"/><polygon points="26,20 44,32 26,44" fill="currentColor"/></svg>
+          </button>
         </div>
+      </div>
+
+      <!-- Stills break: 2-up -->
+      <div class="case-image-grid">
+        <img src="../assets/cases/lumc/lumc-still-3.jpg" alt="LUMC animatie — arts achter computer met kind" loading="lazy">
+        <img src="../assets/cases/lumc/lumc-still-2.jpg" alt="LUMC animatie — scène uit ziekenhuis-omgeving" loading="lazy">
       </div>
 
       <div class="case-video">
         <p class="case-video-label">Hoe gaat het verder thuis (3/3)</p>
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/Ae6ekb_oTRs?rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-wrapper video-thumb" data-yt-src="https://www.youtube.com/embed/Ae6ekb_oTRs?rel=0&autoplay=1">
+          <img src="../assets/cases/lumc/lumc-still-6.jpg" alt="Hoe gaat het verder thuis — animatie still" loading="lazy">
+          <button type="button" class="video-play-btn" aria-label="Speel video 3 af">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" stroke="currentColor" stroke-width="2"/><polygon points="26,20 44,32 26,44" fill="currentColor"/></svg>
+          </button>
         </div>
+      </div>
+
+      <!-- Last still — animatie kwaliteit detail -->
+      <div class="case-image-full">
+        <img src="../assets/cases/lumc/lumc-still-4.jpg" alt="LUMC animatie — sluitscène" loading="lazy">
       </div>
 
       <div class="case-results reveal-up">
@@ -237,5 +263,20 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="../js/main.js?v=19"></script>
+  <script>
+    document.querySelectorAll('.video-thumb').forEach(thumb => {
+      const src = thumb.dataset.ytSrc || thumb.dataset.vimeoSrc;
+      if (!src) return;
+      thumb.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+        iframe.setAttribute('allowfullscreen', '');
+        thumb.innerHTML = '';
+        thumb.appendChild(iframe);
+        thumb.style.cursor = 'default';
+      });
+    });
+  </script>
 </body>
 </html>
