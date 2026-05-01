@@ -63,15 +63,14 @@
     @media (max-width: 767px) {
       .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
       .portfolio-card.featured { grid-column: 1; aspect-ratio: 4/3; }
-      /* Atmospheric treatment: blur makes the screenshot's own hero text
-         unreadable so the portfolio-card-info <h3> is the only title. */
+      /* Mobile: lichte filter zodat overlay-tekst leesbaar blijft, maar visuals zichtbaar */
       .portfolio-card img {
-        filter: blur(5px) saturate(0.55) brightness(0.3) contrast(1.25);
-        transform: scale(1.12); /* hide blur edge bleed */
+        filter: saturate(0.95) brightness(0.9);
+        transform: none;
       }
       .portfolio-card:hover img {
-        filter: blur(3px) saturate(0.7) brightness(0.4) contrast(1.15);
-        transform: scale(1.14);
+        filter: saturate(1) brightness(1);
+        transform: scale(1.03);
       }
       /* Make sure the info panel is visible at rest on touch devices */
       .portfolio-card-info {
@@ -81,16 +80,15 @@
       }
       .portfolio-card-info h3 {
         font-size: 22px;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
       }
-      /* Overlay covers more of the image for readability */
+      /* Overlay alleen onderaan voor h3-readability */
       .portfolio-card-overlay {
         background: linear-gradient(
           to top,
-          rgba(7,25,12,0.98) 0%,
-          rgba(7,25,12,0.92) 40%,
-          rgba(7,25,12,0.65) 65%,
-          rgba(7,25,12,0.3) 85%,
+          rgba(7,25,12,0.85) 0%,
+          rgba(7,25,12,0.45) 40%,
+          rgba(7,25,12,0.15) 70%,
           transparent 100%
         );
       }
