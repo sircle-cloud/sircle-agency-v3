@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=48">
+  <link rel="stylesheet" href="css/style.css?v=49">
   <link rel="stylesheet" href="css/nav-bold.css?v=16">
   <link rel="stylesheet" href="css/portfolio-tiles.css?v=3">
   <style>
@@ -63,14 +63,23 @@
     @media (max-width: 767px) {
       .portfolio-grid { grid-template-columns: 1fr; gap: 16px; }
       .portfolio-card.featured { grid-column: 1; aspect-ratio: 4/3; }
-      /* Mobile: GEEN filter — visuals zichtbaar */
-      .portfolio-card img {
-        filter: none;
-        transform: none;
+      /* Mobile: GEEN hover-effects — iOS triggert :hover bij touch+scroll
+         wat de card translate-Y -8px maakt = zichtbaar balkje */
+      .portfolio-card,
+      .portfolio-card:hover {
+        transform: none !important;
+        transition: none !important;
+        box-shadow: none !important;
       }
+      .portfolio-card img,
       .portfolio-card:hover img {
-        filter: none;
-        transform: scale(1.03);
+        filter: none !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .portfolio-card:hover .portfolio-card-info {
+        transform: none !important;
+        opacity: 1 !important;
       }
       /* Mobile: overlay onderaan blijft, maar volledig static (geen reveal-bar bij scroll) */
       .portfolio-card-info {

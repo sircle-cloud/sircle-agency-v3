@@ -1932,7 +1932,27 @@ address { font-style: normal; }
     transform: scale(1.03);
   }
 
-  /* Mobile: overlay-gradient onderaan, info-panel volledig static (geen scroll-bar) */
+  /* Mobile: ALLE hover-effects op .case-card uit. iOS triggert :hover bij touch
+     waardoor card omhoog springt (translateY -8px) = zichtbaar balkje bij scroll */
+  .case-card,
+  .case-card:hover {
+    transform: none !important;
+    transition: none !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15) !important;
+  }
+  .case-card:hover .case-image img {
+    transform: none !important;
+    filter: none !important;
+  }
+  .case-card:hover .case-info {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .case-card:hover::after {
+    opacity: 0 !important;
+  }
+
+  /* Overlay-gradient onderaan, info-panel volledig static */
   .case-overlay {
     background: linear-gradient(
       to top,
