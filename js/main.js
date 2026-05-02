@@ -476,10 +476,12 @@ function initAnimations() {
         ease: 'power3.out',
       }, '-=0.5');
   } else if (hasHeroLines && isMobile) {
-    // Mobile: simple line reveal
+    // Mobile: simple line reveal — geen opacity:0 op logo (gsap.from kan logo
+    // hidden laten als timeline niet vuurt; fromTo wel veilig vanwege explicit to-state)
     gsap.set('.hero-title', { opacity: 1 });
+    gsap.set('.bold-nav__logo', { opacity: 1 }); // safety: forceer logo zichtbaar
     heroTl
-      .from('.bold-nav__logo', { y: -20, opacity: 0, duration: 0.6, ease: 'power2.out' })
+      .from('.bold-nav__logo', { y: -20, duration: 0.6, ease: 'power2.out' })
       .fromTo('.hero-label', { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.2')
       .fromTo('.hero-title .line', { y: '100%', opacity: 0 }, {
         y: '0%', opacity: 1, stagger: 0.15, duration: 0.9, ease: 'power3.out'
