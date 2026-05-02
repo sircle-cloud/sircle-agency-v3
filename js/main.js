@@ -402,13 +402,13 @@ function initSircleExperience() {
       }
     });
 
-    // GSAP reveal animation — wrapped in try/catch so failures don't break layout
+    // GSAP reveal animation — geen opacity:0 op mobile (gsap.from kan content
+     // hidden achterlaten als ScrollTrigger niet vuurt). Alleen y-tween.
     try {
       if (typeof gsap !== 'undefined' && gsap.from) {
         phases.forEach((phase) => {
           gsap.from(phase, {
             y: 40,
-            opacity: 0,
             duration: 0.8,
             ease: 'power3.out',
             scrollTrigger: {
@@ -950,11 +950,11 @@ function initAnimations() {
     }
   } else {
     // Mobile: simple reveal for model + cards, no scroll-driven phase switching
+    // (opacity:0 weggelaten — gsap.from kan content hidden laten op mobile)
     const mobileModelImg = document.querySelector('.sircle-phase-img.active');
     if (mobileModelImg) {
       gsap.from(mobileModelImg, {
         scale: 0.85,
-        opacity: 0,
         duration: 1.0,
         ease: 'power3.out',
         scrollTrigger: {
@@ -967,7 +967,6 @@ function initAnimations() {
     document.querySelectorAll('.sircle-service-card').forEach((card, i) => {
       gsap.from(card, {
         y: 40,
-        opacity: 0,
         duration: 0.7,
         delay: i * 0.1,
         ease: 'power3.out',
@@ -1282,9 +1281,9 @@ function initAnimations() {
         }
       });
     } else {
+      // Mobile: geen opacity:0 (gsap.from kan content hidden laten)
       gsap.from(content, {
         y: 60,
-        opacity: 0,
         duration: 1,
         ease: 'power3.out',
         scrollTrigger: {
@@ -1352,8 +1351,8 @@ function initAnimations() {
       });
     });
   } else if (ctaTitle) {
-    // Mobile: simple reveal
-    gsap.from(ctaTitle, { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out',
+    // Mobile: y-tween only (geen opacity:0 — risk content hidden)
+    gsap.from(ctaTitle, { y: 40, duration: 0.8, ease: 'power3.out',
       scrollTrigger: { trigger: '.final-cta', start: 'top 80%', toggleActions: 'play none none none' }
     });
   }
@@ -1384,30 +1383,34 @@ function initAnimations() {
     gsap.set(finalCta, { position: 'relative', zIndex: 2 });
   }
   
-  gsap.from('.footer-grid > *', {
-    y: 30,
-    opacity: 0,
-    stagger: 0.15,
-    duration: 0.6,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: '.footer',
-      start: 'top 90%',
-      toggleActions: 'play none none none',
-    }
-  });
+  // Footer animations alleen op desktop — gsap.from met opacity:0 / scale:0
+  // kan footer-content invisible laten op mobile als ScrollTrigger niet vuurt
+  if (!isMobile) {
+    gsap.from('.footer-grid > *', {
+      y: 30,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 0.6,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.footer',
+        start: 'top 90%',
+        toggleActions: 'play none none none',
+      }
+    });
 
-  gsap.from('.footer-socials a', {
-    scale: 0,
-    stagger: 0.1,
-    duration: 0.4,
-    ease: 'back.out(1.7)',
-    scrollTrigger: {
-      trigger: '.footer-socials',
-      start: 'top 95%',
-      toggleActions: 'play none none none',
-    }
-  });
+    gsap.from('.footer-socials a', {
+      scale: 0,
+      stagger: 0.1,
+      duration: 0.4,
+      ease: 'back.out(1.7)',
+      scrollTrigger: {
+        trigger: '.footer-socials',
+        start: 'top 95%',
+        toggleActions: 'play none none none',
+      }
+    });
+  }
 
   // ============================================
   // Trust bar — Animated counters (OSMO Display Count)

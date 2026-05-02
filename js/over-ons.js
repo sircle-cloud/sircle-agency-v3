@@ -5,6 +5,11 @@
 (function() {
   'use strict';
 
+  // Skip entry-animaties met opacity:0 op mobile — gsap.from immediateRender
+  // kan content invisible laten als ScrollTrigger niet vuurt (zelfde bug als
+  // contact.html). Op mobile content gewoon altijd zichtbaar tonen.
+  const isMobile = window.innerWidth < 768;
+
   // ---- HERO PARALLAX ----
   const heroImg = document.querySelector('.about-hero-img');
   if (heroImg) {
@@ -47,18 +52,20 @@
       },
     });
 
-    gsap.from('.timeline-point', {
-      y: 20,
-      opacity: 0,
-      stagger: 0.15,
-      duration: 0.6,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.timeline-points',
-        start: 'top 90%',
-        toggleActions: 'play none none none',
-      }
-    });
+    if (!isMobile) {
+      gsap.from('.timeline-point', {
+        y: 20,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.timeline-points',
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+        }
+      });
+    }
   }
 
   // ---- ORIGIN IMAGE PARALLAX ----
@@ -106,7 +113,7 @@
 
   // ---- TEAM PHOTO STRIP ENTRANCE ----
   const photoStrip = document.querySelector('.team-photo-strip');
-  if (photoStrip) {
+  if (photoStrip && !isMobile) {
     gsap.from(photoStrip, {
       opacity: 0,
       y: 40,

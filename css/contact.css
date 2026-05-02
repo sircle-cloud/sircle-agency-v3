@@ -479,26 +479,12 @@
 }
 
 @media (max-width: 767px) {
-  /* Form-wrapper zichtbaar zonder backdrop-filter trucs (iOS Safari bug) */
+  /* iOS Safari: backdrop-filter op form-wrapper kan content invisible renderen
+     in combinatie met overflow:hidden. Solid bg + geen blur op mobile. */
   .contact-form-wrapper {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
     background: rgba(255, 255, 255, 0.04);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-  }
-
-  /* Title + info-blokken altijd zichtbaar */
-  .contact-title,
-  .contact-body,
-  .contact-details,
-  .contact-cta-call,
-  .contact-socials,
-  .section-label {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
   }
 
   .contact-hero {
