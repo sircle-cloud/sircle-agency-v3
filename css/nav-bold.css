@@ -331,9 +331,17 @@ a.bold-nav__word:hover {
 @media (max-width: 900px) {
   .bold-nav__bar {
     padding: 16px 24px;
+    /* Top: meer ademruimte boven logo + iOS notch/safe-area honoreren */
+    padding-top: max(28px, env(safe-area-inset-top, 28px));
   }
   .bold-nav__desktop-links {
     display: none;
+  }
+  /* Reserveer ruimte voor het bottom-info block zodat menu-links visueel
+     gecentreerd zijn tussen top-van-tile en top-van-footer (niet 50% van
+     hele viewport — anders staan ze te hoog). */
+  .bold-nav__tile {
+    padding-bottom: 220px;
   }
   .bold-nav__bottom {
     padding: 1.5em 24px;
