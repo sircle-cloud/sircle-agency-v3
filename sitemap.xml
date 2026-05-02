@@ -71,6 +71,38 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Sectoren -->
+  <url>
+    <loc>https://sircle.agency/sectoren/zorg.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/sectoren/vastgoed.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/sectoren/publieke-sector.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/sectoren/industrie-b2b.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/sectoren/hospitality-events.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/sectoren/sport-outdoor.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Case studies -->
   <url>
     <loc>https://sircle.agency/werk/vlijt-tandartsen.html</loc>
@@ -114,6 +146,31 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/breinwijzers.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/werk/lumc.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/werk/coffee-on-wheels.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/werk/de-zelfspot.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/werk/outdoor-therapie.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/werk/pronova-laboratories.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
