@@ -19,6 +19,12 @@
   z-index: 0;
 }
 
+.contact-hero .noise-overlay,
+.contact-hero .grain-overlay {
+  z-index: 1;
+  pointer-events: none;
+}
+
 .contact-grid {
   position: relative;
   z-index: 3;
@@ -473,6 +479,16 @@
 }
 
 @media (max-width: 767px) {
+  /* Force reveal-up elements visible on mobile — anders blijft form/text op opacity:0
+     als ScrollTrigger niet vuurt (iOS Safari address-bar resize, reduce-motion, etc.) */
+  .contact-hero .reveal-up,
+  .contact-form-wrapper.reveal-up {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+
   .contact-hero {
     padding: 100px 0 60px;
   }

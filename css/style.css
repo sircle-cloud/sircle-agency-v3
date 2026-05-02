@@ -217,6 +217,17 @@ body.is-safari #cursor { display: none; }
     animation-duration: 60s !important;
     animation-iteration-count: infinite !important;
   }
+  /* Reveal-elementen direct zichtbaar bij reduce-motion — anders blijft content
+     onzichtbaar omdat GSAP de show-tween in 0.01ms moet doen en dat soms mist */
+  .reveal-up,
+  .reveal-clip,
+  .reveal-scale,
+  .reveal-slide {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
 }
 
 body {
