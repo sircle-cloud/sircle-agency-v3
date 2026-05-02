@@ -5,11 +5,15 @@
 (function() {
   'use strict';
 
+  // Skip alle entry-animaties op mobile — gsap.from zet inline opacity:0 wat
+  // op iOS Safari soms niet meer terugkomt (ScrollTrigger miss / Lenis-conflict).
+  // Resultaat zonder skip: form + title kort zichtbaar, dan weg.
+  const isMobile = window.innerWidth <= 767;
+
   // ---- FORM FIELD ANIMATIONS ----
   const formGroups = document.querySelectorAll('.contact-form .form-group');
-  
-  // Stagger form fields from right on load
-  if (formGroups.length) {
+
+  if (formGroups.length && !isMobile) {
     gsap.from(formGroups, {
       x: 40,
       opacity: 0,
@@ -40,7 +44,7 @@
 
   // ---- HERO TITLE SPLIT REVEAL ----
   const contactTitle = document.querySelector('.contact-title');
-  if (contactTitle) {
+  if (contactTitle && !isMobile) {
     const lines = contactTitle.querySelectorAll('.line');
     gsap.from(lines, {
       y: '100%',
@@ -180,18 +184,20 @@
   }
 
   // ---- CONTACT DETAILS STAGGER ----
-  gsap.from('.contact-detail', {
-    y: 20,
-    opacity: 0,
-    stagger: 0.12,
-    duration: 0.6,
-    ease: 'power2.out',
-    delay: 0.6,
-    scrollTrigger: {
-      trigger: '.contact-details',
-      start: 'top 85%',
-      toggleActions: 'play none none none',
-    }
-  });
+  if (!isMobile) {
+    gsap.from('.contact-detail', {
+      y: 20,
+      opacity: 0,
+      stagger: 0.12,
+      duration: 0.6,
+      ease: 'power2.out',
+      delay: 0.6,
+      scrollTrigger: {
+        trigger: '.contact-details',
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      }
+    });
+  }
 
 })();
