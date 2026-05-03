@@ -51,54 +51,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sircle.agency/en/werk/vlijt-tandartsen.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/vlijt-tandartsen.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sircle.agency/en/werk/kone.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/kone.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/kone.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/kone.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sircle.agency/en/werk/casper-bouman.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/casper-bouman.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/casper-bouman.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/casper-bouman.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sircle.agency/en/werk/newlong.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/newlong.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/newlong.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/newlong.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sircle.agency/en/werk/outdoor-therapie.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/outdoor-therapie.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/outdoor-therapie.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/outdoor-therapie.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sircle.agency/en/werk/oceans-of-energy.html</loc>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/oceans-of-energy.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/oceans-of-energy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/oceans-of-energy.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://sircle.agency/over-ons.html</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/over-ons.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/over-ons.html"/>
@@ -331,88 +283,275 @@
   <!-- Case studies -->
   <url>
     <loc>https://sircle.agency/werk/vlijt-tandartsen.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/vlijt-tandartsen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/vlijt-tandartsen.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/vlijt-tandartsen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/casper-bouman.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/casper-bouman.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/casper-bouman.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/casper-bouman.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/casper-bouman.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/casper-bouman.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/casper-bouman.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/casper-bouman.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/kone.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/kone.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/kone.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/kone.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/kone.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/kone.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/kone.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/kone.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/oceans-of-energy.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/oceans-of-energy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/oceans-of-energy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/oceans-of-energy.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/oceans-of-energy.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/oceans-of-energy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/oceans-of-energy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/oceans-of-energy.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/newlong.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/newlong.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/newlong.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/newlong.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/newlong.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/newlong.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/newlong.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/newlong.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/kanslokaal.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/kanslokaal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/kanslokaal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/kanslokaal.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/kanslokaal.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/kanslokaal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/kanslokaal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/kanslokaal.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/dudok-consulting.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/dudok-consulting.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/dudok-consulting.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/dudok-consulting.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/dudok-consulting.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/dudok-consulting.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/dudok-consulting.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/dudok-consulting.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/22qminded.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/22qminded.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/22qminded.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/22qminded.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/22qminded.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/22qminded.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/22qminded.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/22qminded.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/breinwijzers.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/breinwijzers.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/breinwijzers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/breinwijzers.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/breinwijzers.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/breinwijzers.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/breinwijzers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/breinwijzers.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/lumc.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/lumc.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/lumc.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/lumc.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/lumc.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/lumc.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/lumc.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/lumc.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/coffee-on-wheels.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/coffee-on-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/coffee-on-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/coffee-on-wheels.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/coffee-on-wheels.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/coffee-on-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/coffee-on-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/coffee-on-wheels.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/de-zelfspot.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/de-zelfspot.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/de-zelfspot.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/de-zelfspot.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/de-zelfspot.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/de-zelfspot.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/de-zelfspot.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/de-zelfspot.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/outdoor-therapie.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/outdoor-therapie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/outdoor-therapie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/outdoor-therapie.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/outdoor-therapie.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/outdoor-therapie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/outdoor-therapie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/outdoor-therapie.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/werk/pronova-laboratories.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/pronova-laboratories.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/pronova-laboratories.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/pronova-laboratories.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://sircle.agency/en/werk/pronova-laboratories.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/pronova-laboratories.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/pronova-laboratories.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/pronova-laboratories.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://sircle.agency/werk/vivium.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/vivium.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/vivium.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/vivium.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://sircle.agency/en/werk/vivium.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/vivium.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/vivium.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/vivium.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://sircle.agency/werk/frank-knight.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/frank-knight.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/frank-knight.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/frank-knight.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://sircle.agency/en/werk/frank-knight.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/frank-knight.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/frank-knight.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/frank-knight.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://sircle.agency/werk/jll-nabuurs.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/jll-nabuurs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/jll-nabuurs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/jll-nabuurs.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/jll-nabuurs.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/jll-nabuurs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/jll-nabuurs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/jll-nabuurs.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <!-- Journal articles -->
