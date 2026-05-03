@@ -1883,7 +1883,7 @@ initPageTransitions();
 // ---- CASE CARD HOVER VIDEOS ----
 (function () {
   document.querySelectorAll('.hover-reel').forEach(function (video) {
-    const card = video.closest('.case-card, .sc-portfolio-item, .sp-proof__case, .portfolio-card');
+    const card = video.closest('.case-card, .sc-portfolio-item, .sp-proof__case, .portfolio-card, .portfolio-tile');
     if (!card) return;
     card.addEventListener('mouseenter', function () {
       video.play().catch(function () {});
