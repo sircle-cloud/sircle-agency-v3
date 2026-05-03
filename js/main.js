@@ -7,6 +7,27 @@
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
+// ============================================
+// LANGUAGE SWITCHER — NL <-> EN counterpart URL
+// ============================================
+(function setupLangSwitcher() {
+  const path = window.location.pathname;
+  const isEN = path.startsWith('/en/');
+  const counterpart = isEN ? path.replace(/^\/en\//, '/') : '/en' + path;
+
+  document.querySelectorAll('.bold-nav__lang a').forEach(link => {
+    const lang = link.dataset.lang;
+    if (!lang) return;
+    if ((lang === 'nl' && !isEN) || (lang === 'en' && isEN)) {
+      link.classList.add('is-active');
+      link.removeAttribute('href'); // active = no link to self
+    } else {
+      link.setAttribute('href', counterpart);
+    }
+  });
+})();
+
+
 // ---- UTILITY: CUSTOM SPLIT TEXT ----
 // No external SplitText plugin needed
 function splitTextIntoWords(el) {
