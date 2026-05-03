@@ -233,33 +233,99 @@
   <!-- Sectoren -->
   <url>
     <loc>https://sircle.agency/sectoren/zorg.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/zorg.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/zorg.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/zorg.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/sectoren/zorg.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/zorg.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/zorg.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/zorg.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://sircle.agency/sectoren/vastgoed.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/vastgoed.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/vastgoed.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/vastgoed.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/sectoren/vastgoed.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/vastgoed.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/vastgoed.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/vastgoed.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://sircle.agency/sectoren/publieke-sector.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/publieke-sector.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/publieke-sector.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/publieke-sector.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/sectoren/publieke-sector.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/publieke-sector.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/publieke-sector.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/publieke-sector.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://sircle.agency/sectoren/industrie-b2b.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/industrie-b2b.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/industrie-b2b.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/industrie-b2b.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/sectoren/industrie-b2b.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/industrie-b2b.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/industrie-b2b.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/industrie-b2b.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://sircle.agency/sectoren/hospitality-events.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/hospitality-events.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/hospitality-events.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/hospitality-events.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://sircle.agency/en/sectoren/hospitality-events.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/hospitality-events.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/hospitality-events.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/hospitality-events.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://sircle.agency/sectoren/sport-outdoor.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/sport-outdoor.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/sport-outdoor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/sport-outdoor.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/sectoren/sport-outdoor.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/sport-outdoor.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/sport-outdoor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/sport-outdoor.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Case studies -->

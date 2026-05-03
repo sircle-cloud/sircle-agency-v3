@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#0C180F">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare — sircle.agency | Digital growth for healthcare</title>
+  <meta name="description" content="Websites, brands and growth systems for clinics, healthcare institutions and medical platforms. Clear communication, GDPR-compliant, measured in appointments.">
+  <meta property="og:title" content="Healthcare — sircle.agency | Digital growth for healthcare">
+  <meta property="og:description" content="Websites, brands and growth systems for clinics, healthcare institutions and medical platforms.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sircle.agency/en/sectoren/zorg.html">
+  <meta property="og:image" content="https://sircle.agency/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sircle.agency/assets/og-image.jpg">
+  <link rel="canonical" href="https://sircle.agency/en/sectoren/zorg.html">
+  <link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/zorg.html">
+  <link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/zorg.html">
+  <link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/zorg.html">
+  <link rel="icon" type="image/svg+xml" href="/assets/svg/svg-black-S.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css?v=51">
+  <link rel="stylesheet" href="/css/nav-bold.css?v=19">
+  <link rel="stylesheet" href="/css/sirclecare.css?v=2">
+  <link rel="stylesheet" href="/css/sirclepakket.css?v=2">
+  <style>
+    .zorg-cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: var(--space-lg) auto 0; }
+    .zorg-card { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), box-shadow 0.7s ease; display: block; text-decoration: none; cursor: pointer; }
+    .zorg-card.zorg-card--static { cursor: default; }
+    .zorg-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 32px 80px rgba(0,0,0,0.35); }
+    .zorg-card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8) brightness(0.7); transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.6s ease; }
+    .zorg-card:hover img { transform: scale(1.05); filter: saturate(0.9) brightness(0.8); }
+    .zorg-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,25,12,0.92) 0%, rgba(7,25,12,0.4) 45%, transparent 100%); z-index: 1; }
+    .zorg-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px; z-index: 2; }
+    .zorg-card-info h3 { font-size: 22px; font-weight: 700; color: var(--white); text-transform: uppercase; margin-bottom: 6px; }
+    .zorg-card-info .tags { font-size: 12px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+    .zorg-card-info p { font-size: 14px; color: var(--soft-green); margin-top: 10px; line-height: 1.55; }
+    @media (max-width: 767px) { .zorg-cases-grid { grid-template-columns: 1fr; gap: 16px; } }
+    .zorg-challenges { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 980px; margin: var(--space-lg) auto 0; }
+    .zorg-challenge { padding: 28px 26px; background: rgba(12,24,15,0.04); border: 1px solid rgba(12,24,15,0.08); border-radius: 16px; transition: background 0.3s ease, border-color 0.3s ease; }
+    .zorg-challenge:hover { background: rgba(12,24,15,0.07); border-color: rgba(212,175,100,0.4); }
+    .zorg-challenge h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark-green); margin: 0 0 10px; }
+    .zorg-challenge p { font-size: 0.9rem; color: rgba(12,24,15,0.72); line-height: 1.55; margin: 0; }
+    @media (max-width: 767px) { .zorg-challenges { grid-template-columns: 1fr; } }
+    .zorg-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: var(--space-lg) auto 0; padding: 40px 0; border-top: 1px solid rgba(212,175,100,0.3); border-bottom: 1px solid rgba(212,175,100,0.3); }
+    .zorg-stat { text-align: center; }
+    .zorg-stat__num { display: block; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: var(--gold); margin-bottom: 8px; line-height: 1; }
+    .zorg-stat__label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft-green); }
+    @media (max-width: 600px) { .zorg-stats { grid-template-columns: 1fr; gap: 32px; } }
+    .zorg-whyus { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 32px; max-width: 880px; margin: var(--space-lg) auto 0; }
+    .zorg-whyus-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; }
+    .zorg-whyus-item svg { flex-shrink: 0; color: var(--mid-green); margin-top: 4px; }
+    .zorg-whyus-item strong { display: block; font-size: 1rem; color: var(--dark-green); margin-bottom: 4px; }
+    .zorg-whyus-item p { font-size: 0.9rem; color: rgba(12,24,15,0.72); line-height: 1.5; margin: 0; }
+    @media (max-width: 767px) { .zorg-whyus { grid-template-columns: 1fr; gap: 8px; } }
+    .zorg-testimonial { padding: var(--space-xl) 0; text-align: center; }
+    .zorg-testimonial__quote { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 300; line-height: 1.45; color: var(--white); font-style: italic; margin: 0 auto 32px; max-width: 820px; }
+    .zorg-testimonial__quote::before { content: "\201C"; color: var(--gold); margin-right: 6px; font-style: normal; }
+    .zorg-testimonial__quote::after { content: "\201D"; color: var(--gold); margin-left: 6px; font-style: normal; }
+    .zorg-testimonial__author { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); }
+    .zorg-testimonial__author span { color: var(--soft-green); font-weight: 400; text-transform: none; letter-spacing: 0; }
+  </style>
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Healthcare — sircle.agency","url":"https://sircle.agency/en/sectoren/zorg.html","description":"Websites, brands and growth systems for clinics, healthcare institutions and medical platforms.","inLanguage":"en","isPartOf":{"@id":"https://sircle.agency/#website"}}
+  </script>
+<!-- Fathom Analytics -->
+  <script src="https://cdn.usefathom.com/script.js" data-site="KZSYVCLI" defer></script>
+  <!-- / Fathom -->
+</head>
+<body>
+
+  <div class="page-transition" id="page-transition">
+    <div class="page-transition__panel page-transition__panel--1"></div>
+    <div class="page-transition__panel page-transition__panel--2"></div>
+  </div>
+
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <div class="cursor-label">View</div>
+  </div>
+
+  <svg class="svg-defs"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></svg>
+
+  <nav data-navigation-status="not-active" class="bold-nav" id="nav">
+    <div class="bold-nav__bar">
+      <a href="/en/index.html" class="bold-nav__logo">
+        <img src="/assets/svg/svg-white-logo1.svg" alt="sircle agency" class="bold-nav__logo-white">
+        <img src="/assets/svg/svg-black-logo1.svg" alt="sircle agency" class="bold-nav__logo-dark">
+      </a>
+      <div class="bold-nav__desktop-links">
+        <a href="/en/diensten.html">Services</a>
+        <a href="/en/werk.html">Work</a>
+        <a href="/en/over-ons.html">About</a>
+        <a href="/en/contact.html">Contact</a>
+      </div>
+            <div class="bold-nav__lang">
+        <a data-lang="nl">NL</a>
+        <span class="bold-nav__lang-sep">|</span>
+        <a data-lang="en">EN</a>
+      </div>
+      <button type="button" data-navigation-toggle="toggle" aria-label="Open menu" class="bold-nav__hamburger">
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+      </button>
+    </div>
+    <div class="bold-nav__tile">
+      <ul class="bold-nav__ul">
+        <li class="bold-nav__li"><a href="/en/index.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Home</span></a></li>
+        <li class="bold-nav__li"><a href="/en/diensten.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Services</span></a></li>
+        <li class="bold-nav__li"><a href="/en/werk.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Work</span></a></li>
+        <li class="bold-nav__li"><a href="/en/over-ons.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">About</span></a></li>
+        <li class="bold-nav__li"><a href="/en/contact.html" class="bold-nav__link" data-navigation-toggle="close"><span class="bold-nav__link-text">Contact</span></a></li>
+      </ul>
+      <div class="bold-nav__bottom">
+        <div class="bold-nav__bottom-left">
+          <p class="bold-nav__word">The Hague, Netherlands</p>
+          <a href="tel:+31852129145" class="bold-nav__word bold-nav__phone">+31 85 212 91 45</a>
+        </div>
+        <div class="bold-nav__bottom-right">
+          <a href="mailto:hello@sircle.agency" class="bold-nav__word">hello@sircle.agency</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="sp-hero">
+    <img src="/assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <span class="sp-hero__eyebrow"><span class="sp-hero__eyebrow-dot"></span> Sectors · Healthcare</span>
+      <h1 class="sp-hero__title hero-reveal">Digital growth for healthcare<span class="sp-hero__title-accent">Strategy, brand and infrastructure</span></h1>
+      <p class="sp-hero__sub">We build websites, brands and growth systems for clinics, healthcare institutions and medical platforms. Clear communication, GDPR-compliant, measured in appointments.</p>
+      <div class="sp-hero__ctas">
+        <a href="/en/contact.html" class="sp-hero__cta-primary">Schedule a discovery <span>→</span></a>
+        <a href="#cases" class="sp-hero__cta-secondary">View healthcare cases →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRY CHALLENGES -->
+  <section class="section section-cream sc-included">
+    <img src="/assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Challenges in healthcare</span>
+        <h2 class="sc-section-title reveal-up">THE COMPLEXITY BEHIND GOOD CARE</h2>
+        <p class="sc-section-sub reveal-up">Healthcare organisations have unique online obstacles — compliance, trust, findability and fragmented communication. We know them.</p>
+      </div>
+      <div class="zorg-challenges reveal-up">
+        <div class="zorg-challenge">
+          <h3>GDPR-compliant and patient-friendly</h3>
+          <p>Compliance is complex, but the site has to remain accessible and human. Privacy by design from the first line of code.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Fragmented audiences</h3>
+          <p>Patients, referring physicians, family carers and healthcare professionals — all with different information needs, on one platform.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Outdated patient journey</h3>
+          <p>Online appointments, intake forms and patient communication that haven't grown with how modern your care actually is.</p>
+        </div>
+        <div class="zorg-challenge">
+          <h3>Competition from portals</h3>
+          <p>Aggregator platforms and large chains dominate search results. Local clinics need a different strategy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section class="section section-cream sc-included">
+    <img src="/assets/branding/gradients/gradient-5.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Our solutions for healthcare</span>
+        <h2 class="sc-section-title reveal-up">WHAT WE BUILD FOR HEALTHCARE</h2>
+        <p class="sc-section-sub reveal-up">Five pillars that help healthcare organisations grow digitally — from first contact to ongoing patient communication.</p>
+      </div>
+
+      <div class="sc-webdev-features reveal-up" style="max-width: 880px; margin: var(--space-lg) auto 0;">
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          <div>
+            <strong>Patient platforms</strong>
+            <p>Clear healthcare information, frictionless contact and intake flows. GDPR-compliant, WCAG-accessible and built to scale.</p>
+          </div>
+        </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <div>
+            <strong>Strong healthcare brands</strong>
+            <p>Visual identity and tone of voice that build trust from the first click. Professional, personal and consistent across every touchpoint.</p>
+          </div>
+        </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          <div>
+            <strong>Educational content</strong>
+            <p>Animated films and videos that make complex care accessible. For patients, family carers and their families — when they need it.</p>
+          </div>
+        </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <div>
+            <strong>Online appointment systems</strong>
+            <p>Frictionless booking, integration with appointment apps and reminder flows. Fewer no-shows, more focus on delivering care.</p>
+          </div>
+        </div>
+        <div class="sc-webdev-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24" height="24"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/></svg>
+          <div>
+            <strong>Local findability</strong>
+            <p>Local SEO + Google Business for clinics. Top of the search results in your city, region or street.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section section-dark sc-proof">
+    <img src="/assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up" style="color: var(--gold);">Why Sircle for healthcare</span>
+        <h2 class="sc-section-title reveal-up" style="color: var(--white);">SPECIALISTS IN HEALTHCARE COMMUNICATION</h2>
+        <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">Not just an agency. A partner that genuinely knows healthcare practice, regulation and audiences.</p>
+      </div>
+
+      <div class="zorg-stats reveal-up">
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">7+</span>
+          <span class="zorg-stat__label">Healthcare cases delivered</span>
+        </div>
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">150–200</span>
+          <span class="zorg-stat__label">New patients/month (VLIJT)</span>
+        </div>
+        <div class="zorg-stat">
+          <span class="zorg-stat__num">WCAG 2.1 AA</span>
+          <span class="zorg-stat__label">Accessibility standard</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 REASONS -->
+  <section class="section section-cream sc-included">
+    <img src="/assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Our strengths</span>
+        <h2 class="sc-section-title reveal-up">WHAT TO EXPECT FROM US</h2>
+      </div>
+      <div class="zorg-whyus reveal-up">
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Proven healthcare track record</strong>
+            <p>VLIJT, LUMC, 22qMinded, Care4Minds, Vivium, Breinwijzers — we understand the complexity of healthcare brands.</p>
+          </div>
+        </div>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>GDPR & WCAG from day one</strong>
+            <p>Compliance isn't an afterthought. Privacy and accessibility are baked into every deliverable.</p>
+          </div>
+        </div>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>In-house animation team</strong>
+            <p>For educational content, awareness videos and patient communication. No external party in the mix.</p>
+          </div>
+        </div>
+        <div class="zorg-whyus-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polyline points="20 6 9 17 4 12"/></svg>
+          <div>
+            <strong>Local SEO expertise</strong>
+            <p>Specifically for clinics and care practices. Reaching the top where your patients actually search.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEALTHCARE CASES -->
+  <section class="section section-dark sc-proof" id="cases">
+    <img src="/assets/branding/gradients/gradient-7.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up" style="color: var(--gold);">Healthcare work</span>
+        <h2 class="sc-section-title reveal-up" style="color: var(--white);">HEALTHCARE BRANDS WE BUILT</h2>
+        <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">From a dental chain to a university medical centre. Each brand different, each approach bespoke.</p>
+      </div>
+
+      <div class="zorg-cases-grid reveal-up">
+
+        <a href="/en/werk/vlijt-tandartsen.html" class="zorg-card">
+          <img src="/assets/cases/screenshots/vlijt-hero.jpg" alt="VLIJT Tandartsen — vlijttandartsen.nl" loading="lazy">
+          <video class="hover-reel" src="/assets/cases/vlijt-reel.mp4" muted loop playsinline preload="none"></video>
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>VLIJT Tandartsen</h3>
+            <span class="tags">Branding · Web · SEO · Growth</span>
+            <p>Complete brand strategy and website. 150–200 new patients per month.</p>
+          </div>
+        </a>
+
+        <a href="/werk/22qminded.html" class="zorg-card">
+          <img src="/assets/cases/22qminded-brandshot.jpg" alt="22qMinded — 22qminded.com" loading="lazy">
+          <video class="hover-reel" src="/assets/cases/22qminded-reel.mp4" muted loop playsinline preload="none"></video>
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>22qMinded</h3>
+            <span class="tags">Branding · Web · WooCommerce · Care</span>
+            <p>Membership platform for the 22q community. Webinars, training and coaching.</p>
+          </div>
+        </a>
+
+        <a href="/werk/lumc.html" class="zorg-card">
+          <img src="/assets/cases/lumc/lumc-still-1.jpg" alt="LUMC — animated films" loading="lazy">
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>LUMC</h3>
+            <span class="tags">Animation · Medical Content</span>
+            <p>Animated films on stem cell transplantation for patients and their families.</p>
+          </div>
+        </a>
+
+        <a href="/werk/breinwijzers.html" class="zorg-card">
+          <img src="/assets/cases/breinwijzers-brandshot.jpg" alt="Breinwijzers — breinwijzers.nl" loading="lazy">
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>Breinwijzers</h3>
+            <span class="tags">Web · WooCommerce · Learning Platform · Care</span>
+            <p>Online learning environment for diagnostic professionals. Supervision, courses and masterclasses.</p>
+          </div>
+        </a>
+
+        <div class="zorg-card zorg-card--static">
+          <img src="/assets/branding/gradients/gradient-2.webp" alt="Vivium Zorggroep" loading="lazy">
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>Vivium Zorggroep</h3>
+            <span class="tags">Film · Documentary · Brand Content</span>
+            <p>Mini-documentaries on Naarderheem and the people who make the difference there.</p>
+          </div>
+        </div>
+
+        <div class="zorg-card zorg-card--static">
+          <img src="/assets/branding/gradients/gradient-4.webp" alt="Fit in Wassenaar" loading="lazy">
+          <div class="zorg-card-overlay"></div>
+          <div class="zorg-card-info">
+            <h3>Fit in Wassenaar</h3>
+            <span class="tags">Video · Education · Content Series</span>
+            <p>Educational video series on movement, language, oral motor skills and ageing well.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: var(--space-lg);">
+        <a href="/en/werk.html" class="btn-ghost" style="color: var(--cream); border-color: rgba(242,226,164,0.4);">View all our work <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section section-dark zorg-testimonial">
+    <img src="/assets/branding/gradients/gradient-1.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <p class="zorg-testimonial__quote reveal-up">The contact was pleasant from the start. They thought along, asked critical questions, made concrete agreements — but with flexibility too. Highly professional.</p>
+      <p class="zorg-testimonial__author reveal-up" data-delay="0.1">Sasja Duijff <span>· Care4Minds / 22qMinded</span></p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section section-cream">
+    <img src="/assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center; padding: var(--space-lg) 0;">
+        <span class="sc-label reveal-up">Ready for digital growth?</span>
+        <h2 class="sc-section-title reveal-up">FROM INSIGHT TO IMPACT</h2>
+        <p class="sc-section-sub reveal-up" style="margin-bottom: var(--space-md);">A 30-minute discovery call. We listen, think along and share where the digital growth opportunities are — for your healthcare organisation specifically.</p>
+        <a href="/en/contact.html" class="btn-primary btn-large btn-pill">Schedule a discovery <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="/en/index.html"><img src="/assets/svg/svg-white-logo1.svg" alt="sircle agency" class="footer-logo"></a>
+          <address>Zwaardstraat 16<br>2584 TX Den Haag</address>
+          <div class="footer-contact">
+            <a href="mailto:hello@sircle.agency">hello@sircle.agency</a>
+            <a href="tel:+31852129145">+31 85 212 91 45</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <nav>
+            <a href="/en/sirclestrategy.html">SircleStrategy</a>
+            <a href="/en/sirclestudio.html">SircleStudio</a>
+            <a href="/en/sirclegrowth.html">SircleGrowth</a>
+            <a href="/en/sirclecare.html">SircleCare</a>
+            <a href="/en/sirclepakket.html">SIRCLE Package</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Sectors</h4>
+          <nav>
+            <a href="/en/sectoren/zorg.html">Healthcare</a>
+            <a href="/en/sectoren/vastgoed.html">Real Estate</a>
+            <a href="/en/sectoren/publieke-sector.html">Public Sector</a>
+            <a href="/en/sectoren/industrie-b2b.html">Industry & B2B</a>
+            <a href="/en/sectoren/hospitality-events.html">Hospitality & Events</a>
+            <a href="/en/sectoren/sport-outdoor.html">Sport & Outdoor</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <nav>
+            <a href="/en/werk.html">Work</a>
+            <a href="/en/over-ons.html">About</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/en/contact.html">Contact</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 sircle.agency · <a href="/privacy.html" class="footer-link-subtle">Privacy Policy</a> · <a href="/voorwaarden.html" class="footer-link-subtle">Terms</a></p>
+        <p class="footer-legal">KVK: 78204240</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="/js/main.js?v=24"></script>
+</body>
+</html>
