@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=52">
-  <link rel="stylesheet" href="css/contact.css?v=5">
+  <link rel="stylesheet" href="css/contact.css?v=6">
   <link rel="stylesheet" href="css/nav-bold.css?v=19">
   <!-- SCHEMA.ORG JSON-LD (auto-generated) -->
   <script type="application/ld+json">
@@ -277,13 +277,19 @@
             </div>
 
             <div class="form-group">
-              <label for="company">Bedrijf</label>
-              <input type="text" id="company" name="company" autocomplete="organization" placeholder="Je bedrijfsnaam">
+              <label for="phone">Telefoon *</label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+31 6 12 34 56 78">
               <div class="form-line"><div class="form-line-fill"></div></div>
             </div>
 
             <div class="form-group">
-              <label class="form-label-top">Waar kunnen we je mee helpen?</label>
+              <label for="company">Bedrijf *</label>
+              <input type="text" id="company" name="company" required autocomplete="organization" placeholder="Je bedrijfsnaam">
+              <div class="form-line"><div class="form-line-fill"></div></div>
+            </div>
+
+            <div class="form-group" data-required-group="service">
+              <label class="form-label-top">Waar kunnen we je mee helpen? *</label>
               <div class="form-checkboxes">
                 <label class="form-checkbox">
                   <input type="checkbox" name="service" value="strategy">
@@ -309,8 +315,8 @@
             </div>
 
             <div class="form-group">
-              <label for="message">Bericht</label>
-              <textarea id="message" name="message" rows="4" placeholder="Vertel kort over je project of vraag..."></textarea>
+              <label for="message">Bericht *</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Vertel kort over je project of vraag..."></textarea>
               <div class="form-line"><div class="form-line-fill"></div></div>
             </div>
 
@@ -434,6 +440,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="js/main.js?v=24"></script>
-  <script src="js/contact.js?v=3"></script>
+  <script src="js/contact.js?v=4"></script>
 </body>
 </html>

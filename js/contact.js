@@ -96,6 +96,9 @@
       let valid = true;
       const nameField = form.querySelector('#name');
       const emailField = form.querySelector('#email');
+      const phoneField = form.querySelector('#phone');
+      const companyField = form.querySelector('#company');
+      const messageField = form.querySelector('#message');
 
       if (!nameField.value.trim()) {
         showError(nameField);
@@ -105,6 +108,33 @@
       if (!EMAIL_REGEX.test(emailField.value.trim())) {
         showError(emailField);
         valid = false;
+      }
+
+      if (phoneField && !phoneField.value.trim()) {
+        showError(phoneField);
+        valid = false;
+      }
+
+      if (companyField && !companyField.value.trim()) {
+        showError(companyField);
+        valid = false;
+      }
+
+      if (messageField && !messageField.value.trim()) {
+        showError(messageField);
+        valid = false;
+      }
+
+      // Validate at least one service checkbox is checked
+      const serviceGroup = form.querySelector('[data-required-group="service"]');
+      if (serviceGroup) {
+        const checked = serviceGroup.querySelectorAll('input[name="service"]:checked');
+        if (checked.length === 0) {
+          serviceGroup.classList.add('error');
+          valid = false;
+        } else {
+          serviceGroup.classList.remove('error');
+        }
       }
 
       if (!valid) return;
@@ -159,6 +189,16 @@
     form.querySelectorAll('input, textarea').forEach(field => {
       field.addEventListener('focus', () => {
         field.closest('.form-group').classList.remove('error');
+      });
+    });
+
+    // Clear service-group error as soon as one checkbox gets checked
+    form.querySelectorAll('input[name="service"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const group = cb.closest('[data-required-group="service"]');
+        if (group && form.querySelectorAll('input[name="service"]:checked').length > 0) {
+          group.classList.remove('error');
+        }
       });
     });
   }
