@@ -123,8 +123,19 @@
   </url>
   <url>
     <loc>https://sircle.agency/sirclecare.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclecare.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclecare.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclecare.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/sirclecare.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclecare.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclecare.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclecare.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Sectoren -->
