@@ -84,16 +84,49 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://sircle.agency/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/privacy.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/privacy.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://sircle.agency/voorwaarden.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/voorwaarden.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/voorwaarden.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/voorwaarden.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/voorwaarden.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/voorwaarden.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/voorwaarden.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/voorwaarden.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -557,38 +590,128 @@
   <!-- Journal articles -->
   <url>
     <loc>https://sircle.agency/journal/brand-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/brand-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/brand-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/brand-guide.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal/brand-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/brand-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/brand-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/brand-guide.html"/>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/journal/lokale-seo.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/lokale-seo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/lokale-seo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/lokale-seo.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal/lokale-seo.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/lokale-seo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/lokale-seo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/lokale-seo.html"/>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/journal/merkstrategie-vs-logo.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/merkstrategie-vs-logo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/merkstrategie-vs-logo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/merkstrategie-vs-logo.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal/merkstrategie-vs-logo.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/merkstrategie-vs-logo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/merkstrategie-vs-logo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/merkstrategie-vs-logo.html"/>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/journal/seo-voor-mkb.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/seo-voor-mkb.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/seo-voor-mkb.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/seo-voor-mkb.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal/seo-voor-mkb.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/seo-voor-mkb.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/seo-voor-mkb.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/seo-voor-mkb.html"/>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/journal/startup-naar-scaleup.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/startup-naar-scaleup.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/startup-naar-scaleup.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/startup-naar-scaleup.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal/startup-naar-scaleup.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/startup-naar-scaleup.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/startup-naar-scaleup.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/startup-naar-scaleup.html"/>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/journal/video-in-merkstrategie.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/video-in-merkstrategie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/video-in-merkstrategie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/video-in-merkstrategie.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal/video-in-merkstrategie.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/video-in-merkstrategie.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/video-in-merkstrategie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/video-in-merkstrategie.html"/>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/journal/wanneer-rebranding.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wanneer-rebranding.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wanneer-rebranding.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wanneer-rebranding.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal/wanneer-rebranding.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wanneer-rebranding.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wanneer-rebranding.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wanneer-rebranding.html"/>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/journal/wat-kost-een-website.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wat-kost-een-website.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wat-kost-een-website.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wat-kost-een-website.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal/wat-kost-een-website.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wat-kost-een-website.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wat-kost-een-website.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wat-kost-een-website.html"/>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sircle.agency/journal/wordpress-vs-maatwerk.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wordpress-vs-maatwerk.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wordpress-vs-maatwerk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wordpress-vs-maatwerk.html"/>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/journal/wordpress-vs-maatwerk.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wordpress-vs-maatwerk.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wordpress-vs-maatwerk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wordpress-vs-maatwerk.html"/>
     <priority>0.5</priority>
   </url>
 </urlset>
