@@ -91,8 +91,19 @@
   </url>
   <url>
     <loc>https://sircle.agency/sirclestudio.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclestudio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclestudio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclestudio.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/sirclestudio.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclestudio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclestudio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclestudio.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://sircle.agency/sirclegrowth.html</loc>
