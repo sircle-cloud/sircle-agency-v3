@@ -15,6 +15,23 @@ gsap.registerPlugin(ScrollTrigger);
   const isEN = path.startsWith('/en/');
   const counterpart = isEN ? path.replace(/^\/en\//, '/') : '/en' + path;
 
+  // Show "not translated yet" banner if user landed on /en/ via fallback
+  if (isEN && sessionStorage.getItem('sircle-en-fallback')) {
+    const fromPath = sessionStorage.getItem('sircle-en-fallback-from') || '/';
+    sessionStorage.removeItem('sircle-en-fallback');
+    sessionStorage.removeItem('sircle-en-fallback-from');
+    document.addEventListener('DOMContentLoaded', () => {
+      const banner = document.createElement('div');
+      banner.className = 'lang-fallback-banner';
+      banner.innerHTML = `
+        <span>This page isn't translated yet — showing the English homepage. <a href="${fromPath}">Back to NL version</a></span>
+        <button type="button" aria-label="Dismiss" class="lang-fallback-banner__close">&times;</button>
+      `;
+      document.body.appendChild(banner);
+      banner.querySelector('.lang-fallback-banner__close').addEventListener('click', () => banner.remove());
+    });
+  }
+
   document.querySelectorAll('.bold-nav__lang a').forEach(link => {
     const lang = link.dataset.lang;
     if (!lang) return;
@@ -22,7 +39,30 @@ gsap.registerPlugin(ScrollTrigger);
       link.classList.add('is-active');
       link.removeAttribute('href'); // active = no link to self
     } else {
+      link.style.cursor = 'pointer';
       link.setAttribute('href', counterpart);
+      // Intercept click: HEAD-check counterpart, fallback to /en/ or / if 404
+      link.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const target = lang === 'en' ? counterpart : counterpart;
+        try {
+          const res = await fetch(target, { method: 'HEAD', cache: 'no-store' });
+          if (res.ok) {
+            window.location.href = target;
+          } else {
+            throw new Error('not found');
+          }
+        } catch (_) {
+          // Fallback: send EN-clicks to /en/, NL-clicks to /
+          if (lang === 'en') {
+            sessionStorage.setItem('sircle-en-fallback', '1');
+            sessionStorage.setItem('sircle-en-fallback-from', path);
+            window.location.href = '/en/';
+          } else {
+            window.location.href = '/';
+          }
+        }
+      });
     }
   });
 })();

@@ -105,6 +105,46 @@
   color: rgba(12, 24, 15, 0.3);
 }
 
+/* Language fallback banner — shown when EN page doesn't exist yet */
+.lang-fallback-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 560px;
+  width: calc(100% - 48px);
+  background: #0C180F;
+  color: #f4ece0;
+  border: 1px solid rgba(212, 175, 100, 0.35);
+  border-radius: 8px;
+  padding: 14px 44px 14px 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  z-index: 9999;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  font-family: 'Kulim Park', sans-serif;
+}
+.lang-fallback-banner a {
+  color: var(--gold, #d4af64);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.lang-fallback-banner__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  color: rgba(244, 236, 224, 0.6);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+.lang-fallback-banner__close:hover { color: #fff; }
+
 /* Hamburger */
 .bold-nav__hamburger {
   pointer-events: auto;
