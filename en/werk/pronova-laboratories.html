@@ -117,8 +117,11 @@
 
       <div class="case-video">
         <p class="case-video-label">Pronova Laboratories</p>
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/u98c_D2GtJ8?rel=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-wrapper video-thumb" data-yt-src="https://www.youtube.com/embed/u98c_D2GtJ8?rel=0&autoplay=1">
+          <img src="/assets/cases/pronova/pronova-02.jpg" alt="Pronova AeroFocus Technology brand video poster" loading="lazy">
+          <button type="button" class="video-play-btn" aria-label="Play brand video">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" stroke="currentColor" stroke-width="2"/><polygon points="26,20 44,32 26,44" fill="currentColor"/></svg>
+          </button>
         </div>
       </div>
 
@@ -234,5 +237,20 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="/js/main.js?v=26"></script>
+  <script>
+    document.querySelectorAll('.video-thumb').forEach(thumb => {
+      const src = thumb.dataset.ytSrc || thumb.dataset.vimeoSrc;
+      if (!src) return;
+      thumb.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+        iframe.setAttribute('allowfullscreen', '');
+        thumb.innerHTML = '';
+        thumb.appendChild(iframe);
+        thumb.style.cursor = 'default';
+      });
+    });
+  </script>
 </body>
 </html>
