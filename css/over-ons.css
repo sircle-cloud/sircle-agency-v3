@@ -621,3 +621,61 @@
   .pledge-grid { grid-template-columns: 1fr; gap: 32px; }
   .pledge-block { max-width: 100%; }
 }
+
+/* ============================================
+   FEATURED QUOTE (single testimonial block)
+   ============================================ */
+.featured-quote-section {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+.featured-quote {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  padding: 0 24px;
+}
+.featured-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 120px;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.18;
+  pointer-events: none;
+}
+.featured-quote .stars {
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+.featured-quote blockquote {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.5;
+  color: var(--ink, #1a2520);
+  margin: 0 0 24px;
+  font-weight: 400;
+}
+.featured-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: var(--soft-green);
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  .featured-quote { padding: 0 8px; }
+  .featured-quote::before { font-size: 80px; top: -20px; }
+  .featured-quote blockquote { font-size: 18px; }
+  .featured-quote cite { font-size: 13px; }
+}
