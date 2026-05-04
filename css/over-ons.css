@@ -580,13 +580,33 @@
 
 /* ===== 1% VOOR DE PLANEET / PLEDGE SECTION ===== */
 .pledge-section { padding: var(--space-xl) 0; }
-.pledge-block {
-  max-width: 720px;
+.pledge-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+  max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+}
+.pledge-visual {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+}
+.pledge-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scale(1.01);
+  transition: transform 0.6s ease;
+}
+.pledge-visual:hover img { transform: scale(1.04); }
+.pledge-block {
+  max-width: 540px;
 }
 .pledge-block .section-title {
-  margin: 16px auto 32px;
+  margin: 16px 0 28px;
 }
 .pledge-text {
   color: var(--soft-green);
@@ -596,3 +616,8 @@
 }
 .pledge-text p { margin-bottom: 18px; }
 .pledge-text strong { color: var(--cream); font-weight: 600; }
+
+@media (max-width: 900px) {
+  .pledge-grid { grid-template-columns: 1fr; gap: 32px; }
+  .pledge-block { max-width: 100%; }
+}
