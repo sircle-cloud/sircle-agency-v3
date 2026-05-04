@@ -2356,6 +2356,15 @@ address { font-style: normal; }
   font-size: 14px;
 }
 
+.testimonial-author .testimonial-source {
+  display: block;
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+  opacity: 0.85;
+}
+
 .carousel-dots {
   display: flex;
   justify-content: center;
