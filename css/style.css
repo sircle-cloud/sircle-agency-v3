@@ -2365,6 +2365,36 @@ address { font-style: normal; }
   opacity: 0.85;
 }
 
+/* Mobile testimonial fix: meer ruimte + names altijd op nieuwe regel */
+@media (max-width: 767px) {
+  .testimonial-carousel {
+    min-height: 460px;
+    margin: 32px 0 24px;
+  }
+  .testimonial {
+    padding: 0 8px;
+    gap: 18px;
+  }
+  .testimonial blockquote {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .testimonial-author {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  .testimonial-author > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .testimonial-author span {
+    display: block;
+  }
+}
+
 .carousel-dots {
   display: flex;
   justify-content: center;
@@ -2923,8 +2953,6 @@ address { font-style: normal; }
   width: 16px;
   height: 16px;
   fill: currentColor;
-  fill-rule: evenodd;
-  clip-rule: evenodd;
   transition: transform 0.3s ease;
 }
 
