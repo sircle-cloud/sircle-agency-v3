@@ -576,3 +576,23 @@
     font-size: 24px;
   }
 }
+
+
+/* ===== 1% VOOR DE PLANEET / PLEDGE SECTION ===== */
+.pledge-section { padding: var(--space-xl) 0; }
+.pledge-block {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pledge-block .section-title {
+  margin: 16px auto 32px;
+}
+.pledge-text {
+  color: var(--soft-green);
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.pledge-text p { margin-bottom: 18px; }
+.pledge-text strong { color: var(--cream); font-weight: 600; }
