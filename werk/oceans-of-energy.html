@@ -148,7 +148,7 @@
   <!-- ============================================ -->
   <section class="case-hero">
     <div class="case-hero-bg">
-      <img src="../assets/cases/oceans/oceans-01-hero.jpg" alt="Oceans of Energy: Offshore Solar op de Noordzee" class="case-hero-img">
+      <video autoplay muted loop playsinline preload="metadata" poster="../assets/cases/oceans/oceans-hero-poster.jpg" class="case-hero-img" src="../assets/cases/oceans/oceans-hero-video.mp4"></video>
       <div class="case-hero-overlay"></div><div class="noise-overlay"></div>
     </div>
     <div class="container">
@@ -186,15 +186,21 @@
 
       <div class="case-video">
         <p class="case-video-label">Brand Video</p>
-        <div class="video-wrapper">
-          <iframe src="https://player.vimeo.com/video/1119572173?h=a1e8bab94d&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-wrapper video-thumb" data-vimeo-src="https://player.vimeo.com/video/1119572173?h=a1e8bab94d&title=0&byline=0&portrait=0&autoplay=1">
+          <img src="../assets/cases/oceans/oceans-poster-brand.jpg" alt="Oceans of Energy brand video poster, drone shot golden hour" loading="lazy">
+          <button type="button" class="video-play-btn" aria-label="Brand video afspelen">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" stroke="currentColor" stroke-width="2"/><polygon points="26,20 44,32 26,44" fill="currentColor"/></svg>
+          </button>
         </div>
       </div>
 
       <div class="case-video">
         <p class="case-video-label">Campagne Video</p>
-        <div class="video-wrapper">
-          <iframe src="https://player.vimeo.com/video/1004226826?h=03d04a17bb&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="video-wrapper video-thumb" data-vimeo-src="https://player.vimeo.com/video/1004226826?h=03d04a17bb&title=0&byline=0&portrait=0&autoplay=1">
+          <img src="../assets/cases/oceans/oceans-poster-campagne.jpg" alt="Oceans of Energy campagne video poster, vessel bij windturbine" loading="lazy">
+          <button type="button" class="video-play-btn" aria-label="Campagne video afspelen">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="31" stroke="currentColor" stroke-width="2"/><polygon points="26,20 44,32 26,44" fill="currentColor"/></svg>
+          </button>
         </div>
       </div>
 
@@ -239,6 +245,18 @@
           <button type="button" class="case-gallery__item case-gallery__item--half" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-10-seafast.jpg">
             <img src="../assets/cases/oceans/oceans-10-seafast.jpg" alt="Seafast service-vessel aan de kade: windmolens op horizon" loading="lazy">
           </button>
+          <button type="button" class="case-gallery__item case-gallery__item--wide" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-11-bird-panels.jpg">
+            <img src="../assets/cases/oceans/oceans-11-bird-panels.jpg" alt="Vogel scheert over de drijvende zonnepanelen" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--small" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-13-deck.jpg">
+            <img src="../assets/cases/oceans/oceans-13-deck.jpg" alt="Werker aan dek tijdens cable-operatie" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--half" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-12-tow.jpg">
+            <img src="../assets/cases/oceans/oceans-12-tow.jpg" alt="Tow-operatie van het drijvende zonnepark" loading="lazy">
+          </button>
+          <button type="button" class="case-gallery__item case-gallery__item--half" data-lightbox data-lightbox-full="../assets/cases/oceans/oceans-14-sunset.jpg">
+            <img src="../assets/cases/oceans/oceans-14-sunset.jpg" alt="Zonsondergang boven het drijvende zonnepark" loading="lazy">
+          </button>
         </div>
       </section>
 
@@ -247,7 +265,7 @@
         <div class="results-grid">
           <div class="result-card">
             <span class="result-big">2</span>
-            <span class="result-desc">Cinematische videoproducties (brand &amp; campagne)</span>
+            <span class="result-desc">Technical Storytelling</span>
           </div>
           <div class="result-card">
             <span class="result-big">Offshore</span>
@@ -263,6 +281,10 @@
       <div class="case-scope reveal-up">
         <div class="scope-credits">
           <p>Productie: sircle.agency</p>
+          <p>Creative Director: Sebastiaan Vreeken</p>
+          <p>Video- en Fotograaf: Ruben de Kemp</p>
+          <p>Videograaf: Juun Hoyng</p>
+          <p>Regie en Videograaf: Semme de Loor</p>
         </div>
       </div>
 
@@ -349,5 +371,22 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="../js/main.js?v=26"></script>
   <script src="../js/lightbox-gallery.js?v=1"></script>
+  <script>
+    // Click-to-play video thumbnails
+    document.querySelectorAll('.video-thumb').forEach(thumb => {
+      const src = thumb.dataset.vimeoSrc;
+      if (!src) return;
+      const handler = () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+        iframe.setAttribute('allowfullscreen', '');
+        thumb.innerHTML = '';
+        thumb.appendChild(iframe);
+        thumb.style.cursor = 'default';
+      };
+      thumb.addEventListener('click', handler);
+    });
+  </script>
 </body>
 </html>
