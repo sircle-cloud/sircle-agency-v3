@@ -149,8 +149,8 @@ function initCustomCursor() {
 
   // Smooth follow with GSAP ticker
   gsap.ticker.add(() => {
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
+    cursorX += (mouseX - cursorX) * 0.32;
+    cursorY += (mouseY - cursorY) * 0.32;
     gsap.set(cursor, { x: cursorX, y: cursorY });
   });
 
