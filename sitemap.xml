@@ -396,6 +396,22 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://sircle.agency/werk/schermgebruik.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/schermgebruik.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/schermgebruik.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/schermgebruik.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sircle.agency/en/werk/schermgebruik.html</loc>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/schermgebruik.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/schermgebruik.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/schermgebruik.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://sircle.agency/werk/dudok-consulting.html</loc>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/dudok-consulting.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/dudok-consulting.html"/>
