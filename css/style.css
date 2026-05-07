@@ -2077,7 +2077,7 @@ address { font-style: normal; }
 }
 
 .section-cream .marquee-item {
-  color: rgba(12,24,15,0.25);
+  color: rgba(12,24,15,0.55);
 }
 
 .section-cream .marquee-item:hover {
@@ -2085,7 +2085,22 @@ address { font-style: normal; }
 }
 
 .section-cream .marquee-dot {
-  color: rgba(12,24,15,0.15);
+  color: rgba(12,24,15,0.3);
+}
+
+@media (max-width: 767px) {
+  .section-cream .marquee-item {
+    color: rgba(12,24,15,0.7);
+  }
+  .section-cream .marquee-dot {
+    color: rgba(12,24,15,0.4);
+  }
+  .marquee-item {
+    color: rgba(208,223,185,0.75);
+  }
+  .marquee-dot {
+    color: rgba(208,223,185,0.5);
+  }
 }
 
 .marquee-track {
