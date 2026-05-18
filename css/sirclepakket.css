@@ -99,6 +99,14 @@
 .sp-price__terms { margin-top:20px; color:#666; font-size:0.95rem; line-height:1.6; }
 .sp-price__anchor { margin:24px auto 16px auto; max-width:480px; padding:16px 20px; background:rgba(212,175,100,0.08); border:1px dashed rgba(212,175,100,0.4); border-radius:12px; font-size:0.92rem; color:#5a4a28; line-height:1.5; }
 .sp-price__anchor strong { color:#8a6a2a; white-space:nowrap; }
+.sp-price__anchor--top { margin:0 auto 8px auto; max-width:520px; }
+.sp-price__anchor--top strong { font-size:1.05rem; }
+.sp-price__savings { margin:8px auto 20px; max-width:480px; font-size:0.95rem; color:#8a6a2a; font-weight:600; }
+
+/* hero alt link */
+.sp-hero__alt { margin:20px 0 0; font-size:0.9rem; color:rgba(255,255,255,0.65); max-width:580px; }
+.sp-hero__alt a { color:#d4af64; text-decoration:none; border-bottom:1px solid rgba(212,175,100,0.5); padding-bottom:1px; transition:border-color .2s, color .2s; }
+.sp-hero__alt a:hover { color:#F2E2A4; border-color:#F2E2A4; }
 .sp-price__cta { display:inline-block; background:#0C180F; color:#fff; padding:18px 40px; border-radius:999px; text-decoration:none; font-weight:600; font-size:1.05rem; margin-top:8px; transition:transform .25s ease, box-shadow .25s ease, background .25s ease; }
 .sp-price__cta:hover { background:#123820; transform:translateY(-2px); box-shadow:0 12px 28px rgba(12,24,15,0.2); }
 .sp-price__note { margin-top:14px; font-size:0.85rem; color:#888; }
@@ -203,6 +211,7 @@
 .sp-promo__alt { margin:20px 0 0; font-size:0.9rem; color:rgba(255,255,255,0.6); }
 .sp-promo__alt a { color:#d4af64; text-decoration:none; border-bottom:1px solid rgba(212,175,100,0.4); padding-bottom:1px; transition:border-color .2s, color .2s; }
 .sp-promo__alt a:hover { color:#F2E2A4; border-color:#F2E2A4; }
+.sp-promo__alt--top { margin:0 0 32px; padding:12px 16px; background:rgba(212,175,100,0.08); border-left:2px solid rgba(212,175,100,0.5); border-radius:0 8px 8px 0; font-size:0.88rem; color:rgba(255,255,255,0.75); }
 
 .sp-promo__card { background:linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%); border:1px solid rgba(255,255,255,0.12); border-radius:24px; padding:48px; -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px); }
 .sp-promo__card-label { font-size:0.78rem; letter-spacing:1.6px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:10px; }
