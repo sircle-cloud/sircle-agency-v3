@@ -397,10 +397,6 @@
               <span class="team-strip-tag">Studio Productie</span>
             </div>
             <div class="team-strip-item">
-              <img src="assets/branding/team/kone-safety-48.webp" alt="Sony cinema camera op set" loading="lazy">
-              <span class="team-strip-tag">Cinematografie</span>
-            </div>
-            <div class="team-strip-item">
               <img src="assets/branding/team/team-3.webp" alt="Regisseur op set" loading="lazy">
               <span class="team-strip-tag">Regie</span>
             </div>
@@ -1235,5 +1231,11 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="js/main.js?v=26"></script>
+  <script>
+    // Seamless loop: duplicate strip contents so translateX(-50%) wraps to identical content
+    document.querySelectorAll('.team-strip-track').forEach(function(t){
+      t.innerHTML = t.innerHTML + t.innerHTML;
+    });
+  </script>
 </body>
 </html>
