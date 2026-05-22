@@ -3,6 +3,112 @@
    Naast sirclepakket.css gebruikt
    ===================================================== */
 
+/* 2×2 PILLAR GRID — voor SIRCLE Model + Kanalen, ipv lelijke 3+1 */
+.sp-pillars.sp-pillars--quad {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 960px;
+  margin: 56px auto 0;
+}
+
+.sp-pillars.sp-pillars--quad .sp-pillar {
+  max-width: none;
+  flex: none;
+  padding: 36px 32px;
+}
+
+@media (max-width: 720px) {
+  .sp-pillars.sp-pillars--quad {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .sp-pillars.sp-pillars--quad .sp-pillar {
+    padding: 28px 24px;
+  }
+}
+
+/* CASES — betere crop bij landscape featured images */
+.eb-cases {
+  margin-top: 48px;
+}
+
+.eb-cases__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.eb-case {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  background: #0C180F;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.eb-case:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+}
+
+.eb-case img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s ease;
+}
+
+.eb-case:hover img { transform: scale(1.06); }
+
+.eb-case::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(12,24,15,0.92) 100%);
+}
+
+.eb-case__meta {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 22px 22px 24px;
+  z-index: 2;
+}
+
+.eb-case__label {
+  font-size: 0.7rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #d4af64;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.eb-case__name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .eb-cases__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .eb-cases__grid { grid-template-columns: 1fr; }
+}
+
 /* ROUTES (twee of drie pakketten naast elkaar) */
 .eb-routes {
   display: grid;
