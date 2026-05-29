@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  VREE MEDIA — landingspagina (self-contained)
+  ============================================================================
+  Plak-in-WordPress instructies:
+
+  OPTIE A (snelst) — Aangepaste HTML-block:
+    1. Kopieer ALLES tussen <!-- VREE-MEDIA START --> en <!-- VREE-MEDIA EINDE -->
+       (dat is de <style>...</style> + de <div class="vm">...</div>).
+    2. Maak in WordPress een nieuwe Pagina (titel: Home).
+    3. Voeg een "Aangepaste HTML"-block toe en plak alles erin.
+    4. Stel deze pagina in als voorpagina via Instellingen > Lezen > "Een statische pagina".
+
+  OPTIE B (hele site) — upload dit volledige bestand als index.html
+    naar je webroot, of gebruik het als basis voor een eigen WordPress-thema
+    (page-template). Dan komen ook de fonts + <head> mee.
+
+  Alle merk-links staan onderaan gemarkeerd met  <!-- LINK: ... -->  zodat
+  je ze makkelijk kunt aanpassen.
+  ============================================================================
+-->
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vree Media — Het thuis van Sircle Agency, Sircle Solutions en meer</title>
+  <meta name="description" content="Vree Media is het moederbedrijf achter Sircle Agency, Sircle Solutions en toekomstige merken. Eén thuis voor onze digitale projecten en merken." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- VREE-MEDIA START -->
+<style>
+  /* ====================================================================
+     Vree Media — scoped styles (alles binnen .vm zodat het WP-thema
+     niet wordt beïnvloed)
+     ==================================================================== */
+  .vm * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .vm {
+    --vm-dark-green: #082412;
+    --vm-mid-green:  #3F6F45;
+    --vm-sage:       #8FAF8A;
+    --vm-soft-green: #D0DFB9;
+    --vm-cream:      #F3EFE8;
+    --vm-warm-white: #FFF8EE;
+    --vm-gold:       #F2E2A4;
+    --vm-bronze:     #C4A854;
+
+    --vm-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    font-family: 'Kulim Park', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--vm-cream);
+    background: var(--vm-dark-green);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .vm a { color: inherit; text-decoration: none; }
+  .vm img { max-width: 100%; display: block; }
+
+  .vm__container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---- Decoratieve achtergrondgloed ---- */
+  .vm__bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(242,226,164,0.10), transparent 70%),
+      radial-gradient(50% 40% at 85% 90%, rgba(63,111,69,0.35), transparent 70%);
+  }
+
+  .vm__inner { position: relative; z-index: 1; }
+
+  /* ---- Topbar ---- */
+  .vm__topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 0;
+  }
+  .vm__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-size: 1.05rem;
+  }
+  .vm__brand-mark {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid var(--vm-gold);
+    display: grid; place-items: center;
+    color: var(--vm-gold);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .vm__topbar a.vm__contact-link {
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--vm-sage);
+    transition: color 0.3s var(--vm-ease);
+  }
+  .vm__topbar a.vm__contact-link:hover { color: var(--vm-gold); }
+
+  /* ---- Hero ---- */
+  .vm__hero {
+    padding: 80px 0 64px;
+    max-width: 760px;
+  }
+  .vm__eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--vm-gold);
+    margin-bottom: 24px;
+    padding: 6px 14px;
+    border: 1px solid rgba(242,226,164,0.3);
+    border-radius: 100px;
+  }
+  .vm__hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+  .vm__hero h1 strong { font-weight: 700; }
+  .vm__hero h1 .vm__accent {
+    color: var(--vm-gold);
+    font-weight: 600;
+  }
+  .vm__hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--vm-soft-green);
+    font-weight: 300;
+    max-width: 560px;
+  }
+
+  /* ---- Merken ---- */
+  .vm__section-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vm-sage);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .vm__section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(143,175,138,0.4), transparent);
+  }
+
+  .vm__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding-bottom: 96px;
+  }
+
+  .vm__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 32px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.5s var(--vm-ease), border-color 0.5s var(--vm-ease), background 0.5s var(--vm-ease);
+    overflow: hidden;
+    min-height: 230px;
+  }
+  .vm__card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--vm-accent, var(--vm-gold));
+    opacity: 0.8;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s var(--vm-ease);
+  }
+  .vm__card:hover { transform: translateY(-6px); border-color: rgba(242,226,164,0.35); background: rgba(255,255,255,0.05); }
+  .vm__card:hover::before { transform: scaleX(1); }
+
+  .vm__card-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--vm-accent, var(--vm-gold));
+    margin-bottom: 16px;
+  }
+  .vm__card h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .vm__card p {
+    font-size: 0.95rem;
+    color: var(--vm-soft-green);
+    font-weight: 300;
+    flex: 1;
+  }
+  .vm__card-cta {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--vm-cream);
+  }
+  .vm__card-cta svg { transition: transform 0.4s var(--vm-ease); }
+  .vm__card:hover .vm__card-cta svg { transform: translateX(5px); }
+
+  /* Soon-state */
+  .vm__card--soon {
+    background: transparent;
+    border-style: dashed;
+    border-color: rgba(143,175,138,0.25);
+  }
+  .vm__card--soon:hover { transform: none; border-color: rgba(143,175,138,0.45); }
+  .vm__card--soon .vm__card-tag { color: var(--vm-sage); }
+  .vm__card--soon h3 { color: var(--vm-sage); }
+
+  /* ---- Footer ---- */
+  .vm__footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 48px 0 56px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .vm__footer-left { font-size: 0.9rem; color: var(--vm-sage); }
+  .vm__footer-left strong { color: var(--vm-cream); font-weight: 600; }
+  .vm__footer-right { display: flex; gap: 28px; font-size: 0.88rem; }
+  .vm__footer-right a { color: var(--vm-sage); transition: color 0.3s var(--vm-ease); }
+  .vm__footer-right a:hover { color: var(--vm-gold); }
+
+  /* ---- Reveal-animatie ---- */
+  .vm__reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s var(--vm-ease), transform 0.9s var(--vm-ease);
+  }
+  .vm__reveal.is-in { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    .vm__hero { padding: 48px 0 40px; }
+    .vm__footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<div class="vm">
+  <div class="vm__bg"></div>
+  <div class="vm__inner">
+    <div class="vm__container">
+
+      <!-- ======= TOPBAR ======= -->
+      <header class="vm__topbar">
+        <div class="vm__brand">
+          <span class="vm__brand-mark">V</span>
+          <span>VREE&nbsp;MEDIA</span>
+        </div>
+        <!-- LINK: contact e-mail -->
+        <a class="vm__contact-link" href="mailto:info@vreemedia.nl">Contact</a>
+      </header>
+
+      <!-- ======= HERO ======= -->
+      <section class="vm__hero">
+        <span class="vm__eyebrow vm__reveal">Moederbedrijf</span>
+        <h1 class="vm__reveal">
+          Eén thuis voor onze <span class="vm__accent">merken</span> en
+          <strong>digitale projecten</strong>.
+        </h1>
+        <p class="vm__reveal">
+          Vree Media is het bedrijf achter Sircle Agency, Sircle Solutions en
+          onze toekomstige merken. Vanuit hier bouwen, hosten en onderhouden we
+          alles wat we maken.
+        </p>
+      </section>
+
+      <!-- ======= MERKEN ======= -->
+      <h2 class="vm__section-label vm__reveal">Onze merken</h2>
+      <div class="vm__grid">
+
+        <!-- LINK: Sircle Agency -->
+        <a class="vm__card vm__reveal" href="https://sircle.agency" style="--vm-accent:#F2E2A4;">
+          <span class="vm__card-tag">Creatief bureau</span>
+          <h3>Sircle Agency</h3>
+          <p>Premium branding, websites en groei. Strategie, productie, groei en zorg — het SIRCLE-model.</p>
+          <span class="vm__card-cta">
+            Bezoek site
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+
+        <!-- LINK: Sircle Solutions -->
+        <a class="vm__card vm__reveal" href="https://sircle.solutions" style="--vm-accent:#8FAF8A;">
+          <span class="vm__card-tag">Tech &amp; software</span>
+          <h3>Sircle Solutions</h3>
+          <p>Maatwerk software, automatisering en technische oplossingen voor ambitieuze organisaties.</p>
+          <span class="vm__card-cta">
+            Bezoek site
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+
+        <!-- Toekomstig merk (placeholder — pas aan of dupliceer) -->
+        <div class="vm__card vm__card--soon vm__reveal">
+          <span class="vm__card-tag">Binnenkort</span>
+          <h3>Nieuw merk</h3>
+          <p>We zijn altijd in beweging. Hier komt ruimte voor het volgende merk uit de Vree Media-familie.</p>
+        </div>
+
+      </div>
+
+      <!-- ======= FOOTER ======= -->
+      <footer class="vm__footer">
+        <div class="vm__footer-left">
+          <strong>Vree Media</strong> · Den Haag, Nederland<br>
+          &copy; <span id="vm-year">2026</span> Vree Media. Alle rechten voorbehouden.
+        </div>
+        <nav class="vm__footer-right">
+          <!-- LINK: e-mail -->
+          <a href="mailto:info@vreemedia.nl">info@vreemedia.nl</a>
+          <!-- LINK: merken (interne ankers / aparte pagina's) -->
+          <a href="https://sircle.agency">Sircle Agency</a>
+          <a href="https://sircle.solutions">Sircle Solutions</a>
+        </nav>
+      </footer>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  /* Jaartal automatisch + subtiele reveal-animatie (werkt ook binnen WP) */
+  (function () {
+    var y = document.getElementById('vm-year');
+    if (y) y.textContent = new Date().getFullYear();
+
+    var items = document.querySelectorAll('.vm__reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e, i) {
+        if (e.isIntersecting) {
+          setTimeout(function () { e.target.classList.add('is-in'); }, i * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+<!-- VREE-MEDIA EINDE -->
+
+</body>
+</html>
