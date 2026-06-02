@@ -49,6 +49,10 @@
     .wsc-bts-grid img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; aspect-ratio: 4/3; }
     .wsc-bts-grid img.tall { aspect-ratio: 3/4; }
     @media (max-width: 767px) { .wsc-bts-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* Video placeholder, while we wait for the new cut */
+    .wsc-video-placeholder { position: relative; padding: clamp(60px, 8vw, 100px) 32px; margin: var(--space-lg) 0; border-radius: 12px; background: linear-gradient(135deg, rgba(12,24,15,0.9), rgba(31,58,38,0.9)); border: 1px solid rgba(212,175,100,0.35); text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,0.35); }
+    .wsc-video-placeholder__eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); padding: 6px 14px; background: rgba(212,175,100,0.1); border: 1px solid rgba(212,175,100,0.35); border-radius: 100px; margin-bottom: 18px; }
+    .wsc-video-placeholder__text { font-size: clamp(1rem, 1.8vw, 1.15rem); color: var(--soft-green); max-width: 540px; margin: 0 auto; line-height: 1.55; }
 
     /* Team credits — film-style */
     .wsc-credits { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(212,175,100,0.25); max-width: 720px; }
@@ -181,9 +185,15 @@
         <span>Sound Design</span>
       </div>
 
-      <!-- VIMEO EMBED -->
+      <!-- VIMEO EMBED, tijdelijk offline, nieuwe versie in aantocht -->
+      <!--
       <div class="wsc-video reveal-up">
         <iframe src="https://player.vimeo.com/video/1197461351?fl=ip&fe=ec" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="World Skate Center · Brand Film"></iframe>
+      </div>
+      -->
+      <div class="wsc-video-placeholder reveal-up">
+        <span class="wsc-video-placeholder__eyebrow">Coming soon</span>
+        <p class="wsc-video-placeholder__text">De definitieve versie van de film staat hier binnenkort online.</p>
       </div>
 
       <!-- TAGLINE -->
