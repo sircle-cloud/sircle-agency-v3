@@ -49,6 +49,21 @@
     .wsc-bts-grid img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; aspect-ratio: 4/3; }
     .wsc-bts-grid img.tall { aspect-ratio: 3/4; }
     @media (max-width: 767px) { .wsc-bts-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* Image-led moment cards */
+    .wsc-moments { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: var(--space-md); }
+    .wsc-moment { position: relative; border-radius: 10px; overflow: hidden; background: var(--dark-green); aspect-ratio: 4/5; box-shadow: 0 20px 60px rgba(0,0,0,0.3); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .wsc-moment:hover { transform: translateY(-6px); }
+    .wsc-moment__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65) saturate(0.9); transition: filter 0.4s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .wsc-moment:hover .wsc-moment__img { filter: brightness(0.8) saturate(1); transform: scale(1.04); }
+    .wsc-moment__overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,25,12,0.92) 0%, rgba(7,25,12,0.35) 50%, transparent 80%); z-index: 1; }
+    .wsc-moment__body { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 22px 22px; z-index: 2; }
+    .wsc-moment__label { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; color: var(--gold); margin-bottom: 8px; }
+    .wsc-moment__title { font-size: 1.15rem; font-weight: 700; color: #fff; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.01em; }
+    .wsc-moment__desc { font-size: 0.86rem; color: rgba(255,255,255,0.78); line-height: 1.45; margin: 0; }
+    @media (max-width: 900px) { .wsc-moments { grid-template-columns: 1fr; gap: 14px; } .wsc-moment { aspect-ratio: 16/10; } }
+    /* Full-bleed image break */
+    .wsc-break { width: 100%; margin: var(--space-xl) 0 var(--space-lg); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.4); }
+    .wsc-break img { width: 100%; height: auto; display: block; }
     /* Video placeholder, while we wait for the new cut */
     .wsc-video-placeholder { position: relative; padding: clamp(60px, 8vw, 100px) 32px; margin: var(--space-lg) 0; border-radius: 12px; background: linear-gradient(135deg, rgba(12,24,15,0.9), rgba(31,58,38,0.9)); border: 1px solid rgba(212,175,100,0.35); text-align: center; box-shadow: 0 30px 80px rgba(0,0,0,0.35); }
     .wsc-video-placeholder__eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); padding: 6px 14px; background: rgba(212,175,100,0.1); border: 1px solid rgba(212,175,100,0.35); border-radius: 100px; margin-bottom: 18px; }
@@ -197,94 +212,57 @@
         <blockquote>Where sport, culture and creativity collide.</blockquote>
       </div>
 
-      <!-- HOOFDSTUKKEN · actual film structure -->
+      <!-- DRIE MOMENTEN — image-led -->
+      <div class="wsc-moments reveal-up">
+        <article class="wsc-moment">
+          <img src="../assets/cases/world-skate-center/wsc-still-archief.jpg" alt="Drone shot van WSC + Tramkade" class="wsc-moment__img">
+          <div class="wsc-moment__overlay"></div>
+          <div class="wsc-moment__body">
+            <span class="wsc-moment__label">ARCHIEF</span>
+            <h3 class="wsc-moment__title">Jaren skate-historie</h3>
+            <p class="wsc-moment__desc">Het volledige archief van WSC verweven met nieuw werk van vandaag.</p>
+          </div>
+        </article>
+        <article class="wsc-moment">
+          <img src="../assets/cases/world-skate-center/wsc-still-byst.jpg" alt="Skater in actie tijdens BYST sessie" class="wsc-moment__img">
+          <div class="wsc-moment__overlay"></div>
+          <div class="wsc-moment__body">
+            <span class="wsc-moment__label">BYST SESSIE</span>
+            <h3 class="wsc-moment__title">Privé bij topsport</h3>
+            <p class="wsc-moment__desc">Toegang tot een gesloten training van het BYST programma.</p>
+          </div>
+        </article>
+        <article class="wsc-moment">
+          <img src="../assets/cases/world-skate-center/wsc-still-josephine.jpg" alt="Jeugdscene WSC, kinderen aan het skaten" class="wsc-moment__img">
+          <div class="wsc-moment__overlay"></div>
+          <div class="wsc-moment__body">
+            <span class="wsc-moment__label">JOSEPHINE</span>
+            <h3 class="wsc-moment__title">12 jaar, in beeld</h3>
+            <p class="wsc-moment__desc">Josephine, gevolgd in haar groei binnen de jeugdscene van de hal.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- IMAGE BREAK -->
+      <div class="wsc-break reveal-up">
+        <img src="../assets/cases/world-skate-center/wsc-still-community.jpg" alt="Jonge skater met BYST helm in de hal" loading="lazy">
+      </div>
+
+      <!-- WAT HET OPLEVERT — tight -->
       <div class="case-block reveal-up">
-        <h2 style="font-size: clamp(1.4rem, 3vw, 2rem); color: var(--cream); margin-bottom: 12px;">Vier hoofdstukken, één verhaal</h2>
-      </div>
-
-      <div class="wsc-scene-grid reveal-up">
-        <div class="wsc-scene">
-          <span class="wsc-scene__num">INTRO</span>
-          <h3>Wat is World Skate Center?</h3>
-          <p>Een snelle samenvatting van de hele film. In één adem voelt de kijker waar het over gaat.</p>
-        </div>
-        <div class="wsc-scene">
-          <span class="wsc-scene__num">HOOFDSTUK 01</span>
-          <h3>Josephine's Journey</h3>
-          <p>Het persoonlijke verhaal van een sporter die hier groeit. De menselijke laag waar het hele merk op rust.</p>
-        </div>
-        <div class="wsc-scene">
-          <span class="wsc-scene__num">HOOFDSTUK 02</span>
-          <h3>Topsport &amp; events</h3>
-          <p>Van Josephine's verhaal naar het grote podium: sportevents, internationale wedstrijden en topsport op niveau.</p>
-        </div>
-        <div class="wsc-scene">
-          <span class="wsc-scene__num">HOOFDSTUK 03 · FINALE</span>
-          <h3>Cultuur, evenementen &amp; community</h3>
-          <p>De hal als ontmoetingsplek. Muziek, events, vrijwilligers, vriendschappen. De laag die WSC uniek maakt en waarmee de film afsluit.</p>
-        </div>
-      </div>
-
-      <!-- BONUS · credits toegift -->
-      <div class="case-block reveal-up" style="margin-top: var(--space-lg);">
-        <h2 style="font-size: clamp(1.4rem, 3vw, 2rem); color: var(--cream); margin-bottom: 12px;">Bonus · credits-toegift</h2>
-        <p>Na de finale een korte toegift met alle stakeholders die WSC mogelijk maken. Sponsors, partners, bouwers, coaches, vrijwilligers.</p>
-      </div>
-
-      <!-- DRIE MOMENTEN die de film maken -->
-      <div class="case-block reveal-up" style="margin-top: var(--space-lg);">
-        <h2 style="font-size: clamp(1.4rem, 3vw, 2rem); color: var(--cream); margin-bottom: 12px;">Drie momenten die deze film maken</h2>
-      </div>
-
-      <div class="wsc-scene-grid reveal-up">
-        <div class="wsc-scene">
-          <span class="wsc-scene__num">ARCHIEF</span>
-          <h3>Jaren skate-historie</h3>
-          <p>WSC deelde hun volledige archief. Beelden uit alle jaren, door ons verweven met de nieuwe opnames van vandaag.</p>
-        </div>
-        <div class="wsc-scene">
-          <span class="wsc-scene__num">BYST SESSIE</span>
-          <h3>Privé bij het topsport-team</h3>
-          <p>Toegang tot een gesloten trainingssessie van het BYST topsport-programma. Beelden van een niveau dat je nergens anders vastlegt.</p>
-        </div>
-        <div class="wsc-scene">
-          <span class="wsc-scene__num">JOSEPHINE</span>
-          <h3>12 jaar, in beeld</h3>
-          <p>We mochten Josephine volgen, twaalf jaar oud, die zich ontwikkelt binnen de jeugdscene van de hal. Het persoonlijke verhaal achter het merk.</p>
-        </div>
-      </div>
-
-      <!-- WAT HET OPLEVERT -->
-      <div class="case-block reveal-up" style="margin-top: var(--space-lg);">
         <h2 style="font-size: clamp(1.4rem, 3vw, 2rem); color: var(--cream); margin-bottom: 12px;">Wat het oplevert</h2>
-        <p>Eén masterfilm voor positionering, sponsoring en subsidies binnen de gemeente Den Bosch. En een complete beeldbank van skate, sport, cultuur en community. Genoeg materiaal om maanden social-content uit te draaien zonder opnieuw te hoeven shooten.</p>
+        <p>Eén masterfilm voor positionering, sponsoring en subsidies binnen de gemeente Den Bosch. Plus een complete beeldbank van skate, sport, cultuur en community: maanden social-content uit één traject.</p>
       </div>
 
-      <!-- BTS GALLERY -->
+      <!-- BTS GALLERY — strak en compact -->
       <div class="case-block reveal-up" style="margin-top: var(--space-lg);">
         <h2 style="font-size: clamp(1.4rem, 3vw, 2rem); color: var(--cream); margin-bottom: 12px;">Behind the scenes</h2>
       </div>
 
-      <div class="case-image-full reveal-up">
-        <img src="../assets/cases/world-skate-center/wsc-bts-33.jpg" alt="WSC brandfilm: filmmaker laat kinderen de opnames zien op de skate-locatie" loading="lazy">
-      </div>
-
       <div class="wsc-bts-grid reveal-up">
-        <img src="../assets/cases/world-skate-center/wsc-bts-08.jpg" alt="Interview portret tijdens WSC brandfilm opname" loading="lazy" class="tall">
-        <img src="../assets/cases/world-skate-center/wsc-bts-05.jpg" alt="Camera setup op de skatebaan WSC" loading="lazy" class="tall">
-        <img src="../assets/cases/world-skate-center/wsc-bts-07.jpg" alt="Productie behind the scenes WSC brandfilm" loading="lazy" class="tall">
-      </div>
-
-      <div class="wsc-bts-grid reveal-up">
-        <img src="../assets/cases/world-skate-center/wsc-bts-17.jpg" alt="On-location interview opname WSC" loading="lazy">
-        <img src="../assets/cases/world-skate-center/wsc-bts-24.jpg" alt="Skate cinematography World Skate Center" loading="lazy">
-        <img src="../assets/cases/world-skate-center/wsc-bts-27.jpg" alt="Cinematography setup skatepark WSC" loading="lazy">
-      </div>
-
-      <div class="wsc-bts-grid reveal-up">
-        <img src="../assets/cases/world-skate-center/wsc-bts-02.jpg" alt="Behind the scenes WSC brandfilm productie" loading="lazy">
-        <img src="../assets/cases/world-skate-center/wsc-bts-30.jpg" alt="Productie WSC skatebaan opnames" loading="lazy">
-        <img src="../assets/cases/world-skate-center/wsc-bts-01.jpg" alt="Interview opstelling met WSC wall lettering op achtergrond" loading="lazy">
+        <img src="../assets/cases/world-skate-center/wsc-bts-33.jpg" alt="Filmmaker laat kinderen de opnames zien" loading="lazy">
+        <img src="../assets/cases/world-skate-center/wsc-bts-01.jpg" alt="Interview met WSC wall op achtergrond" loading="lazy">
+        <img src="../assets/cases/world-skate-center/wsc-bts-08.jpg" alt="Interview portret tijdens opname" loading="lazy">
       </div>
 
       <!-- HIGHLIGHTS -->
