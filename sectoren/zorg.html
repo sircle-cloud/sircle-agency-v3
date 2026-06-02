@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="../css/nav-bold.css?v=19">
   <link rel="stylesheet" href="../css/employer-branding.css?v=6">
   <link rel="stylesheet" href="../css/sirclecare.css?v=2">
-  <link rel="stylesheet" href="../css/sirclepakket.css?v=3">
+  <link rel="stylesheet" href="../css/sirclepakket.css?v=5">
   <style>
     /* Zorg-specifieke layout, portfolio cards in subfolder */
     .zorg-cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: var(--space-lg) auto 0; }
@@ -494,6 +494,116 @@
       </div>
     </div>
   </section>
+
+  <!-- ============================================ -->
+  <!-- LEAD MAGNET — Employer Branding Checklist Zorg -->
+  <!-- ============================================ -->
+  <section class="lm-section" id="checklist-zorg">
+    <div class="lm-container">
+      <div class="lm-grid">
+
+        <!-- LEFT: 3D PDF stack -->
+        <div class="lm-stack" aria-hidden="true">
+          <div class="lm-stack__badge">Gratis · 8 pagina's</div>
+          <div class="lm-stack__scene">
+            <div class="lm-stack__sheet lm-stack__sheet--3"></div>
+            <div class="lm-stack__sheet lm-stack__sheet--2"></div>
+            <div class="lm-stack__cover">
+              <img src="../assets/downloads/covers/cover-zorg.jpg" alt="Employer Branding Checklist Zorg — cover" loading="lazy">
+            </div>
+          </div>
+          <div class="lm-stack__meta">
+            <span>26 actiepunten</span>
+            <span>5 valkuilen</span>
+            <span>PDF</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: copy + form -->
+        <div>
+          <span class="lm-eyebrow">Lead magnet · gratis download</span>
+          <h2 class="lm-title">De checklist die zorgpraktijken weer aan personeel helpt</h2>
+          <p class="lm-intro">Dezelfde aanpak die we toepassen bij tandartspraktijken, fysio, mondhygiëne en thuiszorg in regio Den Haag. Concrete actiepunten, geen theorie. Vandaag te starten.</p>
+
+          <ul class="lm-features">
+            <li>Employer brand foundation</li>
+            <li>Werken-bij site &amp; functiepagina's</li>
+            <li>Content &amp; team-video's</li>
+            <li>Kanaalkeuze &amp; meten</li>
+            <li>5 grootste valkuilen</li>
+            <li>Echte voorbeelden regio Den Haag</li>
+          </ul>
+
+          <form class="lm-form" data-lm-form data-pdf="/assets/downloads/employer-branding-checklist-zorg.pdf">
+            <input type="hidden" name="access_key" value="09f4704b-a2b3-46c9-b8ad-3acdff9f7c33">
+            <input type="hidden" name="subject" value="Lead magnet download — Employer Branding Checklist Zorg">
+            <input type="hidden" name="from_name" value="sircle.agency · Lead magnet Zorg">
+            <input type="hidden" name="lead_source" value="Sector Zorg — EB Checklist">
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="lm-form__row">
+              <input type="text" name="name" placeholder="Je naam" required autocomplete="name">
+              <input type="text" name="organisation" placeholder="Praktijk / organisatie" autocomplete="organization">
+            </div>
+            <input type="email" name="email" placeholder="Je werk-email" required autocomplete="email">
+            <button type="submit">
+              <span class="lm-form__btn-text">Download de checklist</span> <span>→</span>
+            </button>
+            <div class="lm-form__msg lm-form__msg--ok">
+              ✓ Top! Je download opent zo. Ook in je inbox krijg je 'm vandaag nog binnen.
+            </div>
+            <div class="lm-form__msg lm-form__msg--err">
+              Hmm, er ging iets mis. Probeer het nog eens of mail hello@sircle.agency.
+            </div>
+            <p class="lm-form__legal">Direct download + per mail. Geen spam, max 1-2x per maand sectorinzichten. Afmelden met 1 klik. <a href="../privacy.html">Privacybeleid</a>.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead-magnet form handler (shared) -->
+  <script>
+    document.querySelectorAll('[data-lm-form]').forEach(function(form){
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        var btnText = form.querySelector('.lm-form__btn-text');
+        var originalText = btnText ? btnText.textContent : '';
+        var pdfUrl = form.getAttribute('data-pdf');
+        form.classList.remove('is-success','is-error');
+        if (btn) { btn.disabled = true; }
+        if (btnText) { btnText.textContent = 'Bezig…'; }
+
+        var fd = new FormData(form);
+        fetch('https://api.web3forms.com/submit', { method:'POST', body: fd })
+          .then(function(r){ return r.json(); })
+          .then(function(data){
+            if (data.success) {
+              form.classList.add('is-success');
+              // trigger download
+              var a = document.createElement('a');
+              a.href = pdfUrl;
+              a.download = '';
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              if (btnText) { btnText.textContent = 'Verstuurd ✓'; }
+            } else {
+              form.classList.add('is-error');
+              if (btn) { btn.disabled = false; }
+              if (btnText) { btnText.textContent = originalText; }
+            }
+          })
+          .catch(function(){
+            form.classList.add('is-error');
+            if (btn) { btn.disabled = false; }
+            if (btnText) { btnText.textContent = originalText; }
+          });
+      });
+    });
+  </script>
 
   <!-- FOOTER -->
   <footer class="footer">
