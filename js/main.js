@@ -1903,8 +1903,8 @@ initPageTransitions();
 
   var isEN = path.indexOf('/en/') === 0;
   var href = isEN ? '/en/contact.html' : '/contact.html';
-  var labelLong = isEN ? 'Book 30 min intro' : 'Boek 30 min kennismaking';
-  var labelShort = isEN ? 'Book 30 min' : 'Boek 30 min';
+  var labelLong = isEN ? 'Book 15 min intro' : 'Boek 15 min kennismaking';
+  var labelShort = isEN ? 'Book 15 min' : 'Boek 15 min';
 
   var a = document.createElement('a');
   a.className = 'sticky-cta';
