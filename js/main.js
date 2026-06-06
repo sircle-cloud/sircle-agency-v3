@@ -1894,3 +1894,31 @@ initPageTransitions();
     });
   });
 })();
+
+/* ----- Sticky floating CTA ----- */
+(function () {
+  // Skip on contact pages (al op de bestemming) en in /admin etc.
+  var path = window.location.pathname.toLowerCase();
+  if (path.indexOf('/contact') >= 0) return;
+
+  var isEN = path.indexOf('/en/') === 0;
+  var href = isEN ? '/en/contact.html' : '/contact.html';
+  var labelLong = isEN ? 'Plan 30 min met Sebas' : 'Plan 30 min met Sebas';
+  var labelShort = isEN ? 'Plan 30 min' : 'Plan 30 min';
+
+  var a = document.createElement('a');
+  a.className = 'sticky-cta';
+  a.href = href;
+  a.setAttribute('aria-label', labelLong);
+  a.innerHTML = '' +
+    '<svg class="sticky-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<rect x="3" y="4" width="18" height="18" rx="2"/>' +
+    '<line x1="16" y1="2" x2="16" y2="6"/>' +
+    '<line x1="8" y1="2" x2="8" y2="6"/>' +
+    '<line x1="3" y1="10" x2="21" y2="10"/>' +
+    '<circle cx="12" cy="16" r="1.6" fill="currentColor"/>' +
+    '</svg>' +
+    '<span class="sticky-cta__label-long">' + labelLong + '</span>' +
+    '<span class="sticky-cta__label-short">' + labelShort + '</span>';
+  document.body.appendChild(a);
+})();

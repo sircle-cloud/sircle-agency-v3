@@ -3349,3 +3349,48 @@ address { font-style: normal; }
 /* ============================================ */
 /* GPU HINTS                                    */
 /* ============================================ */
+
+/* ============================================ */
+/* STICKY FLOATING CTA (site-wide)             */
+/* ============================================ */
+.sticky-cta {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  background: var(--gold);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  border-radius: 100px;
+  text-decoration: none;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35), 0 0 0 0 rgba(212,175,100,0.45);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease, background 0.25s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: stickyCtaIn 0.5s 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.sticky-cta:hover {
+  background: #e3bf76;
+  transform: translateY(-3px);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.4), 0 0 0 14px rgba(212,175,100,0.18);
+}
+.sticky-cta__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.sticky-cta__label-short { display: none; }
+@media (max-width: 600px) {
+  .sticky-cta { right: 16px; bottom: 16px; padding: 12px 18px; font-size: 0.84rem; }
+  .sticky-cta__label-long { display: none; }
+  .sticky-cta__label-short { display: inline; }
+}
+@keyframes stickyCtaIn {
+  to { opacity: 1; transform: translateY(0); }
+}
