@@ -1929,7 +1929,7 @@ initPageTransitions();
   var t = isEN ? {
     eyebrow: 'BOOK 15 MIN INTRO',
     title: 'Leave your details',
-    sub: 'Sebas will reach out within 24 hours to schedule a time.',
+    sub: 'We will reach out within 24 hours to schedule a time.',
     name: 'Your name',
     email: 'Your email',
     phone: 'Your phone',
@@ -1944,7 +1944,7 @@ initPageTransitions();
   } : {
     eyebrow: 'PLAN 15 MIN KENNISMAKING',
     title: 'Laat je gegevens achter',
-    sub: 'Sebas neemt binnen 24 uur contact op om een moment te prikken.',
+    sub: 'We nemen binnen 24 uur contact op om een moment te prikken.',
     name: 'Je naam',
     email: 'Je e-mail',
     phone: 'Je telefoonnummer',
