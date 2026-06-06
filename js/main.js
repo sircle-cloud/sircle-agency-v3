@@ -1922,3 +1922,145 @@ initPageTransitions();
     '<span class="sticky-cta__label-short">' + labelShort + '</span>';
   document.body.appendChild(a);
 })();
+
+/* ----- Quick contact modal ----- */
+(function () {
+  var isEN = window.location.pathname.toLowerCase().indexOf('/en/') === 0;
+  var t = isEN ? {
+    eyebrow: 'BOOK 15 MIN INTRO',
+    title: 'Leave your details',
+    sub: 'Sebas will reach out within 24 hours to schedule a time.',
+    name: 'Your name',
+    email: 'Your email',
+    phone: 'Your phone',
+    msg: '(Optional) brief note',
+    submit: 'Plan intro →',
+    sending: 'Sending…',
+    privacy: 'We only use these details to reach out. ',
+    privLink: 'Privacy',
+    success_title: 'Thanks!',
+    success_sub: 'We will reach out within 24 hours to set a time.',
+    error: 'Something went wrong. Please try again or email hello@sircle.agency.'
+  } : {
+    eyebrow: 'PLAN 15 MIN KENNISMAKING',
+    title: 'Laat je gegevens achter',
+    sub: 'Sebas neemt binnen 24 uur contact op om een moment te prikken.',
+    name: 'Je naam',
+    email: 'Je e-mail',
+    phone: 'Je telefoonnummer',
+    msg: '(Optioneel) korte toelichting',
+    submit: 'Plan kennismaking →',
+    sending: 'Versturen…',
+    privacy: 'We gebruiken je gegevens alleen om contact op te nemen. ',
+    privLink: 'Privacybeleid',
+    success_title: 'Bedankt!',
+    success_sub: 'We bellen of mailen je binnen 24 uur om een moment te prikken.',
+    error: 'Er ging iets mis. Probeer het opnieuw of mail hello@sircle.agency.'
+  };
+  var privacyUrl = isEN ? '/en/privacy.html' : '/privacy.html';
+
+  var modalHTML =
+    '<div class="quick-modal" id="quickModal" role="dialog" aria-modal="true" aria-labelledby="quickModalTitle">' +
+      '<div class="quick-modal__backdrop" data-quick-close></div>' +
+      '<div class="quick-modal__card">' +
+        '<button type="button" class="quick-modal__close" data-quick-close aria-label="Sluiten">&times;</button>' +
+        '<div class="quick-modal__body" id="quickModalBody">' +
+          '<span class="quick-modal__eyebrow">' + t.eyebrow + '</span>' +
+          '<h3 class="quick-modal__title" id="quickModalTitle">' + t.title + '</h3>' +
+          '<p class="quick-modal__sub">' + t.sub + '</p>' +
+          '<form class="quick-modal__form" id="quickModalForm">' +
+            '<input type="hidden" name="access_key" value="09f4704b-a2b3-46c9-b8ad-3acdff9f7c33">' +
+            '<input type="hidden" name="subject" value="Snelle aanvraag via sticky CTA (sircle.agency)">' +
+            '<input type="hidden" name="from_name" value="sircle.agency · sticky CTA">' +
+            '<input type="hidden" name="lead_source" value="Sticky CTA / Quick modal">' +
+            '<input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">' +
+            '<input type="text" name="name" required autocomplete="name" placeholder="' + t.name + '">' +
+            '<input type="email" name="email" required autocomplete="email" placeholder="' + t.email + '">' +
+            '<input type="tel" name="phone" required autocomplete="tel" placeholder="' + t.phone + '">' +
+            '<textarea name="message" rows="2" placeholder="' + t.msg + '"></textarea>' +
+            '<button type="submit">' + t.submit + '</button>' +
+            '<p class="quick-modal__legal">' + t.privacy + '<a href="' + privacyUrl + '">' + t.privLink + '</a>.</p>' +
+          '</form>' +
+        '</div>' +
+        '<div class="quick-modal__success" id="quickModalSuccess" hidden>' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+          '<h3>' + t.success_title + '</h3>' +
+          '<p>' + t.success_sub + '</p>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  var wrapper = document.createElement('div');
+  wrapper.innerHTML = modalHTML;
+  document.body.appendChild(wrapper.firstElementChild);
+
+  var modal = document.getElementById('quickModal');
+  var form = document.getElementById('quickModalForm');
+  var body = document.getElementById('quickModalBody');
+  var success = document.getElementById('quickModalSuccess');
+  var submitBtn = form.querySelector('button[type="submit"]');
+
+  function open() {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    var first = modal.querySelector('input[name="name"]');
+    if (first) setTimeout(function () { first.focus(); }, 200);
+  }
+  function close() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    setTimeout(function () {
+      body.hidden = false;
+      success.hidden = true;
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = t.submit;
+    }, 320);
+  }
+
+  // close handlers (backdrop, X-knop, Esc)
+  modal.querySelectorAll('[data-quick-close]').forEach(function (el) {
+    el.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+
+  // Expose globally
+  window.openQuickModal = open;
+
+  // Hijack sticky CTA clicks (event delegation, werkt ongeacht volgorde)
+  document.body.addEventListener('click', function (e) {
+    var sticky = e.target.closest('.sticky-cta');
+    if (sticky) {
+      e.preventDefault();
+      open();
+    }
+  });
+
+  // Form submission via Web3Forms
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = t.sending;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    }).then(function (r) { return r.json(); })
+      .then(function (json) {
+        if (json && json.success) {
+          body.hidden = true;
+          success.hidden = false;
+        } else {
+          window.alert(t.error);
+          submitBtn.disabled = false;
+          submitBtn.textContent = t.submit;
+        }
+      })
+      .catch(function () {
+        window.alert(t.error);
+        submitBtn.disabled = false;
+        submitBtn.textContent = t.submit;
+      });
+  });
+})();

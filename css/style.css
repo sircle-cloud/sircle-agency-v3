@@ -3428,3 +3428,160 @@ address { font-style: normal; }
   object-fit: cover;
   flex-shrink: 0;
 }
+
+/* ============================================ */
+/* QUICK CONTACT MODAL (sticky CTA + closing CTAs) */
+/* ============================================ */
+.quick-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.quick-modal.is-open { display: flex; }
+.quick-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 17, 10, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: quickModalBgIn 0.3s ease forwards;
+}
+.quick-modal__card {
+  position: relative;
+  background: var(--cream);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 440px;
+  padding: 36px 32px 32px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+  border-top: 4px solid var(--gold);
+  animation: quickModalCardIn 0.4s cubic-bezier(0.16,1,0.3,1) forwards;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+.quick-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: transparent;
+  border: 0;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.quick-modal__close:hover { background: rgba(0,0,0,0.07); }
+.quick-modal__eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.quick-modal__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+.quick-modal__sub {
+  font-size: 0.92rem;
+  color: rgba(12, 24, 15, 0.7);
+  margin: 0 0 22px;
+  line-height: 1.5;
+}
+.quick-modal__form { display: flex; flex-direction: column; gap: 10px; }
+.quick-modal__form input,
+.quick-modal__form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(12,24,15,0.15);
+  border-radius: 10px;
+  background: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.quick-modal__form input::placeholder,
+.quick-modal__form textarea::placeholder { color: rgba(12,24,15,0.4); }
+.quick-modal__form input:focus,
+.quick-modal__form textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212,175,100,0.15);
+}
+.quick-modal__form textarea { resize: vertical; min-height: 60px; font-family: inherit; }
+.quick-modal__form button[type="submit"] {
+  padding: 14px 22px;
+  background: var(--gold);
+  color: var(--dark);
+  border: 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.quick-modal__form button[type="submit"]:hover:not(:disabled) {
+  background: #e3bf76;
+  transform: translateY(-1px);
+}
+.quick-modal__form button[type="submit"]:disabled { opacity: 0.6; cursor: wait; }
+.quick-modal__legal {
+  font-size: 11px;
+  color: rgba(12,24,15,0.5);
+  margin: 6px 0 0;
+  line-height: 1.5;
+  text-align: center;
+}
+.quick-modal__legal a { color: var(--gold); text-decoration: none; }
+.quick-modal__legal a:hover { text-decoration: underline; }
+.quick-modal__success {
+  text-align: center;
+  padding: 18px 0 8px;
+}
+.quick-modal__success svg {
+  width: 56px;
+  height: 56px;
+  color: var(--gold);
+  margin: 0 auto 14px;
+  display: block;
+}
+.quick-modal__success h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 8px;
+}
+.quick-modal__success p {
+  font-size: 0.95rem;
+  color: rgba(12,24,15,0.7);
+  margin: 0;
+  line-height: 1.5;
+}
+@keyframes quickModalBgIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes quickModalCardIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (max-width: 480px) {
+  .quick-modal { padding: 16px; }
+  .quick-modal__card { padding: 28px 22px 24px; }
+  .quick-modal__title { font-size: 1.3rem; }
+}
