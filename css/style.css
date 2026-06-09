@@ -3585,3 +3585,55 @@ address { font-style: normal; }
   .quick-modal__card { padding: 28px 22px 24px; }
   .quick-modal__title { font-size: 1.3rem; }
 }
+
+/* ============================================ */
+/* MARQUEE LOGOS (mixed img + wordmark text)   */
+/* ============================================ */
+.marquee-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 10px;
+  text-decoration: none;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+  flex-shrink: 0;
+}
+.marquee-link:hover { transform: translateY(-2px); }
+
+/* Logo images: uniform height, soft grayscale by default */
+.marquee-logo {
+  height: 36px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.05) opacity(0.7);
+  transition: filter 0.4s ease;
+}
+.marquee-link:hover .marquee-logo {
+  filter: grayscale(0) brightness(1) opacity(1);
+}
+
+/* Wordmark text (fallback when no logo): styled like a brand mark */
+.marquee-wordmark {
+  font-family: 'Kulim Park', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: rgba(208,223,185,0.65);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+.marquee-link:hover .marquee-wordmark { color: var(--gold); }
+
+/* Cream variant */
+.section-cream .marquee-wordmark { color: rgba(12,24,15,0.55); }
+.section-cream .marquee-link:hover .marquee-wordmark { color: var(--bronze); }
+.section-cream .marquee-logo { filter: grayscale(1) opacity(0.6); }
+.section-cream .marquee-link:hover .marquee-logo { filter: grayscale(0) opacity(1); }
+
+@media (max-width: 767px) {
+  .marquee-link { height: 38px; padding: 0 8px; }
+  .marquee-logo { height: 30px; max-width: 110px; }
+  .marquee-wordmark { font-size: 15px; }
+}
