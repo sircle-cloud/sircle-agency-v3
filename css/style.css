@@ -2118,9 +2118,14 @@ address { font-style: normal; }
   text-transform: uppercase;
   letter-spacing: 0.08em;
   transition: color 0.3s;
+  text-decoration: none;
 }
 
 .marquee-item:hover {
+  color: var(--gold);
+}
+
+a.marquee-item:hover {
   color: var(--gold);
 }
 
