@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#0C180F">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech-stack - sircle.agency | WordPress, Shopify, React, Next.js</title>
+  <meta name="description" content="Onze tech-stack: WordPress, Shopify, React, Next.js en TypeScript. Plus Vercel, Cloudflare, Sanity en Klaviyo. Eerlijk: welke stack wanneer, en wanneer juist niet.">
+  <meta property="og:title" content="Tech-stack - sircle.agency | WordPress, Shopify, React, Next.js">
+  <meta property="og:description" content="Onze tech-stack: WordPress, Shopify, React, Next.js en TypeScript. Eerlijk: welke stack wanneer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sircle.agency/tech-stack.html">
+  <meta property="og:image" content="https://sircle.agency/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sircle.agency/assets/og-image.jpg">
+  <link rel="canonical" href="https://sircle.agency/tech-stack.html">
+  <link rel="alternate" hreflang="nl" href="https://sircle.agency/tech-stack.html">
+  <link rel="alternate" hreflang="en" href="https://sircle.agency/en/tech-stack.html">
+  <link rel="alternate" hreflang="x-default" href="https://sircle.agency/tech-stack.html">
+  <link rel="icon" type="image/svg+xml" href="assets/svg/svg-black-S.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="assets/favicons/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=61">
+  <link rel="stylesheet" href="css/nav-bold.css?v=19">
+  <link rel="stylesheet" href="css/sirclecare.css?v=2">
+  <link rel="stylesheet" href="css/sirclepakket.css?v=4">
+  <style>
+    .ts-stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 1100px; margin: var(--space-lg) auto 0; }
+    .ts-card { padding: 32px 28px; background: rgba(216,228,218,0.04); border: 1px solid rgba(212,175,100,0.18); border-radius: 16px; transition: background 0.3s, border-color 0.3s, transform 0.5s; }
+    .ts-card:hover { background: rgba(216,228,218,0.07); border-color: rgba(212,175,100,0.45); transform: translateY(-4px); }
+    .ts-card__eyebrow { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; color: var(--gold); margin-bottom: 12px; text-transform: uppercase; }
+    .ts-card__title { font-size: 1.3rem; font-weight: 700; color: var(--cream); margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.01em; }
+    .ts-card__desc { font-size: 0.95rem; color: rgba(216,228,218,0.78); line-height: 1.6; margin: 0 0 16px; }
+    .ts-card__usecase { font-size: 0.85rem; color: var(--soft-green); line-height: 1.5; padding-top: 14px; border-top: 1px solid rgba(212,175,100,0.15); }
+    .ts-card__usecase strong { color: var(--gold); font-weight: 700; letter-spacing: 0.04em; font-size: 0.72rem; text-transform: uppercase; display: block; margin-bottom: 4px; }
+    @media (max-width: 767px) { .ts-stack { grid-template-columns: 1fr; gap: 14px; } .ts-card { padding: 24px 22px; } }
+
+    .ts-tools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 1000px; margin: var(--space-lg) auto 0; }
+    .ts-tool { padding: 18px 16px; background: rgba(12,24,15,0.04); border: 1px solid rgba(12,24,15,0.08); border-radius: 12px; text-align: center; transition: background 0.3s, border-color 0.3s; }
+    .ts-tool:hover { background: rgba(12,24,15,0.07); border-color: rgba(212,175,100,0.4); }
+    .ts-tool__name { display: block; font-size: 0.95rem; font-weight: 700; color: var(--dark-green); margin-bottom: 4px; }
+    .ts-tool__purpose { font-size: 0.78rem; color: rgba(12,24,15,0.65); line-height: 1.4; }
+    @media (max-width: 767px) { .ts-tools { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+    .ts-notwe { background: rgba(12,24,15,0.04); border-left: 3px solid var(--gold); padding: 24px 28px; max-width: 880px; margin: var(--space-lg) auto 0; border-radius: 0 8px 8px 0; }
+    .ts-notwe h3 { font-size: 1.05rem; color: var(--dark-green); margin: 0 0 10px; font-weight: 700; }
+    .ts-notwe p { font-size: 0.95rem; color: rgba(12,24,15,0.72); line-height: 1.6; margin: 0 0 8px; }
+    .ts-notwe p:last-child { margin: 0; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Tech-stack - sircle.agency",
+  "url": "https://sircle.agency/tech-stack.html",
+  "description": "Onze tech-stack: WordPress, Shopify, React, Next.js en TypeScript. Plus Vercel, Cloudflare, Sanity en Klaviyo.",
+  "inLanguage": "nl",
+  "isPartOf": { "@id": "https://sircle.agency/#website" }
+}
+  </script>
+  <script src="https://cdn.usefathom.com/script.js" data-site="KZSYVCLI" defer></script>
+  <script>
+  (function(l,e,a,d,i,n,f,o){if(!l[i]){l.GlobalLeadinfoNamespace=l.GlobalLeadinfoNamespace||[];
+  l.GlobalLeadinfoNamespace.push(i);l[i]=function(){(l[i].q=l[i].q||[]).push(arguments)};l[i].t=l[i].t||n;
+  l[i].q=l[i].q||[];o=e.createElement(a);f=e.getElementsByTagName(a)[0];o.async=1;o.src=d;f.parentNode.insertBefore(o,f);}
+  }(window,document,'script','https://cdn.leadinfo.net/ping.js','leadinfo','LI-6391A8E25F6B0'));
+  </script>
+</head>
+<body>
+  <div class="page-transition" id="page-transition">
+    <div class="page-transition__panel page-transition__panel--1"></div>
+    <div class="page-transition__panel page-transition__panel--2"></div>
+  </div>
+  <div class="cursor" id="cursor">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <div class="cursor-label">Bekijk</div>
+  </div>
+  <svg class="svg-defs"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></svg>
+
+  <nav data-navigation-status="not-active" class="bold-nav" id="nav">
+    <div class="bold-nav__bar">
+      <a href="index.html" class="bold-nav__logo">
+        <img src="assets/svg/svg-white-logo1.svg" alt="sircle agency" class="bold-nav__logo-white">
+        <img src="assets/svg/svg-black-logo1.svg" alt="sircle agency" class="bold-nav__logo-dark">
+      </a>
+      <div class="bold-nav__desktop-links">
+        <a href="diensten.html">Diensten</a>
+        <a href="werk.html">Werk</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="bold-nav__lang">
+        <a data-lang="nl">NL</a>
+        <span class="bold-nav__lang-sep">|</span>
+        <a data-lang="en">EN</a>
+      </div>
+      <button type="button" data-navigation-toggle="toggle" aria-label="Menu openen" class="bold-nav__hamburger">
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+        <div class="bold-nav__hamburger-bar"></div>
+      </button>
+    </div>
+    <div class="bold-nav__tile">
+      <ul class="bold-nav__ul">
+        <li class="bold-nav__li"><a href="index.html" class="bold-nav__link"><span class="bold-nav__link-text">Home</span></a></li>
+        <li class="bold-nav__li"><a href="diensten.html" class="bold-nav__link"><span class="bold-nav__link-text">Diensten</span></a></li>
+        <li class="bold-nav__li"><a href="werk.html" class="bold-nav__link"><span class="bold-nav__link-text">Werk</span></a></li>
+        <li class="bold-nav__li"><a href="over-ons.html" class="bold-nav__link"><span class="bold-nav__link-text">Over ons</span></a></li>
+        <li class="bold-nav__li"><a href="contact.html" class="bold-nav__link"><span class="bold-nav__link-text">Contact</span></a></li>
+      </ul>
+      <div class="bold-nav__bottom">
+        <div class="bold-nav__bottom-left">
+          <p class="bold-nav__word">Den Haag, Nederland</p>
+          <a href="tel:+31852129145" class="bold-nav__word bold-nav__phone">+31 85 212 91 45</a>
+        </div>
+        <div class="bold-nav__bottom-right">
+          <a href="mailto:hello@sircle.agency" class="bold-nav__word">hello@sircle.agency</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="sp-hero">
+    <img src="assets/branding/gradients/gradient-7.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <span class="sp-hero__eyebrow"><span class="sp-hero__eyebrow-dot"></span> Onze tech-stack</span>
+      <h1 class="sp-hero__title hero-reveal">De stack achter het werk<span class="sp-hero__title-accent">WordPress · Shopify · React · Next.js · TypeScript</span></h1>
+      <p class="sp-hero__sub">Geen religieus debat over welke stack 'de beste' is. We kiezen de tools die passen bij wat je wil bereiken, hoe snel je live wil en wie de site daarna gaat onderhouden. Hieronder waarom we voor welke stack kiezen, en wanneer juist niet.</p>
+    </div>
+  </section>
+
+  <!-- DE STACK -->
+  <section class="section section-dark sc-proof">
+    <img src="assets/branding/gradients/gradient-9.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up" style="color: var(--gold);">Onze hoofd-stack</span>
+        <h2 class="sc-section-title reveal-up" style="color: var(--white);">VIER PLATFORMS, ÉÉN AANPAK</h2>
+        <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">We werken met vier kern-platforms. Elk heeft een sterk geval voor wanneer het past, en een eerlijk verhaal over wanneer iets anders beter is.</p>
+      </div>
+      <div class="ts-stack reveal-up">
+        <article class="ts-card">
+          <span class="ts-card__eyebrow">CMS · CONTENT-SITES</span>
+          <h3 class="ts-card__title">WordPress</h3>
+          <p class="ts-card__desc">Het werkpaard voor content-rijke sites. Snel op te leveren, goed te onderhouden, makkelijk te trainen voor klant-redacteurs. Bewezen ecosysteem voor SEO, formulieren, multilingual en integraties.</p>
+          <div class="ts-card__usecase">
+            <strong>Het beste voor</strong>
+            Brochure-sites, blog-heavy organisaties, multi-pagina merksites, sites met veel niet-technische redacteurs.
+          </div>
+        </article>
+
+        <article class="ts-card">
+          <span class="ts-card__eyebrow">E-COMMERCE · D2C</span>
+          <h3 class="ts-card__title">Shopify</h3>
+          <p class="ts-card__desc">Van Shopify Grow tot Shopify Plus. Robuust e-commerce-platform met betrouwbare checkout, ingebouwde POS, en een groot app-ecosysteem. Voor complexe integraties bouwen we eigen microservices via Sircle Solutions.</p>
+          <div class="ts-card__usecase">
+            <strong>Het beste voor</strong>
+            D2C-merken, retail met meerdere kanalen, internationale stores, partijen die snel willen schalen zonder de checkout zelf te bouwen.
+          </div>
+        </article>
+
+        <article class="ts-card">
+          <span class="ts-card__eyebrow">MAATWERK FRONTEND</span>
+          <h3 class="ts-card__title">React &amp; Next.js</h3>
+          <p class="ts-card__desc">Voor sites en apps waar standaard CMS-templates niet meer volstaan. Headless commerce, complexe interactie, hoge performance-eisen, of intern dashboard-werk. Server-rendered, SEO-vriendelijk en snel.</p>
+          <div class="ts-card__usecase">
+            <strong>Het beste voor</strong>
+            Apps die voelen als producten, headless Shopify-frontends, dashboards, sites met serieuze performance-eisen.
+          </div>
+        </article>
+
+        <article class="ts-card">
+          <span class="ts-card__eyebrow">TAAL · OVERAL</span>
+          <h3 class="ts-card__title">TypeScript</h3>
+          <p class="ts-card__desc">Onze standaard voor alle maatwerk-code. Microservices, integraties, dashboards en Next.js-builds. Type-safety voorkomt fouten die je bij Javascript pas in productie ontdekt. Belangrijk voor code die meerdere jaren mee moet.</p>
+          <div class="ts-card__usecase">
+            <strong>Het beste voor</strong>
+            Alle maatwerk-projecten met meerdere developers, integraties die moeten kloppen, en code die jaren mee moet.
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS & SUPPORT -->
+  <section class="section section-cream sc-included">
+    <img src="assets/branding/gradients/gradient-3.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Tools eromheen</span>
+        <h2 class="sc-section-title reveal-up">WAT DE STACK COMPLEET MAAKT</h2>
+        <p class="sc-section-sub reveal-up">Geen one-vendor-fits-all. We pakken de beste tool voor het werk, in plaats van alles te willen forceren in één SaaS.</p>
+      </div>
+      <div class="ts-tools reveal-up">
+        <div class="ts-tool"><span class="ts-tool__name">Vercel</span><span class="ts-tool__purpose">Hosting voor Next.js, edge-deploys</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Cloudflare</span><span class="ts-tool__purpose">CDN, DNS, workers, security</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Sanity</span><span class="ts-tool__purpose">Headless CMS voor maatwerk</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Stripe</span><span class="ts-tool__purpose">Payments buiten Shopify</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Klaviyo</span><span class="ts-tool__purpose">Email &amp; flows voor commerce</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Google Tag Manager</span><span class="ts-tool__purpose">Tracking, GA4, conversies</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Algolia</span><span class="ts-tool__purpose">Snelle search &amp; filtering</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Web3Forms</span><span class="ts-tool__purpose">Forms zonder serverside-code</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Fathom</span><span class="ts-tool__purpose">Privacy-vriendelijke analytics</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">GitHub</span><span class="ts-tool__purpose">Code, CI/CD, deploys</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Figma</span><span class="ts-tool__purpose">Design &amp; prototyping</span></div>
+        <div class="ts-tool"><span class="ts-tool__name">Claude Code</span><span class="ts-tool__purpose">Snellere builds &amp; iteraties</span></div>
+      </div>
+
+      <div class="ts-notwe reveal-up">
+        <h3>Wat we bewust niet doen</h3>
+        <p><strong>Geen low-code builders.</strong> Sites die je niet zelf kunt aanpassen, prijs-modellen die bij groei pijn doen, en performance die je niet kunt fixen, daar zijn we niet de partij voor.</p>
+        <p><strong>Geen 'we kunnen alles' platform-loyaliteit.</strong> Als WordPress sneller en goedkoper is voor jouw geval, dan zeggen we dat. Ook als dat kleiner is dan een Next.js-build die we technisch leuker zouden vinden.</p>
+        <p><strong>Geen aparte ontwerper en developer die elkaar later moeten vinden.</strong> Design en build vanuit één team, zodat de site eruit komt zoals hij in Figma zit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WANNEER WELKE STACK -->
+  <section class="section section-dark sc-proof">
+    <img src="assets/branding/gradients/gradient-7.webp" alt="" class="bg-texture bg-texture--gradient" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up" style="color: var(--gold);">Hoe we kiezen</span>
+        <h2 class="sc-section-title reveal-up" style="color: var(--white);">WANNEER WELKE STACK</h2>
+        <p class="sc-section-sub reveal-up" style="color: var(--soft-green);">Drie vuistregels die we hanteren bij elke nieuwe build.</p>
+      </div>
+      <div class="ts-stack reveal-up" style="grid-template-columns: 1fr; max-width: 880px;">
+        <article class="ts-card">
+          <span class="ts-card__eyebrow">REGEL 01</span>
+          <h3 class="ts-card__title">Een merksite? Begin bij WordPress.</h3>
+          <p class="ts-card__desc">Tenzij er een sterke reden is voor maatwerk-frontend (performance, animatie, complexe interactie), is WordPress sneller live, goedkoper te onderhouden en makkelijker te trainen op klantredacties. We bouwen liever 95% van een site in WordPress dan 60% in Next.js.</p>
+        </article>
+        <article class="ts-card">
+          <span class="ts-card__eyebrow">REGEL 02</span>
+          <h3 class="ts-card__title">Een webshop? Begin bij Shopify.</h3>
+          <p class="ts-card__desc">Hoeveel ervaren commerce-teams bouwen hun eigen checkout? Bijna geen. Shopify is de basis, apps doen 80% van het werk, en voor de overige 20% bouwen we via Sircle Solutions eigen microservices die naadloos koppelen.</p>
+        </article>
+        <article class="ts-card">
+          <span class="ts-card__eyebrow">REGEL 03</span>
+          <h3 class="ts-card__title">Maatwerk in Next.js + TypeScript, of helemaal niet.</h3>
+          <p class="ts-card__desc">Headless commerce, dashboards, klantportals, interne tools, of een merksite die echt anders moet voelen dan WordPress kan leveren. Daar zetten we Next.js + TypeScript in, deploy via Vercel, met content uit Sanity of een ander headless CMS.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section section-cream">
+    <img src="assets/branding/gradients/gradient-1.webp" alt="" class="bg-texture bg-texture--gradient bg-texture--multiply" loading="lazy">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center; padding: var(--space-lg) 0;">
+        <span class="sc-label reveal-up">Niet zeker welke stack past?</span>
+        <h2 class="sc-section-title reveal-up">EERLIJK ADVIES, GEEN VERKOOP</h2>
+        <p class="sc-section-sub reveal-up" style="margin-bottom: var(--space-md);">30 minuten waarin we naar je situatie kijken en je vertellen welke stack past. Ook als dat betekent dat we WordPress aanraden waar je Next.js zocht, of andersom. Geen verkooppraatje, wel een helder antwoord.</p>
+        <a href="contact.html" class="btn-primary btn-large btn-pill">Plan een gesprek <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <a href="index.html"><img src="assets/svg/svg-white-logo1.svg" alt="sircle agency" class="footer-logo"></a>
+          <address>Zwaardstraat 16<br>2584 TX Den Haag</address>
+          <div class="footer-contact">
+            <a href="mailto:hello@sircle.agency">hello@sircle.agency</a>
+            <a href="tel:+31852129145">+31 85 212 91 45</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Diensten</h4>
+          <nav>
+            <a href="sirclestrategy.html">SircleStrategy</a>
+            <a href="sirclestudio.html">SircleStudio</a>
+            <a href="sirclegrowth.html">SircleGrowth</a>
+            <a href="sirclecare.html">SircleCare</a>
+            <a href="sirclepakket.html">SIRCLE Pakket</a>
+            <a href="employer-branding.html">Employer Branding</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Sectoren</h4>
+          <nav>
+            <a href="sectoren/zorg.html">Zorg</a>
+            <a href="sectoren/retail-d2c.html">Retail &amp; D2C</a>
+            <a href="sectoren/vastgoed.html">Vastgoed</a>
+            <a href="sectoren/publieke-sector.html">Publieke sector</a>
+            <a href="sectoren/industrie-b2b.html">Industrie &amp; B2B</a>
+            <a href="sectoren/hospitality-events.html">Hospitality &amp; Events</a>
+            <a href="sectoren/sport-outdoor.html">Sport &amp; Outdoor</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4>Pagina's</h4>
+          <nav>
+            <a href="werk.html">Werk</a>
+            <a href="over-ons.html">Over ons</a>
+            <a href="tech-stack.html">Tech-stack</a>
+            <a href="journal.html">Journal</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 sircle.agency · <a href="privacy.html" class="footer-link-subtle">Privacybeleid</a> · <a href="voorwaarden.html" class="footer-link-subtle">Algemene voorwaarden</a></p>
+        <p class="footer-legal">KVK: 78204240</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="js/main.js?v=32"></script>
+</body>
+</html>
