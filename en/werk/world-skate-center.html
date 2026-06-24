@@ -213,10 +213,10 @@
         <span>Sound Design</span>
       </div>
 
-      <!-- VIMEO EMBED, MASTER V7 — click-to-play facade -->
+      <!-- YOUTUBE EMBED — click-to-play facade -->
       <div class="wsc-video reveal-up">
-        <button type="button" class="wsc-video-facade" aria-label="Play the World Skate Center brand film" data-vimeo-id="1198199983" data-vimeo-hash="796c6bae38">
-          <img src="/assets/cases/world-skate-center/wsc-intro-poster.jpg" alt="Still from the WSC brand film" class="wsc-video-facade__poster" loading="lazy">
+        <button type="button" class="wsc-video-facade" aria-label="Play the World Skate Center brand film" data-youtube-id="jSnmiuYJe_E">
+          <img src="/assets/cases/world-skate-center/wsc-yt-thumb.jpg" alt="Still from the WSC brand film" class="wsc-video-facade__poster" loading="lazy">
           <span class="wsc-video-facade__play" aria-hidden="true">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7L8 5z"/></svg>
           </span>
@@ -418,14 +418,13 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="/js/main.js?v=32"></script>
   <script>
-    // Click-to-play Vimeo facade. Saves bandwidth until visitor actively clicks.
+    // Click-to-play YouTube facade. Saves bandwidth until visitor actively clicks.
     document.querySelectorAll('.wsc-video-facade').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var id = btn.dataset.vimeoId;
-        var hash = btn.dataset.vimeoHash;
+        var id = btn.dataset.youtubeId;
         var iframe = document.createElement('iframe');
-        iframe.src = 'https://player.vimeo.com/video/' + id + '?h=' + hash + '&autoplay=1&title=0&byline=0&portrait=0';
-        iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+        iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
         iframe.setAttribute('allowfullscreen', '');
         iframe.title = 'World Skate Center · Brand Film';
         var parent = btn.parentNode;
