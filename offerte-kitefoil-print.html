@@ -18,128 +18,124 @@
     @page{size:A4;margin:0;}
     html,body{background:#5b5b5b;}
     body{font-family:'Kulim Park',sans-serif;font-weight:400;color:var(--dark-grey);
-      -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
 
     /* ---------- A4 SHEET ---------- */
-    .sheet{
-      width:210mm;height:297mm;background:var(--cream);
-      margin:10mm auto;position:relative;overflow:hidden;
-      display:flex;flex-direction:column;
-    }
-    .pad{padding:13mm 14mm;display:flex;flex-direction:column;flex:1;}
+    .sheet{width:210mm;height:297mm;background:var(--cream);margin:10mm auto;
+      position:relative;overflow:hidden;display:flex;flex-direction:column;}
+    .pad{padding:16mm 18mm;display:flex;flex-direction:column;flex:1;}
     @media print{
       html,body{background:#fff;}
-      .sheet{margin:0;box-shadow:none;page-break-after:always;}
+      .sheet{margin:0;page-break-after:always;}
       .sheet:last-child{page-break-after:auto;}
     }
 
-    /* ---------- HERO ---------- */
-    .hero{
-      background:radial-gradient(120% 150% at 82% -20%,#15281c 0%,var(--dark-green) 48%,var(--dark-green-deep) 100%);
-      color:var(--warm-white);padding:12mm 14mm 11mm;position:relative;overflow:hidden;flex-shrink:0;
-    }
-    .hero::after{content:"";position:absolute;right:-30mm;top:-30mm;width:90mm;height:90mm;
-      background:radial-gradient(circle,rgba(242,226,164,0.16) 0%,transparent 70%);}
-    .hero-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8mm;
+    /* ---------- SHARED TYPE ---------- */
+    .label{display:inline-block;font-size:8pt;font-weight:600;text-transform:uppercase;
+      letter-spacing:0.18em;color:var(--bronze);padding:2mm 5mm;border-radius:100px;
+      border:1px solid rgba(196,168,84,0.28);background:rgba(196,168,84,0.06);}
+    .label.on-dark{color:var(--gold);border-color:rgba(242,226,164,0.22);background:rgba(242,226,164,0.06);}
+    .title{font-weight:700;text-transform:uppercase;line-height:0.96;letter-spacing:-0.01em;
+      color:var(--dark-green);}
+    .sub{font-weight:300;line-height:1.7;color:var(--mid-grey);}
+
+    /* ---------- HERO (full bleed) ---------- */
+    .hero{background:radial-gradient(125% 150% at 84% -18%,#172a1d 0%,var(--dark-green) 50%,var(--dark-green-deep) 100%);
+      color:var(--warm-white);padding:16mm 18mm 15mm;position:relative;overflow:hidden;flex-shrink:0;}
+    .hero::after{content:"";position:absolute;right:-28mm;top:-34mm;width:95mm;height:95mm;
+      background:radial-gradient(circle,rgba(242,226,164,0.14) 0%,transparent 70%);}
+    .hero-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14mm;
       position:relative;z-index:1;}
     .wordmark{font-weight:700;font-size:13pt;letter-spacing:-0.01em;color:var(--white);}
     .wordmark span{color:var(--gold);}
-    .hero-tag{font-size:7.5pt;letter-spacing:0.18em;text-transform:uppercase;
-      color:var(--sage-green);font-weight:600;}
-    .eyebrow{font-size:8pt;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);
-      font-weight:700;margin-bottom:5mm;position:relative;z-index:1;}
-    .hero h1{font-size:23pt;line-height:1.05;font-weight:700;letter-spacing:-0.02em;
-      color:var(--white);max-width:20ch;position:relative;z-index:1;}
+    .hero-tag{font-size:7.5pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage-green);font-weight:600;}
+    .hero h1{font-size:30pt;line-height:0.98;font-weight:700;text-transform:uppercase;letter-spacing:-0.015em;
+      color:var(--white);margin-top:7mm;position:relative;z-index:1;}
     .hero h1 em{font-style:normal;color:var(--gold);}
-    .hero-sub{margin-top:4mm;max-width:64ch;color:rgba(255,248,238,0.8);font-size:9.5pt;
-      line-height:1.5;position:relative;z-index:1;}
-    .hero-meta{display:flex;flex-wrap:wrap;gap:2mm;margin-top:5mm;position:relative;z-index:1;}
-    .pill{font-size:8pt;letter-spacing:0.03em;border:1px solid rgba(208,223,185,0.3);
-      color:var(--soft-green);padding:1.6mm 3.5mm;border-radius:100px;}
+    .hero-sub{margin-top:7mm;max-width:74ch;color:rgba(255,248,238,0.72);font-size:10.5pt;font-weight:300;
+      line-height:1.7;position:relative;z-index:1;}
+    .hero-accounts{margin-top:9mm;display:flex;gap:7mm;position:relative;z-index:1;
+      font-size:8.5pt;letter-spacing:0.04em;color:var(--soft-green);}
+    .hero-accounts span{position:relative;padding-left:5mm;}
+    .hero-accounts span::before{content:"";position:absolute;left:0;top:1.4mm;width:2mm;height:2mm;
+      border-radius:50%;background:var(--gold);}
 
-    /* ---------- PRINCIPLE ---------- */
-    .principle{background:linear-gradient(140deg,var(--gold) 0%,var(--gold-warm) 60%,var(--bronze) 100%);
-      border-radius:4mm;padding:5mm 7mm;color:var(--dark-green);}
-    .principle .q{font-size:10.5pt;line-height:1.4;font-weight:600;letter-spacing:-0.01em;}
+    /* ---------- OFFER ---------- */
+    .offer{margin-top:2mm;}
+    .offer .label{margin-bottom:7mm;}
+    .hr{height:1px;background:linear-gradient(90deg,rgba(196,168,84,0.5),rgba(196,168,84,0.08));border:0;}
+    .offer-row{display:flex;align-items:flex-end;gap:9mm;padding:8mm 0;}
+    .offer-num{font-size:54pt;font-weight:700;letter-spacing:-0.03em;color:var(--dark-green);line-height:0.82;}
+    .offer-num span{font-size:20pt;color:var(--bronze);font-weight:600;}
+    .offer-meta .big{font-size:14pt;font-weight:700;text-transform:uppercase;letter-spacing:-0.005em;
+      color:var(--dark-green);line-height:1.05;}
+    .offer-meta .small{margin-top:3mm;font-size:9.5pt;font-weight:300;color:var(--mid-grey);line-height:1.6;max-width:52ch;}
 
-    /* ---------- SECTION HEAD ---------- */
-    .sec-head{margin:7mm 0 4mm;}
-    .sec-head .kicker{font-size:7.5pt;letter-spacing:0.18em;text-transform:uppercase;
-      color:var(--copper-deep);font-weight:700;margin-bottom:2mm;}
-    .sec-head h2{font-size:16pt;font-weight:700;letter-spacing:-0.01em;color:var(--dark-green);line-height:1.1;}
-    .sec-head p{margin-top:2.5mm;max-width:74ch;color:var(--mid-green);font-size:9.5pt;line-height:1.5;}
+    /* how it works mini-steps */
+    .flow{display:flex;gap:0;margin-top:9mm;}
+    .flow .step{flex:1;padding-right:7mm;position:relative;}
+    .flow .step:not(:last-child)::after{content:"";position:absolute;right:3.5mm;top:2mm;
+      width:1px;height:78%;background:var(--warm-beige);}
+    .flow .n{font-size:8pt;font-weight:700;color:var(--bronze);letter-spacing:0.1em;}
+    .flow h4{font-size:11pt;font-weight:700;color:var(--dark-green);margin:2.5mm 0 1.5mm;}
+    .flow p{font-size:8.7pt;font-weight:300;color:var(--mid-grey);line-height:1.55;}
 
-    /* ---------- ROUTES ---------- */
-    .routes{display:grid;grid-template-columns:1fr 1fr;gap:6mm;flex:1;align-items:stretch;}
-    .route{background:var(--warm-white);border:1px solid var(--warm-beige);border-radius:5mm;
-      padding:7mm 7mm;display:flex;flex-direction:column;position:relative;overflow:hidden;}
-    .route.featured{background:linear-gradient(160deg,#12251b 0%,var(--dark-green) 100%);
-      color:var(--warm-white);border-color:transparent;}
-    .route-flag{position:absolute;top:5mm;right:-11mm;transform:rotate(45deg);
-      background:linear-gradient(140deg,var(--gold),var(--bronze));color:var(--dark-green);
-      font-size:7pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:1.4mm 14mm;}
-    .route .label{font-size:7.5pt;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;
-      color:var(--copper-deep);}
-    .route.featured .label{color:var(--gold);}
-    .route h3{font-size:14pt;font-weight:700;letter-spacing:-0.01em;margin:1.5mm 0 1mm;color:var(--dark-green);}
-    .route.featured h3{color:var(--white);}
-    .route .for{font-size:9pt;color:var(--mid-green);margin-bottom:3.5mm;}
-    .route.featured .for{color:var(--sage-green);}
-    .price{display:flex;align-items:baseline;gap:2.5mm;padding-bottom:4mm;margin-bottom:4mm;
-      border-bottom:1px solid var(--warm-beige);}
-    .route.featured .price{border-color:rgba(208,223,185,0.2);}
-    .price .amt{font-size:22pt;font-weight:700;letter-spacing:-0.02em;color:var(--dark-green);line-height:1;}
-    .route.featured .price .amt{color:var(--gold);}
-    .price .per{font-size:8.5pt;color:var(--mid-green);}
-    .route.featured .price .per{color:var(--sage-green);}
-    ul.feats{list-style:none;display:flex;flex-direction:column;gap:2.3mm;flex:1;}
-    ul.feats li{position:relative;padding-left:6.5mm;font-size:9.3pt;line-height:1.38;}
-    ul.feats li::before{content:"";position:absolute;left:0;top:1.1mm;width:3.6mm;height:3.6mm;
-      border-radius:50%;background:var(--soft-green);
-      -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/2.3mm no-repeat;
-      mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/2.3mm no-repeat;}
-    .route.featured ul.feats li::before{background:var(--gold);}
-    ul.feats li strong{font-weight:700;}
-    .route .note{margin-top:4mm;font-size:8pt;color:var(--mid-green);line-height:1.45;}
-    .route.featured .note{color:var(--sage-green);}
+    /* scope list */
+    .scope{margin-top:auto;}
+    .scope .label{margin-bottom:6mm;}
+    .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm 9mm;}
+    .scope-grid li{list-style:none;position:relative;padding-left:7mm;font-size:9.7pt;font-weight:300;
+      line-height:1.45;color:var(--dark-grey);}
+    .scope-grid li b{font-weight:600;}
+    .scope-grid li::before{content:"";position:absolute;left:0;top:0.6mm;width:4mm;height:4mm;border-radius:50%;
+      background:var(--mid-green);
+      -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/2.4mm no-repeat;
+      mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/2.4mm no-repeat;}
 
-    /* ---------- LADDER ---------- */
-    .ladder{background:var(--dark-green);border-radius:5mm;padding:8mm 8mm;color:var(--warm-white);}
-    .ladder h2{color:var(--white);font-size:15pt;font-weight:700;letter-spacing:-0.01em;}
-    .ladder .lead{color:var(--sage-green);font-size:9.5pt;margin-top:1.5mm;max-width:74ch;line-height:1.5;}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-top:6mm;align-items:stretch;}
-    .step{border:1px solid rgba(208,223,185,0.2);border-radius:3.5mm;padding:5mm;display:flex;flex-direction:column;}
-    .step .budget{font-size:7.5pt;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);
-      font-weight:700;margin-bottom:3mm;}
-    .step h4{font-size:10.5pt;color:var(--white);font-weight:700;margin-bottom:3mm;}
-    .step ul{list-style:none;display:flex;flex-direction:column;gap:2mm;}
-    .step ul li{font-size:8.7pt;color:rgba(255,248,238,0.82);padding-left:4mm;position:relative;line-height:1.4;}
-    .step ul li::before{content:"+";position:absolute;left:0;color:var(--gold);font-weight:700;}
-    .arrow-row{margin-top:6mm;font-size:9pt;color:var(--sage-green);letter-spacing:0.01em;}
-    .arrow-row b{color:var(--gold);font-weight:700;}
+    /* ---------- PAGE 2 ---------- */
+    .block-head{margin-bottom:7mm;}
+    .block-head .label{margin-bottom:5mm;}
+    .block-head h2{font-size:20pt;}
+    .block-head p{margin-top:3mm;font-size:9.7pt;max-width:80ch;}
 
-    /* ---------- PILLARS ---------- */
-    .twocol{display:grid;grid-template-columns:1fr 1fr;gap:6mm;}
-    .card{background:var(--warm-white);border:1px solid var(--warm-beige);border-radius:4.5mm;padding:6mm 6mm;}
-    .card h3{font-size:11pt;font-weight:700;color:var(--dark-green);margin-bottom:2mm;
-      display:flex;align-items:center;gap:2.5mm;}
-    .card h3 .dot{width:2.5mm;height:2.5mm;border-radius:50%;background:var(--bronze);}
-    .card h3 .dot.green{background:var(--mid-green);}
-    .card p{font-size:9.3pt;color:var(--dark-grey);line-height:1.55;}
-    .card p .hl{color:var(--copper-deep);font-weight:600;}
+    /* focus split */
+    .focus{display:grid;grid-template-columns:1.15fr 0.85fr;gap:7mm;}
+    .focus-card{border-radius:4mm;padding:8mm 8mm;}
+    .focus-card.primary{background:var(--dark-green);color:var(--warm-white);}
+    .focus-card.ride{background:var(--warm-white);border:1px solid var(--warm-beige);}
+    .focus-card .tag{font-size:7.5pt;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;}
+    .focus-card.primary .tag{color:var(--gold);}
+    .focus-card.ride .tag{color:var(--copper-deep);}
+    .focus-card .handle{font-size:15pt;font-weight:700;letter-spacing:-0.01em;margin:3mm 0 4mm;}
+    .focus-card.primary .handle{color:var(--white);}
+    .focus-card.ride .handle{color:var(--dark-green);}
+    .focus-card p{font-size:9.3pt;font-weight:300;line-height:1.6;}
+    .focus-card.primary p{color:rgba(255,248,238,0.78);}
+    .focus-card.ride p{color:var(--mid-grey);}
+    .focus-note{margin-top:5mm;font-size:8.7pt;font-weight:300;color:var(--mid-green);
+      padding-left:5mm;border-left:2px solid var(--bronze);line-height:1.55;}
 
-    /* ---------- FOOTER ---------- */
-    .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;
-      gap:6mm;padding-top:7mm;border-top:1px solid var(--warm-beige);}
-    .foot .who{font-size:9pt;color:var(--mid-green);line-height:1.5;}
-    .foot .who b{color:var(--dark-green);}
-    .stamp{display:inline-flex;align-items:center;gap:2.5mm;
-      background:linear-gradient(140deg,var(--gold) 0%,var(--gold-warm) 50%,var(--bronze) 100%);
-      color:var(--dark-green);padding:3.5mm 8mm;border-radius:100px;font-weight:700;
-      font-size:10pt;letter-spacing:0.02em;white-space:nowrap;}
-    .disclaimer{margin-top:5mm;font-size:7.3pt;color:var(--mid-grey);line-height:1.55;}
-    .pageno{position:absolute;bottom:7mm;right:14mm;font-size:7.5pt;color:var(--mid-grey);
-      letter-spacing:0.1em;}
+    /* scaling steps */
+    .scale{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin-top:2mm;}
+    .scale .s{position:relative;padding-top:7mm;}
+    .scale .s::before{content:"";position:absolute;top:0;left:0;width:9mm;height:1px;background:var(--bronze);}
+    .scale .n{font-size:8pt;font-weight:700;letter-spacing:0.1em;color:var(--bronze);text-transform:uppercase;}
+    .scale h4{font-size:11.5pt;font-weight:700;color:var(--dark-green);margin:2.5mm 0 2.5mm;line-height:1.1;}
+    .scale ul{list-style:none;}
+    .scale ul li{font-size:9pt;font-weight:300;color:var(--mid-grey);line-height:1.5;padding-left:4mm;position:relative;margin-bottom:1.5mm;}
+    .scale ul li::before{content:"";position:absolute;left:0;top:2mm;width:1.6mm;height:1.6mm;border-radius:50%;background:var(--sage-green);}
+
+    /* footer */
+    .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:8mm;
+      padding-top:8mm;border-top:1px solid var(--warm-beige);}
+    .foot .who{font-size:9pt;font-weight:300;color:var(--mid-grey);line-height:1.7;}
+    .foot .who b{font-weight:600;color:var(--dark-green);}
+    .stamp{display:inline-flex;align-items:center;gap:2.5mm;background:var(--dark-green);
+      color:var(--gold);padding:4mm 9mm;border-radius:100px;font-weight:600;font-size:10pt;
+      letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;}
+    .disclaimer{margin-top:6mm;font-size:7.3pt;font-weight:300;color:var(--mid-grey);line-height:1.6;}
+    .pageno{position:absolute;bottom:9mm;right:18mm;font-size:7.5pt;color:var(--mid-grey);letter-spacing:0.12em;}
   </style>
 </head>
 <body>
@@ -151,61 +147,58 @@
         <div class="wordmark">sircle<span>.</span>agency</div>
         <div class="hero-tag">Contentmarketing-voorstel · 2026</div>
       </div>
-      <div class="eyebrow">Jesse Kampman × Team Allianz Kitefoil</div>
+      <span class="label on-dark">Jesse Kampman × Team Allianz Kitefoil</span>
       <h1>De weg naar <em>LA 2028</em>,<br>verteld in beeld.</h1>
-      <p class="hero-sub">Een laagdrempelige start om de personal brand van Jesse Kampman en bondscoach Casper Bouwman te laten groeien op Instagram — en om de "Vrienden van"-sponsoren een verhaal te geven waar ze bij willen horen. We beginnen met de bestaande beeldbank en schalen mee met het sponsorbudget.</p>
-      <div class="hero-meta">
-        <span class="pill">@jessiekampman</span>
-        <span class="pill">@teamallianzkitefoil</span>
-        <span class="pill">Reels · foto · stories</span>
-        <span class="pill">24 maanden tot de Spelen</span>
+      <p class="hero-sub">Een laagdrempelige start om de personal brand van Jesse Kampman te laten groeien op Instagram — en om de "Vrienden van"-sponsoren een verhaal te geven waar ze bij willen horen. We beginnen met de bestaande beeldbank en schalen mee met het sponsorbudget.</p>
+      <div class="hero-accounts">
+        <span>@jessiekampman</span>
+        <span>@teamallianzkitefoil</span>
+        <span>24 maanden tot de Spelen</span>
       </div>
     </div>
 
     <div class="pad">
-      <div class="principle">
-        <p class="q">Content is niet de kostenpost — content is de verkoopmotor. Hoe sterker het verhaal van Jesse groeit, hoe makkelijker de "Vrienden van"-bedrijven instappen. Daarom: klein en goed beginnen, en meegroeien met het budget.</p>
+      <div class="offer">
+        <span class="label">Het voorstel · Halfjaarblok</span>
+        <hr class="hr">
+        <div class="offer-row">
+          <div class="offer-num">€6.000</div>
+          <div class="offer-meta">
+            <div class="big">6 maanden volledig ingedekt</div>
+            <div class="small">In één keer gereserveerd — géén maandelijkse overboekingen. Casper koopt het blok in één keer in (≈ €1.000 per maand), wij draaien een half jaar door.</div>
+          </div>
+        </div>
+        <hr class="hr">
+
+        <div class="flow">
+          <div class="step">
+            <div class="n">01</div>
+            <h4>Reserveren</h4>
+            <p>Het sponsorbedrag van €6.000 wordt in één keer vastgelegd. Klaar — geen maandelijks gedoe.</p>
+          </div>
+          <div class="step">
+            <div class="n">02</div>
+            <h4>6 maanden draaien</h4>
+            <p>Wij bouwen ritme, zichtbaarheid en groei op uit de bestaande beeldbank.</p>
+          </div>
+          <div class="step">
+            <div class="n">03</div>
+            <h4>Evalueren &amp; opschalen</h4>
+            <p>We meten de groei en bekijken samen of nieuwe sponsoren een groter blok mogelijk maken.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="sec-head">
-        <div class="kicker">Twee routes om te starten</div>
-        <h2>Kies het instapniveau dat bij het budget past</h2>
-        <p>Beide routes draaien op de bestaande beeldbank. Route A is de bewuste, betaalbare start. Route B voegt vers materiaal en meer verhaal toe zodra er sponsorbudget binnen is.</p>
-      </div>
-
-      <div class="routes">
-        <div class="route">
-          <span class="label">Route A · Start</span>
-          <h3>Beeldbank Always-On</h3>
-          <p class="for">Recyclen van bestaand materiaal — geen filmdag</p>
-          <div class="price"><span class="amt">€850</span><span class="per">p/m · richtprijs (€750–1.000)</span></div>
-          <ul class="feats">
-            <li><strong>Strategische contentplanning</strong> — maandelijkse kalender, pijlers &amp; ritme</li>
-            <li><strong>Conceptontwikkeling</strong> van de reels uit bestaand beeld</li>
-            <li><strong>2 reels per maand</strong>, gemonteerd met muziek &amp; SFX</li>
-            <li><strong>2–3 foto-posts of carrousels</strong> per maand uit de beeldbank</li>
-            <li>Doorlopende <strong>stories-laag</strong> (reposts, momenten, polls)</li>
-            <li>Inplannen, posten &amp; lichte community management</li>
-          </ul>
-          <p class="note">Doel: ritme en zichtbaarheid opbouwen en momentum aantonen richting nieuwe sponsoren — zonder productiekosten.</p>
-        </div>
-
-        <div class="route featured">
-          <span class="route-flag">Aanrader</span>
-          <span class="label">Route B · Groei</span>
-          <h3>Productie &amp; Storytelling</h3>
-          <p class="for">Vers materiaal + diepere verhaallijnen</p>
-          <div class="price"><span class="amt">€2.150</span><span class="per">p/m · richtprijs (€1.750–2.500)</span></div>
-          <ul class="feats">
-            <li><strong>Alles uit Route A</strong>, en daarbovenop:</li>
-            <li><strong>4 reels per maand</strong> — wekelijks een moment</li>
-            <li><strong>1 productiedag per maand</strong> voor vers beeld</li>
-            <li>Twee verhaallijnen: <strong>entertainment</strong> (adrenaline) &amp; <strong>educatie</strong> (de sport van binnen)</li>
-            <li>Uitgebreidere contentkalender</li>
-            <li><strong>Maandelijkse rapportage</strong> — groei &amp; bereik</li>
-          </ul>
-          <p class="note">De logische volgende stap zodra de eerste sponsoren binnen zijn: van recyclen naar zelf vertellen.</p>
-        </div>
+      <div class="scope">
+        <span class="label">Wat er in het blok zit</span>
+        <ul class="scope-grid">
+          <li><b>Strategische contentkalender</b> & conceptontwikkeling</li>
+          <li><b>2 reels per maand</b> uit de beeldbank, met muziek &amp; SFX</li>
+          <li><b>2–3 foto-posts of carrousels</b> per maand</li>
+          <li>Doorlopende <b>stories-laag</b> (reposts, momenten, polls)</li>
+          <li><b>Plaatsing, planning</b> &amp; lichte community management</li>
+          <li>Primair op Jesse, <b>doorgezet naar het teamaccount</b></li>
+        </ul>
       </div>
     </div>
     <div class="pageno">1 / 2</div>
@@ -214,60 +207,59 @@
   <!-- ============ PAGINA 2 ============ -->
   <section class="sheet">
     <div class="pad">
-      <div class="sec-head" style="margin-top:0;">
-        <div class="kicker">Meegroeien met het budget</div>
-        <h2>Wat extra sponsorgeld concreet oplevert</h2>
-        <p>Elke nieuwe "Vriend van" schaalt het content-budget mee op. Zo ziet het pad eruit van een paar sponsoren naar twintig-plus.</p>
+      <div class="block-head">
+        <span class="label">Waar de focus ligt</span>
+        <h2 class="title">Eén contentmotor, slim verdeeld</h2>
+        <p class="sub">Geen versnipperd budget over losse accounts. Alle content wordt gemaakt mét Jesse als hoofdrol en daarna hergebruikt voor het team — één productie, meerdere kanalen.</p>
       </div>
 
-      <div class="ladder">
-        <h2>Van 3 sponsoren naar een beweging</h2>
-        <p class="lead">Het content-niveau beweegt mee met het aantal aangesloten bedrijven — Sircle groeit mee met júllie succes.</p>
-        <div class="steps">
-          <div class="step">
-            <div class="budget">±3–6 sponsoren</div>
-            <h4>Start — Route A</h4>
-            <ul>
-              <li>Beeldbank Always-On</li>
-              <li>Wekelijks iets op de feed</li>
-              <li>Kalender &amp; ritme staat</li>
-            </ul>
-          </div>
-          <div class="step">
-            <div class="budget">±8–15 sponsoren</div>
-            <h4>Groei — Route B</h4>
-            <ul>
-              <li>Maandelijkse productiedag</li>
-              <li>4 reels p/m + storytelling</li>
-              <li>Rapportage op groei</li>
-            </ul>
-          </div>
-          <div class="step">
-            <div class="budget">±15–30 sponsoren</div>
-            <h4>Campagne &amp; Event</h4>
-            <ul>
-              <li>Meerdere productiedagen</li>
-              <li>Documentaire-verhaallijnen</li>
-              <li>Event-activatie (Scheveningen, boot dicht op de actie)</li>
-              <li>Co-branded sponsor-content</li>
-            </ul>
-          </div>
+      <div class="focus">
+        <div class="focus-card primary">
+          <div class="tag">Primair · de motor</div>
+          <div class="handle">@jessiekampman</div>
+          <p>Hier ligt de volle focus. Personal branding is waar de groei én de sponsorwaarde zitten: Jesse als gezicht, als talent, als verhaal richting LA 2028. Elke reel en post wordt hier als eerste gepubliceerd.</p>
         </div>
-        <p class="arrow-row">Meer budget <b>→</b> meer productie · meer storytelling · vaker posten · grotere momenten richting <b>LA 2028</b></p>
+        <div class="focus-card ride">
+          <div class="tag">Lift mee</div>
+          <div class="handle">@teamallianzkitefoil</div>
+          <p>Dezelfde content, hergebruikt: andere caption, getagd, doorgezet. Plus Casper als coach. Vrijwel geen extra werk — dus geen apart budget nodig.</p>
+        </div>
+      </div>
+      <p class="focus-note">Eén stroom content, betaald uit één blok. Zo houden we de schaarse €6.000 maximaal effectief en versnipperen we niets.</p>
+
+      <div class="block-head" style="margin-top:13mm;">
+        <span class="label">Na 6 maanden — meegroeien</span>
+        <h2 class="title">Wat extra sponsorgeld oplevert</h2>
+        <p class="sub">Komt er meer budget binnen? Dan herboeken we een blok of zetten we de stap omhoog — mee met het aantal aangesloten "Vrienden van".</p>
       </div>
 
-      <div class="sec-head">
-        <div class="kicker">De inhoud</div>
-        <h2>Twee pijlers die elkaar versterken</h2>
-      </div>
-      <div class="twocol">
-        <div class="card">
-          <h3><span class="dot"></span>Entertainment</h3>
-          <p>Snelle edits, vette muziek, SFX — je moet de sport <span class="hl">voelen</span>. De adrenaline van het kitefoilen die nieuwe mensen binnentrekt en het bereik opbouwt.</p>
+      <div class="scale">
+        <div class="s">
+          <div class="n">Nu · ±1 sponsor</div>
+          <h4>Halfjaarblok</h4>
+          <ul>
+            <li>Beeldbank Always-On</li>
+            <li>Wekelijks op de feed</li>
+            <li>Ritme &amp; kalender staat</li>
+          </ul>
         </div>
-        <div class="card">
-          <h3><span class="dot green"></span>Educatie</h3>
-          <p>Hoe werkt de sport, het materiaal, de strategie? De emoties, het teamverband, de pijn en de winst. Dit <span class="hl">bouwt binding</span> en maakt kijkers fan.</p>
+        <div class="s">
+          <div class="n">±8–15 sponsoren</div>
+          <h4>Productie &amp; storytelling</h4>
+          <ul>
+            <li>Maandelijkse productiedag</li>
+            <li>Meer reels + verhaallijnen</li>
+            <li>Rapportage op groei</li>
+          </ul>
+        </div>
+        <div class="s">
+          <div class="n">±15–30 sponsoren</div>
+          <h4>Campagne &amp; event</h4>
+          <ul>
+            <li>Meerdere productiedagen</li>
+            <li>Event-activatie (Scheveningen)</li>
+            <li>Co-branded sponsor-content</li>
+          </ul>
         </div>
       </div>
 
@@ -277,10 +269,9 @@
           Voor Jesse Kampman &amp; Casper Bouwman — Team Allianz Kitefoil<br>
           hello@sircle.agency · sircle.agency
         </div>
-        <span class="stamp">Laten we starten →</span>
+        <span class="stamp">Laten we starten</span>
       </div>
-
-      <p class="disclaimer">Alle bedragen zijn richtprijzen per maand, exclusief btw. Productiedagen, reiskosten en eventuele advertentiebudgetten worden apart afgestemd. Dit voorstel is een vertrekpunt voor een gezamenlijk plan en kan per route worden aangescherpt. Looptijd en opzegtermijn in onderling overleg.</p>
+      <p class="disclaimer">Bedrag is exclusief btw en betreft een vooruitbetaald blok van 6 maanden (≈ €1.000 per maand). Productiedagen, reiskosten en eventuele advertentiebudgetten vallen buiten dit blok en worden apart afgestemd. Dit voorstel is een vertrekpunt voor een gezamenlijk plan en kan worden aangescherpt.</p>
     </div>
     <div class="pageno">2 / 2</div>
   </section>
