@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#0C180F">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contentmarketing-voorstel — Jesse Kampman × Sircle Agency</title>
+  <meta name="description" content="Onepager-offerte: contentmarketing voor Jesse Kampman & Team Allianz Kitefoil — de weg naar LA 2028.">
+  <link rel="icon" type="image/svg+xml" href="assets/svg/svg-black-S.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --black:#000;--dark-grey:#1C1E1D;--white:#FFF;--warm-white:#FFF8EE;
+      --cream:#F3EFE8;--warm-beige:#E9E2D6;--beige:#DED6C9;
+      --dark-green:#0C180F;--dark-green-deep:#060D08;--mid-green:#3F6F45;
+      --sage-green:#8FAF8A;--soft-green:#D0DFB9;
+      --gold:#F2E2A4;--gold-warm:#E8D590;--bronze:#C4A854;--copper-deep:#9A8240;
+      --ease:cubic-bezier(0.16,1,0.3,1);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{-webkit-text-size-adjust:100%;}
+    body{
+      font-family:'Kulim Park',sans-serif;font-weight:400;line-height:1.6;
+      color:var(--dark-grey);background:var(--cream);
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    }
+    .page{max-width:1080px;margin:0 auto;padding:0 28px 64px;}
+
+    /* ---------- HERO ---------- */
+    .hero{
+      background:radial-gradient(120% 140% at 80% -10%,#13241a 0%,var(--dark-green) 45%,var(--dark-green-deep) 100%);
+      color:var(--warm-white);border-radius:0 0 28px 28px;
+      padding:46px 44px 50px;position:relative;overflow:hidden;
+    }
+    .hero::after{
+      content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;
+      background:radial-gradient(circle,rgba(242,226,164,0.16) 0%,transparent 70%);
+    }
+    .hero-top{display:flex;justify-content:space-between;align-items:center;
+      margin-bottom:40px;position:relative;z-index:1;}
+    .wordmark{font-weight:700;font-size:18px;letter-spacing:-0.01em;color:var(--white);}
+    .wordmark span{color:var(--gold);}
+    .hero-tag{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+      color:var(--sage-green);font-weight:600;}
+    .eyebrow{font-size:12px;letter-spacing:0.16em;text-transform:uppercase;
+      color:var(--gold);font-weight:600;margin-bottom:18px;position:relative;z-index:1;}
+    .hero h1{font-size:clamp(30px,5vw,46px);line-height:1.05;font-weight:700;
+      letter-spacing:-0.02em;color:var(--white);max-width:16ch;position:relative;z-index:1;}
+    .hero h1 em{font-style:normal;color:var(--gold);}
+    .hero-sub{margin-top:20px;max-width:54ch;color:rgba(255,248,238,0.78);
+      font-size:15.5px;position:relative;z-index:1;}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;position:relative;z-index:1;}
+    .pill{font-size:12px;letter-spacing:0.04em;border:1px solid rgba(208,223,185,0.28);
+      color:var(--soft-green);padding:7px 15px;border-radius:100px;}
+
+    /* ---------- SECTION ---------- */
+    .sec-head{margin:46px 0 22px;}
+    .sec-head .kicker{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
+      color:var(--copper-deep);font-weight:700;margin-bottom:8px;}
+    .sec-head h2{font-size:24px;font-weight:700;letter-spacing:-0.01em;color:var(--dark-green);}
+    .sec-head p{margin-top:8px;max-width:62ch;color:var(--mid-green);font-size:14.5px;}
+
+    /* ---------- ROUTES ---------- */
+    .routes{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+    .route{background:var(--warm-white);border:1px solid var(--warm-beige);
+      border-radius:20px;padding:30px 28px;display:flex;flex-direction:column;
+      position:relative;overflow:hidden;}
+    .route.featured{background:linear-gradient(160deg,#10231a 0%,var(--dark-green) 100%);
+      color:var(--warm-white);border-color:transparent;}
+    .route-flag{position:absolute;top:18px;right:-34px;transform:rotate(45deg);
+      background:linear-gradient(140deg,var(--gold),var(--bronze));color:var(--dark-green);
+      font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+      padding:5px 44px;}
+    .route .label{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+      font-weight:700;color:var(--copper-deep);}
+    .route.featured .label{color:var(--gold);}
+    .route h3{font-size:21px;font-weight:700;letter-spacing:-0.01em;margin:8px 0 4px;
+      color:var(--dark-green);}
+    .route.featured h3{color:var(--white);}
+    .route .for{font-size:13px;color:var(--mid-green);margin-bottom:18px;}
+    .route.featured .for{color:var(--sage-green);}
+    .price{display:flex;align-items:baseline;gap:8px;
+      padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--warm-beige);}
+    .route.featured .price{border-color:rgba(208,223,185,0.18);}
+    .price .amt{font-size:34px;font-weight:700;letter-spacing:-0.02em;color:var(--dark-green);}
+    .route.featured .price .amt{color:var(--gold);}
+    .price .per{font-size:13px;color:var(--mid-green);}
+    .route.featured .price .per{color:var(--sage-green);}
+    ul.feats{list-style:none;display:flex;flex-direction:column;gap:11px;flex:1;}
+    ul.feats li{position:relative;padding-left:26px;font-size:14px;line-height:1.5;}
+    ul.feats li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;
+      border-radius:50%;background:var(--soft-green);
+      -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/9px no-repeat;
+      mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center/9px no-repeat;}
+    .route.featured ul.feats li::before{background:var(--gold);}
+    ul.feats li strong{font-weight:700;}
+    .route .note{margin-top:18px;font-size:12px;color:var(--mid-green);line-height:1.5;}
+    .route.featured .note{color:var(--sage-green);}
+
+    /* ---------- SCALE LADDER ---------- */
+    .ladder{background:var(--dark-green);border-radius:20px;padding:34px 32px;color:var(--warm-white);}
+    .ladder h2{color:var(--white);font-size:22px;font-weight:700;letter-spacing:-0.01em;}
+    .ladder .lead{color:var(--sage-green);font-size:14px;margin-top:6px;max-width:64ch;}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px;}
+    .step{border:1px solid rgba(208,223,185,0.18);border-radius:14px;padding:20px;position:relative;}
+    .step .b+budget,.step .budget{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--gold);font-weight:700;margin-bottom:10px;}
+    .step h4{font-size:15px;color:var(--white);font-weight:700;margin-bottom:10px;}
+    .step ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+    .step ul li{font-size:13px;color:rgba(255,248,238,0.8);padding-left:16px;position:relative;}
+    .step ul li::before{content:"+";position:absolute;left:0;color:var(--gold);font-weight:700;}
+    .arrow-row{display:flex;align-items:center;gap:8px;margin-top:22px;
+      font-size:12.5px;color:var(--sage-green);letter-spacing:0.02em;}
+    .arrow-row b{color:var(--gold);font-weight:700;}
+
+    /* ---------- PILLARS / WHY ---------- */
+    .twocol{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+    .card{background:var(--warm-white);border:1px solid var(--warm-beige);
+      border-radius:18px;padding:26px 26px;}
+    .card h3{font-size:16px;font-weight:700;color:var(--dark-green);margin-bottom:6px;
+      display:flex;align-items:center;gap:9px;}
+    .card h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--bronze);}
+    .card h3 .dot.green{background:var(--mid-green);}
+    .card p{font-size:13.5px;color:var(--dark-grey);line-height:1.6;}
+    .card p .hl{color:var(--copper-deep);font-weight:600;}
+
+    .principle{background:linear-gradient(140deg,var(--gold) 0%,var(--gold-warm) 60%,var(--bronze) 100%);
+      border-radius:18px;padding:26px 30px;margin-top:22px;color:var(--dark-green);}
+    .principle b{font-weight:700;}
+    .principle .q{font-size:16.5px;line-height:1.5;font-weight:600;letter-spacing:-0.01em;}
+
+    /* ---------- FOOTER ---------- */
+    .foot{margin-top:46px;display:flex;justify-content:space-between;align-items:center;
+      flex-wrap:wrap;gap:18px;padding-top:26px;border-top:1px solid var(--warm-beige);}
+    .foot .who{font-size:13px;color:var(--mid-green);}
+    .foot .who b{color:var(--dark-green);}
+    .cta{display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(140deg,var(--gold) 0%,var(--gold-warm) 50%,var(--bronze) 100%);
+      color:var(--dark-green);padding:16px 34px;border-radius:100px;font-weight:600;
+      font-size:14.5px;letter-spacing:0.03em;text-decoration:none;
+      box-shadow:0 4px 16px rgba(217,181,76,0.22);transition:all .4s var(--ease);}
+    .cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(217,181,76,0.32);}
+    .disclaimer{margin-top:20px;font-size:11px;color:var(--mid-green);line-height:1.6;}
+
+    @media(max-width:760px){
+      .routes,.twocol{grid-template-columns:1fr;}
+      .steps{grid-template-columns:1fr;}
+      .hero{padding:34px 26px 40px;border-radius:0 0 20px 20px;}
+      .page{padding:0 16px 48px;}
+    }
+    @media print{
+      body{background:#fff;}
+      .hero{border-radius:0;}
+      .route,.card,.ladder{break-inside:avoid;}
+      .cta{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= HERO ======= -->
+  <header class="hero">
+    <div class="hero-top">
+      <div class="wordmark">sircle<span>.</span>agency</div>
+      <div class="hero-tag">Contentmarketing-voorstel · 2026</div>
+    </div>
+    <div class="eyebrow">Jesse Kampman × Team Allianz Kitefoil</div>
+    <h1>De weg naar <em>LA 2028</em>, verteld in beeld.</h1>
+    <p class="hero-sub">Een laagdrempelige start om de personal brand van Jesse Kampman en bondscoach Casper Bouwman te laten groeien op Instagram — en om de "Vrienden van"-sponsoren een verhaal te geven waar ze bij willen horen. We beginnen met de bestaande beeldbank en schalen mee met het sponsorbudget.</p>
+    <div class="hero-meta">
+      <span class="pill">@jessiekampman</span>
+      <span class="pill">@teamallianzkitefoil</span>
+      <span class="pill">Reels · foto · stories</span>
+      <span class="pill">24 maanden tot de Spelen</span>
+    </div>
+  </header>
+
+  <div class="page">
+
+    <!-- ======= INTRO PRINCIPE ======= -->
+    <div class="principle">
+      <p class="q">Content is niet de kostenpost — content is de verkoopmotor. Hoe sterker het verhaal van Jesse groeit, hoe makkelijker de "Vrienden van"-bedrijven instappen. Daarom: klein en goed beginnen, en meegroeien met het budget.</p>
+    </div>
+
+    <!-- ======= ROUTES ======= -->
+    <div class="sec-head">
+      <div class="kicker">Twee routes om te starten</div>
+      <h2>Kies het instapniveau dat bij het huidige budget past</h2>
+      <p>Beide routes draaien op de bestaande beeldbank. Route A is de bewuste, betaalbare start. Route B voegt vers materiaal en meer verhaal toe zodra er sponsorbudget binnen is.</p>
+    </div>
+
+    <div class="routes">
+      <!-- ROUTE A -->
+      <div class="route">
+        <span class="label">Route A · Start</span>
+        <h3>Beeldbank Always-On</h3>
+        <p class="for">Recyclen van bestaand materiaal — geen filmdag</p>
+        <div class="price">
+          <span class="amt">€850</span>
+          <span class="per">p/m · richtprijs (€750–1.000)</span>
+        </div>
+        <ul class="feats">
+          <li><strong>Strategische contentplanning</strong> — maandelijkse kalender, pijlers & ritme</li>
+          <li><strong>Concept­ontwikkeling</strong> van de reels uit bestaand beeld</li>
+          <li><strong>2 reels per maand</strong>, gemonteerd met muziek & SFX</li>
+          <li><strong>2–3 foto-posts of carrousels</strong> per maand uit de beeldbank</li>
+          <li>Doorlopende <strong>stories-laag</strong> (reposts, momenten, polls)</li>
+          <li>Inplannen, posten & lichte community management</li>
+        </ul>
+        <p class="note">Doel: ritme en zichtbaarheid opbouwen en momentum aantonen richting nieuwe sponsoren — zonder productiekosten.</p>
+      </div>
+
+      <!-- ROUTE B -->
+      <div class="route featured">
+        <span class="route-flag">Aanrader</span>
+        <span class="label">Route B · Groei</span>
+        <h3>Productie &amp; Storytelling</h3>
+        <p class="for">Vers materiaal + diepere verhaallijnen</p>
+        <div class="price">
+          <span class="amt">€2.150</span>
+          <span class="per">p/m · richtprijs (€1.750–2.500)</span>
+        </div>
+        <ul class="feats">
+          <li><strong>Alles uit Route A</strong>, en daarbovenop:</li>
+          <li><strong>4 reels per maand</strong> — wekelijks een moment</li>
+          <li><strong>1 productiedag per maand</strong> voor vers beeld</li>
+          <li>Twee verhaallijnen naast elkaar: <strong>entertainment</strong> (adrenaline) &amp; <strong>educatie</strong> (de sport van binnen)</li>
+          <li>Uitgebreidere contentkalender</li>
+          <li><strong>Maandelijkse rapportage</strong> — groei &amp; bereik</li>
+        </ul>
+        <p class="note">De logische volgende stap zodra de eerste sponsoren binnen zijn: van recyclen naar zelf vertellen.</p>
+      </div>
+    </div>
+
+    <!-- ======= MEEGROEIEN ======= -->
+    <div class="sec-head">
+      <div class="kicker">Meegroeien met het budget</div>
+      <h2>Wat extra sponsorgeld concreet oplevert</h2>
+      <p>Elke nieuwe "Vriend van" schaalt het content-budget mee op. Zo ziet het pad eruit van een paar sponsoren naar twintig-plus.</p>
+    </div>
+
+    <div class="ladder">
+      <h2>Van 3 sponsoren naar een beweging</h2>
+      <p class="lead">Het content-niveau beweegt mee met het aantal aangesloten bedrijven — Sircle groeit mee met júllie succes.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="budget">±3–6 sponsoren</div>
+          <h4>Start — Route A</h4>
+          <ul>
+            <li>Beeldbank Always-On</li>
+            <li>Wekelijks iets op de feed</li>
+            <li>Kalender &amp; ritme staat</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="budget">±8–15 sponsoren</div>
+          <h4>Groei — Route B</h4>
+          <ul>
+            <li>Maandelijkse productiedag</li>
+            <li>4 reels p/m + storytelling</li>
+            <li>Rapportage op groei</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="budget">±15–30 sponsoren</div>
+          <h4>Campagne &amp; Event</h4>
+          <ul>
+            <li>Meerdere productiedagen</li>
+            <li>Documentaire-verhaallijnen</li>
+            <li>Event-activatie (Scheveningen, boot dicht op de actie)</li>
+            <li>Co-branded sponsor-content</li>
+          </ul>
+        </div>
+      </div>
+      <div class="arrow-row">
+        <span>Meer budget&nbsp;</span><b>→</b>
+        <span>&nbsp;meer productie · meer storytelling · vaker posten · grotere momenten richting <b>LA 2028</b></span>
+      </div>
+    </div>
+
+    <!-- ======= CONTENT PIJLERS ======= -->
+    <div class="sec-head">
+      <div class="kicker">De inhoud</div>
+      <h2>Twee pijlers die elkaar versterken</h2>
+    </div>
+    <div class="twocol">
+      <div class="card">
+        <h3><span class="dot"></span>Entertainment</h3>
+        <p>Snelle edits, vette muziek, SFX — je moet de sport <span class="hl">voelen</span>. De adrenaline van het kitefoilen die nieuwe mensen binnentrekt en het bereik opbouwt.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot green"></span>Educatie</h3>
+        <p>Hoe werkt de sport, het materiaal, de strategie? De emoties, het teamverband, de pijn en de winst. Dit <span class="hl">bouwt binding</span> en maakt kijkers fan.</p>
+      </div>
+    </div>
+
+    <!-- ======= FOOTER ======= -->
+    <div class="foot">
+      <div class="who">
+        Voorstel van <b>Sircle Agency</b> · Den Haag<br>
+        Voor Jesse Kampman &amp; Casper Bouwman — Team Allianz Kitefoil
+      </div>
+      <a class="cta" href="mailto:hello@sircle.agency?subject=Contentmarketing%20Kitefoil">Laten we starten →</a>
+    </div>
+
+    <p class="disclaimer">Alle bedragen zijn richtprijzen per maand, exclusief btw. Productiedagen, reiskosten en eventuele advertentiebudgetten worden apart afgestemd. Dit voorstel is een vertrekpunt voor een gezamenlijk plan en kan per route worden aangescherpt. Looptijd en opzegtermijn in onderling overleg.</p>
+
+  </div>
+</body>
+</html>
