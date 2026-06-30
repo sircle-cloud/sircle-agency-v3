@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "mainwp": {
+      "command": "npx",
+      "args": ["-y", "@mainwp/mcp"],
+      "env": {
+        "MAINWP_URL": "https://www.sirclecreative.com",
+        "MAINWP_USER": "${MAINWP_USER}",
+        "MAINWP_APP_PASSWORD": "${MAINWP_APP_PASSWORD}"
+      }
+    }
+  }
+}
