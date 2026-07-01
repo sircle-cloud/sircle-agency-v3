@@ -14,44 +14,80 @@ const esc = (s) =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 
-const MONTHS = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+// ---- Translations (NL default, EN for English sites) --------------------
+const I18N = {
+  nl: {
+    lang: 'nl',
+    months: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+    eyebrow: 'Onderhoudsrapport', subtitle: 'onderhoud & beheer',
+    website: 'Website', client: 'Klant', period: 'Periode', page: 'Pagina',
+    sc: { actions: 'Handelingen', updates: 'Updates', backups: 'Backups', uptime: 'Uptime', threats: 'Bedreigingen geblokkeerd', security: 'Security' },
+    sec: { summary: 'Managementsamenvatting', activity: 'Uitgevoerde handelingen', updates: 'Updates in detail', security: 'Security & firewall', backups: 'Backups', uptime: 'Uptime & beschikbaarheid', performance: 'Performance', analytics: 'Bezoekersstatistieken', health: 'Techniek & health', recommendations: 'Aanbevelingen' },
+    th: { date: 'Datum', category: 'Categorie', action: 'Handeling', type: 'Type', name: 'Naam', version: 'Versie', size: 'Grootte', storage: 'Opslag', status: 'Status', month: 'Maand', availability: 'Beschikbaarheid', downtime: 'Downtime', start: 'Start', duration: 'Duur', cause: 'Oorzaak', pageCol: 'Pagina', views: 'Weergaven' },
+    lbl: { malwareScans: 'Malware-scans', threatsFound: 'Bedreigingen gevonden', firewallBlocks: 'Aanvallen geblokkeerd (firewall)', loginBlocks: 'Verdachte logins geblokkeerd', spamBlocked: 'Spam tegengehouden', blacklist: 'Blacklist-status', lastScan: 'Laatste scan', psMobile: 'PageSpeed mobiel', psDesktop: 'PageSpeed desktop', loadTime: 'Gem. laadtijd', cwv: 'Core Web Vitals', lastCheck: 'Laatste meting', visitors: 'Unieke bezoekers', pageviews: 'Paginaweergaven', avgSession: 'Gem. sessieduur', bounce: 'Bouncepercentage', ssl: 'SSL-certificaat', sslExpiry: 'SSL verloopt op', php: 'PHP-versie', wp: 'WordPress-versie', activePlugins: 'Actieve plugins', brokenLinks: 'Gebroken links' },
+    cat: { update: 'Update', security: 'Security', backup: 'Backup', performance: 'Performance', onderhoud: 'Onderhoud', monitoring: 'Monitoring', content: 'Content' },
+    msg: {
+      activitySub: (n) => `Volledig logboek van alle onderhoudsacties in deze periode (${n} handelingen).`,
+      updatesSub: (n) => `${n} componenten bijgewerkt naar de nieuwste versie.`,
+      availability: 'beschikbaarheid over de hele periode.', incidents: 'Incidenten', topPages: "Best bezochte pagina's",
+      noUpdates: 'Geen updates in deze periode.', noBackups: 'Geen backups geregistreerd.', noIncidents: 'Geen downtime-incidenten geregistreerd.', cleanDefault: 'Schoon',
+    },
+  },
+  en: {
+    lang: 'en',
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    eyebrow: 'Maintenance report', subtitle: 'maintenance & management',
+    website: 'Website', client: 'Client', period: 'Period', page: 'Page',
+    sc: { actions: 'Actions', updates: 'Updates', backups: 'Backups', uptime: 'Uptime', threats: 'Threats blocked', security: 'Security' },
+    sec: { summary: 'Management summary', activity: 'Activity log', updates: 'Updates in detail', security: 'Security & firewall', backups: 'Backups', uptime: 'Uptime & availability', performance: 'Performance', analytics: 'Visitor statistics', health: 'Technical & health', recommendations: 'Recommendations' },
+    th: { date: 'Date', category: 'Category', action: 'Action', type: 'Type', name: 'Name', version: 'Version', size: 'Size', storage: 'Storage', status: 'Status', month: 'Month', availability: 'Availability', downtime: 'Downtime', start: 'Start', duration: 'Duration', cause: 'Cause', pageCol: 'Page', views: 'Views' },
+    lbl: { malwareScans: 'Malware scans', threatsFound: 'Threats found', firewallBlocks: 'Attacks blocked (firewall)', loginBlocks: 'Suspicious logins blocked', spamBlocked: 'Spam blocked', blacklist: 'Blacklist status', lastScan: 'Last scan', psMobile: 'PageSpeed mobile', psDesktop: 'PageSpeed desktop', loadTime: 'Avg. load time', cwv: 'Core Web Vitals', lastCheck: 'Last check', visitors: 'Unique visitors', pageviews: 'Page views', avgSession: 'Avg. session', bounce: 'Bounce rate', ssl: 'SSL certificate', sslExpiry: 'SSL expires on', php: 'PHP version', wp: 'WordPress version', activePlugins: 'Active plugins', brokenLinks: 'Broken links' },
+    cat: { update: 'Update', security: 'Security', backup: 'Backup', performance: 'Performance', onderhoud: 'Maintenance', monitoring: 'Monitoring', content: 'Content' },
+    msg: {
+      activitySub: (n) => `Complete log of all maintenance actions in this period (${n} actions).`,
+      updatesSub: (n) => `${n} components updated to the latest version.`,
+      availability: 'availability over the entire period.', incidents: 'Incidents', topPages: 'Most visited pages',
+      noUpdates: 'No updates in this period.', noBackups: 'No backups recorded.', noIncidents: 'No downtime incidents recorded.', cleanDefault: 'Clean',
+    },
+  },
+};
+
+// Per-render language state (one report renders at a time).
+let T = I18N.nl;
+const pickLang = (site) => (String(site.lang || '').toLowerCase().startsWith('en') ? I18N.en : I18N.nl);
+
 const fmtDate = (iso) => {
   if (!iso) return '—';
   const [y, m, d] = String(iso).split('-');
   if (!y || !m || !d) return esc(iso);
-  return `${parseInt(d, 10)} ${MONTHS[parseInt(m, 10) - 1]} ${y}`;
+  return `${parseInt(d, 10)} ${T.months[parseInt(m, 10) - 1]} ${y}`;
 };
 
 const statusClass = (status) => {
   const s = String(status || '').toLowerCase();
-  if (s.includes('veilig') || s.includes('ok') || s.includes('gezond') || s.includes('geslaagd')) return 'is-good';
-  if (s.includes('waarschuw') || s.includes('let op') || s.includes('warn') || s.includes('verlopen')) return 'is-warn';
-  if (s.includes('risico') || s.includes('kritiek') || s.includes('threat') || s.includes('mislukt')) return 'is-bad';
+  if (/veilig|gezond|geslaagd|\bok\b|safe|clean|healthy|passed|good/.test(s)) return 'is-good';
+  if (/waarschuw|let op|verlopen|warn|attention|expir|due/.test(s)) return 'is-warn';
+  if (/risico|kritiek|mislukt|threat|risk|critical|failed/.test(s)) return 'is-bad';
   return 'is-neutral';
 };
 
-// Category → colored dot label for the activity log
-const CAT = {
-  update: { label: 'Update', cls: 'c-update' },
-  security: { label: 'Security', cls: 'c-security' },
-  backup: { label: 'Backup', cls: 'c-backup' },
-  performance: { label: 'Performance', cls: 'c-perf' },
-  onderhoud: { label: 'Onderhoud', cls: 'c-maint' },
-  monitoring: { label: 'Monitoring', cls: 'c-monitor' },
-  content: { label: 'Content', cls: 'c-content' },
+// Category → colored dot for the activity log (label is translated, class is fixed).
+const CAT_CLS = { update: 'c-update', security: 'c-security', backup: 'c-backup', performance: 'c-perf', onderhoud: 'c-maint', monitoring: 'c-monitor', content: 'c-content' };
+const catMeta = (c) => {
+  const key = String(c || '').toLowerCase();
+  return { label: T.cat[key] || esc(c || 'Actie'), cls: CAT_CLS[key] || 'c-default' };
 };
-const catMeta = (c) => CAT[String(c || '').toLowerCase()] || { label: esc(c || 'Actie'), cls: 'c-default' };
 
 // ---- Sections -----------------------------------------------------------
 
 function scorecard(summary = {}) {
   const cards = [
-    { label: 'Handelingen', value: summary.actions ?? 0 },
-    { label: 'Updates', value: summary.updates ?? 0 },
-    { label: 'Backups', value: summary.backups ?? 0 },
-    { label: 'Uptime', value: summary.uptimePct != null ? summary.uptimePct.toFixed(2) : '—', unit: '%' },
-    { label: 'Bedreigingen geblokkeerd', value: summary.threatsBlocked ?? 0 },
-    { label: 'Security', value: esc(summary.security ?? '—'), status: statusClass(summary.security) },
+    { label: T.sc.actions, value: summary.actions ?? 0 },
+    { label: T.sc.updates, value: summary.updates ?? 0 },
+    { label: T.sc.backups, value: summary.backups ?? 0 },
+    { label: T.sc.uptime, value: summary.uptimePct != null ? summary.uptimePct.toFixed(2) : '—', unit: '%' },
+    { label: T.sc.threats, value: summary.threatsBlocked ?? 0 },
+    { label: T.sc.security, value: esc(summary.security ?? '—'), status: statusClass(summary.security) },
   ];
   return `<div class="scorecard">${cards
     .map(
@@ -65,7 +101,7 @@ function scorecard(summary = {}) {
 
 function summarySection(intro) {
   if (!intro) return '';
-  return section('Management­samenvatting', `<p class="prose">${esc(intro)}</p>`);
+  return section(T.sec.summary, `<p class="prose">${esc(intro)}</p>`);
 }
 
 // The full activity log — every performed action, dated. This is the core of a
@@ -83,9 +119,9 @@ function activitySection(activity = []) {
     })
     .join('');
   return section(
-    'Uitgevoerde handelingen',
-    `<p class="prose sub">Volledig logboek van alle onderhoudsacties in deze periode (${activity.length} handelingen).</p>
-     <table class="tbl log"><thead><tr><th>Datum</th><th>Categorie</th><th>Handeling</th></tr></thead><tbody>${rows}</tbody></table>`
+    T.sec.activity,
+    `<p class="prose sub">${T.msg.activitySub(activity.length)}</p>
+     <table class="tbl log"><thead><tr><th>${T.th.date}</th><th>${T.th.category}</th><th>${T.th.action}</th></tr></thead><tbody>${rows}</tbody></table>`
   );
 }
 
@@ -101,13 +137,13 @@ function updatesSection(updates = {}) {
     );
   push('Core', updates.core);
   push('Plugin', updates.plugins);
-  push('Thema', updates.themes);
+  push(T.lang === 'en' ? 'Theme' : 'Thema', updates.themes);
   const total = rows.length;
-  if (!total) return section('Updates', `<p class="empty">Geen updates in deze periode.</p>`);
+  if (!total) return section(T.sec.updates, `<p class="empty">${T.msg.noUpdates}</p>`);
   return section(
-    'Updates in detail',
-    `<p class="prose sub">${total} componenten bijgewerkt naar de nieuwste versie.</p>
-     <table class="tbl upd"><thead><tr><th>Type</th><th>Naam</th><th>Versie</th><th>Datum</th></tr></thead><tbody>${rows.join(
+    T.sec.updates,
+    `<p class="prose sub">${T.msg.updatesSub(total)}</p>
+     <table class="tbl upd"><thead><tr><th>${T.th.type}</th><th>${T.th.name}</th><th>${T.th.version}</th><th>${T.th.date}</th></tr></thead><tbody>${rows.join(
        ''
      )}</tbody></table>`
   );
@@ -115,20 +151,20 @@ function updatesSection(updates = {}) {
 
 function securitySection(security = {}) {
   const metrics = [
-    ['Status', `<span class="pill ${statusClass(security.status)}">${esc(security.status ?? '—')}</span>`],
-    ['Malware-scans', esc(security.scans ?? 0)],
-    ['Bedreigingen gevonden', esc(security.threats ?? 0)],
-    ['Aanvallen geblokkeerd (firewall)', esc(security.firewallBlocks ?? 0)],
-    ['Verdachte logins geblokkeerd', esc(security.loginBlocks ?? 0)],
-    ['Spam tegengehouden', esc(security.spamBlocked ?? 0)],
-    ['Blacklist-status', `<span class="pill ${statusClass(security.blacklist)}">${esc(security.blacklist ?? 'Schoon')}</span>`],
-    ['Laatste scan', fmtDate(security.lastScan)],
+    [T.th.status, `<span class="pill ${statusClass(security.status)}">${esc(security.status ?? '—')}</span>`],
+    [T.lbl.malwareScans, esc(security.scans ?? 0)],
+    [T.lbl.threatsFound, esc(security.threats ?? 0)],
+    [T.lbl.firewallBlocks, esc(security.firewallBlocks ?? 0)],
+    [T.lbl.loginBlocks, esc(security.loginBlocks ?? 0)],
+    [T.lbl.spamBlocked, esc(security.spamBlocked ?? 0)],
+    [T.lbl.blacklist, `<span class="pill ${statusClass(security.blacklist)}">${esc(security.blacklist ?? T.msg.cleanDefault)}</span>`],
+    [T.lbl.lastScan, fmtDate(security.lastScan)],
   ];
-  return section('Security & firewall', kv(metrics));
+  return section(T.sec.security, kv(metrics));
 }
 
 function backupsSection(backups = []) {
-  if (!backups.length) return section('Backups', `<p class="empty">Geen backups geregistreerd.</p>`);
+  if (!backups.length) return section(T.sec.backups, `<p class="empty">${T.msg.noBackups}</p>`);
   const rows = backups
     .map(
       (b) =>
@@ -140,8 +176,8 @@ function backupsSection(backups = []) {
     )
     .join('');
   return section(
-    'Backups',
-    `<table class="tbl bkp"><thead><tr><th>Datum</th><th>Type</th><th>Grootte</th><th>Opslag</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`
+    T.sec.backups,
+    `<table class="tbl bkp"><thead><tr><th>${T.th.date}</th><th>${T.th.type}</th><th>${T.th.size}</th><th>${T.th.storage}</th><th>${T.th.status}</th></tr></thead><tbody>${rows}</tbody></table>`
   );
 }
 
@@ -149,7 +185,7 @@ function uptimeSection(uptime = {}) {
   const incidents = uptime.incidents ?? [];
   const monthly = uptime.monthly ?? [];
   const monthlyBlock = monthly.length
-    ? `<table class="tbl up-month"><thead><tr><th>Maand</th><th>Beschikbaarheid</th><th>Downtime</th></tr></thead><tbody>${monthly
+    ? `<table class="tbl up-month"><thead><tr><th>${T.th.month}</th><th>${T.th.availability}</th><th>${T.th.downtime}</th></tr></thead><tbody>${monthly
         .map(
           (m) =>
             `<tr><td>${esc(m.month)}</td><td>${m.pct != null ? m.pct.toFixed(2) : '—'}%</td><td>${esc(
@@ -159,7 +195,7 @@ function uptimeSection(uptime = {}) {
         .join('')}</tbody></table>`
     : '';
   const incidentBlock = incidents.length
-    ? `<h3>Incidenten</h3><table class="tbl"><thead><tr><th>Start</th><th>Duur</th><th>Oorzaak</th></tr></thead><tbody>${incidents
+    ? `<h3>${T.msg.incidents}</h3><table class="tbl"><thead><tr><th>${T.th.start}</th><th>${T.th.duration}</th><th>${T.th.cause}</th></tr></thead><tbody>${incidents
         .map(
           (i) =>
             `<tr><td class="t-date">${fmtDate(i.start)}</td><td>${esc(i.duration ?? '—')}</td><td>${esc(
@@ -167,25 +203,25 @@ function uptimeSection(uptime = {}) {
             )}</td></tr>`
         )
         .join('')}</tbody></table>`
-    : `<p class="empty">Geen downtime-incidenten geregistreerd.</p>`;
+    : `<p class="empty">${T.msg.noIncidents}</p>`;
   return section(
-    'Uptime & beschikbaarheid',
+    T.sec.uptime,
     `<p class="lead"><strong>${
       uptime.pct != null ? uptime.pct.toFixed(2) : '—'
-    }%</strong> beschikbaarheid over de hele periode.</p>${monthlyBlock}${incidentBlock}`
+    }%</strong> ${T.msg.availability}</p>${monthlyBlock}${incidentBlock}`
   );
 }
 
 function performanceSection(perf) {
   if (!perf) return '';
   return section(
-    'Performance',
+    T.sec.performance,
     kv([
-      ['PageSpeed mobiel', esc(perf.pageSpeedMobile ?? '—')],
-      ['PageSpeed desktop', esc(perf.pageSpeedDesktop ?? '—')],
-      ['Gem. laadtijd', perf.loadTime ? `${esc(perf.loadTime)} s` : '—'],
-      ['Core Web Vitals', `<span class="pill ${statusClass(perf.cwv)}">${esc(perf.cwv ?? '—')}</span>`],
-      ['Laatste meting', fmtDate(perf.lastCheck)],
+      [T.lbl.psMobile, esc(perf.pageSpeedMobile ?? '—')],
+      [T.lbl.psDesktop, esc(perf.pageSpeedDesktop ?? '—')],
+      [T.lbl.loadTime, perf.loadTime ? `${esc(perf.loadTime)} s` : '—'],
+      [T.lbl.cwv, `<span class="pill ${statusClass(perf.cwv)}">${esc(perf.cwv ?? '—')}</span>`],
+      [T.lbl.lastCheck, fmtDate(perf.lastCheck)],
     ])
   );
 }
@@ -196,15 +232,15 @@ function analyticsSection(a) {
     .map((p) => `<tr><td>${esc(p.path)}</td><td class="t-num">${esc(p.views)}</td></tr>`)
     .join('');
   return section(
-    'Bezoekersstatistieken',
+    T.sec.analytics,
     `${kv([
-      ['Unieke bezoekers', esc(a.visitors ?? '—')],
-      ['Paginaweergaven', esc(a.pageviews ?? '—')],
-      ['Gem. sessieduur', esc(a.avgSession ?? '—')],
-      ['Bouncepercentage', a.bounceRate != null ? `${esc(a.bounceRate)}%` : '—'],
+      [T.lbl.visitors, esc(a.visitors ?? '—')],
+      [T.lbl.pageviews, esc(a.pageviews ?? '—')],
+      [T.lbl.avgSession, esc(a.avgSession ?? '—')],
+      [T.lbl.bounce, a.bounceRate != null ? `${esc(a.bounceRate)}%` : '—'],
     ])}${
       top
-        ? `<h3>Best bezochte pagina's</h3><table class="tbl"><thead><tr><th>Pagina</th><th>Weergaven</th></tr></thead><tbody>${top}</tbody></table>`
+        ? `<h3>${T.msg.topPages}</h3><table class="tbl"><thead><tr><th>${T.th.pageCol}</th><th>${T.th.views}</th></tr></thead><tbody>${top}</tbody></table>`
         : ''
     }`
   );
@@ -213,14 +249,14 @@ function analyticsSection(a) {
 function healthSection(h) {
   if (!h) return '';
   return section(
-    'Techniek & health',
+    T.sec.health,
     kv([
-      ['SSL-certificaat', `<span class="pill ${statusClass(h.ssl)}">${esc(h.ssl ?? '—')}</span>`],
-      ['SSL verloopt op', fmtDate(h.sslExpiry)],
-      ['PHP-versie', esc(h.phpVersion ?? '—')],
-      ['WordPress-versie', esc(h.wpVersion ?? '—')],
-      ['Actieve plugins', esc(h.activePlugins ?? '—')],
-      ['Gebroken links', esc(h.brokenLinks ?? 0)],
+      [T.lbl.ssl, `<span class="pill ${statusClass(h.ssl)}">${esc(h.ssl ?? '—')}</span>`],
+      [T.lbl.sslExpiry, fmtDate(h.sslExpiry)],
+      [T.lbl.php, esc(h.phpVersion ?? '—')],
+      [T.lbl.wp, esc(h.wpVersion ?? '—')],
+      [T.lbl.activePlugins, esc(h.activePlugins ?? '—')],
+      [T.lbl.brokenLinks, esc(h.brokenLinks ?? 0)],
     ])
   );
 }
@@ -228,7 +264,7 @@ function healthSection(h) {
 function recommendationsSection(recs = []) {
   if (!recs.length) return '';
   return section(
-    'Aanbevelingen',
+    T.sec.recommendations,
     `<ul class="recs">${recs.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>`
   );
 }
@@ -246,11 +282,12 @@ function section(title, inner) {
 }
 
 function renderReport(site, meta) {
+  T = pickLang(site); // set the active language for all section helpers below
   const period = meta.period ?? {};
   const agency = meta.agency ?? {};
   return `<!DOCTYPE html>
-<html lang="nl"><head><meta charset="utf-8">
-<title>Onderhoudsrapport — ${esc(site.name)} — ${esc(period.label)}</title>
+<html lang="${T.lang}"><head><meta charset="utf-8">
+<title>${T.eyebrow} — ${esc(site.name)} — ${esc(period.label)}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -348,12 +385,12 @@ function renderReport(site, meta) {
 <body>
   <header class="head">
     <div class="brand">${LOGO_WHITE}</div>
-    <div class="eyebrow">Onderhoudsrapport · ${esc(period.label)}</div>
-    <h1>${esc(site.name)}<br><strong>onderhoud & beheer</strong></h1>
+    <div class="eyebrow">${T.eyebrow} · ${esc(period.label)}</div>
+    <h1>${esc(site.name)}<br><strong>${T.subtitle}</strong></h1>
     <div class="meta-row">
-      <div><span>Website</span><strong>${esc(site.url)}</strong></div>
-      <div><span>Klant</span><strong>${esc(site.client ?? '—')}</strong></div>
-      <div><span>Periode</span><strong>${fmtDate(period.from)} – ${fmtDate(period.to)}</strong></div>
+      <div><span>${T.website}</span><strong>${esc(site.url)}</strong></div>
+      <div><span>${T.client}</span><strong>${esc(site.client ?? '—')}</strong></div>
+      <div><span>${T.period}</span><strong>${fmtDate(period.from)} – ${fmtDate(period.to)}</strong></div>
     </div>
   </header>
 
@@ -373,4 +410,4 @@ function renderReport(site, meta) {
 </body></html>`;
 }
 
-module.exports = { renderReport };
+module.exports = { renderReport, pickLang };

@@ -16,7 +16,7 @@
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright-core');
-const { renderReport } = require('./template');
+const { renderReport, pickLang } = require('./template');
 
 function parseArgs(argv) {
   const args = { out: path.join(process.cwd(), 'reports') };
@@ -30,13 +30,15 @@ function parseArgs(argv) {
 }
 
 // Running footer for every page (Chromium fills .pageNumber / .totalPages).
+// Uses the site's language for the labels, matching the report body.
 function footerTemplate(site, meta) {
   const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const L = pickLang(site);
   const agency = meta.agency ?? {};
   const period = meta.period ?? {};
   return `<div style="width:100%; padding:0 18mm; font-family:'Kulim Park',Arial,sans-serif; font-size:6.5pt; letter-spacing:.12em; text-transform:uppercase; color:#6b6f6c; display:flex; justify-content:space-between; align-items:center; border-top:1px solid #E8D590; margin:0 18mm; padding-top:2.5mm; width:auto;">
-    <span>${esc(agency.name ?? 'sircle.agency')} · Onderhoudsrapport ${esc(period.label)} · ${esc(site.url)}</span>
-    <span>Pagina <span class="pageNumber"></span> / <span class="totalPages"></span></span>
+    <span>${esc(agency.name ?? 'sircle.agency')} · ${esc(L.eyebrow)} ${esc(period.label)} · ${esc(site.url)}</span>
+    <span>${esc(L.page)} <span class="pageNumber"></span> / <span class="totalPages"></span></span>
   </div>`;
 }
 
@@ -83,6 +85,8 @@ function mapMainWpSite(s) {
     name: s.name || s.title || s.url,
     url: s.url,
     client: s.client_name || s.contact_name || '—',
+    // Report language: 'en' or 'nl' (default). Map from your own field/tag.
+    lang: s.report_language || s.language || 'nl',
     intro: s.report_intro || s.summary_text || '',
     // Full activity log — normalise each MainWP action-log entry.
     activity: (s.actions ?? s.activity ?? s.audit_log ?? []).map((a) => ({

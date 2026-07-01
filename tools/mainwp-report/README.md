@@ -47,6 +47,20 @@ node generate.js --out ~/Desktop/Q2-2026
 > Velden voor backups, uptime en security komen vaak uit losse extensies; ontbreken ze,
 > dan toont het rapport netjes "geen data" i.p.v. te breken.
 
+## Taal per site (NL / EN)
+
+Elke site kan een `lang` krijgen: `"nl"` (standaard) of `"en"`. Het hele rapport
+— titels, labels, tabelkoppen, datums en de voettekst — schakelt automatisch mee.
+De statuswaarden in de **data** volgen de taal (bv. `"Veilig"`/`"Schoon"` in NL,
+`"Safe"`/`"Clean"` in EN); die worden herkend voor de juiste kleurmarkering.
+
+```json
+{ "name": "Newlong", "url": "newlong.eu", "lang": "en", "security": { "status": "Safe" } }
+```
+
+Bij de REST API-route mapt `mapMainWpSite()` de taal uit `report_language` of
+`language`; pas dat veld aan naar wat jouw dashboard levert.
+
 ## Opties
 
 | Flag | Betekenis |
