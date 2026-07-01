@@ -1,237 +1,843 @@
 {
-  "period": { "label": "Q2 2026", "from": "2026-04-01", "to": "2026-06-30" },
-  "agency": { "name": "sircle.agency", "location": "Den Haag, NL", "email": "hello@sircle.agency" },
+  "period": {
+    "label": "Q2 2026",
+    "from": "2026-04-01",
+    "to": "2026-06-30"
+  },
+  "agency": {
+    "name": "sircle.agency",
+    "location": "Den Haag, NL",
+    "email": "hello@sircle.agency"
+  },
   "_note": "VOORBEELDDATA — vervang door een MainWP REST API-export. Alle cijfers zijn fictief.",
   "sites": [
     {
       "name": "Vlijt Tandartsen",
       "url": "vlijttandartsen.nl",
       "client": "Vlijt Tandartsen B.V.",
-      "summary": { "actions": 42, "updates": 27, "backups": 13, "uptimePct": 99.98, "threatsBlocked": 318, "security": "Veilig" },
+      "summary": {
+        "actions": 42,
+        "updates": 27,
+        "backups": 13,
+        "uptimePct": 99.98,
+        "threatsBlocked": 318,
+        "security": "Veilig"
+      },
       "intro": "In het tweede kwartaal is de website stabiel en veilig gebleven met een beschikbaarheid van 99,98%. Er zijn 27 updates uitgevoerd, 13 backups gemaakt en 318 aanvalspogingen door de firewall geblokkeerd. Er zijn geen beveiligingsincidenten of malware aangetroffen. De laadtijd is verbeterd na optimalisatie van de afbeeldingen in mei.",
       "activity": [
-        { "date": "2026-04-02", "category": "backup", "action": "Wekelijkse volledige backup uitgevoerd en geverifieerd", "detail": "Offsite opgeslagen (Amazon S3)" },
-        { "date": "2026-04-08", "category": "security", "action": "Malware-scan uitgevoerd — geen bedreigingen", "detail": "Wordfence, 100% schoon" },
-        { "date": "2026-04-14", "category": "update", "action": "Plugin Yoast SEO bijgewerkt", "detail": "22.6 → 22.9" },
-        { "date": "2026-04-18", "category": "update", "action": "Plugin WP Rocket bijgewerkt", "detail": "3.16 → 3.16.2" },
-        { "date": "2026-04-22", "category": "onderhoud", "action": "Database geoptimaliseerd, revisies opgeschoond", "detail": "142 MB vrijgemaakt" },
-        { "date": "2026-04-30", "category": "backup", "action": "Maandelijkse archiefbackup gemaakt", "detail": "412 MB" },
-        { "date": "2026-05-02", "category": "update", "action": "Thema Astra bijgewerkt", "detail": "4.6.2 → 4.7.0" },
-        { "date": "2026-05-08", "category": "update", "action": "WordPress core bijgewerkt", "detail": "6.5.2 → 6.5.4 (beveiligingsupdate)" },
-        { "date": "2026-05-14", "category": "monitoring", "action": "Gepland hostonderhoud opgevangen zonder dataverlies", "detail": "8 min downtime" },
-        { "date": "2026-05-19", "category": "performance", "action": "Afbeeldingen gecomprimeerd en WebP-conversie ingeschakeld", "detail": "Laadtijd -0,4 s" },
-        { "date": "2026-05-21", "category": "update", "action": "Plugin WooCommerce bijgewerkt", "detail": "8.7.0 → 8.9.1" },
-        { "date": "2026-05-27", "category": "security", "action": "Verdachte inlogpogingen geblokkeerd en IP-reeks geband", "detail": "23 pogingen" },
-        { "date": "2026-06-03", "category": "update", "action": "Plugin Contact Form 7 bijgewerkt", "detail": "5.9.5 → 5.9.8" },
-        { "date": "2026-06-11", "category": "onderhoud", "action": "Gebroken links gecontroleerd en 2 redirects toegevoegd" },
-        { "date": "2026-06-19", "category": "update", "action": "Plugin Wordfence Security bijgewerkt", "detail": "7.11.4 → 7.11.6" },
-        { "date": "2026-06-24", "category": "content", "action": "Nieuwe teampagina gepubliceerd op verzoek klant" },
-        { "date": "2026-06-29", "category": "security", "action": "Kwartaal-security-audit afgerond", "detail": "Geen kwetsbaarheden" },
-        { "date": "2026-06-30", "category": "backup", "action": "Maandelijkse archiefbackup gemaakt", "detail": "441 MB" }
+        {
+          "date": "2026-04-02",
+          "category": "backup",
+          "action": "Wekelijkse volledige backup uitgevoerd en geverifieerd",
+          "detail": "Offsite opgeslagen (Amazon S3)"
+        },
+        {
+          "date": "2026-04-08",
+          "category": "security",
+          "action": "Malware-scan uitgevoerd — geen bedreigingen",
+          "detail": "Wordfence, 100% schoon"
+        },
+        {
+          "date": "2026-04-14",
+          "category": "update",
+          "action": "Plugin Yoast SEO bijgewerkt",
+          "detail": "22.6 → 22.9"
+        },
+        {
+          "date": "2026-04-18",
+          "category": "update",
+          "action": "Plugin WP Rocket bijgewerkt",
+          "detail": "3.16 → 3.16.2"
+        },
+        {
+          "date": "2026-04-22",
+          "category": "onderhoud",
+          "action": "Database geoptimaliseerd, revisies opgeschoond",
+          "detail": "142 MB vrijgemaakt"
+        },
+        {
+          "date": "2026-04-30",
+          "category": "backup",
+          "action": "Maandelijkse archiefbackup gemaakt",
+          "detail": "412 MB"
+        },
+        {
+          "date": "2026-05-02",
+          "category": "update",
+          "action": "Thema Astra bijgewerkt",
+          "detail": "4.6.2 → 4.7.0"
+        },
+        {
+          "date": "2026-05-08",
+          "category": "update",
+          "action": "WordPress core bijgewerkt",
+          "detail": "6.5.2 → 6.5.4 (beveiligingsupdate)"
+        },
+        {
+          "date": "2026-05-14",
+          "category": "monitoring",
+          "action": "Gepland hostonderhoud opgevangen zonder dataverlies",
+          "detail": "8 min downtime"
+        },
+        {
+          "date": "2026-05-19",
+          "category": "performance",
+          "action": "Afbeeldingen gecomprimeerd en WebP-conversie ingeschakeld",
+          "detail": "Laadtijd -0,4 s"
+        },
+        {
+          "date": "2026-05-21",
+          "category": "update",
+          "action": "Plugin WooCommerce bijgewerkt",
+          "detail": "8.7.0 → 8.9.1"
+        },
+        {
+          "date": "2026-05-27",
+          "category": "security",
+          "action": "Verdachte inlogpogingen geblokkeerd en IP-reeks geband",
+          "detail": "23 pogingen"
+        },
+        {
+          "date": "2026-06-03",
+          "category": "update",
+          "action": "Plugin Contact Form 7 bijgewerkt",
+          "detail": "5.9.5 → 5.9.8"
+        },
+        {
+          "date": "2026-06-11",
+          "category": "onderhoud",
+          "action": "Gebroken links gecontroleerd en 2 redirects toegevoegd"
+        },
+        {
+          "date": "2026-06-19",
+          "category": "update",
+          "action": "Plugin Wordfence Security bijgewerkt",
+          "detail": "7.11.4 → 7.11.6"
+        },
+        {
+          "date": "2026-06-24",
+          "category": "content",
+          "action": "Nieuwe teampagina gepubliceerd op verzoek klant"
+        },
+        {
+          "date": "2026-06-29",
+          "category": "security",
+          "action": "Kwartaal-security-audit afgerond",
+          "detail": "Geen kwetsbaarheden"
+        },
+        {
+          "date": "2026-06-30",
+          "category": "backup",
+          "action": "Maandelijkse archiefbackup gemaakt",
+          "detail": "441 MB"
+        }
       ],
       "updates": {
-        "core": [{ "name": "WordPress", "from": "6.5.2", "to": "6.5.4", "date": "2026-05-08" }],
-        "plugins": [
-          { "name": "Yoast SEO", "from": "22.6", "to": "22.9", "date": "2026-04-14" },
-          { "name": "WP Rocket", "from": "3.16", "to": "3.16.2", "date": "2026-04-18" },
-          { "name": "WooCommerce", "from": "8.7.0", "to": "8.9.1", "date": "2026-05-21" },
-          { "name": "Contact Form 7", "from": "5.9.5", "to": "5.9.8", "date": "2026-06-03" },
-          { "name": "Wordfence Security", "from": "7.11.4", "to": "7.11.6", "date": "2026-06-19" }
+        "core": [
+          {
+            "name": "WordPress",
+            "from": "6.5.2",
+            "to": "6.5.4",
+            "date": "2026-05-08"
+          }
         ],
-        "themes": [{ "name": "Astra", "from": "4.6.2", "to": "4.7.0", "date": "2026-05-02" }]
+        "plugins": [
+          {
+            "name": "Yoast SEO",
+            "from": "22.6",
+            "to": "22.9",
+            "date": "2026-04-14"
+          },
+          {
+            "name": "WP Rocket",
+            "from": "3.16",
+            "to": "3.16.2",
+            "date": "2026-04-18"
+          },
+          {
+            "name": "WooCommerce",
+            "from": "8.7.0",
+            "to": "8.9.1",
+            "date": "2026-05-21"
+          },
+          {
+            "name": "Contact Form 7",
+            "from": "5.9.5",
+            "to": "5.9.8",
+            "date": "2026-06-03"
+          },
+          {
+            "name": "Wordfence Security",
+            "from": "7.11.4",
+            "to": "7.11.6",
+            "date": "2026-06-19"
+          }
+        ],
+        "themes": [
+          {
+            "name": "Astra",
+            "from": "4.6.2",
+            "to": "4.7.0",
+            "date": "2026-05-02"
+          }
+        ]
       },
-      "security": { "status": "Veilig", "scans": 91, "threats": 0, "firewallBlocks": 318, "loginBlocks": 47, "spamBlocked": 1264, "blacklist": "Schoon", "lastScan": "2026-06-29" },
+      "security": {
+        "status": "Veilig",
+        "scans": 91,
+        "threats": 0,
+        "firewallBlocks": 318,
+        "loginBlocks": 47,
+        "spamBlocked": 1264,
+        "blacklist": "Schoon",
+        "lastScan": "2026-06-29"
+      },
       "backups": [
-        { "date": "2026-04-30", "type": "Volledig", "size": "412 MB", "location": "Amazon S3", "status": "OK" },
-        { "date": "2026-05-31", "type": "Volledig", "size": "428 MB", "location": "Amazon S3", "status": "OK" },
-        { "date": "2026-06-30", "type": "Volledig", "size": "441 MB", "location": "Amazon S3", "status": "OK" }
+        {
+          "date": "2026-04-30",
+          "type": "Volledig",
+          "size": "412 MB",
+          "location": "Amazon S3",
+          "status": "OK"
+        },
+        {
+          "date": "2026-05-31",
+          "type": "Volledig",
+          "size": "428 MB",
+          "location": "Amazon S3",
+          "status": "OK"
+        },
+        {
+          "date": "2026-06-30",
+          "type": "Volledig",
+          "size": "441 MB",
+          "location": "Amazon S3",
+          "status": "OK"
+        }
       ],
       "uptime": {
         "pct": 99.98,
         "monthly": [
-          { "month": "April", "pct": 100.0, "downtime": "0 min" },
-          { "month": "Mei", "pct": 99.95, "downtime": "8 min" },
-          { "month": "Juni", "pct": 100.0, "downtime": "0 min" }
+          {
+            "month": "April",
+            "pct": 100,
+            "downtime": "0 min"
+          },
+          {
+            "month": "Mei",
+            "pct": 99.95,
+            "downtime": "8 min"
+          },
+          {
+            "month": "Juni",
+            "pct": 100,
+            "downtime": "0 min"
+          }
         ],
-        "incidents": [{ "start": "2026-05-14", "duration": "8 min", "note": "Gepland onderhoud host" }]
-      },
-      "performance": { "pageSpeedMobile": 82, "pageSpeedDesktop": 96, "loadTime": "1.2", "cwv": "Geslaagd", "lastCheck": "2026-06-28" },
-      "analytics": {
-        "visitors": 8420, "pageviews": 21350, "avgSession": "2m 14s", "bounceRate": 41,
-        "topPages": [
-          { "path": "/", "views": 6120 },
-          { "path": "/afspraak-maken", "views": 3890 },
-          { "path": "/behandelingen", "views": 2450 }
+        "incidents": [
+          {
+            "start": "2026-05-14",
+            "duration": "8 min",
+            "note": "Gepland onderhoud host"
+          }
         ]
       },
-      "health": { "ssl": "Geldig", "sslExpiry": "2026-11-14", "phpVersion": "8.2", "wpVersion": "6.5.4", "activePlugins": 18, "brokenLinks": 0 },
-      "recommendations": [
-        "PHP-versie 8.3 wordt aanbevolen zodra alle plugins compatibel zijn — geeft snelheidswinst.",
-        "Overweeg een tweede backuplocatie voor extra redundantie.",
-        "SSL-certificaat verloopt in november; automatische verlenging is actief maar wordt gemonitord."
-      ]
+      "performance": {
+        "pageSpeedMobile": 82,
+        "pageSpeedDesktop": 96,
+        "loadTime": "1.2",
+        "cwv": "Geslaagd",
+        "lastCheck": "2026-06-28"
+      },
+      "analytics": {
+        "visitors": 8420,
+        "pageviews": 21350,
+        "avgSession": "2m 14s",
+        "bounceRate": 41,
+        "topPages": [
+          {
+            "path": "/",
+            "views": 6120
+          },
+          {
+            "path": "/afspraak-maken",
+            "views": 3890
+          },
+          {
+            "path": "/behandelingen",
+            "views": 2450
+          }
+        ]
+      },
+      "health": {
+        "ssl": "Geldig",
+        "sslExpiry": "2026-11-14",
+        "phpVersion": "8.2",
+        "wpVersion": "6.5.4",
+        "activePlugins": 18,
+        "brokenLinks": 0
+      }
     },
     {
       "name": "Dudok Consulting",
       "url": "dudokconsulting.nl",
       "client": "Dudok Consulting",
-      "summary": { "actions": 31, "updates": 21, "backups": 13, "uptimePct": 99.85, "threatsBlocked": 204, "security": "Let op" },
+      "summary": {
+        "actions": 31,
+        "updates": 21,
+        "backups": 13,
+        "uptimePct": 99.85,
+        "threatsBlocked": 204,
+        "security": "Let op"
+      },
       "intro": "De website heeft in Q2 goed gefunctioneerd met 99,85% beschikbaarheid. Er is één beveiligingswaarschuwing geweest (verouderde plugin met een bekende kwetsbaarheid), die dezelfde dag is verholpen. Een database-time-out in juni is opgelost door de hostinglimieten te verhogen.",
       "activity": [
-        { "date": "2026-04-05", "category": "backup", "action": "Volledige backup uitgevoerd en geverifieerd" },
-        { "date": "2026-04-18", "category": "update", "action": "Plugin WP Rocket bijgewerkt", "detail": "3.16 → 3.16.2" },
-        { "date": "2026-05-08", "category": "update", "action": "WordPress core bijgewerkt", "detail": "6.5.2 → 6.5.4" },
-        { "date": "2026-05-27", "category": "update", "action": "Thema Kadence bijgewerkt", "detail": "1.2.1 → 1.2.3" },
-        { "date": "2026-06-05", "category": "update", "action": "Plugin Gravity Forms bijgewerkt", "detail": "2.8.11 → 2.8.14" },
-        { "date": "2026-06-08", "category": "monitoring", "action": "Database-time-out gedetecteerd en verholpen", "detail": "34 min impact, hostinglimiet verhoogd" },
-        { "date": "2026-06-20", "category": "security", "action": "Kwetsbare plugin bijgewerkt na security-melding", "detail": "Zelfde dag verholpen" },
-        { "date": "2026-06-30", "category": "backup", "action": "Maandelijkse archiefbackup gemaakt", "detail": "162 MB" }
+        {
+          "date": "2026-04-05",
+          "category": "backup",
+          "action": "Volledige backup uitgevoerd en geverifieerd"
+        },
+        {
+          "date": "2026-04-18",
+          "category": "update",
+          "action": "Plugin WP Rocket bijgewerkt",
+          "detail": "3.16 → 3.16.2"
+        },
+        {
+          "date": "2026-05-08",
+          "category": "update",
+          "action": "WordPress core bijgewerkt",
+          "detail": "6.5.2 → 6.5.4"
+        },
+        {
+          "date": "2026-05-27",
+          "category": "update",
+          "action": "Thema Kadence bijgewerkt",
+          "detail": "1.2.1 → 1.2.3"
+        },
+        {
+          "date": "2026-06-05",
+          "category": "update",
+          "action": "Plugin Gravity Forms bijgewerkt",
+          "detail": "2.8.11 → 2.8.14"
+        },
+        {
+          "date": "2026-06-08",
+          "category": "monitoring",
+          "action": "Database-time-out gedetecteerd en verholpen",
+          "detail": "34 min impact, hostinglimiet verhoogd"
+        },
+        {
+          "date": "2026-06-20",
+          "category": "security",
+          "action": "Kwetsbare plugin bijgewerkt na security-melding",
+          "detail": "Zelfde dag verholpen"
+        },
+        {
+          "date": "2026-06-30",
+          "category": "backup",
+          "action": "Maandelijkse archiefbackup gemaakt",
+          "detail": "162 MB"
+        }
       ],
       "updates": {
-        "core": [{ "name": "WordPress", "from": "6.5.2", "to": "6.5.4", "date": "2026-05-08" }],
-        "plugins": [
-          { "name": "WP Rocket", "from": "3.16", "to": "3.16.2", "date": "2026-04-18" },
-          { "name": "Gravity Forms", "from": "2.8.11", "to": "2.8.14", "date": "2026-06-05" }
+        "core": [
+          {
+            "name": "WordPress",
+            "from": "6.5.2",
+            "to": "6.5.4",
+            "date": "2026-05-08"
+          }
         ],
-        "themes": [{ "name": "Kadence", "from": "1.2.1", "to": "1.2.3", "date": "2026-05-27" }]
+        "plugins": [
+          {
+            "name": "WP Rocket",
+            "from": "3.16",
+            "to": "3.16.2",
+            "date": "2026-04-18"
+          },
+          {
+            "name": "Gravity Forms",
+            "from": "2.8.11",
+            "to": "2.8.14",
+            "date": "2026-06-05"
+          }
+        ],
+        "themes": [
+          {
+            "name": "Kadence",
+            "from": "1.2.1",
+            "to": "1.2.3",
+            "date": "2026-05-27"
+          }
+        ]
       },
-      "security": { "status": "Let op", "scans": 88, "threats": 1, "firewallBlocks": 204, "loginBlocks": 31, "spamBlocked": 640, "blacklist": "Schoon", "lastScan": "2026-06-30" },
+      "security": {
+        "status": "Let op",
+        "scans": 88,
+        "threats": 1,
+        "firewallBlocks": 204,
+        "loginBlocks": 31,
+        "spamBlocked": 640,
+        "blacklist": "Schoon",
+        "lastScan": "2026-06-30"
+      },
       "backups": [
-        { "date": "2026-04-30", "type": "Volledig", "size": "156 MB", "location": "Google Drive", "status": "OK" },
-        { "date": "2026-05-31", "type": "Volledig", "size": "159 MB", "location": "Google Drive", "status": "OK" },
-        { "date": "2026-06-30", "type": "Volledig", "size": "162 MB", "location": "Google Drive", "status": "OK" }
+        {
+          "date": "2026-04-30",
+          "type": "Volledig",
+          "size": "156 MB",
+          "location": "Google Drive",
+          "status": "OK"
+        },
+        {
+          "date": "2026-05-31",
+          "type": "Volledig",
+          "size": "159 MB",
+          "location": "Google Drive",
+          "status": "OK"
+        },
+        {
+          "date": "2026-06-30",
+          "type": "Volledig",
+          "size": "162 MB",
+          "location": "Google Drive",
+          "status": "OK"
+        }
       ],
       "uptime": {
         "pct": 99.85,
         "monthly": [
-          { "month": "April", "pct": 100.0, "downtime": "0 min" },
-          { "month": "Mei", "pct": 100.0, "downtime": "0 min" },
-          { "month": "Juni", "pct": 99.55, "downtime": "34 min" }
+          {
+            "month": "April",
+            "pct": 100,
+            "downtime": "0 min"
+          },
+          {
+            "month": "Mei",
+            "pct": 100,
+            "downtime": "0 min"
+          },
+          {
+            "month": "Juni",
+            "pct": 99.55,
+            "downtime": "34 min"
+          }
         ],
-        "incidents": [{ "start": "2026-06-08", "duration": "34 min", "note": "Databaseverbinding time-out" }]
+        "incidents": [
+          {
+            "start": "2026-06-08",
+            "duration": "34 min",
+            "note": "Databaseverbinding time-out"
+          }
+        ]
       },
-      "performance": { "pageSpeedMobile": 68, "pageSpeedDesktop": 90, "loadTime": "1.9", "cwv": "Let op", "lastCheck": "2026-06-26" },
-      "health": { "ssl": "Geldig", "sslExpiry": "2027-02-03", "phpVersion": "8.1", "wpVersion": "6.5.4", "activePlugins": 14, "brokenLinks": 3 },
-      "recommendations": [
-        "Upgrade PHP van 8.1 naar 8.2 voor betere prestaties en langere ondersteuning.",
-        "3 gebroken links gevonden — corrigeren of redirecten aanbevolen.",
-        "Mobiele PageSpeed (68) kan omhoog met lazy-loading en caching van externe scripts."
-      ]
+      "performance": {
+        "pageSpeedMobile": 68,
+        "pageSpeedDesktop": 90,
+        "loadTime": "1.9",
+        "cwv": "Let op",
+        "lastCheck": "2026-06-26"
+      },
+      "health": {
+        "ssl": "Geldig",
+        "sslExpiry": "2027-02-03",
+        "phpVersion": "8.1",
+        "wpVersion": "6.5.4",
+        "activePlugins": 14,
+        "brokenLinks": 3
+      }
     },
     {
       "name": "Newlong",
       "url": "www.newlong.nl",
       "client": "Newlong",
       "lang": "en",
-      "summary": { "actions": 34, "updates": 23, "backups": 13, "uptimePct": 99.96, "threatsBlocked": 276, "security": "Safe" },
+      "summary": {
+        "actions": 34,
+        "updates": 23,
+        "backups": 13,
+        "uptimePct": 99.96,
+        "threatsBlocked": 276,
+        "security": "Safe"
+      },
       "intro": "Throughout the second quarter the website remained stable and secure with 99.96% availability. We performed 23 updates, created 13 backups and the firewall blocked 276 attack attempts. No security incidents or malware were detected. Load time improved after caching was reconfigured in May.",
       "activity": [
-        { "date": "2026-04-03", "category": "backup", "action": "Weekly full backup completed and verified", "detail": "Stored offsite (Amazon S3)" },
-        { "date": "2026-04-09", "category": "security", "action": "Malware scan performed — no threats", "detail": "Wordfence, 100% clean" },
-        { "date": "2026-04-15", "category": "update", "action": "Plugin Yoast SEO updated", "detail": "22.6 → 22.9" },
-        { "date": "2026-04-21", "category": "onderhoud", "action": "Database optimised, revisions cleaned up", "detail": "168 MB freed" },
-        { "date": "2026-05-06", "category": "update", "action": "WordPress core updated", "detail": "6.5.2 → 6.5.4 (security release)" },
-        { "date": "2026-05-13", "category": "performance", "action": "Caching reconfigured and CDN enabled", "detail": "Load time -0.5 s" },
-        { "date": "2026-05-22", "category": "update", "action": "Plugin WPML updated", "detail": "4.6.9 → 4.6.11" },
-        { "date": "2026-05-28", "category": "security", "action": "Suspicious login attempts blocked and IP range banned", "detail": "19 attempts" },
-        { "date": "2026-06-10", "category": "onderhoud", "action": "Broken links checked, 1 redirect added" },
-        { "date": "2026-06-18", "category": "update", "action": "Plugin Wordfence Security updated", "detail": "7.11.4 → 7.11.6" },
-        { "date": "2026-06-30", "category": "backup", "action": "Monthly archive backup created", "detail": "512 MB" }
+        {
+          "date": "2026-04-03",
+          "category": "backup",
+          "action": "Weekly full backup completed and verified",
+          "detail": "Stored offsite (Amazon S3)"
+        },
+        {
+          "date": "2026-04-09",
+          "category": "security",
+          "action": "Malware scan performed — no threats",
+          "detail": "Wordfence, 100% clean"
+        },
+        {
+          "date": "2026-04-15",
+          "category": "update",
+          "action": "Plugin Yoast SEO updated",
+          "detail": "22.6 → 22.9"
+        },
+        {
+          "date": "2026-04-21",
+          "category": "onderhoud",
+          "action": "Database optimised, revisions cleaned up",
+          "detail": "168 MB freed"
+        },
+        {
+          "date": "2026-05-06",
+          "category": "update",
+          "action": "WordPress core updated",
+          "detail": "6.5.2 → 6.5.4 (security release)"
+        },
+        {
+          "date": "2026-05-13",
+          "category": "performance",
+          "action": "Caching reconfigured and CDN enabled",
+          "detail": "Load time -0.5 s"
+        },
+        {
+          "date": "2026-05-22",
+          "category": "update",
+          "action": "Plugin WPML updated",
+          "detail": "4.6.9 → 4.6.11"
+        },
+        {
+          "date": "2026-05-28",
+          "category": "security",
+          "action": "Suspicious login attempts blocked and IP range banned",
+          "detail": "19 attempts"
+        },
+        {
+          "date": "2026-06-10",
+          "category": "onderhoud",
+          "action": "Broken links checked, 1 redirect added"
+        },
+        {
+          "date": "2026-06-18",
+          "category": "update",
+          "action": "Plugin Wordfence Security updated",
+          "detail": "7.11.4 → 7.11.6"
+        },
+        {
+          "date": "2026-06-30",
+          "category": "backup",
+          "action": "Monthly archive backup created",
+          "detail": "512 MB"
+        }
       ],
       "updates": {
-        "core": [{ "name": "WordPress", "from": "6.5.2", "to": "6.5.4", "date": "2026-05-06" }],
-        "plugins": [
-          { "name": "Yoast SEO", "from": "22.6", "to": "22.9", "date": "2026-04-15" },
-          { "name": "WPML", "from": "4.6.9", "to": "4.6.11", "date": "2026-05-22" },
-          { "name": "Wordfence Security", "from": "7.11.4", "to": "7.11.6", "date": "2026-06-18" }
+        "core": [
+          {
+            "name": "WordPress",
+            "from": "6.5.2",
+            "to": "6.5.4",
+            "date": "2026-05-06"
+          }
         ],
-        "themes": [{ "name": "GeneratePress", "from": "3.4.0", "to": "3.5.1", "date": "2026-05-09" }]
+        "plugins": [
+          {
+            "name": "Yoast SEO",
+            "from": "22.6",
+            "to": "22.9",
+            "date": "2026-04-15"
+          },
+          {
+            "name": "WPML",
+            "from": "4.6.9",
+            "to": "4.6.11",
+            "date": "2026-05-22"
+          },
+          {
+            "name": "Wordfence Security",
+            "from": "7.11.4",
+            "to": "7.11.6",
+            "date": "2026-06-18"
+          }
+        ],
+        "themes": [
+          {
+            "name": "GeneratePress",
+            "from": "3.4.0",
+            "to": "3.5.1",
+            "date": "2026-05-09"
+          }
+        ]
       },
-      "security": { "status": "Safe", "scans": 90, "threats": 0, "firewallBlocks": 276, "loginBlocks": 38, "spamBlocked": 980, "blacklist": "Clean", "lastScan": "2026-06-29" },
+      "security": {
+        "status": "Safe",
+        "scans": 90,
+        "threats": 0,
+        "firewallBlocks": 276,
+        "loginBlocks": 38,
+        "spamBlocked": 980,
+        "blacklist": "Clean",
+        "lastScan": "2026-06-29"
+      },
       "backups": [
-        { "date": "2026-04-30", "type": "Full", "size": "486 MB", "location": "Amazon S3", "status": "OK" },
-        { "date": "2026-05-31", "type": "Full", "size": "498 MB", "location": "Amazon S3", "status": "OK" },
-        { "date": "2026-06-30", "type": "Full", "size": "512 MB", "location": "Amazon S3", "status": "OK" }
+        {
+          "date": "2026-04-30",
+          "type": "Full",
+          "size": "486 MB",
+          "location": "Amazon S3",
+          "status": "OK"
+        },
+        {
+          "date": "2026-05-31",
+          "type": "Full",
+          "size": "498 MB",
+          "location": "Amazon S3",
+          "status": "OK"
+        },
+        {
+          "date": "2026-06-30",
+          "type": "Full",
+          "size": "512 MB",
+          "location": "Amazon S3",
+          "status": "OK"
+        }
       ],
       "uptime": {
         "pct": 99.96,
         "monthly": [
-          { "month": "April", "pct": 100.0, "downtime": "0 min" },
-          { "month": "May", "pct": 99.88, "downtime": "12 min" },
-          { "month": "June", "pct": 100.0, "downtime": "0 min" }
+          {
+            "month": "April",
+            "pct": 100,
+            "downtime": "0 min"
+          },
+          {
+            "month": "May",
+            "pct": 99.88,
+            "downtime": "12 min"
+          },
+          {
+            "month": "June",
+            "pct": 100,
+            "downtime": "0 min"
+          }
         ],
-        "incidents": [{ "start": "2026-05-13", "duration": "12 min", "note": "Scheduled CDN cutover" }]
-      },
-      "performance": { "pageSpeedMobile": 79, "pageSpeedDesktop": 95, "loadTime": "1.3", "cwv": "Passed", "lastCheck": "2026-06-27" },
-      "analytics": {
-        "visitors": 5210, "pageviews": 13980, "avgSession": "1m 58s", "bounceRate": 44,
-        "topPages": [
-          { "path": "/", "views": 4020 },
-          { "path": "/products", "views": 2610 },
-          { "path": "/contact", "views": 1340 }
+        "incidents": [
+          {
+            "start": "2026-05-13",
+            "duration": "12 min",
+            "note": "Scheduled CDN cutover"
+          }
         ]
       },
-      "health": { "ssl": "Valid", "sslExpiry": "2026-12-02", "phpVersion": "8.2", "wpVersion": "6.5.4", "activePlugins": 21, "brokenLinks": 0 },
-      "recommendations": [
-        "Consider PHP 8.3 once all plugins are confirmed compatible for additional speed gains.",
-        "Enable HTTP/3 on the CDN to further reduce latency for international visitors.",
-        "Add a second backup destination for extra redundancy."
-      ]
+      "performance": {
+        "pageSpeedMobile": 79,
+        "pageSpeedDesktop": 95,
+        "loadTime": "1.3",
+        "cwv": "Passed",
+        "lastCheck": "2026-06-27"
+      },
+      "analytics": {
+        "visitors": 5210,
+        "pageviews": 13980,
+        "avgSession": "1m 58s",
+        "bounceRate": 44,
+        "topPages": [
+          {
+            "path": "/",
+            "views": 4020
+          },
+          {
+            "path": "/products",
+            "views": 2610
+          },
+          {
+            "path": "/contact",
+            "views": 1340
+          }
+        ]
+      },
+      "health": {
+        "ssl": "Valid",
+        "sslExpiry": "2026-12-02",
+        "phpVersion": "8.2",
+        "wpVersion": "6.5.4",
+        "activePlugins": 21,
+        "brokenLinks": 0
+      }
     },
     {
       "name": "22qMinded",
       "url": "www.22qminded.com",
       "client": "22qMinded",
       "lang": "en",
-      "summary": { "actions": 26, "updates": 16, "backups": 13, "uptimePct": 99.99, "threatsBlocked": 142, "security": "Safe" },
+      "summary": {
+        "actions": 26,
+        "updates": 16,
+        "backups": 13,
+        "uptimePct": 99.99,
+        "threatsBlocked": 142,
+        "security": "Safe"
+      },
       "intro": "The website performed excellently in Q2 with 99.99% availability and no downtime incidents. We performed 16 updates and 13 backups, and the firewall blocked 142 attack attempts. No security issues or malware were found.",
       "activity": [
-        { "date": "2026-04-04", "category": "backup", "action": "Weekly full backup completed and verified" },
-        { "date": "2026-04-11", "category": "security", "action": "Malware scan performed — no threats", "detail": "100% clean" },
-        { "date": "2026-04-24", "category": "update", "action": "Plugin Gravity Forms updated", "detail": "2.8.11 → 2.8.14" },
-        { "date": "2026-05-07", "category": "update", "action": "WordPress core updated", "detail": "6.5.2 → 6.5.4" },
-        { "date": "2026-05-20", "category": "content", "action": "New events page published on request" },
-        { "date": "2026-06-12", "category": "update", "action": "Plugin The Events Calendar updated", "detail": "6.4.0 → 6.4.2" },
-        { "date": "2026-06-25", "category": "monitoring", "action": "Quarterly uptime review — no incidents" },
-        { "date": "2026-06-30", "category": "backup", "action": "Monthly archive backup created", "detail": "184 MB" }
+        {
+          "date": "2026-04-04",
+          "category": "backup",
+          "action": "Weekly full backup completed and verified"
+        },
+        {
+          "date": "2026-04-11",
+          "category": "security",
+          "action": "Malware scan performed — no threats",
+          "detail": "100% clean"
+        },
+        {
+          "date": "2026-04-24",
+          "category": "update",
+          "action": "Plugin Gravity Forms updated",
+          "detail": "2.8.11 → 2.8.14"
+        },
+        {
+          "date": "2026-05-07",
+          "category": "update",
+          "action": "WordPress core updated",
+          "detail": "6.5.2 → 6.5.4"
+        },
+        {
+          "date": "2026-05-20",
+          "category": "content",
+          "action": "New events page published on request"
+        },
+        {
+          "date": "2026-06-12",
+          "category": "update",
+          "action": "Plugin The Events Calendar updated",
+          "detail": "6.4.0 → 6.4.2"
+        },
+        {
+          "date": "2026-06-25",
+          "category": "monitoring",
+          "action": "Quarterly uptime review — no incidents"
+        },
+        {
+          "date": "2026-06-30",
+          "category": "backup",
+          "action": "Monthly archive backup created",
+          "detail": "184 MB"
+        }
       ],
       "updates": {
-        "core": [{ "name": "WordPress", "from": "6.5.2", "to": "6.5.4", "date": "2026-05-07" }],
+        "core": [
+          {
+            "name": "WordPress",
+            "from": "6.5.2",
+            "to": "6.5.4",
+            "date": "2026-05-07"
+          }
+        ],
         "plugins": [
-          { "name": "Gravity Forms", "from": "2.8.11", "to": "2.8.14", "date": "2026-04-24" },
-          { "name": "The Events Calendar", "from": "6.4.0", "to": "6.4.2", "date": "2026-06-12" }
+          {
+            "name": "Gravity Forms",
+            "from": "2.8.11",
+            "to": "2.8.14",
+            "date": "2026-04-24"
+          },
+          {
+            "name": "The Events Calendar",
+            "from": "6.4.0",
+            "to": "6.4.2",
+            "date": "2026-06-12"
+          }
         ],
         "themes": []
       },
-      "security": { "status": "Safe", "scans": 91, "threats": 0, "firewallBlocks": 142, "loginBlocks": 22, "spamBlocked": 410, "blacklist": "Clean", "lastScan": "2026-06-30" },
+      "security": {
+        "status": "Safe",
+        "scans": 91,
+        "threats": 0,
+        "firewallBlocks": 142,
+        "loginBlocks": 22,
+        "spamBlocked": 410,
+        "blacklist": "Clean",
+        "lastScan": "2026-06-30"
+      },
       "backups": [
-        { "date": "2026-04-30", "type": "Full", "size": "176 MB", "location": "Google Drive", "status": "OK" },
-        { "date": "2026-05-31", "type": "Full", "size": "180 MB", "location": "Google Drive", "status": "OK" },
-        { "date": "2026-06-30", "type": "Full", "size": "184 MB", "location": "Google Drive", "status": "OK" }
+        {
+          "date": "2026-04-30",
+          "type": "Full",
+          "size": "176 MB",
+          "location": "Google Drive",
+          "status": "OK"
+        },
+        {
+          "date": "2026-05-31",
+          "type": "Full",
+          "size": "180 MB",
+          "location": "Google Drive",
+          "status": "OK"
+        },
+        {
+          "date": "2026-06-30",
+          "type": "Full",
+          "size": "184 MB",
+          "location": "Google Drive",
+          "status": "OK"
+        }
       ],
       "uptime": {
         "pct": 99.99,
         "monthly": [
-          { "month": "April", "pct": 100.0, "downtime": "0 min" },
-          { "month": "May", "pct": 100.0, "downtime": "0 min" },
-          { "month": "June", "pct": 99.97, "downtime": "4 min" }
+          {
+            "month": "April",
+            "pct": 100,
+            "downtime": "0 min"
+          },
+          {
+            "month": "May",
+            "pct": 100,
+            "downtime": "0 min"
+          },
+          {
+            "month": "June",
+            "pct": 99.97,
+            "downtime": "4 min"
+          }
         ],
         "incidents": []
       },
-      "performance": { "pageSpeedMobile": 85, "pageSpeedDesktop": 97, "loadTime": "1.1", "cwv": "Passed", "lastCheck": "2026-06-28" },
+      "performance": {
+        "pageSpeedMobile": 85,
+        "pageSpeedDesktop": 97,
+        "loadTime": "1.1",
+        "cwv": "Passed",
+        "lastCheck": "2026-06-28"
+      },
       "analytics": {
-        "visitors": 3140, "pageviews": 7620, "avgSession": "2m 32s", "bounceRate": 38,
+        "visitors": 3140,
+        "pageviews": 7620,
+        "avgSession": "2m 32s",
+        "bounceRate": 38,
         "topPages": [
-          { "path": "/", "views": 2280 },
-          { "path": "/about-22q", "views": 1610 },
-          { "path": "/events", "views": 960 }
+          {
+            "path": "/",
+            "views": 2280
+          },
+          {
+            "path": "/about-22q",
+            "views": 1610
+          },
+          {
+            "path": "/events",
+            "views": 960
+          }
         ]
       },
-      "health": { "ssl": "Valid", "sslExpiry": "2027-01-19", "phpVersion": "8.2", "wpVersion": "6.5.4", "activePlugins": 12, "brokenLinks": 0 },
-      "recommendations": [
-        "All systems healthy — no action required this quarter.",
-        "Consider adding automated uptime alerts to a shared inbox for faster response."
-      ]
+      "health": {
+        "ssl": "Valid",
+        "sslExpiry": "2027-01-19",
+        "phpVersion": "8.2",
+        "wpVersion": "6.5.4",
+        "activePlugins": 12,
+        "brokenLinks": 0
+      }
     }
   ]
 }

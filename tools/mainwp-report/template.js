@@ -261,14 +261,6 @@ function healthSection(h) {
   );
 }
 
-function recommendationsSection(recs = []) {
-  if (!recs.length) return '';
-  return section(
-    T.sec.recommendations,
-    `<ul class="recs">${recs.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>`
-  );
-}
-
 // ---- Layout helpers -----------------------------------------------------
 
 function kv(pairs) {
@@ -304,7 +296,7 @@ function renderReport(site, meta) {
      margin with a negative margin-top so page 1 stays full-bleed. */
 
   /* ---- Cover header band (page 1) ---- */
-  .head{ background:var(--dark-green); color:var(--warm-white); padding:24mm 18mm 28mm; position:relative; overflow:hidden; margin-top:-12mm; }
+  .head{ background:var(--dark-green); color:var(--warm-white); padding:24mm 18mm 28mm; position:relative; overflow:hidden; margin-top:-16mm; }
   .head::after{ content:''; position:absolute; right:-40mm; top:-40mm; width:120mm; height:120mm; border-radius:50%; border:1px solid rgba(242,226,164,.14); }
   .head::before{ content:''; position:absolute; right:-18mm; bottom:-60mm; width:90mm; height:90mm; border-radius:50%; border:1px solid rgba(242,226,164,.10); }
   .brand{ width:42mm; margin-bottom:12mm; }
@@ -340,7 +332,7 @@ function renderReport(site, meta) {
   .prose.sub, .lead{ break-after:avoid; }
   /* Never orphan a table header row or split a data row / kv pair / recommendation */
   .tbl thead{ break-inside:avoid; } .tbl tbody tr{ break-inside:avoid; }
-  .kv > div{ break-inside:avoid; } .recs li{ break-inside:avoid; }
+  .kv > div{ break-inside:avoid; }
   .prose{ font-size:9.5pt; line-height:1.55; color:#33352f; }
   .prose.sub{ color:var(--muted); font-size:8.5pt; margin-bottom:3.5mm; }
   .lead{ font-size:10pt; margin-bottom:4mm; } .lead strong{ font-size:15pt; color:var(--mid-green); }
@@ -370,10 +362,6 @@ function renderReport(site, meta) {
   .kv{ display:grid; grid-template-columns:repeat(2,1fr); gap:1mm 8mm; font-size:9pt; }
   .kv div{ display:flex; justify-content:space-between; align-items:center; padding:2mm 0; border-bottom:1px solid rgba(0,0,0,.05); }
   .kv span{ color:var(--muted); }
-
-  .recs{ list-style:none; font-size:9.5pt; line-height:1.5; }
-  .recs li{ padding:2.5mm 0 2.5mm 7mm; position:relative; border-bottom:1px solid rgba(0,0,0,.05); }
-  .recs li::before{ content:''; position:absolute; left:0; top:4mm; width:3mm; height:3mm; border:1.5px solid var(--gold-warm); border-radius:50%; }
 
   /* Category tags in the activity log */
   .tag{ display:inline-block; padding:.6mm 2.4mm; border-radius:6mm; font-size:6.5pt; font-weight:600; letter-spacing:.04em; background:#eceae4; color:var(--ink); white-space:nowrap; }
@@ -413,7 +401,6 @@ function renderReport(site, meta) {
     ${performanceSection(site.performance)}
     ${analyticsSection(site.analytics)}
     ${healthSection(site.health)}
-    ${recommendationsSection(site.recommendations)}
   </main>
 </body></html>`;
 }

@@ -36,9 +36,11 @@ function footerTemplate(site, meta) {
   const L = pickLang(site);
   const agency = meta.agency ?? {};
   const period = meta.period ?? {};
-  return `<div style="width:100%; padding:0 18mm; font-family:'Kulim Park',Arial,sans-serif; font-size:6.5pt; letter-spacing:.12em; text-transform:uppercase; color:#6b6f6c; display:flex; justify-content:space-between; align-items:center; border-top:1px solid #E8D590; margin:0 18mm; padding-top:2.5mm; width:auto;">
-    <span>${esc(agency.name ?? 'sircle.agency')} · ${esc(L.eyebrow)} ${esc(period.label)} · ${esc(site.url)}</span>
-    <span>${esc(L.page)} <span class="pageNumber"></span> / <span class="totalPages"></span></span>
+  return `<div style="box-sizing:border-box; width:100%; padding:0 18mm; font-family:'Kulim Park',Arial,sans-serif; font-size:6.5pt; letter-spacing:.12em; text-transform:uppercase; color:#6b6f6c;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #E8D590; padding-top:2.5mm;">
+      <span>${esc(agency.name ?? 'sircle.agency')} · ${esc(L.eyebrow)} ${esc(period.label)} · ${esc(site.url)}</span>
+      <span>${esc(L.page)} <span class="pageNumber"></span> / <span class="totalPages"></span></span>
+    </div>
   </div>`;
 }
 
@@ -123,7 +125,6 @@ function mapMainWpSite(s) {
     performance: s.performance ?? null,
     analytics: s.analytics ?? null,
     health: s.health ?? null,
-    recommendations: s.recommendations ?? [],
   };
 }
 
@@ -175,7 +176,7 @@ async function main() {
       format: 'A4',
       printBackground: true,
       displayHeaderFooter: true,
-      margin: { top: '12mm', bottom: '14mm', left: '0mm', right: '0mm' },
+      margin: { top: '16mm', bottom: '18mm', left: '0mm', right: '0mm' },
       headerTemplate: '<span></span>',
       footerTemplate: footerTemplate(site, meta),
     });
