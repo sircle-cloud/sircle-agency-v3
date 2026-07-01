@@ -209,6 +209,24 @@
   .invest .total .lbl{ font-size:8.5pt; letter-spacing:.06em; }
   .invest .total .lbl small{ display:block; color:var(--sage); font-size:7pt; margin-top:.5mm; }
   .invest .total .big{ font-size:18pt; font-weight:700; color:var(--gold); }
+  /* Option cards */
+  .invest .opt{
+    border:1px solid rgba(12,24,15,.16);
+    border-radius:3mm;
+    padding:4mm 5mm;
+    margin-bottom:3mm;
+  }
+  .invest .opt:last-child{ margin-bottom:0; }
+  .invest .opt--accent{ background:var(--dark-green); border:none; }
+  .invest .opt-head{ display:flex; justify-content:space-between; align-items:baseline; gap:4mm; }
+  .invest .opt-name{ font-size:9pt; font-weight:600; color:var(--dark-green); line-height:1.3; }
+  .invest .opt-name small{ display:block; font-weight:400; font-size:7.5pt; color:var(--mid-green); margin-top:.5mm; }
+  .invest .opt-price{ font-size:15pt; font-weight:700; color:var(--dark-green); white-space:nowrap; }
+  .invest .opt-sub{ font-size:7.5pt; color:#8a8a8a; margin-top:1.5mm; }
+  .invest .opt--accent .opt-name{ color:#fff; }
+  .invest .opt--accent .opt-name small{ color:var(--sage); }
+  .invest .opt--accent .opt-price{ color:var(--gold); }
+  .invest .opt--accent .opt-sub{ color:var(--sage); }
 
   /* ---------- Conditions ---------- */
   .conditions{
@@ -272,7 +290,7 @@
       </svg>
       <div class="doc-label">
         <h1>Offerte</h1>
-        <div class="subtitle">Fotografie &amp; dronebeelden</div>
+        <div class="subtitle">Grond- &amp; dronefotografie</div>
       </div>
     </div>
     <div class="header-meta">
@@ -319,23 +337,15 @@
     <ul class="deliverables">
       <li>
         <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#3F6F45" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-        <span><strong>Grondfotografie</strong> van het pand met professionele opnames vanuit diverse en unieke invalshoeken, inclusief specifieke aandachtspunten zoals toegangswegen en parkeerterrein.</span>
+        <span><strong>Grondfotografie van het pand</strong> met professionele opnames vanuit diverse en unieke invalshoeken, inclusief specifieke aandachtspunten zoals toegangswegen en parkeerterrein.</span>
       </li>
       <li>
         <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#3F6F45" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-        <span><strong>Dronefotografie</strong> met strakke luchtfoto's en overzichten; top-down en zoomperspectieven van pand en omgeving.</span>
+        <span><strong>Nabewerking &amp; oplevering:</strong> 20 tot 25 professioneel bewerkte foto's, digitaal aangeleverd.</span>
       </li>
       <li>
-        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#3F6F45" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-        <span><strong>Dronevideo van het gebied.</strong> Een strakke, ingetogen montage van de mooiste dronebeelden, gecombineerd met passende muziek en jullie logo. De focus ligt op de locatie, het bedrijventerrein, de bereikbaarheid en de nieuwe snelweg. Een cinematische, professionele film die het pand en de omgeving overtuigend in beeld brengt, zonder flashy effecten.</span>
-      </li>
-      <li>
-        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#3F6F45" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-        <span><strong>Vluchtplannen &amp; luchtvaartautorisaties</strong>, inclusief gecertificeerde drone-piloot en RT-operator i.v.m. de nabijheid van Rotterdam The Hague Airport.</span>
-      </li>
-      <li>
-        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="#3F6F45" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-        <span><strong>Montage &amp; oplevering:</strong> video-montage en nabewerking van 20 tot 25 geselecteerde foto's, digitaal aangeleverd.</span>
+        <svg class="check plus" viewBox="0 0 24 24" fill="none" stroke="#C4A854" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        <span><strong>Dronefotografie (optioneel):</strong> strakke luchtfoto's en overzichten (top-down en zoomperspectieven), inclusief vluchtplannen, luchtvaartautorisaties en gecertificeerde piloot met RT-operator i.v.m. de nabijheid van Rotterdam The Hague Airport. Onder voorbehoud van tijdige vergunning.</span>
       </li>
     </ul>
 
@@ -345,23 +355,23 @@
         <div class="section-title" style="margin-bottom:4mm;">Planning</div>
         <div class="row">
           <div class="k">Streefdatum opname</div>
-          <div class="v">Vrijdag 3 of maandag 6 juli 2026<small>Onder voorbehoud van weer en tijdige vergunning; bij grijze luchten of natte plekken schuiven we naar de eerstvolgende geschikte dag.</small></div>
+          <div class="v">Vrijdag 3 of maandag 6 juli 2026<small>Grondfotografie is niet vergunningafhankelijk; de drone-optie is onder voorbehoud van tijdige vergunning. Bij grijze luchten of natte plekken schuiven we naar de eerstvolgende geschikte dag.</small></div>
         </div>
         <div class="row">
           <div class="k">Oplevering</div>
-          <div class="v">Foto's uiterlijk dinsdag 7 juli 2026<small>De bewerkte foto's leveren we uiterlijk dinsdag einde dag; de videomontage volgt kort daarna, in overleg iets later i.v.m. opnamedatum en montagetijd.</small></div>
+          <div class="v">Foto's uiterlijk dinsdag 7 juli 2026<small>De bewerkte foto's leveren we uiterlijk dinsdag einde dag, digitaal aangeleverd.</small></div>
         </div>
       </div>
 
       <div class="invest">
-        <div class="section-title" style="margin-bottom:5mm;">Investering</div>
-        <div class="lines">
-          <div class="line"><span class="desc">Totaalpakket fotografie, dronefoto &amp; -video, inclusief vergunningen, montage en projectmanagement</span><span class="amt">€&nbsp;3.500,00</span></div>
-          <div class="line"><span class="desc">Btw 21%</span><span class="amt">€&nbsp;735,00</span></div>
+        <div class="section-title" style="margin-bottom:4mm;">Investering</div>
+        <div class="opt">
+          <div class="opt-head"><span class="opt-name">Optie 1 · Grondfotografie</span><span class="opt-price">€&nbsp;1.500</span></div>
+          <div class="opt-sub">ex. btw · € 1.815 incl. 21% btw</div>
         </div>
-        <div class="total">
-          <div class="lbl">Totaal<small>incl. 21% btw</small></div>
-          <div class="big">€&nbsp;4.235,00</div>
+        <div class="opt opt--accent">
+          <div class="opt-head"><span class="opt-name">Optie 2 · Grond- + dronefotografie <small>incl. vergunningen</small></span><span class="opt-price">€&nbsp;3.000</span></div>
+          <div class="opt-sub">ex. btw · € 3.630 incl. 21% btw</div>
         </div>
       </div>
     </div>
@@ -369,11 +379,11 @@
     <!-- Conditions -->
     <div class="conditions">
       <ul>
-        <li>Genoemde bedragen zijn in euro's; het pakketbedrag is exclusief 21% btw.</li>
+        <li>Genoemde bedragen zijn in euro's en exclusief 21% btw.</li>
         <li>Opname onder voorbehoud van geschikte weersomstandigheden (helder, droog, geen grijze luchten).</li>
-        <li>Uitvoering onder voorbehoud van tijdige goedkeuring van de luchtvaartautorisaties.</li>
+        <li>De dronefotografie is onder voorbehoud van tijdige goedkeuring van de luchtvaartautorisaties; grondfotografie is hiervan niet afhankelijk.</li>
         <li>Eén opnamedag (gedeeltelijk); aanvullende opnamedagen in overleg.</li>
-        <li>Video betreft een strakke basismontage met passende muziek; bewegende titels, voice-over of uitgebreidere montage zijn meerwerk.</li>
+        <li>Een cinematische dronevideo is op een later moment bespreekbaar (bijvoorbeeld bij een verkoopopdracht).</li>
         <li>Inclusief 2 feedbackrondes per oplevering.</li>
         <li>Betaling binnen 30 dagen na akkoord op deze offerte. Akkoord graag per e-mail.</li>
       </ul>
