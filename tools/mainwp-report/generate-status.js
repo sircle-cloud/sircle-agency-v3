@@ -16,17 +16,24 @@ const path = require('path');
 const { chromium } = require('playwright-core');
 const { renderStatusReport, pickLang } = require('./template');
 
-const PERIOD = { label: 'Q2 2026', from: '2026-04-01', to: '2026-06-30' };
 const AGENCY = { name: 'sircle.agency', location: 'Den Haag, NL', email: 'hello@sircle.agency' };
-const Q2_FROM = Date.parse('2026-04-01T00:00:00Z') / 1000;
-const Q2_TO = Date.parse('2026-07-01T00:00:00Z') / 1000;
 const EN_HOSTS = ['newlong', '22qminded']; // these sites get English reports
 
+const addDay = (isoDate) => Date.parse(`${isoDate}T00:00:00Z`) / 1000 + 86400; // exclusive upper bound
+
 function parseArgs(argv) {
-  const args = { out: path.join(process.cwd(), 'reports') };
+  const args = {
+    out: path.join(process.cwd(), 'reports'),
+    from: '2026-04-01', to: '2026-06-30', label: 'Q2 2026', sites: null,
+  };
   for (let i = 2; i < argv.length; i++) {
-    if (argv[i] === '--out') args.out = argv[++i];
-    else if (argv[i] === '--html') args.html = true;
+    const a = argv[i];
+    if (a === '--out') args.out = argv[++i];
+    else if (a === '--html') args.html = true;
+    else if (a === '--from') args.from = argv[++i];
+    else if (a === '--to') args.to = argv[++i];
+    else if (a === '--label') args.label = argv[++i];
+    else if (a === '--sites') args.sites = argv[++i].split(',').map((s) => s.trim().toLowerCase()).filter(Boolean);
   }
   return args;
 }
@@ -160,8 +167,20 @@ async function main() {
     process.exit(1);
   }
 
+  const period = { label: args.label, from: args.from, to: args.to };
+  const winFrom = Date.parse(`${args.from}T00:00:00Z`) / 1000;
+  const winTo = addDay(args.to);
+
+  console.log(`Periode: ${period.label} (${args.from} → ${args.to})`);
   console.log('Ophalen sitelijst en context uit MainWP…');
-  const sites = Object.values(await api('sites/all-sites'));
+  let sites = Object.values(await api('sites/all-sites'));
+  if (args.sites) {
+    sites = sites.filter((s) => {
+      const hay = `${s.name} ${cleanUrl(s.url)}`.toLowerCase();
+      return args.sites.some((tok) => hay.includes(tok));
+    });
+    console.log(`Filter op sites: ${sites.map((s) => s.name).join(', ') || '(geen match)'}`);
+  }
   const clients = Object.fromEntries((((await api('clients/all-clients')) || {}).data || []).map((c) => [c.client_id, c]));
   const health = (await api('sites/health-score')) || {};
   const security = (await api('sites/security-issues')) || {};
@@ -173,7 +192,7 @@ async function main() {
     const avail = await api(`site/site-available-updates?site_id=${id}`);
     const plc = await api(`site/site-active-plugins-count?site_id=${id}`);
     let changes = await api(`site/non-mainwp-changes?site_id=${id}`);
-    changes = Array.isArray(changes) ? changes.filter((c) => +c.created >= Q2_FROM && +c.created < Q2_TO) : [];
+    changes = Array.isArray(changes) ? changes.filter((c) => +c.created >= winFrom && +c.created < winTo) : [];
     mapped.push(
       mapSite(s, {
         info,
@@ -189,7 +208,8 @@ async function main() {
   }
   process.stderr.write('\n');
 
-  const meta = { period: PERIOD, agency: AGENCY };
+  const meta = { period, agency: AGENCY };
+  const periodSlug = slugify(period.label);
   fs.mkdirSync(args.out, { recursive: true });
   const launchOpts = process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {};
   const browser = await chromium.launch(launchOpts);
@@ -199,16 +219,16 @@ async function main() {
   for (const site of mapped) {
     const html = renderStatusReport(site, meta);
     const slug = slugify(site.name || site.url);
-    if (args.html) fs.writeFileSync(path.join(args.out, `${slug}-status-q2-2026.html`), html);
+    if (args.html) fs.writeFileSync(path.join(args.out, `${slug}-status-${periodSlug}.html`), html);
     await page.setContent(html, { waitUntil: 'networkidle' });
     await page.pdf({
-      path: path.join(args.out, `${slug}-status-q2-2026.pdf`),
+      path: path.join(args.out, `${slug}-status-${periodSlug}.pdf`),
       format: 'A4',
       printBackground: true,
       displayHeaderFooter: true,
       margin: { top: '16mm', bottom: '18mm', left: '0mm', right: '0mm' },
       headerTemplate: '<span></span>',
-      footerTemplate: footerTemplate(site),
+      footerTemplate: footerTemplate(site, period),
     });
     console.log(`  ✓ ${slug} (${site.lang})`);
   }
@@ -216,12 +236,12 @@ async function main() {
   console.log('Klaar.');
 }
 
-function footerTemplate(site) {
+function footerTemplate(site, period) {
   const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const L = pickLang(site);
   return `<div style="box-sizing:border-box; width:100%; padding:0 18mm; font-family:'Kulim Park',Arial,sans-serif; font-size:6.5pt; letter-spacing:.12em; text-transform:uppercase; color:#6b6f6c;">
     <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #E8D590; padding-top:2.5mm;">
-      <span>${esc(AGENCY.name)} · ${esc(L.eyebrow)} ${esc(PERIOD.label)} · ${esc(site.url)}</span>
+      <span>${esc(AGENCY.name)} · ${esc(L.eyebrow)} ${esc(period.label)} · ${esc(site.url)}</span>
       <span>${esc(L.page)} <span class="pageNumber"></span> / <span class="totalPages"></span></span>
     </div>
   </div>`;
