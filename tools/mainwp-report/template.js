@@ -107,7 +107,7 @@ function updatesSection(updates = {}) {
   return section(
     'Updates in detail',
     `<p class="prose sub">${total} componenten bijgewerkt naar de nieuwste versie.</p>
-     <table class="tbl"><thead><tr><th>Type</th><th>Naam</th><th>Versie</th><th>Datum</th></tr></thead><tbody>${rows.join(
+     <table class="tbl upd"><thead><tr><th>Type</th><th>Naam</th><th>Versie</th><th>Datum</th></tr></thead><tbody>${rows.join(
        ''
      )}</tbody></table>`
   );
@@ -141,7 +141,7 @@ function backupsSection(backups = []) {
     .join('');
   return section(
     'Backups',
-    `<table class="tbl"><thead><tr><th>Datum</th><th>Type</th><th>Grootte</th><th>Opslag</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`
+    `<table class="tbl bkp"><thead><tr><th>Datum</th><th>Type</th><th>Grootte</th><th>Opslag</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`
   );
 }
 
@@ -149,7 +149,7 @@ function uptimeSection(uptime = {}) {
   const incidents = uptime.incidents ?? [];
   const monthly = uptime.monthly ?? [];
   const monthlyBlock = monthly.length
-    ? `<table class="tbl"><thead><tr><th>Maand</th><th>Beschikbaarheid</th><th>Downtime</th></tr></thead><tbody>${monthly
+    ? `<table class="tbl up-month"><thead><tr><th>Maand</th><th>Beschikbaarheid</th><th>Downtime</th></tr></thead><tbody>${monthly
         .map(
           (m) =>
             `<tr><td>${esc(m.month)}</td><td>${m.pct != null ? m.pct.toFixed(2) : '—'}%</td><td>${esc(
@@ -267,7 +267,7 @@ function renderReport(site, meta) {
      margin with a negative margin-top so page 1 stays full-bleed. */
 
   /* ---- Cover header band (page 1) ---- */
-  .head{ background:var(--dark-green); color:var(--warm-white); padding:24mm 18mm 15mm; position:relative; overflow:hidden; margin-top:-12mm; }
+  .head{ background:var(--dark-green); color:var(--warm-white); padding:24mm 18mm 28mm; position:relative; overflow:hidden; margin-top:-12mm; }
   .head::after{ content:''; position:absolute; right:-40mm; top:-40mm; width:120mm; height:120mm; border-radius:50%; border:1px solid rgba(242,226,164,.14); }
   .head::before{ content:''; position:absolute; right:-18mm; bottom:-60mm; width:90mm; height:90mm; border-radius:50%; border:1px solid rgba(242,226,164,.10); }
   .brand{ width:42mm; margin-bottom:12mm; }
@@ -275,7 +275,8 @@ function renderReport(site, meta) {
   .eyebrow{ text-transform:uppercase; letter-spacing:.32em; font-size:8pt; font-weight:600; color:var(--gold); margin-bottom:5mm; }
   .head h1{ font-weight:300; font-size:25pt; line-height:1.1; letter-spacing:-.01em; }
   .head h1 strong{ font-weight:700; color:var(--gold); }
-  .meta-row{ display:flex; gap:12mm; margin-top:9mm; padding-top:5mm; border-top:1px solid rgba(242,226,164,.22); }
+  /* Same 3-column grid as the scorecard so labels line up above the cards */
+  .meta-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-top:9mm; padding-top:5mm; border-top:1px solid rgba(242,226,164,.22); }
   .meta-row div span{ display:block; text-transform:uppercase; letter-spacing:.18em; font-size:6.5pt; color:var(--sage); margin-bottom:2mm; }
   .meta-row div strong{ font-weight:600; font-size:10pt; color:var(--warm-white); }
 
@@ -300,11 +301,23 @@ function renderReport(site, meta) {
   .lead{ font-size:10pt; margin-bottom:4mm; } .lead strong{ font-size:15pt; color:var(--mid-green); }
   .empty{ font-size:9pt; color:var(--muted); font-style:italic; }
 
-  table.tbl{ width:100%; border-collapse:collapse; font-size:8.5pt; }
+  table.tbl{ width:100%; border-collapse:collapse; font-size:8.5pt; table-layout:fixed; }
   .tbl th{ text-align:left; text-transform:uppercase; letter-spacing:.1em; font-size:6.5pt; font-weight:600; color:var(--muted); padding:0 3mm 2mm; border-bottom:1px solid var(--beige); }
-  .tbl td{ padding:2.2mm 3mm; border-bottom:1px solid rgba(0,0,0,.05); vertical-align:top; }
+  .tbl td{ padding:2.2mm 3mm; border-bottom:1px solid rgba(0,0,0,.05); vertical-align:top; overflow-wrap:break-word; }
+  .tbl th:first-child, .tbl td:first-child{ padding-left:0; }
+  .tbl th:last-child, .tbl td:last-child{ padding-right:0; }
   .tbl tr{ break-inside:avoid; }
   .tbl tr:last-child td{ border-bottom:none; }
+  /* Fixed column widths per table type for crisp vertical alignment */
+  .log td:nth-child(1), .log th:nth-child(1){ width:24mm; }
+  .log td:nth-child(2), .log th:nth-child(2){ width:26mm; }
+  .upd td:nth-child(1), .upd th:nth-child(1){ width:18mm; }
+  .upd td:nth-child(3), .upd th:nth-child(3){ width:34mm; }
+  .upd td:nth-child(4), .upd th:nth-child(4){ width:26mm; }
+  .bkp td:nth-child(1), .bkp th:nth-child(1){ width:24mm; }
+  .bkp td:nth-child(5), .bkp th:nth-child(5){ width:20mm; }
+  .up-month td:nth-child(2), .up-month th:nth-child(2),
+  .up-month td:nth-child(3), .up-month th:nth-child(3){ width:34mm; }
   .t-type{ font-weight:600; color:var(--mid-green); } .t-ver{ color:var(--muted); font-variant-numeric:tabular-nums; }
   .t-date{ white-space:nowrap; font-variant-numeric:tabular-nums; } .t-num,.t-num td{ text-align:right; font-variant-numeric:tabular-nums; }
   .log .t-action{ font-weight:400; } .t-detail{ display:block; color:var(--muted); font-size:7.5pt; margin-top:.5mm; }
