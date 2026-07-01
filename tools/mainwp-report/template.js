@@ -328,11 +328,19 @@ function renderReport(site, meta) {
   .score.is-warn{ border-top-color:var(--copper); } .score.is-warn .score-value{ color:var(--copper); }
   .score.is-bad{ border-top-color:#b0403a; } .score.is-bad .score-value{ color:#b0403a; }
 
-  /* ---- Content blocks ---- */
-  .block{ margin-bottom:8mm; break-inside:avoid; }
-  .block h2{ font-weight:600; font-size:11pt; letter-spacing:.02em; color:var(--dark-green); padding-bottom:2.5mm; margin-bottom:4mm; border-bottom:1px solid var(--gold-warm); display:flex; align-items:center; gap:3mm; }
+  /* ---- Content blocks ----
+     Content flows naturally across pages. We DON'T lock whole sections together
+     (that leaves big gaps when a long section jumps to the next page). Instead we
+     keep headings attached to their content and never split a row/kv-pair. */
+  .block{ margin-bottom:7mm; }
+  .block h2{ font-weight:600; font-size:11pt; letter-spacing:.02em; color:var(--dark-green); padding-bottom:2.5mm; margin-bottom:4mm; border-bottom:1px solid var(--gold-warm); display:flex; align-items:center; gap:3mm; break-after:avoid; }
   .block h2::before{ content:''; width:3mm; height:3mm; border-radius:50%; background:var(--gold); flex:none; }
-  .block h3{ font-size:8.5pt; text-transform:uppercase; letter-spacing:.14em; color:var(--muted); margin:5mm 0 3mm; }
+  .block h3{ font-size:8.5pt; text-transform:uppercase; letter-spacing:.14em; color:var(--muted); margin:5mm 0 3mm; break-after:avoid; }
+  /* Keep intro lines with the table/content that follows them */
+  .prose.sub, .lead{ break-after:avoid; }
+  /* Never orphan a table header row or split a data row / kv pair / recommendation */
+  .tbl thead{ break-inside:avoid; } .tbl tbody tr{ break-inside:avoid; }
+  .kv > div{ break-inside:avoid; } .recs li{ break-inside:avoid; }
   .prose{ font-size:9.5pt; line-height:1.55; color:#33352f; }
   .prose.sub{ color:var(--muted); font-size:8.5pt; margin-bottom:3.5mm; }
   .lead{ font-size:10pt; margin-bottom:4mm; } .lead strong{ font-size:15pt; color:var(--mid-green); }
