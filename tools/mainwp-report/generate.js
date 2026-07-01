@@ -29,6 +29,17 @@ function parseArgs(argv) {
   return args;
 }
 
+// Running footer for every page (Chromium fills .pageNumber / .totalPages).
+function footerTemplate(site, meta) {
+  const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const agency = meta.agency ?? {};
+  const period = meta.period ?? {};
+  return `<div style="width:100%; padding:0 18mm; font-family:'Kulim Park',Arial,sans-serif; font-size:6.5pt; letter-spacing:.12em; text-transform:uppercase; color:#6b6f6c; display:flex; justify-content:space-between; align-items:center; border-top:1px solid #E8D590; margin:0 18mm; padding-top:2.5mm; width:auto;">
+    <span>${esc(agency.name ?? 'sircle.agency')} · Onderhoudsrapport ${esc(period.label)} · ${esc(site.url)}</span>
+    <span>Pagina <span class="pageNumber"></span> / <span class="totalPages"></span></span>
+  </div>`;
+}
+
 function slugify(s) {
   return String(s)
     .toLowerCase()
@@ -58,22 +69,57 @@ async function fetchFromMainWp() {
 
 // Map a raw MainWP site record → the report data shape. Fields differ per
 // MainWP version and installed extensions; fill these in against your dashboard.
+// The richest source is MainWP's per-site action/audit log — that feeds the
+// full "handelingen" section. Map it from whichever endpoint your setup exposes
+// (e.g. the Client Reports tokens or the actions log), then normalise each entry
+// to { date, category, action, detail }.
 function mapMainWpSite(s) {
+  const updates = {
+    core: s.core_updates ?? [],
+    plugins: s.plugin_updates ?? [],
+    themes: s.theme_updates ?? [],
+  };
   return {
     name: s.name || s.title || s.url,
     url: s.url,
     client: s.client_name || s.contact_name || '—',
+    intro: s.report_intro || s.summary_text || '',
+    // Full activity log — normalise each MainWP action-log entry.
+    activity: (s.actions ?? s.activity ?? s.audit_log ?? []).map((a) => ({
+      date: a.date || a.timestamp,
+      category: a.category || a.type || 'onderhoud',
+      action: a.action || a.message || a.description,
+      detail: a.detail || a.context || '',
+    })),
     summary: {
+      actions: Number(s.actions_count ?? (s.actions ?? s.activity ?? []).length ?? 0),
       updates: Number(s.total_updates ?? 0),
-      backups: Number(s.backups_count ?? 0),
+      backups: Number(s.backups_count ?? (s.backups ?? []).length ?? 0),
       uptimePct: s.uptime != null ? Number(s.uptime) : null,
+      threatsBlocked: Number(s.firewall_blocks ?? s.threats_blocked ?? 0),
       security: s.security_status || '—',
     },
-    updates: { core: s.core_updates ?? [], plugins: s.plugin_updates ?? [], themes: s.theme_updates ?? [] },
+    updates,
+    security: s.security ?? {
+      status: s.security_status || '—',
+      scans: s.scans_count,
+      threats: s.threats_found,
+      firewallBlocks: s.firewall_blocks,
+      loginBlocks: s.login_blocks,
+      spamBlocked: s.spam_blocked,
+      blacklist: s.blacklist_status,
+      lastScan: s.last_scan,
+    },
     backups: s.backups ?? [],
-    uptime: { pct: s.uptime != null ? Number(s.uptime) : null, incidents: s.uptime_incidents ?? [] },
-    security: s.security ?? { status: s.security_status || '—' },
+    uptime: {
+      pct: s.uptime != null ? Number(s.uptime) : null,
+      monthly: s.uptime_monthly ?? [],
+      incidents: s.uptime_incidents ?? [],
+    },
     performance: s.performance ?? null,
+    analytics: s.analytics ?? null,
+    health: s.health ?? null,
+    recommendations: s.recommendations ?? [],
   };
 }
 
@@ -120,7 +166,15 @@ async function main() {
 
     await page.setContent(html, { waitUntil: 'networkidle' });
     const pdfPath = path.join(args.out, `${slug}-${label}.pdf`);
-    await page.pdf({ path: pdfPath, format: 'A4', printBackground: true });
+    await page.pdf({
+      path: pdfPath,
+      format: 'A4',
+      printBackground: true,
+      displayHeaderFooter: true,
+      margin: { top: '12mm', bottom: '14mm', left: '0mm', right: '0mm' },
+      headerTemplate: '<span></span>',
+      footerTemplate: footerTemplate(site, meta),
+    });
     console.log(`  ✓ ${path.basename(pdfPath)}`);
   }
 
