@@ -120,8 +120,8 @@
     },
     {
       "name": "Newlong",
-      "url": "newlong.eu",
-      "client": "Newlong Europe",
+      "url": "www.newlong.nl",
+      "client": "Newlong",
       "lang": "en",
       "summary": { "actions": 34, "updates": 23, "backups": 13, "uptimePct": 99.96, "threatsBlocked": 276, "security": "Safe" },
       "intro": "Throughout the second quarter the website remained stable and secure with 99.96% availability. We performed 23 updates, created 13 backups and the firewall blocked 276 attack attempts. No security incidents or malware were detected. Load time improved after caching was reconfigured in May.",
@@ -180,8 +180,8 @@
     },
     {
       "name": "22qMinded",
-      "url": "22qminded.org",
-      "client": "22qMinded Foundation",
+      "url": "www.22qminded.com",
+      "client": "22qMinded",
       "lang": "en",
       "summary": { "actions": 26, "updates": 16, "backups": 13, "uptimePct": 99.99, "threatsBlocked": 142, "security": "Safe" },
       "intro": "The website performed excellently in Q2 with 99.99% availability and no downtime incidents. We performed 16 updates and 13 backups, and the firewall blocked 142 attack attempts. No security issues or malware were found.",

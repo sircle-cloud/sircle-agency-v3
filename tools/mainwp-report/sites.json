@@ -1,0 +1,24 @@
+{
+  "_note": "Roster van beheerde sites (bron: MainWP-dashboard). Dit is de site-lijst + taal + interne beheerder. De Q2-cijfers per site komen uit MainWP (REST API of export) en worden hiermee samengevoegd bij het genereren. 'lang': 'nl' standaard, 'en' voor Engelstalige rapporten.",
+  "period": { "label": "Q2 2026", "from": "2026-04-01", "to": "2026-06-30" },
+  "agency": { "name": "sircle.agency", "location": "Den Haag, NL", "email": "hello@sircle.agency" },
+  "sites": [
+    { "name": "22qMinded", "url": "www.22qminded.com", "client": "22qMinded", "manager": "Sasja", "lang": "en" },
+    { "name": "Breinwerkers", "url": "www.breinwerkers.nl", "client": "Breinwerkers", "manager": "Maartje", "lang": "nl" },
+    { "name": "Breinwijzers", "url": "www.breinwijzers.nl", "client": "Breinwijzers", "manager": "", "lang": "nl" },
+    { "name": "Care4Minds", "url": "www.care4minds.org", "client": "Care4Minds", "manager": "Sasja", "lang": "nl" },
+    { "name": "Dudok Consulting", "url": "www.dudokconsulting.nl", "client": "Dudok Consulting", "manager": "Gwen", "lang": "nl" },
+    { "name": "Fit in Wassenaar", "url": "www.fitinwassenaar.nl", "client": "Fit in Wassenaar", "manager": "Kirsten Keij", "lang": "nl" },
+    { "name": "HiBikeCenter", "url": "www.hibikecenter.nl", "client": "HiBikeCenter", "manager": "Henny", "lang": "nl" },
+    { "name": "It's Sobi", "url": "itssobi.com", "client": "It's Sobi", "manager": "Robert", "lang": "nl" },
+    { "name": "Kanslokaal", "url": "kanslokaal.nl", "client": "Kanslokaal", "manager": "Kirsten", "lang": "nl" },
+    { "name": "Newlong", "url": "www.newlong.nl", "client": "Newlong", "manager": "Sebastian", "lang": "en" },
+    { "name": "Outdoor Therapie", "url": "www.outdoortherapie.com", "client": "Outdoor Therapie", "manager": "Vivi", "lang": "nl" },
+    { "name": "Roel Janssen", "url": "www.roeljanssen.nl", "client": "Roel Janssen", "manager": "Roel Janssen", "lang": "nl" },
+    { "name": "Rollin Zorg", "url": "www.rollinzorg.nl", "client": "Rollin Zorg", "manager": "Otto", "lang": "nl" },
+    { "name": "Schermgebruik", "url": "www.schermgebruik.nl", "client": "Schermgebruik", "manager": "", "lang": "nl" },
+    { "name": "SircleCreative", "url": "www.sirclecreative.com", "client": "SircleCreative", "manager": "SircleCreative", "lang": "nl" },
+    { "name": "VLIJT Tandartsen", "url": "www.vlijttandartsen.nl", "client": "VLIJT Tandartsen", "manager": "Niels Kik", "lang": "nl" },
+    { "name": "De Zelfspot", "url": "www.dezelfspot.nl", "client": "De Zelfspot", "manager": "Rens Vernij", "lang": "nl" }
+  ]
+}
