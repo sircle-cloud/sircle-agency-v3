@@ -8,9 +8,11 @@
 
 Hi Niek,
 
-Dank voor je reactie en de toelichting — helder dat de foto's nu vooral voor de pitch nodig zijn. Ik heb de offerte daarop aangepast (bijgevoegd), met twee opties:
+Dank voor je reactie en de toelichting — helder dat de foto's nu vooral voor de pitch nodig zijn. Ik heb de offerte daarop helemaal teruggebracht naar de pitchfase: alleen externe grondfotografie als basis, met dronefotografie optioneel, en de cinematische dronevideo bewust eruit gelaten voor later (als de verkoopopdracht rondkomt).
 
-- Optie 1 — Grondfotografie: € 1.350 ex. btw
+Twee opties (bijgevoegd):
+
+- Optie 1 — Grondfotografie: € 1.250 ex. btw
 - Optie 2 — Grondfotografie + dronefotografie, inclusief vluchtplannen & vergunningen: € 3.000 ex. btw
 
 De grondfotografie is niet afhankelijk van een luchtvaartvergunning, dus die kunnen we sowieso op tijd leveren: de bewerkte foto's lever ik uiterlijk dinsdag 7 juli (einde dag) aan. De dronefotografie blijft onder voorbehoud van de spoedvergunning i.v.m. de luchthaven.
