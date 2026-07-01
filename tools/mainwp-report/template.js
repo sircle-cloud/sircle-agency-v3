@@ -32,6 +32,16 @@ const I18N = {
       availability: 'beschikbaarheid over de hele periode.', incidents: 'Incidenten', topPages: "Best bezochte pagina's",
       noUpdates: 'Geen updates in deze periode.', noBackups: 'Geen backups geregistreerd.', noIncidents: 'Geen downtime-incidenten geregistreerd.', cleanDefault: 'Schoon',
     },
+    st: {
+      subtitle: 'onderhoud & status',
+      healthy: 'Goed', yes: 'Ja', no: 'Nee', active: 'Actief',
+      sc: { health: 'Health-score', security: 'Beveiliging', plugins: 'Actieve plugins', pending: 'Openstaande updates', wp: 'WordPress', php: 'PHP' },
+      updates: 'Geregistreerde updates', updatesSub: (n) => `${n} component(en) bijgewerkt in deze periode.`, noUpdatesPeriod: 'Geen updates geregistreerd in deze periode.',
+      pending: 'Openstaande updates', pendingSub: 'Updates die nog kunnen worden uitgevoerd.', allUpToDate: 'Alles up-to-date — geen openstaande updates.',
+      checks: 'Beveiligingscontroles', tech: 'Techniek & health',
+      lbl: { wp: 'WordPress-versie', php: 'PHP-versie', theme: 'Actief thema', ssl: 'SSL', dbSize: 'Databasegrootte', plugins: 'Actieve plugins', health: 'Health-score', wpUpToDate: 'WordPress up-to-date', debug: 'Debug-modus uitgeschakeld', phpMatch: 'PHP-versie voldoet', sslActive: 'SSL-verbinding actief' },
+      current: 'Huidig',
+    },
   },
   en: {
     lang: 'en',
@@ -48,6 +58,16 @@ const I18N = {
       updatesSub: (n) => `${n} components updated to the latest version.`,
       availability: 'availability over the entire period.', incidents: 'Incidents', topPages: 'Most visited pages',
       noUpdates: 'No updates in this period.', noBackups: 'No backups recorded.', noIncidents: 'No downtime incidents recorded.', cleanDefault: 'Clean',
+    },
+    st: {
+      subtitle: 'maintenance & status',
+      healthy: 'Good', yes: 'Yes', no: 'No', active: 'Active',
+      sc: { health: 'Health score', security: 'Security', plugins: 'Active plugins', pending: 'Pending updates', wp: 'WordPress', php: 'PHP' },
+      updates: 'Registered updates', updatesSub: (n) => `${n} component(s) updated in this period.`, noUpdatesPeriod: 'No updates registered in this period.',
+      pending: 'Pending updates', pendingSub: 'Updates that can still be applied.', allUpToDate: 'Everything up to date — no pending updates.',
+      checks: 'Security checks', tech: 'Technical & health',
+      lbl: { wp: 'WordPress version', php: 'PHP version', theme: 'Active theme', ssl: 'SSL', dbSize: 'Database size', plugins: 'Active plugins', health: 'Health score', wpUpToDate: 'WordPress up to date', debug: 'Debug mode disabled', phpMatch: 'PHP version compliant', sslActive: 'SSL connection active' },
+      current: 'Current',
     },
   },
 };
@@ -261,6 +281,89 @@ function healthSection(h) {
   );
 }
 
+// ---- Status-report sections (live MainWP REST data) ---------------------
+
+function statusScorecard(s = {}) {
+  const cards = [
+    { label: T.st.sc.health, value: esc(s.health ?? '—'), status: statusClass(s.health) },
+    { label: T.st.sc.security, value: esc(s.security ?? '—'), status: statusClass(s.security) },
+    { label: T.st.sc.plugins, value: s.plugins ?? 0 },
+    { label: T.st.sc.pending, value: s.pending ?? 0, status: (s.pending ?? 0) > 0 ? 'is-warn' : 'is-good' },
+    { label: T.st.sc.wp, value: esc(s.wp ?? '—') },
+    { label: T.st.sc.php, value: esc(s.php ?? '—') },
+  ];
+  return `<div class="scorecard">${cards
+    .map(
+      (c) => `<div class="score ${c.status || ''}">
+        <div class="score-value">${c.value}</div>
+        <div class="score-label">${c.label}</div>
+      </div>`
+    )
+    .join('')}</div>`;
+}
+
+function updatesPerformedSection(items = []) {
+  if (!items.length) return section(T.st.updates, `<p class="empty">${T.st.noUpdatesPeriod}</p>`);
+  const rows = items
+    .map(
+      (i) =>
+        `<tr><td class="t-type">${esc(i.type)}</td><td>${esc(i.name)}</td><td class="t-date">${fmtDate(
+          i.date
+        )}</td></tr>`
+    )
+    .join('');
+  return section(
+    T.st.updates,
+    `<p class="prose sub">${T.st.updatesSub(items.length)}</p>
+     <table class="tbl upperf"><thead><tr><th>${T.th.type}</th><th>${T.th.name}</th><th>${T.th.date}</th></tr></thead><tbody>${rows}</tbody></table>`
+  );
+}
+
+function pendingSection(items = []) {
+  if (!items.length) return section(T.st.pending, `<p class="empty">${T.st.allUpToDate}</p>`);
+  const rows = items
+    .map(
+      (i) =>
+        `<tr><td class="t-type">${esc(i.type)}</td><td>${esc(i.name)}</td><td class="t-ver">${esc(
+          i.from ?? ''
+        )}${i.to ? ` → ${esc(i.to)}` : ''}</td></tr>`
+    )
+    .join('');
+  return section(
+    T.st.pending,
+    `<p class="prose sub">${T.st.pendingSub}</p>
+     <table class="tbl upd"><thead><tr><th>${T.th.type}</th><th>${T.th.name}</th><th>${T.st.current} → ${T.th.version}</th></tr></thead><tbody>${rows}</tbody></table>`
+  );
+}
+
+function securityChecksSection(c = {}) {
+  const yn = (v) => `<span class="pill ${v ? 'is-good' : 'is-warn'}">${v ? T.st.yes : T.st.no}</span>`;
+  return section(
+    T.st.checks,
+    kv([
+      [T.st.lbl.wpUpToDate, yn(c.wpUpToDate)],
+      [T.st.lbl.sslActive, yn(c.ssl)],
+      [T.st.lbl.debug, yn(c.debugDisabled)],
+      [T.st.lbl.phpMatch, yn(c.phpMatch)],
+    ])
+  );
+}
+
+function techSection(t = {}) {
+  return section(
+    T.st.tech,
+    kv([
+      [T.st.lbl.wp, esc(t.wp ?? '—')],
+      [T.st.lbl.php, esc(t.php ?? '—')],
+      [T.st.lbl.theme, esc(t.theme ?? '—')],
+      [T.st.lbl.ssl, `<span class="pill ${t.ssl ? 'is-good' : 'is-warn'}">${t.ssl ? T.st.active : '—'}</span>`],
+      [T.st.lbl.dbSize, t.dbSize ? `${esc(t.dbSize)} MB` : '—'],
+      [T.st.lbl.plugins, esc(t.plugins ?? '—')],
+      [T.st.lbl.health, `<span class="pill ${statusClass(t.health)}">${esc(t.health ?? '—')}</span>`],
+    ])
+  );
+}
+
 // ---- Layout helpers -----------------------------------------------------
 
 function kv(pairs) {
@@ -273,8 +376,10 @@ function section(title, inner) {
   return `<section class="block"><h2>${title}</h2>${inner}</section>`;
 }
 
-function renderReport(site, meta) {
-  T = pickLang(site); // set the active language for all section helpers below
+// Shared document shell (cover + styles). Both the full report and the status
+// report render their sections into this so branding/layout stay identical.
+// The active language T must be set by the caller before calling docShell.
+function docShell(site, meta, bodyInner, subtitle) {
   const period = meta.period ?? {};
   const agency = meta.agency ?? {};
   return `<!DOCTYPE html>
@@ -355,6 +460,8 @@ function renderReport(site, meta) {
   .bkp td:nth-child(5), .bkp th:nth-child(5){ width:20mm; }
   .up-month td:nth-child(2), .up-month th:nth-child(2),
   .up-month td:nth-child(3), .up-month th:nth-child(3){ width:34mm; }
+  .upperf td:nth-child(1), .upperf th:nth-child(1){ width:26mm; }
+  .upperf td:nth-child(3), .upperf th:nth-child(3){ width:34mm; }
   .t-type{ font-weight:600; color:var(--mid-green); } .t-ver{ color:var(--muted); font-variant-numeric:tabular-nums; }
   .t-date{ white-space:nowrap; font-variant-numeric:tabular-nums; } .t-num,.t-num td{ text-align:right; font-variant-numeric:tabular-nums; }
   .log .t-action{ font-weight:400; } .t-detail{ display:block; color:var(--muted); font-size:7.5pt; margin-top:.5mm; }
@@ -382,7 +489,7 @@ function renderReport(site, meta) {
   <header class="head">
     <div class="brand">${LOGO_WHITE}</div>
     <div class="eyebrow">${T.eyebrow} · ${esc(period.label)}</div>
-    <h1>${esc(site.name)}<br><strong>${T.subtitle}</strong></h1>
+    <h1>${esc(site.name)}<br><strong>${subtitle ?? T.subtitle}</strong></h1>
     <div class="meta-row">
       <div><span>${T.website}</span><strong>${esc(site.url)}</strong></div>
       <div><span>${T.client}</span><strong>${esc(site.client ?? '—')}</strong></div>
@@ -390,19 +497,41 @@ function renderReport(site, meta) {
     </div>
   </header>
 
-  <main class="content">
-    ${scorecard(site.summary)}
-    ${summarySection(site.intro)}
-    ${activitySection(site.activity)}
-    ${updatesSection(site.updates)}
-    ${securitySection(site.security)}
-    ${backupsSection(site.backups)}
-    ${uptimeSection(site.uptime)}
-    ${performanceSection(site.performance)}
-    ${analyticsSection(site.analytics)}
-    ${healthSection(site.health)}
-  </main>
+  <main class="content">${bodyInner}</main>
 </body></html>`;
 }
 
-module.exports = { renderReport, pickLang };
+// Full maintenance report (rich data: activity, backups, uptime, …).
+function renderReport(site, meta) {
+  T = pickLang(site);
+  const body = [
+    scorecard(site.summary),
+    summarySection(site.intro),
+    activitySection(site.activity),
+    updatesSection(site.updates),
+    securitySection(site.security),
+    backupsSection(site.backups),
+    uptimeSection(site.uptime),
+    performanceSection(site.performance),
+    analyticsSection(site.analytics),
+    healthSection(site.health),
+  ].join('\n');
+  return docShell(site, meta, body);
+}
+
+// Status report (built purely from live MainWP REST data: current status +
+// registered updates + security checks; sections without data are omitted).
+function renderStatusReport(site, meta) {
+  T = pickLang(site);
+  const body = [
+    statusScorecard(site.summary),
+    summarySection(site.intro),
+    updatesPerformedSection(site.updatesPerformed),
+    pendingSection(site.pending),
+    securityChecksSection(site.checks),
+    techSection(site.tech),
+  ].join('\n');
+  return docShell(site, meta, body, T.st.subtitle);
+}
+
+module.exports = { renderReport, renderStatusReport, pickLang };

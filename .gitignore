@@ -32,4 +32,6 @@ scripts/
 # MainWP report tool — never commit generated reports or client data
 tools/mainwp-report/reports/
 tools/mainwp-report/_preview/
+tools/mainwp-report/_bundle/
 tools/mainwp-report/*.pdf
+tools/mainwp-report/*.log
