@@ -17,7 +17,7 @@ Ik heb de offerte aangepast naar een lichtere pitchfase-variant:
 
 Goed om daarbij alvast te vermelden: voor een latere dronevideo moeten de voorbereiding, vergunningen en planning opnieuw worden opgezet. De huidige drone-optie geeft daarom ook een realistische indicatie van de orde van grootte voor zo'n traject.
 
-Gezien de last-minute aanvraag en snelle doorlooptijd is in de prijs rekening gehouden met versnelde planning en uitvoering.
+In de tarieven is rekening gehouden met de last-minute aanvraag en de korte doorlooptijd.
 
 Zie bijlage voor de aangepaste offerte.
 
