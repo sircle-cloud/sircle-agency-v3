@@ -28,3 +28,8 @@ node_modules/
 .DS_Store
 __MACOSX/
 scripts/
+
+# MainWP report tool — never commit generated reports or client data
+tools/mainwp-report/reports/
+tools/mainwp-report/_preview/
+tools/mainwp-report/*.pdf
