@@ -2563,6 +2563,14 @@ a.marquee-item:hover {
   align-items: start;
 }
 
+.solutions-grid--teaser {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.solutions-grid--teaser .solutions-left .section-label { justify-content: center; }
+
 .solutions-left .section-title {
   text-align: left;
 }
