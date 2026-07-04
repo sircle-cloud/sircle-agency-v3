@@ -170,6 +170,34 @@ export class MemoryRepository implements BookingRepository {
     });
   }
 
+  async listActiveConnections(): Promise<Array<{ tenantId: string; userId: string }>> {
+    const out: Array<{ tenantId: string; userId: string }> = [];
+    for (const [key, info] of this.connInfo.entries()) {
+      if (info.status !== 'active') continue;
+      const [tenantId, userId] = key.split(':');
+      out.push({ tenantId, userId });
+    }
+    return out;
+  }
+
+  async findConnectionByGrantId(
+    grantId: string,
+  ): Promise<{ tenantId: string; userId: string } | null> {
+    for (const [key, info] of this.connInfo.entries()) {
+      if (info.connectionRef.split('|')[0] === grantId) {
+        const [tenantId, userId] = key.split(':');
+        return { tenantId, userId };
+      }
+    }
+    return null;
+  }
+
+  async updateConnectionStatus(tenantId: string, userId: string, status: string): Promise<void> {
+    const key = `${tenantId}:${userId}`;
+    const info = this.connInfo.get(key);
+    if (info) this.connInfo.set(key, { ...info, status });
+  }
+
   /** Alleen voor het admin-overzicht in de demo. */
   async _allBookings(): Promise<Booking[]> {
     return [...this.data.bookings];

@@ -22,6 +22,11 @@ export class MockCalendar implements CalendarProvider {
   /** Optioneel: vooraf ingestelde bezet-blokken per connectionRef (bv. externe afspraken). */
   constructor(private preexistingBusy: Record<string, BusyInterval[]> = {}) {}
 
+  /** Simuleer dat er extern (buiten ons systeem om) een afspraak in de agenda verschijnt. */
+  simulateExternalBusy(connectionRef: string, interval: BusyInterval): void {
+    (this.preexistingBusy[connectionRef] ??= []).push(interval);
+  }
+
   async getBusy(params: {
     connectionRef: string;
     fromUtc: string;

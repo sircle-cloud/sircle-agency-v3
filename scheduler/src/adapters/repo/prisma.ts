@@ -296,6 +296,31 @@ export class PrismaRepository implements BookingRepository {
     });
   }
 
+  async listActiveConnections(): Promise<Array<{ tenantId: string; userId: string }>> {
+    const rows = await this.prisma.calendarConnection.findMany({
+      where: { status: 'active' },
+      select: { tenantId: true, userId: true },
+    });
+    return rows;
+  }
+
+  async findConnectionByGrantId(
+    grantId: string,
+  ): Promise<{ tenantId: string; userId: string } | null> {
+    const c = await this.prisma.calendarConnection.findFirst({
+      where: { connectionRef: { startsWith: `${grantId}|` }, status: 'active' },
+      select: { tenantId: true, userId: true },
+    });
+    return c ?? null;
+  }
+
+  async updateConnectionStatus(tenantId: string, userId: string, status: string): Promise<void> {
+    await this.prisma.calendarConnection.updateMany({
+      where: { tenantId, userId },
+      data: { status },
+    });
+  }
+
   private toDomain = (b: {
     id: string;
     tenantId: string;

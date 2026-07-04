@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import { DateTime } from 'luxon';
 import { requireAdmin } from './guard';
-import { getAdminService, getRepository } from '@/config';
+import { getAdminService, getRepository, getSyncService } from '@/config';
 import { cancelBookingAction, logoutAction } from './actions';
 import { formatInZone, nowUtcIso } from '@/core/time';
 
@@ -25,6 +26,18 @@ export default async function AdminDashboard(props: {
     getRepository().getCalendarConnection(tenant.id, host.id),
   ]);
 
+  // Reconciliatie-backstop: detecteer boekingen waar de host extern iets
+  // overheen heeft gepland (§4). Alleen zinvol als er een agenda gekoppeld is.
+  const { conflicts } = connection
+    ? await getSyncService().reconcileHost({
+        tenantId: tenant.id,
+        hostUserId: host.id,
+        fromUtc: nowUtcIso(),
+        toUtc: DateTime.utc().plus({ days: 21 }).toISO()!,
+      })
+    : { conflicts: [] };
+  const conflictIds = new Set(conflicts.map((c) => c.booking.id));
+
   return (
     <>
       <div className="brandbar">
@@ -41,6 +54,13 @@ export default async function AdminDashboard(props: {
         {calendar && CALENDAR_MSG[calendar] && (
           <div className={`notice ${calendar === 'connected' ? 'success' : 'error'}`}>
             {CALENDAR_MSG[calendar]}
+          </div>
+        )}
+
+        {conflicts.length > 0 && (
+          <div className="notice error">
+            <strong>Let op: {conflicts.length} agenda-conflict(en).</strong> Er staan externe
+            afspraken over geboekte tijden. Overweeg deze boekingen te verzetten.
           </div>
         )}
 
@@ -91,6 +111,11 @@ export default async function AdminDashboard(props: {
                     <div>
                       <strong>{b.guestName}</strong> — {b.guestEmail}
                       {b.status === 'cancelled' && <span className="tag">geannuleerd</span>}
+                      {conflictIds.has(b.id) && (
+                        <span className="tag" style={{ background: '#fdecec', color: '#8a1c1c' }}>
+                          agenda-conflict
+                        </span>
+                      )}
                       <br />
                       <span className="muted">
                         {formatInZone(b.startUtc, tenant.timezone)} ({tenant.timezone})

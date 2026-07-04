@@ -117,4 +117,17 @@ export interface BookingRepository {
     provider: string;
     connectionRef: string;
   }): Promise<void>;
+
+  // ---- Sync/reconciliatie (Fase 3) ----
+
+  /** Alle actieve agenda-koppelingen (voor de reconciliatie-cron die alles langsloopt). */
+  listActiveConnections(): Promise<Array<{ tenantId: string; userId: string }>>;
+
+  /** Zoek de host bij een Nylas grant-id (om een binnenkomende webhook te routeren). */
+  findConnectionByGrantId(
+    grantId: string,
+  ): Promise<{ tenantId: string; userId: string } | null>;
+
+  /** Zet de status van een koppeling (bv. 'inactive' bij grant.expired). */
+  updateConnectionStatus(tenantId: string, userId: string, status: string): Promise<void>;
 }

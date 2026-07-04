@@ -30,8 +30,9 @@ Draait out-of-the-box op **in-memory data + mock-agenda + console-mail**. Open:
 
 ```bash
 npm run typecheck  # tsc --noEmit — schoon
-npm test           # 20 unit-tests: slot-engine, DST, buffers, dubbel-boeken, idempotentie,
-                   #                admin (afspraaktypes/beschikbaarheid/annuleren), wachtwoord-hashing
+npm test           # 25 unit-tests: slot-engine, DST, buffers, dubbel-boeken, idempotentie,
+                   #                admin (afspraaktypes/beschikbaarheid/annuleren), wachtwoord-hashing,
+                   #                sync (reconciliatie-conflicten, webhook-dispatch)
 npm run build      # Next.js productie-build
 ```
 
@@ -46,7 +47,8 @@ src/
     booking.ts       BookingService: idempotentie → free/busy → atomaire persist → sync → mail
     errors.ts        domeinfouten met stabiele codes
   core/admin.ts    ← AdminService: afspraaktypes, beschikbaarheid, annuleren
-  auth/            ← sessies (HMAC-cookie), wachtwoorden (scrypt), Nylas OAuth-helpers
+  core/sync.ts     ← SyncService: reconciliatie-backstop + webhook-dispatch (§4)
+  auth/            ← sessies (HMAC-cookie), wachtwoorden (scrypt), Nylas OAuth + webhook-verificatie
   ports/           ← de interfaces (anti-lock-in kern)
     index.ts         CalendarProvider · BookingRepository · Mailer
   adapters/        ← inwisselbare implementaties
@@ -64,6 +66,8 @@ src/
     admin/                  login · dashboard · event-types (CRUD) · beschikbaarheid
     api/…                   slots (GET) · bookings (POST) · embed-script
     api/oauth/nylas/…       hosted-auth start + callback (agenda koppelen)
+    api/webhooks/nylas      HMAC-geverifieerde webhook + challenge-handshake
+    api/cron/reconcile      periodieke reconciliatie-backstop (bearer-token)
 prisma/
   schema.prisma                       productie-datamodel (multi-tenant)
   migrations/manual/0001_*.sql        Postgres EXCLUSION-constraint (harde dubbel-boek-garantie)
@@ -88,6 +92,12 @@ test/                                  vitest
 - **Nylas OAuth-koppelflow** bedraad (`/api/oauth/nylas/start` → callback →
   `CalendarConnection`): met echte Nylas-credentials koppelt een host zijn
   Google-/Outlook-agenda en gaat de twee-weg sync live.
+- **Inbound sync + reconciliatie-backstop (Fase 3)**: HMAC-geverifieerde
+  Nylas-webhook (met challenge-handshake), `grant.expired` deactiveert de
+  koppeling, en een cron-endpoint detecteert **agenda-conflicten** (host plant
+  extern iets over een boeking) — zichtbaar als waarschuwing in het dashboard.
+  Omdat we Nylas gebruiken, ligt de zware channel-/subscription-renewal (§4)
+  bij Nylas, niet bij ons; onze backstop vangt gemiste webhooks op.
 
 ## Naar productie (adapters inpluggen)
 
@@ -111,10 +121,11 @@ de rest van de code verandert niet.
 
 ## Nog te bouwen (volgende fasen, zie het plan §8)
 
-- **Nylas-credentials koppelen** (`NYLAS_CLIENT_ID` + `NYLAS_API_KEY`) om de
-  OAuth-flow live te testen met een echte Google-/Outlook-agenda.
-- Webhook-ontvangst + renewal-jobs (Google-channels/Graph-subscriptions) en een
-  reconciliatie-loop (§4).
+- **Nylas-credentials koppelen** (`NYLAS_CLIENT_ID` + `NYLAS_API_KEY` +
+  `NYLAS_WEBHOOK_SECRET`) om OAuth, sync én webhooks live te testen met een
+  echte Google-/Outlook-agenda.
+- Reconciliatie-cron daadwerkelijk plannen (bv. Vercel Cron / externe scheduler
+  die `/api/cron/reconcile` elke ~10 min aanroept) + host-notificatie bij conflict.
 - Tenant-onboarding (self-service registratie) + gebruikersbeheer per tenant.
 - Herinneringsmails, verzetten door de gast, Stripe-facturatie, round-robin.
 - `OAuth app-verificatie` (Google, "sensitive" scope) vóór echte klanten (§4).
