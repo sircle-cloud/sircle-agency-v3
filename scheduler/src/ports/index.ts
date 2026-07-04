@@ -130,4 +130,15 @@ export interface BookingRepository {
 
   /** Zet de status van een koppeling (bv. 'inactive' bij grant.expired). */
   updateConnectionStatus(tenantId: string, userId: string, status: string): Promise<void>;
+
+  // ---- Herinneringen (Fase 3) ----
+
+  /**
+   * Bevestigde boekingen (over alle tenants) die starten in [nowUtc, untilUtc]
+   * en nog geen herinnering hebben gehad. Voor de reminder-cron.
+   */
+  listBookingsForReminders(nowUtc: string, untilUtc: string): Promise<Booking[]>;
+
+  /** Markeer dat de herinnering is verstuurd (voorkomt dubbele reminders). */
+  markReminderSent(bookingId: string, sentAtUtc: string): Promise<void>;
 }

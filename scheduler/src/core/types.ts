@@ -105,6 +105,8 @@ export interface Booking {
   externalEventId?: string;
   /** Idempotency-key tegen dubbele submits (§4/§7). */
   idempotencyKey?: string;
+  /** Moment waarop de herinneringsmail is verstuurd (voorkomt dubbele reminders). */
+  reminderSentAt?: string; // ISO
   createdAt: string; // ISO
 }
 

@@ -126,6 +126,7 @@ model Booking {
   status          String   @default("confirmed")
   externalEventId String?
   idempotencyKey  String?
+  reminderSentAt  DateTime?
   createdAt       DateTime @default(now())
 
   tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)

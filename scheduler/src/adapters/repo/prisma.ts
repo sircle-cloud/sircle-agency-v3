@@ -321,6 +321,25 @@ export class PrismaRepository implements BookingRepository {
     });
   }
 
+  async listBookingsForReminders(nowUtc: string, untilUtc: string): Promise<Booking[]> {
+    const rows = await this.prisma.booking.findMany({
+      where: {
+        status: 'confirmed',
+        reminderSentAt: null,
+        startUtc: { gte: new Date(nowUtc), lte: new Date(untilUtc) },
+      },
+      orderBy: { startUtc: 'asc' },
+    });
+    return rows.map(this.toDomain);
+  }
+
+  async markReminderSent(bookingId: string, sentAtUtc: string): Promise<void> {
+    await this.prisma.booking.update({
+      where: { id: bookingId },
+      data: { reminderSentAt: new Date(sentAtUtc) },
+    });
+  }
+
   private toDomain = (b: {
     id: string;
     tenantId: string;
@@ -334,6 +353,7 @@ export class PrismaRepository implements BookingRepository {
     status: string;
     externalEventId: string | null;
     idempotencyKey: string | null;
+    reminderSentAt: Date | null;
     createdAt: Date;
   }): Booking => ({
     id: b.id,
@@ -348,6 +368,7 @@ export class PrismaRepository implements BookingRepository {
     status: b.status as Booking['status'],
     externalEventId: b.externalEventId ?? undefined,
     idempotencyKey: b.idempotencyKey ?? undefined,
+    reminderSentAt: b.reminderSentAt?.toISOString() ?? undefined,
     createdAt: b.createdAt.toISOString(),
   });
 }

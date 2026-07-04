@@ -30,9 +30,9 @@ Draait out-of-the-box op **in-memory data + mock-agenda + console-mail**. Open:
 
 ```bash
 npm run typecheck  # tsc --noEmit — schoon
-npm test           # 25 unit-tests: slot-engine, DST, buffers, dubbel-boeken, idempotentie,
+npm test           # 28 unit-tests: slot-engine, DST, buffers, dubbel-boeken, idempotentie,
                    #                admin (afspraaktypes/beschikbaarheid/annuleren), wachtwoord-hashing,
-                   #                sync (reconciliatie-conflicten, webhook-dispatch)
+                   #                sync (reconciliatie-conflicten, webhook-dispatch), herinneringen
 npm run build      # Next.js productie-build
 ```
 
@@ -48,6 +48,7 @@ src/
     errors.ts        domeinfouten met stabiele codes
   core/admin.ts    ← AdminService: afspraaktypes, beschikbaarheid, annuleren
   core/sync.ts     ← SyncService: reconciliatie-backstop + webhook-dispatch (§4)
+  core/reminders.ts← ReminderService: herinneringsmails, idempotent (no-show-reductie)
   auth/            ← sessies (HMAC-cookie), wachtwoorden (scrypt), Nylas OAuth + webhook-verificatie
   ports/           ← de interfaces (anti-lock-in kern)
     index.ts         CalendarProvider · BookingRepository · Mailer
@@ -68,6 +69,7 @@ src/
     api/oauth/nylas/…       hosted-auth start + callback (agenda koppelen)
     api/webhooks/nylas      HMAC-geverifieerde webhook + challenge-handshake
     api/cron/reconcile      periodieke reconciliatie-backstop (bearer-token)
+    api/cron/reminders      herinneringsmails vóór de afspraak (bearer-token)
 prisma/
   schema.prisma                       productie-datamodel (multi-tenant)
   migrations/manual/0001_*.sql        Postgres EXCLUSION-constraint (harde dubbel-boek-garantie)
@@ -98,6 +100,9 @@ test/                                  vitest
   extern iets over een boeking) — zichtbaar als waarschuwing in het dashboard.
   Omdat we Nylas gebruiken, ligt de zware channel-/subscription-renewal (§4)
   bij Nylas, niet bij ons; onze backstop vangt gemiste webhooks op.
+- **Herinneringsmails (Fase 3)**: `/api/cron/reminders` stuurt idempotent (via
+  `reminderSentAt`) een herinnering voor afspraken die binnen 24u starten —
+  no-show-reductie als concreet verkoopargument (§5).
 
 ## Naar productie (adapters inpluggen)
 

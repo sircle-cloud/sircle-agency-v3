@@ -198,6 +198,21 @@ export class MemoryRepository implements BookingRepository {
     if (info) this.connInfo.set(key, { ...info, status });
   }
 
+  async listBookingsForReminders(nowUtc: string, untilUtc: string): Promise<Booking[]> {
+    return this.data.bookings.filter(
+      (b) =>
+        b.status === 'confirmed' &&
+        !b.reminderSentAt &&
+        b.startUtc >= nowUtc &&
+        b.startUtc <= untilUtc,
+    );
+  }
+
+  async markReminderSent(bookingId: string, sentAtUtc: string): Promise<void> {
+    const b = this.data.bookings.find((x) => x.id === bookingId);
+    if (b) b.reminderSentAt = sentAtUtc;
+  }
+
   /** Alleen voor het admin-overzicht in de demo. */
   async _allBookings(): Promise<Booking[]> {
     return [...this.data.bookings];
