@@ -86,6 +86,12 @@ export interface BookingRepository {
 
   getTenantById(tenantId: string): Promise<Tenant | null>;
 
+  /** Maak een nieuwe tenant (organisatie) — voor self-service onboarding. */
+  createTenant(tenant: Tenant): Promise<Tenant>;
+
+  /** Maak een nieuwe gebruiker (incl. passwordHash) — de eerste admin van een tenant. */
+  createUser(user: User): Promise<User>;
+
   listEventTypes(tenantId: string): Promise<EventType[]>;
 
   /** Upsert (op id) van een afspraaktype. */

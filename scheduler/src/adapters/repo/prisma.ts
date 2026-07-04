@@ -189,6 +189,32 @@ export class PrismaRepository implements BookingRepository {
     };
   }
 
+  async createTenant(tenant: Tenant): Promise<Tenant> {
+    await this.prisma.tenant.create({
+      data: {
+        id: tenant.id,
+        slug: tenant.slug,
+        name: tenant.name,
+        timezone: tenant.timezone,
+        brandingJson: tenant.branding ?? undefined,
+      },
+    });
+    return tenant;
+  }
+
+  async createUser(user: User): Promise<User> {
+    await this.prisma.user.create({
+      data: {
+        id: user.id,
+        tenantId: user.tenantId,
+        email: user.email,
+        name: user.name,
+        passwordHash: user.passwordHash ?? null,
+      },
+    });
+    return user;
+  }
+
   async listEventTypes(tenantId: string): Promise<EventType[]> {
     const rows = await this.prisma.eventType.findMany({ where: { tenantId } });
     return rows.map((e) => ({

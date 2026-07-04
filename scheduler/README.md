@@ -21,6 +21,7 @@ npm run dev        # http://localhost:3000
 Draait out-of-the-box op **in-memory data + mock-agenda + console-mail**. Open:
 
 - `/` — demo-overzicht
+- `/signup` — nieuwe organisatie aanmaken (multi-tenant onboarding)
 - `/sircle/intake` — publieke boekingspagina (kies slot → gegevens → bevestigen)
 - `/sircle/intake?embed=1` — embed-/iframe-weergave
 - `/admin/login` — admin-login (demo: `koen@sircle.example` / `demo1234`)
@@ -30,10 +31,10 @@ Draait out-of-the-box op **in-memory data + mock-agenda + console-mail**. Open:
 
 ```bash
 npm run typecheck  # tsc --noEmit — schoon
-npm test           # 32 unit-tests: slot-engine, DST, buffers, dubbel-boeken, idempotentie,
+npm test           # 36 unit-tests: slot-engine, DST, buffers, dubbel-boeken, idempotentie,
                    #                admin (afspraaktypes/beschikbaarheid/annuleren), wachtwoord-hashing,
                    #                sync (reconciliatie-conflicten, webhook-dispatch), herinneringen,
-                   #                gast-self-service (token, annuleren, verzetten)
+                   #                gast-self-service (token, annuleren, verzetten), onboarding
 npm run build      # Next.js productie-build
 ```
 
@@ -51,6 +52,7 @@ src/
   core/sync.ts     ← SyncService: reconciliatie-backstop + webhook-dispatch (§4)
   core/reminders.ts← ReminderService: herinneringsmails, idempotent (no-show-reductie)
   core/guest.ts    ← GuestBookingService: gast verzet/annuleert via beveiligde link
+  core/onboarding.ts← OnboardingService: self-service registratie van nieuwe tenants
   auth/            ← sessies (HMAC-cookie), wachtwoorden (scrypt), Nylas OAuth +
                      webhook-verificatie, gast-beheer-tokens
   ports/           ← de interfaces (anti-lock-in kern)
@@ -67,6 +69,7 @@ src/
   config.ts        ← composition root: kiest adapters op env (DB/CALENDAR/MAIL_DRIVER)
   app/             ← Next.js (App Router)
     [tenant]/[eventType]/   publieke boekingspagina + client-widget
+    signup/                 self-service onboarding van een nieuwe organisatie
     manage/[bookingId]/     gast verzet/annuleert via beveiligde token-link
     admin/                  login · dashboard · event-types (CRUD) · beschikbaarheid
     api/…                   slots (GET) · bookings (POST) · embed-script
@@ -111,6 +114,10 @@ test/                                  vitest
   link (`/manage/<id>?token=…`) waarmee de gast zonder account kan **verzetten of
   annuleren** — inclusief twee-weg agenda-sync (oud event weg, nieuw event erin)
   en bevestigingsmail. Sluit de boekingslevenscyclus.
+- **Tenant-onboarding (Fase 2)**: `/signup` maakt self-service een nieuwe
+  organisatie + eerste admin aan, met directe defaults (werktijden ma–vr +
+  starter-afspraaktype), zodat een klant meteen een werkende boekingspagina
+  heeft. Slug- en e-mail-uniciteit afgedwongen. Fundament voor white-label uitrol.
 
 ## Naar productie (adapters inpluggen)
 
@@ -139,8 +146,8 @@ de rest van de code verandert niet.
   echte Google-/Outlook-agenda.
 - Reconciliatie-cron daadwerkelijk plannen (bv. Vercel Cron / externe scheduler
   die `/api/cron/reconcile` elke ~10 min aanroept) + host-notificatie bij conflict.
-- Tenant-onboarding (self-service registratie) + gebruikersbeheer per tenant.
-- Herinneringsmails, verzetten door de gast, Stripe-facturatie, round-robin.
+- Gebruikersbeheer per tenant (meerdere hosts) + eigen domein/branding per tenant.
+- Stripe-facturatie (plannen), round-robin / team-scheduling.
 - `OAuth app-verificatie` (Google, "sensitive" scope) vóór echte klanten (§4).
 
 > Losstaand van de statische agency-site: dit project heeft een eigen

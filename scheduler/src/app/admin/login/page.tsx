@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useActionState } from 'react';
 import { loginAction } from '../actions';
 
@@ -32,6 +33,8 @@ export default function LoginPage() {
           </form>
           <p className="muted" style={{ marginTop: '1rem' }}>
             Demo-login: <code>koen@sircle.example</code> / <code>demo1234</code>
+            <br />
+            Nog geen account? <Link href="/signup">Organisatie aanmaken</Link>
           </p>
         </div>
       </div>

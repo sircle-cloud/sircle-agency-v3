@@ -18,6 +18,7 @@ import { AdminService } from './core/admin';
 import { SyncService } from './core/sync';
 import { ReminderService } from './core/reminders';
 import { GuestBookingService } from './core/guest';
+import { OnboardingService } from './core/onboarding';
 import type { BookingRepository, CalendarProvider, Mailer } from './ports/index';
 import { MemoryRepository } from './adapters/repo/memory';
 import { PrismaRepository } from './adapters/repo/prisma';
@@ -98,6 +99,10 @@ export function getReminderService(): ReminderService {
 
 export function getGuestService(): GuestBookingService {
   return new GuestBookingService(repository(), calendar(), mailer());
+}
+
+export function getOnboardingService(): OnboardingService {
+  return new OnboardingService(repository(), idGen);
 }
 
 export function getRepository(): BookingRepository {

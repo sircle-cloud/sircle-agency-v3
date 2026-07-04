@@ -38,7 +38,9 @@ export default async function Home() {
             ))}
           </div>
           <p className="muted" style={{ marginTop: '1.5rem' }}>
-            <Link href="/admin">→ Admin: boekingen bekijken</Link>
+            <Link href="/signup">→ Nieuwe organisatie aanmaken (onboarding)</Link>
+            <br />
+            <Link href="/admin">→ Admin: inloggen &amp; beheren</Link>
             <br />
             <Link href="/sircle/intake?embed=1">→ Embed-weergave (iframe-modus)</Link>
           </p>
