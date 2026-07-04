@@ -7,6 +7,7 @@
 import type {
   Booking,
   BusyInterval,
+  CalendarConnectionInfo,
   EventType,
   Tenant,
   User,
@@ -77,4 +78,43 @@ export interface BookingRepository {
   createBookingAtomically(booking: Booking): Promise<Booking>;
 
   updateBooking(booking: Booking): Promise<Booking>;
+
+  // ---- Admin/beheer (Fase 2) ----
+
+  /** Zoek een gebruiker op e-mail (voor admin-login). Inclusief passwordHash. */
+  getUserByEmail(email: string): Promise<User | null>;
+
+  getTenantById(tenantId: string): Promise<Tenant | null>;
+
+  listEventTypes(tenantId: string): Promise<EventType[]>;
+
+  /** Upsert (op id) van een afspraaktype. */
+  saveEventType(eventType: EventType): Promise<EventType>;
+
+  deleteEventType(tenantId: string, eventTypeId: string): Promise<void>;
+
+  /** Vervang de volledige set beschikbaarheidsregels van een host. */
+  replaceAvailability(
+    tenantId: string,
+    userId: string,
+    rules: AvailabilityRule[],
+  ): Promise<void>;
+
+  /** Alle bevestigde boekingen van een tenant vanaf `fromUtc` (voor het dashboard). */
+  listTenantBookings(tenantId: string, fromUtc: string): Promise<Booking[]>;
+
+  getBooking(tenantId: string, bookingId: string): Promise<Booking | null>;
+
+  getCalendarConnection(
+    tenantId: string,
+    userId: string,
+  ): Promise<CalendarConnectionInfo | null>;
+
+  /** Sla (of vervang) de agenda-koppeling van een host op — gebruikt na de OAuth-callback. */
+  saveCalendarConnection(params: {
+    tenantId: string;
+    userId: string;
+    provider: string;
+    connectionRef: string;
+  }): Promise<void>;
 }

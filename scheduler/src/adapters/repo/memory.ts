@@ -12,6 +12,7 @@ import type {
   AvailabilityRule,
   BlockedDate,
   Booking,
+  CalendarConnectionInfo,
   EventType,
   Tenant,
   User,
@@ -22,10 +23,14 @@ import { buildSeed, type SeedData } from '../seed';
 
 export class MemoryRepository implements BookingRepository {
   private data: SeedData;
+  private connInfo = new Map<string, CalendarConnectionInfo>();
 
   constructor(seed: SeedData = buildSeed()) {
     // Diepe kopie zodat tests elkaar niet beïnvloeden.
     this.data = structuredClone(seed);
+    for (const [key, ref] of Object.entries(this.data.connections)) {
+      if (ref) this.connInfo.set(key, { provider: 'nylas', connectionRef: ref, status: 'active' });
+    }
   }
 
   async getTenantBySlug(slug: string): Promise<Tenant | null> {
@@ -51,7 +56,7 @@ export class MemoryRepository implements BookingRepository {
   }
 
   async getCalendarConnectionRef(tenantId: string, userId: string): Promise<string | null> {
-    return this.data.connections[`${tenantId}:${userId}`] ?? null;
+    return this.connInfo.get(`${tenantId}:${userId}`)?.connectionRef ?? null;
   }
 
   async listBookings(params: {
@@ -93,6 +98,76 @@ export class MemoryRepository implements BookingRepository {
     const idx = this.data.bookings.findIndex((b) => b.id === booking.id);
     if (idx >= 0) this.data.bookings[idx] = { ...booking };
     return booking;
+  }
+
+  // ---- Admin/beheer (Fase 2) ----
+
+  async getUserByEmail(email: string): Promise<User | null> {
+    return this.data.users.find((u) => u.email === email.toLowerCase()) ?? null;
+  }
+
+  async getTenantById(tenantId: string): Promise<Tenant | null> {
+    return this.data.tenants.find((t) => t.id === tenantId) ?? null;
+  }
+
+  async listEventTypes(tenantId: string): Promise<EventType[]> {
+    return this.data.eventTypes.filter((e) => e.tenantId === tenantId);
+  }
+
+  async saveEventType(eventType: EventType): Promise<EventType> {
+    const idx = this.data.eventTypes.findIndex(
+      (e) => e.tenantId === eventType.tenantId && e.id === eventType.id,
+    );
+    if (idx >= 0) this.data.eventTypes[idx] = { ...eventType };
+    else this.data.eventTypes.push({ ...eventType });
+    return eventType;
+  }
+
+  async deleteEventType(tenantId: string, eventTypeId: string): Promise<void> {
+    this.data.eventTypes = this.data.eventTypes.filter(
+      (e) => !(e.tenantId === tenantId && e.id === eventTypeId),
+    );
+  }
+
+  async replaceAvailability(
+    tenantId: string,
+    userId: string,
+    rules: AvailabilityRule[],
+  ): Promise<void> {
+    this.data.rules = this.data.rules.filter(
+      (r) => !(r.tenantId === tenantId && r.userId === userId),
+    );
+    this.data.rules.push(...rules.map((r) => ({ ...r })));
+  }
+
+  async listTenantBookings(tenantId: string, fromUtc: string): Promise<Booking[]> {
+    return this.data.bookings
+      .filter((b) => b.tenantId === tenantId && b.endUtc >= fromUtc)
+      .sort((a, b) => a.startUtc.localeCompare(b.startUtc));
+  }
+
+  async getBooking(tenantId: string, bookingId: string): Promise<Booking | null> {
+    return this.data.bookings.find((b) => b.tenantId === tenantId && b.id === bookingId) ?? null;
+  }
+
+  async getCalendarConnection(
+    tenantId: string,
+    userId: string,
+  ): Promise<CalendarConnectionInfo | null> {
+    return this.connInfo.get(`${tenantId}:${userId}`) ?? null;
+  }
+
+  async saveCalendarConnection(params: {
+    tenantId: string;
+    userId: string;
+    provider: string;
+    connectionRef: string;
+  }): Promise<void> {
+    this.connInfo.set(`${params.tenantId}:${params.userId}`, {
+      provider: params.provider,
+      connectionRef: params.connectionRef,
+      status: 'active',
+    });
   }
 
   /** Alleen voor het admin-overzicht in de demo. */

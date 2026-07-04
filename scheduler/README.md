@@ -23,13 +23,15 @@ Draait out-of-the-box op **in-memory data + mock-agenda + console-mail**. Open:
 - `/` — demo-overzicht
 - `/sircle/intake` — publieke boekingspagina (kies slot → gegevens → bevestigen)
 - `/sircle/intake?embed=1` — embed-/iframe-weergave
-- `/admin` — boekingen-overzicht
+- `/admin/login` — admin-login (demo: `koen@sircle.example` / `demo1234`)
+- `/admin` — dashboard: boekingen, agenda-koppeling, beheer
 
 ## Verifiëren
 
 ```bash
 npm run typecheck  # tsc --noEmit — schoon
-npm test           # 14 unit-tests: slot-engine, DST, buffers, dubbel-boeken, idempotentie
+npm test           # 20 unit-tests: slot-engine, DST, buffers, dubbel-boeken, idempotentie,
+                   #                admin (afspraaktypes/beschikbaarheid/annuleren), wachtwoord-hashing
 npm run build      # Next.js productie-build
 ```
 
@@ -43,6 +45,8 @@ src/
     availability.ts  slot-engine: rules + buffers + minNotice + busy → vrije slots
     booking.ts       BookingService: idempotentie → free/busy → atomaire persist → sync → mail
     errors.ts        domeinfouten met stabiele codes
+  core/admin.ts    ← AdminService: afspraaktypes, beschikbaarheid, annuleren
+  auth/            ← sessies (HMAC-cookie), wachtwoorden (scrypt), Nylas OAuth-helpers
   ports/           ← de interfaces (anti-lock-in kern)
     index.ts         CalendarProvider · BookingRepository · Mailer
   adapters/        ← inwisselbare implementaties
@@ -57,8 +61,9 @@ src/
   config.ts        ← composition root: kiest adapters op env (DB/CALENDAR/MAIL_DRIVER)
   app/             ← Next.js (App Router)
     [tenant]/[eventType]/   publieke boekingspagina + client-widget
-    admin/                  boekingen-overzicht (demo)
+    admin/                  login · dashboard · event-types (CRUD) · beschikbaarheid
     api/…                   slots (GET) · bookings (POST) · embed-script
+    api/oauth/nylas/…       hosted-auth start + callback (agenda koppelen)
 prisma/
   schema.prisma                       productie-datamodel (multi-tenant)
   migrations/manual/0001_*.sql        Postgres EXCLUSION-constraint (harde dubbel-boek-garantie)
@@ -76,6 +81,13 @@ test/                                  vitest
 - **Embed-widget**: `<div data-sircle-tenant="…" data-sircle-event="…"></div>` +
   `<script src="…/api/embed-script">`.
 - **Multi-tenant datamodel** (elke rij draagt `tenantId`; RLS in prod).
+- **Admin-dashboard met auth (Fase 2)**: login (scrypt-wachtwoord + HMAC-sessie,
+  geen externe auth-library), afspraaktypes aanmaken/bewerken/verwijderen,
+  wekelijkse beschikbaarheid instellen, boekingen annuleren (verwijdert ook het
+  agenda-event). Alles tenant-gescopet.
+- **Nylas OAuth-koppelflow** bedraad (`/api/oauth/nylas/start` → callback →
+  `CalendarConnection`): met echte Nylas-credentials koppelt een host zijn
+  Google-/Outlook-agenda en gaat de twee-weg sync live.
 
 ## Naar productie (adapters inpluggen)
 
@@ -99,12 +111,12 @@ de rest van de code verandert niet.
 
 ## Nog te bouwen (volgende fasen, zie het plan §8)
 
-- **Nylas OAuth-flow** (hosted-auth) om per host een `grantId` te verkrijgen en
-  in `CalendarConnection` op te slaan → dan is de agenda-sync live.
+- **Nylas-credentials koppelen** (`NYLAS_CLIENT_ID` + `NYLAS_API_KEY`) om de
+  OAuth-flow live te testen met een echte Google-/Outlook-agenda.
 - Webhook-ontvangst + renewal-jobs (Google-channels/Graph-subscriptions) en een
   reconciliatie-loop (§4).
-- Auth per tenant + admin-dashboard (beschikbaarheid, event-types beheren).
-- Herinneringsmails, annuleren/verzetten, Stripe-facturatie, round-robin.
+- Tenant-onboarding (self-service registratie) + gebruikersbeheer per tenant.
+- Herinneringsmails, verzetten door de gast, Stripe-facturatie, round-robin.
 - `OAuth app-verificatie` (Google, "sensitive" scope) vóór echte klanten (§4).
 
 > Losstaand van de statische agency-site: dit project heeft een eigen

@@ -11,6 +11,10 @@ import type {
   Tenant,
   User,
 } from '../core/types';
+import { hashPassword } from '../auth/password';
+
+/** Demo admin-inloggegevens (alleen voor de dev-seed). */
+export const DEMO_ADMIN = { email: 'koen@sircle.example', password: 'demo1234' };
 
 export interface SeedData {
   tenants: Tenant[];
@@ -35,8 +39,9 @@ export function buildSeed(): SeedData {
   const host: User = {
     id: 'u_koen',
     tenantId: tenant.id,
-    email: 'koen@sircle.example',
+    email: DEMO_ADMIN.email,
     name: 'Koen',
+    passwordHash: hashPassword(DEMO_ADMIN.password),
   };
 
   const eventTypes: EventType[] = [

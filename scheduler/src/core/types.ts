@@ -29,6 +29,15 @@ export interface User {
   tenantId: string;
   email: string;
   name: string;
+  /** scrypt-hash (`salt:hash`) voor admin-login. Optioneel: gasten hebben geen account. */
+  passwordHash?: string;
+}
+
+/** Status van een agenda-koppeling voor de admin-UI. */
+export interface CalendarConnectionInfo {
+  provider: string;
+  connectionRef: string;
+  status: string;
 }
 
 export interface EventType {

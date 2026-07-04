@@ -11,6 +11,7 @@ import type {
   AvailabilityRule,
   BlockedDate,
   Booking,
+  CalendarConnectionInfo,
   EventType,
   Tenant,
   User,
@@ -55,7 +56,23 @@ export class PrismaRepository implements BookingRepository {
 
   async getUser(tenantId: string, userId: string): Promise<User | null> {
     const u = await this.prisma.user.findFirst({ where: { id: userId, tenantId } });
-    return u ? { id: u.id, tenantId: u.tenantId, email: u.email, name: u.name } : null;
+    return u ? this.userToDomain(u) : null;
+  }
+
+  private userToDomain(u: {
+    id: string;
+    tenantId: string;
+    email: string;
+    name: string;
+    passwordHash: string | null;
+  }): User {
+    return {
+      id: u.id,
+      tenantId: u.tenantId,
+      email: u.email,
+      name: u.name,
+      passwordHash: u.passwordHash ?? undefined,
+    };
   }
 
   async getRules(tenantId: string, userId: string): Promise<AvailabilityRule[]> {
@@ -151,6 +168,132 @@ export class PrismaRepository implements BookingRepository {
       },
     });
     return this.toDomain(b);
+  }
+
+  // ---- Admin/beheer (Fase 2) ----
+
+  async getUserByEmail(email: string): Promise<User | null> {
+    const u = await this.prisma.user.findFirst({ where: { email: email.toLowerCase() } });
+    return u ? this.userToDomain(u) : null;
+  }
+
+  async getTenantById(tenantId: string): Promise<Tenant | null> {
+    const t = await this.prisma.tenant.findUnique({ where: { id: tenantId } });
+    if (!t) return null;
+    return {
+      id: t.id,
+      slug: t.slug,
+      name: t.name,
+      timezone: t.timezone,
+      branding: (t.brandingJson as Tenant['branding']) ?? undefined,
+    };
+  }
+
+  async listEventTypes(tenantId: string): Promise<EventType[]> {
+    const rows = await this.prisma.eventType.findMany({ where: { tenantId } });
+    return rows.map((e) => ({
+      id: e.id,
+      tenantId: e.tenantId,
+      hostUserId: e.hostUserId,
+      slug: e.slug,
+      name: e.name,
+      description: e.description ?? undefined,
+      durationMin: e.durationMin,
+      slotGranularityMin: e.slotGranularityMin ?? undefined,
+      bufferBeforeMin: e.bufferBeforeMin,
+      bufferAfterMin: e.bufferAfterMin,
+      minNoticeMin: e.minNoticeMin,
+      locationType: e.locationType as EventType['locationType'],
+    }));
+  }
+
+  async saveEventType(e: EventType): Promise<EventType> {
+    const data = {
+      tenantId: e.tenantId,
+      hostUserId: e.hostUserId,
+      slug: e.slug,
+      name: e.name,
+      description: e.description ?? null,
+      durationMin: e.durationMin,
+      slotGranularityMin: e.slotGranularityMin ?? null,
+      bufferBeforeMin: e.bufferBeforeMin,
+      bufferAfterMin: e.bufferAfterMin,
+      minNoticeMin: e.minNoticeMin,
+      locationType: e.locationType,
+    };
+    await this.prisma.eventType.upsert({
+      where: { id: e.id },
+      create: { id: e.id, ...data },
+      update: data,
+    });
+    return e;
+  }
+
+  async deleteEventType(tenantId: string, eventTypeId: string): Promise<void> {
+    await this.prisma.eventType.deleteMany({ where: { id: eventTypeId, tenantId } });
+  }
+
+  async replaceAvailability(
+    tenantId: string,
+    userId: string,
+    rules: AvailabilityRule[],
+  ): Promise<void> {
+    await this.prisma.$transaction([
+      this.prisma.availabilityRule.deleteMany({ where: { tenantId, userId } }),
+      this.prisma.availabilityRule.createMany({
+        data: rules.map((r) => ({
+          id: r.id,
+          tenantId: r.tenantId,
+          userId: r.userId,
+          weekday: r.weekday,
+          startMinutes: r.startMinutes,
+          endMinutes: r.endMinutes,
+          timezone: r.timezone,
+        })),
+      }),
+    ]);
+  }
+
+  async listTenantBookings(tenantId: string, fromUtc: string): Promise<Booking[]> {
+    const rows = await this.prisma.booking.findMany({
+      where: { tenantId, endUtc: { gte: new Date(fromUtc) } },
+      orderBy: { startUtc: 'asc' },
+    });
+    return rows.map(this.toDomain);
+  }
+
+  async getBooking(tenantId: string, bookingId: string): Promise<Booking | null> {
+    const b = await this.prisma.booking.findFirst({ where: { id: bookingId, tenantId } });
+    return b ? this.toDomain(b) : null;
+  }
+
+  async getCalendarConnection(
+    tenantId: string,
+    userId: string,
+  ): Promise<CalendarConnectionInfo | null> {
+    const c = await this.prisma.calendarConnection.findFirst({
+      where: { tenantId, userId, status: 'active' },
+    });
+    return c ? { provider: c.provider, connectionRef: c.connectionRef, status: c.status } : null;
+  }
+
+  async saveCalendarConnection(params: {
+    tenantId: string;
+    userId: string;
+    provider: string;
+    connectionRef: string;
+  }): Promise<void> {
+    await this.prisma.calendarConnection.upsert({
+      where: {
+        tenantId_userId_provider: {
+          tenantId: params.tenantId,
+          userId: params.userId,
+          provider: params.provider,
+        },
+      },
+      create: { ...params, status: 'active' },
+      update: { connectionRef: params.connectionRef, status: 'active' },
+    });
   }
 
   private toDomain = (b: {

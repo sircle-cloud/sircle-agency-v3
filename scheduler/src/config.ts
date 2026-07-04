@@ -14,6 +14,7 @@
  */
 import { PrismaClient } from '@prisma/client';
 import { BookingService } from './core/booking';
+import { AdminService } from './core/admin';
 import type { BookingRepository, CalendarProvider, Mailer } from './ports/index';
 import { MemoryRepository } from './adapters/repo/memory';
 import { PrismaRepository } from './adapters/repo/prisma';
@@ -78,6 +79,10 @@ function idGen(): string {
 
 export function getBookingService(): BookingService {
   return new BookingService(repository(), calendar(), mailer(), idGen);
+}
+
+export function getAdminService(): AdminService {
+  return new AdminService(repository(), calendar(), idGen);
 }
 
 export function getRepository(): BookingRepository {

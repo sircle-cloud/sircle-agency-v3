@@ -1,42 +1,108 @@
-import { getRepository } from '@/config';
-import type { Booking } from '@/core/types';
-import { formatInZone } from '@/core/time';
+import Link from 'next/link';
+import { requireAdmin } from './guard';
+import { getAdminService, getRepository } from '@/config';
+import { cancelBookingAction, logoutAction } from './actions';
+import { formatInZone, nowUtcIso } from '@/core/time';
 
 export const dynamic = 'force-dynamic';
 
-/**
- * Minimaal admin-overzicht (demo). In Fase 2 wordt dit een echt dashboard met
- * auth per tenant (§8). Hier leest het alle boekingen uit de in-memory repo.
- */
-export default async function AdminPage() {
-  const repo = getRepository() as unknown as { _allBookings?: () => Promise<Booking[]> };
-  const bookings = (await repo._allBookings?.()) ?? [];
+const CALENDAR_MSG: Record<string, string> = {
+  connected: 'Agenda gekoppeld! Je beschikbaarheid houdt nu rekening met je agenda.',
+  cancelled: 'Agenda-koppeling geannuleerd.',
+  error: 'Koppelen mislukt. Probeer het opnieuw.',
+  state_error: 'Beveiligingscontrole mislukt. Probeer het opnieuw.',
+};
+
+export default async function AdminDashboard(props: {
+  searchParams: Promise<{ calendar?: string }>;
+}) {
+  const { tenant, host } = await requireAdmin();
+  const { calendar } = await props.searchParams;
+
+  const service = getAdminService();
+  const [bookings, connection] = await Promise.all([
+    service.listBookings(tenant.id, nowUtcIso()),
+    getRepository().getCalendarConnection(tenant.id, host.id),
+  ]);
 
   return (
     <>
       <div className="brandbar">
-        <div className="name">SIRCLE Planner — Admin</div>
-        <div className="sub">boekingen (demo)</div>
+        <div className="name">{tenant.name} — Admin</div>
+        <div className="sub">
+          Ingelogd als {host.name} ·{' '}
+          <form action={logoutAction} style={{ display: 'inline' }}>
+            <button style={{ padding: '0.1rem 0.5rem', fontSize: '0.8rem' }}>uitloggen</button>
+          </form>
+        </div>
       </div>
+
       <div className="container">
-        <div className="card">
-          <h1>Boekingen</h1>
-          {bookings.length === 0 ? (
+        {calendar && CALENDAR_MSG[calendar] && (
+          <div className={`notice ${calendar === 'connected' ? 'success' : 'error'}`}>
+            {CALENDAR_MSG[calendar]}
+          </div>
+        )}
+
+        <div style={{ display: 'flex', gap: '0.5rem', margin: '1rem 0', flexWrap: 'wrap' }}>
+          <Link className="btn" href="/admin/event-types">Afspraaktypes</Link>
+          <Link className="btn" href="/admin/availability">Beschikbaarheid</Link>
+          <Link className="btn" href={`/${tenant.slug}/intake`} target="_blank">
+            Bekijk boekingspagina ↗
+          </Link>
+        </div>
+
+        {/* Agenda-koppeling */}
+        <div className="card" style={{ marginBottom: '1rem' }}>
+          <h1 style={{ fontSize: '1.1rem' }}>Agenda-koppeling</h1>
+          {connection ? (
             <p className="muted">
-              Nog geen boekingen. Maak er een via de{' '}
-              <a href="/sircle/intake">boekingspagina</a>.
+              Gekoppeld via <strong>{connection.provider}</strong> (status: {connection.status}).
+              Boekingen worden naar je agenda geschreven en bezette tijden geblokkeerd.
             </p>
           ) : (
-            <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '0.5rem' }}>
+            <>
+              <p className="muted">
+                Nog geen agenda gekoppeld. Koppel Google of Outlook zodat dubbele afspraken
+                automatisch worden voorkomen.
+              </p>
+              <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
+                <a className="btn" href="/api/oauth/nylas/start?provider=google">Google koppelen</a>
+                <a className="btn" href="/api/oauth/nylas/start?provider=microsoft">Outlook koppelen</a>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Boekingen */}
+        <div className="card">
+          <h1 style={{ fontSize: '1.1rem' }}>Aankomende boekingen</h1>
+          {bookings.length === 0 ? (
+            <p className="muted">Nog geen boekingen.</p>
+          ) : (
+            <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '0.5rem', marginTop: '0.5rem' }}>
               {bookings.map((b) => (
-                <li key={b.id} className="card" style={{ padding: '0.75rem 1rem' }}>
-                  <strong>{b.guestName}</strong> — {b.guestEmail}
-                  {b.status === 'cancelled' && <span className="tag">geannuleerd</span>}
-                  <br />
-                  <span className="muted">
-                    {formatInZone(b.startUtc, b.guestTimezone)} ({b.guestTimezone})
-                    {b.externalEventId && ` · agenda: ${b.externalEventId}`}
-                  </span>
+                <li
+                  key={b.id}
+                  className="card"
+                  style={{ padding: '0.75rem 1rem', opacity: b.status === 'cancelled' ? 0.55 : 1 }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+                    <div>
+                      <strong>{b.guestName}</strong> — {b.guestEmail}
+                      {b.status === 'cancelled' && <span className="tag">geannuleerd</span>}
+                      <br />
+                      <span className="muted">
+                        {formatInZone(b.startUtc, tenant.timezone)} ({tenant.timezone})
+                      </span>
+                    </div>
+                    {b.status === 'confirmed' && (
+                      <form action={cancelBookingAction}>
+                        <input type="hidden" name="bookingId" value={b.id} />
+                        <button type="submit">Annuleren</button>
+                      </form>
+                    )}
+                  </div>
                 </li>
               ))}
             </ul>
