@@ -47,6 +47,19 @@ export interface Mailer {
   }): Promise<void>;
 }
 
+/** Facturatie via een externe provider (Stripe). Mock voor dev. */
+export interface BillingProvider {
+  createCheckoutSession(params: {
+    tenant: Tenant;
+    planId: string;
+    planName: string;
+    priceEurCents: number;
+    successUrl: string;
+    cancelUrl: string;
+    customerEmail?: string;
+  }): Promise<{ url: string }>;
+}
+
 /**
  * Persistentie. De MemoryRepository (dev/tests) en PrismaRepository (prod)
  * implementeren dit. `createBookingAtomically` MOET dubbel-boeken atomair
@@ -94,6 +107,17 @@ export interface BookingRepository {
 
   /** Alle gebruikers (hosts) van een tenant — voor team-beheer en round-robin. */
   listUsers(tenantId: string): Promise<User[]>;
+
+  /** Werk de facturatie-velden van een tenant bij (na Stripe-webhook/checkout). */
+  updateTenantBilling(
+    tenantId: string,
+    fields: {
+      plan?: string;
+      subscriptionStatus?: string;
+      stripeCustomerId?: string;
+      stripeSubscriptionId?: string;
+    },
+  ): Promise<void>;
 
   listEventTypes(tenantId: string): Promise<EventType[]>;
 

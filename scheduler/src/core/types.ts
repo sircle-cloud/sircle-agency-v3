@@ -22,6 +22,11 @@ export interface Tenant {
     primaryColor?: string;
     logoUrl?: string;
   };
+  /** Abonnement (facturatie). 'free' tot er een plan wordt afgenomen. */
+  plan?: string;
+  subscriptionStatus?: string; // active | past_due | canceled | ...
+  stripeCustomerId?: string;
+  stripeSubscriptionId?: string;
 }
 
 export interface User {

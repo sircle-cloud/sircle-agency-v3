@@ -35,7 +35,7 @@ npm test           # 36 unit-tests: slot-engine, DST, buffers, dubbel-boeken, id
                    #                admin (afspraaktypes/beschikbaarheid/annuleren), wachtwoord-hashing,
                    #                sync (reconciliatie-conflicten, webhook-dispatch), herinneringen,
                    #                gast-self-service (token, annuleren, verzetten), onboarding,
-                   #                round-robin (verdeling, unie-slots, fairness)
+                   #                round-robin (verdeling, unie-slots, fairness), billing
 npm run build      # Next.js productie-build
 ```
 
@@ -54,6 +54,7 @@ src/
   core/reminders.ts← ReminderService: herinneringsmails, idempotent (no-show-reductie)
   core/guest.ts    ← GuestBookingService: gast verzet/annuleert via beveiligde link
   core/onboarding.ts← OnboardingService: self-service registratie van nieuwe tenants
+  core/billing.ts  ← BillingService: abonnementsplannen + Stripe checkout/webhook
   (round-robin zit in booking.ts: slots = unie van hosts, boeking → minst belaste vrije host)
   auth/            ← sessies (HMAC-cookie), wachtwoorden (scrypt), Nylas OAuth +
                      webhook-verificatie, gast-beheer-tokens
@@ -73,7 +74,9 @@ src/
     [tenant]/[eventType]/   publieke boekingspagina + client-widget
     signup/                 self-service onboarding van een nieuwe organisatie
     manage/[bookingId]/     gast verzet/annuleert via beveiligde token-link
-    admin/                  login · dashboard · event-types (CRUD) · beschikbaarheid · team
+    admin/                  login · dashboard · event-types · beschikbaarheid · team · abonnement
+    api/billing/…           checkout (Stripe) · dev-activate (mock)
+    api/webhooks/stripe     HMAC-geverifieerde Stripe-webhook (abonnement bijwerken)
     api/…                   slots (GET) · bookings (POST) · embed-script
     api/oauth/nylas/…       hosted-auth start + callback (agenda koppelen)
     api/webhooks/nylas      HMAC-geverifieerde webhook + challenge-handshake
@@ -125,6 +128,11 @@ test/                                  vitest
   hosts (aanbod zolang één host vrij is); een boeking gaat naar de vrije host met
   de **minste aankomende afspraken** (eerlijke verdeling). Bij Calendly zit dit
   achter een betaald plan — hier standaard.
+- **Stripe-facturatie (Fase 4)**: flat-rate abonnementsplannen (Solo €15 /
+  Praktijk €49 / White-label €99 per maand) via Stripe Checkout, met
+  HMAC-geverifieerde webhook die het tenant-abonnement bijwerkt. Zonder
+  Stripe-key draait billing in mock-modus (dev-activatie), zodat de flow lokaal
+  te testen is. `/admin/billing` toont het plan en de upgrade-opties.
 
 ## Naar productie (adapters inpluggen)
 
@@ -154,7 +162,9 @@ de rest van de code verandert niet.
 - Reconciliatie-cron daadwerkelijk plannen (bv. Vercel Cron / externe scheduler
   die `/api/cron/reconcile` elke ~10 min aanroept) + host-notificatie bij conflict.
 - Eigen domein/branding per tenant (custom subdomein/logo).
-- Stripe-facturatie (abonnementsplannen voor tenants).
+- Stripe-account koppelen (`STRIPE_SECRET_KEY` + `STRIPE_WEBHOOK_SECRET`) om
+  echte betalingen live te testen; nu draait billing in mock-modus.
+- Facturen/betaalgeschiedenis + Stripe Billing Portal (opzeggen/wijzigen).
 - `OAuth app-verificatie` (Google, "sensitive" scope) vóór echte klanten (§4).
 
 > Losstaand van de statische agency-site: dit project heeft een eigen

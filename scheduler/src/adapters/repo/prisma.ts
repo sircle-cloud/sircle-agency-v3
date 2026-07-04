@@ -23,13 +23,30 @@ export class PrismaRepository implements BookingRepository {
 
   async getTenantBySlug(slug: string): Promise<Tenant | null> {
     const t = await this.prisma.tenant.findUnique({ where: { slug } });
-    if (!t) return null;
+    return t ? this.tenantToDomain(t) : null;
+  }
+
+  private tenantToDomain(t: {
+    id: string;
+    slug: string;
+    name: string;
+    timezone: string;
+    brandingJson: unknown;
+    plan: string;
+    subscriptionStatus: string | null;
+    stripeCustomerId: string | null;
+    stripeSubscriptionId: string | null;
+  }): Tenant {
     return {
       id: t.id,
       slug: t.slug,
       name: t.name,
       timezone: t.timezone,
       branding: (t.brandingJson as Tenant['branding']) ?? undefined,
+      plan: t.plan,
+      subscriptionStatus: t.subscriptionStatus ?? undefined,
+      stripeCustomerId: t.stripeCustomerId ?? undefined,
+      stripeSubscriptionId: t.stripeSubscriptionId ?? undefined,
     };
   }
 
@@ -198,14 +215,19 @@ export class PrismaRepository implements BookingRepository {
 
   async getTenantById(tenantId: string): Promise<Tenant | null> {
     const t = await this.prisma.tenant.findUnique({ where: { id: tenantId } });
-    if (!t) return null;
-    return {
-      id: t.id,
-      slug: t.slug,
-      name: t.name,
-      timezone: t.timezone,
-      branding: (t.brandingJson as Tenant['branding']) ?? undefined,
-    };
+    return t ? this.tenantToDomain(t) : null;
+  }
+
+  async updateTenantBilling(
+    tenantId: string,
+    fields: {
+      plan?: string;
+      subscriptionStatus?: string;
+      stripeCustomerId?: string;
+      stripeSubscriptionId?: string;
+    },
+  ): Promise<void> {
+    await this.prisma.tenant.update({ where: { id: tenantId }, data: fields });
   }
 
   async createTenant(tenant: Tenant): Promise<Tenant> {

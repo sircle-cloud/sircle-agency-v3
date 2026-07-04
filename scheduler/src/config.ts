@@ -19,19 +19,23 @@ import { SyncService } from './core/sync';
 import { ReminderService } from './core/reminders';
 import { GuestBookingService } from './core/guest';
 import { OnboardingService } from './core/onboarding';
-import type { BookingRepository, CalendarProvider, Mailer } from './ports/index';
+import { BillingService } from './core/billing';
+import type { BillingProvider, BookingRepository, CalendarProvider, Mailer } from './ports/index';
 import { MemoryRepository } from './adapters/repo/memory';
 import { PrismaRepository } from './adapters/repo/prisma';
 import { MockCalendar } from './adapters/calendar/mock';
 import { NylasCalendar } from './adapters/calendar/nylas';
 import { ConsoleMailer } from './adapters/mail/console';
 import { ResendMailer } from './adapters/mail/resend';
+import { MockBilling } from './adapters/billing/mock';
+import { StripeBilling } from './adapters/billing/stripe';
 
 // Singletons overleven Next.js hot-reload via globalThis (dev-persistentie).
 const g = globalThis as unknown as {
   __sircleRepo?: BookingRepository;
   __sircleCalendar?: CalendarProvider;
   __sircleMailer?: Mailer;
+  __sircleBilling?: BillingProvider;
   __sirclePrisma?: PrismaClient;
 };
 
@@ -77,6 +81,16 @@ function requireEnv(name: string): string {
   return v;
 }
 
+function billing(): BillingProvider {
+  if (g.__sircleBilling) return g.__sircleBilling;
+  if (process.env.STRIPE_SECRET_KEY) {
+    g.__sircleBilling = new StripeBilling({ secretKey: process.env.STRIPE_SECRET_KEY });
+  } else {
+    g.__sircleBilling = new MockBilling();
+  }
+  return g.__sircleBilling;
+}
+
 function idGen(): string {
   return globalThis.crypto?.randomUUID?.() ?? `id_${Math.random().toString(36).slice(2)}`;
 }
@@ -103,6 +117,10 @@ export function getGuestService(): GuestBookingService {
 
 export function getOnboardingService(): OnboardingService {
   return new OnboardingService(repository(), idGen);
+}
+
+export function getBillingService(): BillingService {
+  return new BillingService(repository(), billing());
 }
 
 export function getRepository(): BookingRepository {

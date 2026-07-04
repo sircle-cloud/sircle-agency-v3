@@ -68,6 +68,7 @@ export default async function AdminDashboard(props: {
           <Link className="btn" href="/admin/event-types">Afspraaktypes</Link>
           <Link className="btn" href="/admin/availability">Beschikbaarheid</Link>
           <Link className="btn" href="/admin/team">Team</Link>
+          <Link className="btn" href="/admin/billing">Abonnement</Link>
           <Link className="btn" href={`/${tenant.slug}/intake`} target="_blank">
             Bekijk boekingspagina ↗
           </Link>

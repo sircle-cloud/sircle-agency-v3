@@ -124,6 +124,24 @@ export class MemoryRepository implements BookingRepository {
     return this.data.users.filter((u) => u.tenantId === tenantId);
   }
 
+  async updateTenantBilling(
+    tenantId: string,
+    fields: {
+      plan?: string;
+      subscriptionStatus?: string;
+      stripeCustomerId?: string;
+      stripeSubscriptionId?: string;
+    },
+  ): Promise<void> {
+    const t = this.data.tenants.find((x) => x.id === tenantId);
+    if (!t) return;
+    if (fields.plan !== undefined) t.plan = fields.plan;
+    if (fields.subscriptionStatus !== undefined) t.subscriptionStatus = fields.subscriptionStatus;
+    if (fields.stripeCustomerId !== undefined) t.stripeCustomerId = fields.stripeCustomerId;
+    if (fields.stripeSubscriptionId !== undefined)
+      t.stripeSubscriptionId = fields.stripeSubscriptionId;
+  }
+
   async listEventTypes(tenantId: string): Promise<EventType[]> {
     return this.data.eventTypes.filter((e) => e.tenantId === tenantId);
   }
