@@ -1,11 +1,12 @@
 'use client';
 
 import { useActionState } from 'react';
-import type { EventType } from '@/core/types';
+import type { EventType, User } from '@/core/types';
 import { saveEventTypeAction } from '../actions';
 
-export default function EventTypeForm({ initial }: { initial?: EventType }) {
+export default function EventTypeForm({ initial, team }: { initial?: EventType; team: User[] }) {
   const [state, formAction, pending] = useActionState(saveEventTypeAction, {});
+  const selected = new Set(initial?.hostUserIds ?? []);
   return (
     <form action={formAction}>
       {initial && <input type="hidden" name="id" value={initial.id} />}
@@ -48,6 +49,27 @@ export default function EventTypeForm({ initial }: { initial?: EventType }) {
           </select>
         </div>
       </div>
+
+      {team.length > 1 && (
+        <fieldset style={{ marginTop: '1rem', border: '1px solid var(--sage-green)', borderRadius: 8, padding: '0.75rem' }}>
+          <legend className="muted" style={{ padding: '0 0.4rem' }}>Round-robin hosts (optioneel)</legend>
+          <p className="muted" style={{ fontSize: '0.8rem', marginTop: 0 }}>
+            Vink meerdere hosts aan om afspraken eerlijk te verdelen. Niets aanvinken = alleen jij.
+          </p>
+          {team.map((u) => (
+            <label key={u.id} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: '0.25rem 0' }}>
+              <input
+                type="checkbox"
+                name="hostUserIds"
+                value={u.id}
+                defaultChecked={selected.has(u.id)}
+                style={{ width: 'auto' }}
+              />
+              {u.name} <span className="muted">({u.email})</span>
+            </label>
+          ))}
+        </fieldset>
+      )}
 
       {state?.error && <div className="notice error">{state.error}</div>}
       <button className="primary" type="submit" disabled={pending} style={{ marginTop: '1rem' }}>

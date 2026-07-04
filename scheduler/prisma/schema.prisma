@@ -51,6 +51,7 @@ model EventType {
   id                String  @id @default(cuid())
   tenantId          String
   hostUserId        String
+  hostUserIds       String[] @default([]) // round-robin pool (leeg = alleen hostUserId)
   slug              String
   name              String
   description       String?

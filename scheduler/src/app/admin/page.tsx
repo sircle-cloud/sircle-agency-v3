@@ -67,6 +67,7 @@ export default async function AdminDashboard(props: {
         <div style={{ display: 'flex', gap: '0.5rem', margin: '1rem 0', flexWrap: 'wrap' }}>
           <Link className="btn" href="/admin/event-types">Afspraaktypes</Link>
           <Link className="btn" href="/admin/availability">Beschikbaarheid</Link>
+          <Link className="btn" href="/admin/team">Team</Link>
           <Link className="btn" href={`/${tenant.slug}/intake`} target="_blank">
             Bekijk boekingspagina ↗
           </Link>

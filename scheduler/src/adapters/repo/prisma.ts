@@ -38,10 +38,29 @@ export class PrismaRepository implements BookingRepository {
       where: { tenantId_slug: { tenantId, slug } },
     });
     if (!e) return null;
+    return this.eventTypeToDomain(e);
+  }
+
+  private eventTypeToDomain(e: {
+    id: string;
+    tenantId: string;
+    hostUserId: string;
+    hostUserIds: string[];
+    slug: string;
+    name: string;
+    description: string | null;
+    durationMin: number;
+    slotGranularityMin: number | null;
+    bufferBeforeMin: number;
+    bufferAfterMin: number;
+    minNoticeMin: number;
+    locationType: string;
+  }): EventType {
     return {
       id: e.id,
       tenantId: e.tenantId,
       hostUserId: e.hostUserId,
+      hostUserIds: e.hostUserIds,
       slug: e.slug,
       name: e.name,
       description: e.description ?? undefined,
@@ -215,28 +234,21 @@ export class PrismaRepository implements BookingRepository {
     return user;
   }
 
+  async listUsers(tenantId: string): Promise<User[]> {
+    const rows = await this.prisma.user.findMany({ where: { tenantId } });
+    return rows.map((u) => this.userToDomain(u));
+  }
+
   async listEventTypes(tenantId: string): Promise<EventType[]> {
     const rows = await this.prisma.eventType.findMany({ where: { tenantId } });
-    return rows.map((e) => ({
-      id: e.id,
-      tenantId: e.tenantId,
-      hostUserId: e.hostUserId,
-      slug: e.slug,
-      name: e.name,
-      description: e.description ?? undefined,
-      durationMin: e.durationMin,
-      slotGranularityMin: e.slotGranularityMin ?? undefined,
-      bufferBeforeMin: e.bufferBeforeMin,
-      bufferAfterMin: e.bufferAfterMin,
-      minNoticeMin: e.minNoticeMin,
-      locationType: e.locationType as EventType['locationType'],
-    }));
+    return rows.map((e) => this.eventTypeToDomain(e));
   }
 
   async saveEventType(e: EventType): Promise<EventType> {
     const data = {
       tenantId: e.tenantId,
       hostUserId: e.hostUserId,
+      hostUserIds: e.hostUserIds ?? [],
       slug: e.slug,
       name: e.name,
       description: e.description ?? null,
@@ -373,21 +385,7 @@ export class PrismaRepository implements BookingRepository {
 
   async getEventTypeById(tenantId: string, eventTypeId: string): Promise<EventType | null> {
     const e = await this.prisma.eventType.findFirst({ where: { id: eventTypeId, tenantId } });
-    if (!e) return null;
-    return {
-      id: e.id,
-      tenantId: e.tenantId,
-      hostUserId: e.hostUserId,
-      slug: e.slug,
-      name: e.name,
-      description: e.description ?? undefined,
-      durationMin: e.durationMin,
-      slotGranularityMin: e.slotGranularityMin ?? undefined,
-      bufferBeforeMin: e.bufferBeforeMin,
-      bufferAfterMin: e.bufferAfterMin,
-      minNoticeMin: e.minNoticeMin,
-      locationType: e.locationType as EventType['locationType'],
-    };
+    return e ? this.eventTypeToDomain(e) : null;
   }
 
   async rescheduleBookingAtomically(booking: Booking): Promise<Booking> {

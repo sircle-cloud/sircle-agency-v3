@@ -11,7 +11,8 @@
  */
 import type { BookingRepository, CalendarProvider, Mailer } from '../ports/index';
 import type { Booking, EventType, Slot, Tenant, User } from './types';
-import { isSlotAvailable } from './availability';
+import { effectiveHostIds } from './types';
+import { computeSlots, isSlotAvailable } from './availability';
 import { NotFoundError, SlotUnavailableError, ValidationError } from './errors';
 import { addMinutesIso, formatInZone, nowUtcIso } from './time';
 import { buildIcs } from '../adapters/ics';
@@ -43,47 +44,51 @@ export class BookingService {
     toUtc: string;
     nowUtc?: string;
   }): Promise<{ tenant: Tenant; eventType: EventType; slots: Slot[] }> {
-    const { tenant, eventType, host, connectionRef } = await this.resolve(
+    const { tenant, eventType, hosts } = await this.resolve(
       params.tenantSlug,
       params.eventTypeSlug,
     );
+    const now = params.nowUtc ?? nowUtcIso();
 
-    const [rules, blocked, bookings] = await Promise.all([
-      this.repo.getRules(tenant.id, host.id),
-      this.repo.getBlockedDates(tenant.id, host.id),
-      this.repo.listBookings({
-        tenantId: tenant.id,
-        hostUserId: host.id,
-        fromUtc: params.fromUtc,
-        toUtc: params.toUtc,
+    // Per host de vrije slots; bij round-robin is de UNIE beschikbaar (een slot
+    // wordt aangeboden zodra minstens één host vrij is).
+    const perHost = await Promise.all(
+      hosts.map(async (h) => {
+        const slots = await this.hostSlots(tenant.id, h, eventType, params.fromUtc, params.toUtc, now);
+        return slots;
       }),
-    ]);
+    );
 
-    const busy = connectionRef
-      ? await this.calendar.getBusy({
-          connectionRef,
-          fromUtc: params.fromUtc,
-          toUtc: params.toUtc,
-        })
-      : [];
-
-    const { computeSlots } = await import('./availability');
-    const slots = computeSlots({
-      eventType,
-      rules,
-      blocked,
-      busy,
-      bookings,
-      fromUtc: params.fromUtc,
-      toUtc: params.toUtc,
-      nowUtc: params.nowUtc ?? nowUtcIso(),
-    });
+    const seen = new Set<string>();
+    const slots = perHost
+      .flat()
+      .filter((s) => (seen.has(s.startUtc) ? false : (seen.add(s.startUtc), true)))
+      .sort((a, b) => a.startUtc.localeCompare(b.startUtc));
 
     return { tenant, eventType, slots };
   }
 
+  private async hostSlots(
+    tenantId: string,
+    host: HostCtx,
+    eventType: EventType,
+    fromUtc: string,
+    toUtc: string,
+    nowUtc: string,
+  ): Promise<Slot[]> {
+    const [rules, blocked, bookings] = await Promise.all([
+      this.repo.getRules(tenantId, host.user.id),
+      this.repo.getBlockedDates(tenantId, host.user.id),
+      this.repo.listBookings({ tenantId, hostUserId: host.user.id, fromUtc, toUtc }),
+    ]);
+    const busy = host.connectionRef
+      ? await this.calendar.getBusy({ connectionRef: host.connectionRef, fromUtc, toUtc })
+      : [];
+    return computeSlots({ eventType, rules, blocked, busy, bookings, fromUtc, toUtc, nowUtc });
+  }
+
   async createBooking(input: CreateBookingInput): Promise<Booking> {
-    const { tenant, eventType, host, connectionRef } = await this.resolve(
+    const { tenant, eventType, hosts } = await this.resolve(
       input.tenantSlug,
       input.eventTypeSlug,
     );
@@ -101,38 +106,16 @@ export class BookingService {
     const startUtc = input.startUtc;
     const endUtc = addMinutesIso(startUtc, eventType.durationMin);
 
-    // 3. Free/busy op het laatste moment.
-    const [rules, blocked, bookings] = await Promise.all([
-      this.repo.getRules(tenant.id, host.id),
-      this.repo.getBlockedDates(tenant.id, host.id),
-      this.repo.listBookings({
-        tenantId: tenant.id,
-        hostUserId: host.id,
-        fromUtc: startUtc,
-        toUtc: endUtc,
-      }),
-    ]);
-    const busy = connectionRef
-      ? await this.calendar.getBusy({ connectionRef, fromUtc: startUtc, toUtc: endUtc })
-      : [];
+    // 3. Bepaal welke hosts op dit slot vrij zijn (free/busy op het laatste moment).
+    const chosen = await this.pickHost(tenant.id, hosts, eventType, startUtc, now);
+    if (!chosen) throw new SlotUnavailableError();
 
-    const available = isSlotAvailable({
-      eventType,
-      rules,
-      blocked,
-      busy,
-      bookings,
-      nowUtc: now,
-      startUtc,
-    });
-    if (!available) throw new SlotUnavailableError();
-
-    // 4. Atomaire persist met overlap-guard.
+    // 4. Atomaire persist met overlap-guard, toegewezen aan de gekozen host.
     const booking: Booking = {
       id: this.idGen(),
       tenantId: tenant.id,
       eventTypeId: eventType.id,
-      hostUserId: host.id,
+      hostUserId: chosen.user.id,
       guestName: input.guestName.trim(),
       guestEmail: input.guestEmail.trim().toLowerCase(),
       guestTimezone: input.guestTimezone,
@@ -144,14 +127,14 @@ export class BookingService {
     };
     const saved = await this.repo.createBookingAtomically(booking);
 
-    // 5. Twee-weg sync outbound: event in de agenda van de host.
-    if (connectionRef) {
+    // 5. Twee-weg sync outbound: event in de agenda van de gekozen host.
+    if (chosen.connectionRef) {
       try {
         const { externalEventId } = await this.calendar.createEvent({
-          connectionRef,
+          connectionRef: chosen.connectionRef,
           booking: saved,
           eventType,
-          host,
+          host: chosen.user,
           syncTag: `sircle:${tenant.id}:${saved.id}`,
         });
         saved.externalEventId = externalEventId;
@@ -164,9 +147,50 @@ export class BookingService {
     }
 
     // 6. Bevestigingsmail + .ics.
-    await this.sendConfirmation(saved, tenant, eventType, host);
+    await this.sendConfirmation(saved, tenant, eventType, chosen.user);
 
     return saved;
+  }
+
+  /**
+   * Kies een host die op het slot vrij is. Bij round-robin (meerdere hosts):
+   * de vrije host met de minste aankomende boekingen — eerlijke verdeling.
+   */
+  private async pickHost(
+    tenantId: string,
+    hosts: HostCtx[],
+    eventType: EventType,
+    startUtc: string,
+    nowUtc: string,
+  ): Promise<HostCtx | null> {
+    const endUtc = addMinutesIso(startUtc, eventType.durationMin);
+    const free: Array<{ host: HostCtx; load: number }> = [];
+
+    for (const host of hosts) {
+      const [rules, blocked, bookings] = await Promise.all([
+        this.repo.getRules(tenantId, host.user.id),
+        this.repo.getBlockedDates(tenantId, host.user.id),
+        this.repo.listBookings({ tenantId, hostUserId: host.user.id, fromUtc: startUtc, toUtc: endUtc }),
+      ]);
+      const busy = host.connectionRef
+        ? await this.calendar.getBusy({ connectionRef: host.connectionRef, fromUtc: startUtc, toUtc: endUtc })
+        : [];
+      const available = isSlotAvailable({ eventType, rules, blocked, busy, bookings, nowUtc, startUtc });
+      if (!available) continue;
+
+      // Load = aantal aankomende bevestigde boekingen (voor round-robin fairness).
+      const upcoming = await this.repo.listBookings({
+        tenantId,
+        hostUserId: host.user.id,
+        fromUtc: nowUtc,
+        toUtc: addMinutesIso(nowUtc, 60 * 24 * 60), // ~60 dagen
+      });
+      free.push({ host, load: upcoming.filter((b) => b.status === 'confirmed').length });
+    }
+
+    if (free.length === 0) return null;
+    free.sort((a, b) => a.load - b.load);
+    return free[0].host;
   }
 
   private async sendConfirmation(
@@ -208,14 +232,25 @@ export class BookingService {
   private async resolve(
     tenantSlug: string,
     eventTypeSlug: string,
-  ): Promise<{ tenant: Tenant; eventType: EventType; host: User; connectionRef: string | null }> {
+  ): Promise<{ tenant: Tenant; eventType: EventType; hosts: HostCtx[] }> {
     const tenant = await this.repo.getTenantBySlug(tenantSlug);
     if (!tenant) throw new NotFoundError('Onbekende organisatie.');
     const eventType = await this.repo.getEventType(tenant.id, eventTypeSlug);
     if (!eventType) throw new NotFoundError('Onbekend afspraaktype.');
-    const host = await this.repo.getUser(tenant.id, eventType.hostUserId);
-    if (!host) throw new NotFoundError('Onbekende host.');
-    const connectionRef = await this.repo.getCalendarConnectionRef(tenant.id, host.id);
-    return { tenant, eventType, host, connectionRef };
+
+    const hosts: HostCtx[] = [];
+    for (const userId of effectiveHostIds(eventType)) {
+      const user = await this.repo.getUser(tenant.id, userId);
+      if (!user) continue;
+      const connectionRef = await this.repo.getCalendarConnectionRef(tenant.id, user.id);
+      hosts.push({ user, connectionRef });
+    }
+    if (hosts.length === 0) throw new NotFoundError('Onbekende host.');
+    return { tenant, eventType, hosts };
   }
+}
+
+interface HostCtx {
+  user: User;
+  connectionRef: string | null;
 }

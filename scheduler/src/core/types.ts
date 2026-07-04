@@ -43,7 +43,13 @@ export interface CalendarConnectionInfo {
 export interface EventType {
   id: string;
   tenantId: string;
+  /** Eigenaar/standaard-host. */
   hostUserId: string;
+  /**
+   * Round-robin: als hier >1 host staat, wordt een boeking verdeeld over de
+   * beschikbare hosts. Leeg/undefined = alleen `hostUserId` (single host).
+   */
+  hostUserIds?: string[];
   slug: string;
   name: string;
   description?: string;
@@ -114,4 +120,11 @@ export interface Booking {
 export interface Slot {
   startUtc: string; // ISO
   endUtc: string; // ISO
+}
+
+/** De effectieve host-pool van een afspraaktype (round-robin of single). */
+export function effectiveHostIds(eventType: EventType): string[] {
+  return eventType.hostUserIds && eventType.hostUserIds.length > 0
+    ? eventType.hostUserIds
+    : [eventType.hostUserId];
 }

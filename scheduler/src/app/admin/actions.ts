@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { getRepository, getAdminService } from '@/config';
 import { getSession, setSession, clearSession } from '@/auth/session';
-import { verifyPassword } from '@/auth/password';
+import { verifyPassword, hashPassword } from '@/auth/password';
 import { DomainError } from '@/core/errors';
 import type { EventType } from '@/core/types';
 
@@ -44,11 +44,14 @@ export async function saveEventTypeAction(
 ): Promise<{ error?: string; ok?: boolean }> {
   const session = await requireSession();
   const num = (k: string, d = 0) => Number(formData.get(k) ?? d);
+  // Round-robin host-pool (checkboxes). Leeg = single host (de ingelogde admin).
+  const hostUserIds = formData.getAll('hostUserIds').map(String).filter(Boolean);
   try {
     await getAdminService().saveEventType({
       id: (formData.get('id') as string) || undefined,
       tenantId: session.tenantId,
       hostUserId: session.userId,
+      hostUserIds,
       slug: String(formData.get('slug') ?? '').trim(),
       name: String(formData.get('name') ?? '').trim(),
       description: String(formData.get('description') ?? ''),
@@ -71,6 +74,28 @@ export async function deleteEventTypeAction(formData: FormData): Promise<void> {
   const session = await requireSession();
   await getAdminService().deleteEventType(session.tenantId, String(formData.get('id') ?? ''));
   revalidatePath('/admin/event-types');
+}
+
+export async function addTeamMemberAction(
+  _prev: unknown,
+  formData: FormData,
+): Promise<{ error?: string; ok?: boolean }> {
+  const session = await requireSession();
+  const password = String(formData.get('password') ?? '');
+  if (password.length < 8) return { error: 'Wachtwoord moet minstens 8 tekens zijn.' };
+  try {
+    await getAdminService().addTeamMember({
+      tenantId: session.tenantId,
+      name: String(formData.get('name') ?? ''),
+      email: String(formData.get('email') ?? ''),
+      passwordHash: hashPassword(password),
+    });
+  } catch (err) {
+    if (err instanceof DomainError) return { error: err.message };
+    throw err;
+  }
+  revalidatePath('/admin/team');
+  return { ok: true };
 }
 
 export async function saveAvailabilityAction(

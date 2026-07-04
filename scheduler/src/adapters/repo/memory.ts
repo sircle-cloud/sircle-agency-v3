@@ -120,6 +120,10 @@ export class MemoryRepository implements BookingRepository {
     return user;
   }
 
+  async listUsers(tenantId: string): Promise<User[]> {
+    return this.data.users.filter((u) => u.tenantId === tenantId);
+  }
+
   async listEventTypes(tenantId: string): Promise<EventType[]> {
     return this.data.eventTypes.filter((e) => e.tenantId === tenantId);
   }

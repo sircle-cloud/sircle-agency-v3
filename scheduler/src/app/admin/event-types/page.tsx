@@ -12,7 +12,11 @@ export default async function EventTypesPage(props: {
   const { tenant } = await requireAdmin();
   const { edit } = await props.searchParams;
 
-  const eventTypes = await getAdminService().listEventTypes(tenant.id);
+  const service = getAdminService();
+  const [eventTypes, team] = await Promise.all([
+    service.listEventTypes(tenant.id),
+    service.listTeam(tenant.id),
+  ]);
   const editing = edit ? eventTypes.find((e) => e.id === edit) : undefined;
 
   return (
@@ -50,7 +54,7 @@ export default async function EventTypesPage(props: {
 
         <div className="card">
           <h1 style={{ fontSize: '1.1rem' }}>{editing ? `Bewerken: ${editing.name}` : 'Nieuw afspraaktype'}</h1>
-          <EventTypeForm key={editing?.id ?? 'new'} initial={editing} />
+          <EventTypeForm key={editing?.id ?? 'new'} initial={editing} team={team} />
           {editing && (
             <p className="muted" style={{ marginTop: '0.75rem' }}>
               <Link href="/admin/event-types">+ Nieuw i.p.v. bewerken</Link>

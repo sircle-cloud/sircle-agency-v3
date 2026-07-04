@@ -92,6 +92,9 @@ export interface BookingRepository {
   /** Maak een nieuwe gebruiker (incl. passwordHash) — de eerste admin van een tenant. */
   createUser(user: User): Promise<User>;
 
+  /** Alle gebruikers (hosts) van een tenant — voor team-beheer en round-robin. */
+  listUsers(tenantId: string): Promise<User[]>;
+
   listEventTypes(tenantId: string): Promise<EventType[]>;
 
   /** Upsert (op id) van een afspraaktype. */

@@ -34,7 +34,8 @@ npm run typecheck  # tsc --noEmit — schoon
 npm test           # 36 unit-tests: slot-engine, DST, buffers, dubbel-boeken, idempotentie,
                    #                admin (afspraaktypes/beschikbaarheid/annuleren), wachtwoord-hashing,
                    #                sync (reconciliatie-conflicten, webhook-dispatch), herinneringen,
-                   #                gast-self-service (token, annuleren, verzetten), onboarding
+                   #                gast-self-service (token, annuleren, verzetten), onboarding,
+                   #                round-robin (verdeling, unie-slots, fairness)
 npm run build      # Next.js productie-build
 ```
 
@@ -53,6 +54,7 @@ src/
   core/reminders.ts← ReminderService: herinneringsmails, idempotent (no-show-reductie)
   core/guest.ts    ← GuestBookingService: gast verzet/annuleert via beveiligde link
   core/onboarding.ts← OnboardingService: self-service registratie van nieuwe tenants
+  (round-robin zit in booking.ts: slots = unie van hosts, boeking → minst belaste vrije host)
   auth/            ← sessies (HMAC-cookie), wachtwoorden (scrypt), Nylas OAuth +
                      webhook-verificatie, gast-beheer-tokens
   ports/           ← de interfaces (anti-lock-in kern)
@@ -71,7 +73,7 @@ src/
     [tenant]/[eventType]/   publieke boekingspagina + client-widget
     signup/                 self-service onboarding van een nieuwe organisatie
     manage/[bookingId]/     gast verzet/annuleert via beveiligde token-link
-    admin/                  login · dashboard · event-types (CRUD) · beschikbaarheid
+    admin/                  login · dashboard · event-types (CRUD) · beschikbaarheid · team
     api/…                   slots (GET) · bookings (POST) · embed-script
     api/oauth/nylas/…       hosted-auth start + callback (agenda koppelen)
     api/webhooks/nylas      HMAC-geverifieerde webhook + challenge-handshake
@@ -118,6 +120,11 @@ test/                                  vitest
   organisatie + eerste admin aan, met directe defaults (werktijden ma–vr +
   starter-afspraaktype), zodat een klant meteen een werkende boekingspagina
   heeft. Slug- en e-mail-uniciteit afgedwongen. Fundament voor white-label uitrol.
+- **Round-robin / team-scheduling (Fase 4)**: teamleden toevoegen (`/admin/team`)
+  en een afspraaktype over meerdere hosts verdelen. Slots = **unie** van de
+  hosts (aanbod zolang één host vrij is); een boeking gaat naar de vrije host met
+  de **minste aankomende afspraken** (eerlijke verdeling). Bij Calendly zit dit
+  achter een betaald plan — hier standaard.
 
 ## Naar productie (adapters inpluggen)
 
@@ -146,8 +153,8 @@ de rest van de code verandert niet.
   echte Google-/Outlook-agenda.
 - Reconciliatie-cron daadwerkelijk plannen (bv. Vercel Cron / externe scheduler
   die `/api/cron/reconcile` elke ~10 min aanroept) + host-notificatie bij conflict.
-- Gebruikersbeheer per tenant (meerdere hosts) + eigen domein/branding per tenant.
-- Stripe-facturatie (plannen), round-robin / team-scheduling.
+- Eigen domein/branding per tenant (custom subdomein/logo).
+- Stripe-facturatie (abonnementsplannen voor tenants).
 - `OAuth app-verificatie` (Google, "sensitive" scope) vóór echte klanten (§4).
 
 > Losstaand van de statische agency-site: dit project heeft een eigen
