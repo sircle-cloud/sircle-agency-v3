@@ -15,6 +15,7 @@ import { isSlotAvailable } from './availability';
 import { NotFoundError, SlotUnavailableError, ValidationError } from './errors';
 import { addMinutesIso, formatInZone, nowUtcIso } from './time';
 import { buildIcs } from '../adapters/ics';
+import { signBookingToken } from '../auth/booking-token';
 
 export interface CreateBookingInput {
   tenantSlug: string;
@@ -176,6 +177,9 @@ export class BookingService {
   ): Promise<void> {
     const whenGuest = formatInZone(booking.startUtc, booking.guestTimezone);
     const ics = buildIcs({ booking, eventType, tenant, host });
+    // Beveiligde self-service-link om te verzetten/annuleren (zonder account).
+    const base = process.env.APP_URL ?? '';
+    const manageUrl = `${base}/manage/${booking.id}?token=${signBookingToken(booking.id)}`;
 
     await this.mailer.send({
       to: booking.guestEmail,
@@ -186,6 +190,7 @@ export class BookingService {
         `Wat: ${eventType.name}\n` +
         `Wanneer: ${whenGuest} (${booking.guestTimezone})\n` +
         `Duur: ${eventType.durationMin} minuten\n\n` +
+        `Verzetten of annuleren? ${manageUrl}\n\n` +
         `Tot dan!\n${tenant.name}`,
       icsAttachment: { filename: 'afspraak.ics', content: ics },
     });

@@ -340,6 +340,50 @@ export class PrismaRepository implements BookingRepository {
     });
   }
 
+  async findBookingById(bookingId: string): Promise<Booking | null> {
+    const b = await this.prisma.booking.findUnique({ where: { id: bookingId } });
+    return b ? this.toDomain(b) : null;
+  }
+
+  async getEventTypeById(tenantId: string, eventTypeId: string): Promise<EventType | null> {
+    const e = await this.prisma.eventType.findFirst({ where: { id: eventTypeId, tenantId } });
+    if (!e) return null;
+    return {
+      id: e.id,
+      tenantId: e.tenantId,
+      hostUserId: e.hostUserId,
+      slug: e.slug,
+      name: e.name,
+      description: e.description ?? undefined,
+      durationMin: e.durationMin,
+      slotGranularityMin: e.slotGranularityMin ?? undefined,
+      bufferBeforeMin: e.bufferBeforeMin,
+      bufferAfterMin: e.bufferAfterMin,
+      minNoticeMin: e.minNoticeMin,
+      locationType: e.locationType as EventType['locationType'],
+    };
+  }
+
+  async rescheduleBookingAtomically(booking: Booking): Promise<Booking> {
+    try {
+      const b = await this.prisma.booking.update({
+        where: { id: booking.id },
+        data: {
+          startUtc: new Date(booking.startUtc),
+          endUtc: new Date(booking.endUtc),
+          externalEventId: booking.externalEventId ?? null,
+        },
+      });
+      return this.toDomain(b);
+    } catch (err: unknown) {
+      const msg = String((err as { message?: string })?.message ?? err);
+      if (msg.includes('23P01') || msg.includes('booking_no_overlap')) {
+        throw new SlotUnavailableError();
+      }
+      throw err;
+    }
+  }
+
   private toDomain = (b: {
     id: string;
     tenantId: string;

@@ -141,4 +141,18 @@ export interface BookingRepository {
 
   /** Markeer dat de herinnering is verstuurd (voorkomt dubbele reminders). */
   markReminderSent(bookingId: string, sentAtUtc: string): Promise<void>;
+
+  // ---- Gast-self-service (Fase 3) ----
+
+  /** Zoek een boeking op id zonder tenant-context (voor de beveiligde gast-link). */
+  findBookingById(bookingId: string): Promise<Booking | null>;
+
+  getEventTypeById(tenantId: string, eventTypeId: string): Promise<EventType | null>;
+
+  /**
+   * Verzet een bestaande boeking naar nieuwe tijden en wijs af als het nieuwe slot
+   * (met een andere boeking) overlapt. In prod dwingt de Postgres
+   * exclusion-constraint dit ook bij UPDATE af (§7). Gooit SlotUnavailableError.
+   */
+  rescheduleBookingAtomically(booking: Booking): Promise<Booking>;
 }

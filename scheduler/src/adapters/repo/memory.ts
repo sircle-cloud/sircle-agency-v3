@@ -213,6 +213,32 @@ export class MemoryRepository implements BookingRepository {
     if (b) b.reminderSentAt = sentAtUtc;
   }
 
+  async findBookingById(bookingId: string): Promise<Booking | null> {
+    return this.data.bookings.find((b) => b.id === bookingId) ?? null;
+  }
+
+  async getEventTypeById(tenantId: string, eventTypeId: string): Promise<EventType | null> {
+    return (
+      this.data.eventTypes.find((e) => e.tenantId === tenantId && e.id === eventTypeId) ?? null
+    );
+  }
+
+  async rescheduleBookingAtomically(booking: Booking): Promise<Booking> {
+    // Atomair: overlap-check tegen ANDERE bevestigde boekingen, dan updaten.
+    const conflict = this.data.bookings.some(
+      (b) =>
+        b.id !== booking.id &&
+        b.tenantId === booking.tenantId &&
+        b.hostUserId === booking.hostUserId &&
+        b.status === 'confirmed' &&
+        intervalsOverlap(b.startUtc, b.endUtc, booking.startUtc, booking.endUtc),
+    );
+    if (conflict) throw new SlotUnavailableError();
+    const idx = this.data.bookings.findIndex((b) => b.id === booking.id);
+    if (idx >= 0) this.data.bookings[idx] = { ...booking };
+    return booking;
+  }
+
   /** Alleen voor het admin-overzicht in de demo. */
   async _allBookings(): Promise<Booking[]> {
     return [...this.data.bookings];
