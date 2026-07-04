@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+*.log
+.env
+.env.local
+.env*.local
+# Gegenereerde Prisma-client (staat in node_modules, maar voor de zekerheid):
+prisma/generated/
+.DS_Store
+
+*.tsbuildinfo

@@ -1,0 +1,137 @@
+// Productie-datamodel (PostgreSQL). Multi-tenant: elke rij draagt tenantId.
+// In productie hoort hier bovenop Row-Level Security (RLS) per tenant (§7).
+//
+// LET OP — dubbel-boeken (§7): Prisma kan de sterkste garantie (een Postgres
+// EXCLUSION-constraint met btree_gist over een tstzrange) niet native
+// uitdrukken. Voeg die toe via een handmatige migratie; zie
+// prisma/migrations/manual/0001_booking_no_overlap.sql in deze repo.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  name         String
+  timezone     String   @default("Europe/Amsterdam")
+  brandingJson Json?
+  createdAt    DateTime @default(now())
+
+  users      User[]
+  eventTypes EventType[]
+  bookings   Booking[]
+}
+
+model User {
+  id        String   @id @default(cuid())
+  tenantId  String
+  email     String
+  name      String
+  createdAt DateTime @default(now())
+
+  tenant              Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  eventTypes          EventType[]
+  availabilityRules   AvailabilityRule[]
+  blockedDates        BlockedDate[]
+  calendarConnections CalendarConnection[]
+  bookings            Booking[]
+
+  @@unique([tenantId, email])
+  @@index([tenantId])
+}
+
+model EventType {
+  id                String  @id @default(cuid())
+  tenantId          String
+  hostUserId        String
+  slug              String
+  name              String
+  description       String?
+  durationMin       Int
+  slotGranularityMin Int?
+  bufferBeforeMin   Int     @default(0)
+  bufferAfterMin    Int     @default(0)
+  minNoticeMin      Int     @default(0)
+  locationType      String  @default("video")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  host   User   @relation(fields: [hostUserId], references: [id], onDelete: Cascade)
+
+  bookings Booking[]
+
+  @@unique([tenantId, slug])
+  @@index([tenantId])
+}
+
+model AvailabilityRule {
+  id           String @id @default(cuid())
+  tenantId     String
+  userId       String
+  weekday      Int // 1=ma .. 7=zo
+  startMinutes Int
+  endMinutes   Int
+  timezone     String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, userId])
+}
+
+model BlockedDate {
+  id       String @id @default(cuid())
+  tenantId String
+  userId   String
+  dateFrom String // YYYY-MM-DD
+  dateTo   String // YYYY-MM-DD
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, userId])
+}
+
+// OAuth-koppeling naar de agenda. Bij een managed API (Nylas) bewaren we de
+// grant-referentie; de tokens zelf liggen bij Nylas (minder eigen risico, §7).
+model CalendarConnection {
+  id           String   @id @default(cuid())
+  tenantId     String
+  userId       String
+  provider     String // "nylas" | "google" | "microsoft"
+  connectionRef String // bv. "grantId|email|calendarId"
+  status       String   @default("active")
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([tenantId, userId, provider])
+  @@index([tenantId, userId])
+}
+
+model Booking {
+  id              String   @id @default(cuid())
+  tenantId        String
+  eventTypeId     String
+  hostUserId      String
+  guestName       String
+  guestEmail      String
+  guestTimezone   String
+  startUtc        DateTime
+  endUtc          DateTime
+  status          String   @default("confirmed")
+  externalEventId String?
+  idempotencyKey  String?
+  createdAt       DateTime @default(now())
+
+  tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  host      User      @relation(fields: [hostUserId], references: [id], onDelete: Cascade)
+  eventType EventType @relation(fields: [eventTypeId], references: [id], onDelete: Cascade)
+
+  // Idempotentie tegen dubbele submits (§4/§7).
+  @@unique([tenantId, idempotencyKey])
+  @@index([tenantId, hostUserId, startUtc])
+}

@@ -1,0 +1,33 @@
+{
+  "name": "sircle-scheduler",
+  "version": "0.1.0",
+  "private": true,
+  "description": "SIRCLE Scheduling SaaS — white-label afsprakenplanner met twee-weg agenda-sync (Google/Outlook via managed API). Fase 1 fundament.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
+  },
+  "dependencies": {
+    "luxon": "^3.5.0",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.3.0",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "prisma": "^6.3.0",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}
