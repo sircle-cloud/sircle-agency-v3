@@ -1,5 +1,5 @@
 /* ============================================ */
-/* SMITH × SIRCLE — Video Proposal One-Pager    */
+/* SMITH × SIRCLE: Video Proposal One-Pager      */
 /* Page-specific styles (extends style.css)     */
 /* ============================================ */
 
@@ -45,7 +45,7 @@
   max-width: 680px;
 }
 
-/* Proposal page has its own CTAs — hide the site-wide floating booking button */
+/* Proposal page has its own CTAs, hide the site-wide floating booking button */
 .sticky-cta { display: none !important; }
 
 .pp-hero .hero-overlay {
