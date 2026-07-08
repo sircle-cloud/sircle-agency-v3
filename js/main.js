@@ -1680,6 +1680,7 @@ dots.forEach(dot => {
 });
 
 function resetAutoAdvance() {
+  if (!testimonials.length || !dots.length) return;
   clearInterval(autoAdvance);
   autoAdvance = setInterval(() => {
     const next = (currentSlide + 1) % testimonials.length;
