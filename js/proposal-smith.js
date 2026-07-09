@@ -1,6 +1,6 @@
 /* ============================================ */
 /* SMITH × SIRCLE — Proposal page interactions  */
-/* Timeline progress + route card entrance      */
+/* Timeline progress + hero chip entrance       */
 /* ============================================ */
 
 (function () {
@@ -31,22 +31,8 @@
     });
   }
 
-  // ---- ROUTES: featured card gets a subtle gold glow pulse on arrival ----
-  const featured = document.querySelector('.route-card--featured');
-  if (featured) {
-    gsap.fromTo(featured,
-      { boxShadow: '0 0 0 rgba(242,226,164,0)' },
-      {
-        boxShadow: '0 12px 56px rgba(242,226,164,0.14)',
-        duration: 1.2,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: featured, start: 'top 75%' }
-      }
-    );
-  }
-
   // ---- HERO CHIPS: staggered entrance after the title reveal ----
-  const chips = document.querySelectorAll('.pp-chip');
+  const chips = document.querySelectorAll('.pp-hero-meta .chip');
   if (chips.length) {
     gsap.from(chips, {
       y: 16,
