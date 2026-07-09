@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /wireframes.html
-Disallow: /gradient-demo.html
 
 Sitemap: https://sircle.agency/sitemap.xml

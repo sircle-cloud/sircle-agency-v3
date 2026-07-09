@@ -39,9 +39,10 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "ProfessionalService"],
       "@id": "https://sircle.agency/#organization",
       "name": "Sircle Agency",
+      "slogan": "Every brand has a story worth telling.",
       "url": "https://sircle.agency",
       "logo": {
         "@type": "ImageObject",
@@ -575,6 +576,33 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECTORS (internal links + SEO) -->
+  <!-- ============================================ -->
+  <style>
+    .sectoren-links__grid { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; max-width:920px; margin:var(--space-lg) auto 0; }
+    .sectoren-links__grid a { display:inline-block; padding:12px 24px; border:1px solid rgba(12,24,15,0.15); border-radius:100px; color:var(--dark-green); font-weight:600; font-size:0.95rem; text-decoration:none; transition:background .3s,border-color .3s,transform .3s,color .3s; }
+    .sectoren-links__grid a:hover { background:var(--dark-green); color:var(--cream); border-color:var(--dark-green); transform:translateY(-2px); }
+  </style>
+  <section class="section section-cream sectoren-links">
+    <div class="container content-above">
+      <div class="section-header text-center">
+        <span class="section-label reveal-up">Sectors</span>
+        <h2 class="section-title scrub-highlight">WHO WE WORK FOR</h2>
+        <p class="section-subtitle reveal-up">Every sector has its own language and rules. See how we work for your market.</p>
+      </div>
+      <div class="sectoren-links__grid reveal-up">
+        <a href="/en/sectoren/zorg.html">Healthcare</a>
+        <a href="/en/sectoren/retail-d2c.html">Retail &amp; D2C</a>
+        <a href="/en/sectoren/vastgoed.html">Real Estate</a>
+        <a href="/en/sectoren/publieke-sector.html">Public Sector</a>
+        <a href="/en/sectoren/industrie-b2b.html">Industry &amp; B2B</a>
+        <a href="/en/sectoren/hospitality-events.html">Hospitality &amp; Events</a>
+        <a href="/en/sectoren/sport-outdoor.html">Sport &amp; Outdoor</a>
       </div>
     </div>
   </section>
