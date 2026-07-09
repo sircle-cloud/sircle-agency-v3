@@ -306,44 +306,39 @@
   color: rgba(243, 239, 232, 0.55);
 }
 
-.route-card__plus {
+.route-card__checklist {
   list-style: none;
   margin: 0 0 28px;
   padding: 20px 0 0;
   border-top: 1px solid rgba(243, 239, 232, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   flex-grow: 1;
 }
 
-.route-card__plus-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  margin-bottom: 2px;
-}
-
-.route-card__plus li:not(.route-card__plus-label) {
-  position: relative;
-  padding-left: 22px;
+.route-card__checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   font-size: 13.5px;
   font-weight: 300;
-  color: rgba(243, 239, 232, 0.78);
   line-height: 1.4;
 }
 
-.route-card__plus li:not(.route-card__plus-label)::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--gold);
-  font-weight: 700;
-  font-size: 12px;
+.route-card__checklist li.is-yes { color: rgba(243, 239, 232, 0.88); }
+.route-card__checklist li.is-no { color: rgba(243, 239, 232, 0.32); }
+
+.route-card__checklist .icon-check,
+.route-card__checklist .icon-cross {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
+
+.route-card__checklist .icon-check { color: var(--gold); }
+.route-card__checklist .icon-cross { color: rgba(243, 239, 232, 0.24); }
 
 .route-card .btn-primary,
 .route-card .btn-secondary { justify-content: center; width: 100%; margin-top: auto; }
