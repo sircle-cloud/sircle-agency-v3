@@ -4,6 +4,7 @@
   <!-- Primary pages -->
   <url>
     <loc>https://sircle.agency/</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/"/>
@@ -12,6 +13,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/"/>
@@ -20,6 +22,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/diensten.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/diensten.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/diensten.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/diensten.html"/>
@@ -28,6 +31,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/diensten.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/diensten.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/diensten.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/diensten.html"/>
@@ -36,6 +40,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk.html"/>
@@ -44,6 +49,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk.html"/>
@@ -52,6 +58,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/over-ons.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/over-ons.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/over-ons.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/over-ons.html"/>
@@ -60,6 +67,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/over-ons.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/over-ons.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/over-ons.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/over-ons.html"/>
@@ -68,6 +76,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/contact.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/contact.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/contact.html"/>
@@ -76,6 +85,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/contact.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/contact.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/contact.html"/>
@@ -84,6 +94,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal.html"/>
@@ -92,6 +103,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal.html"/>
@@ -100,6 +112,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/privacy.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/privacy.html"/>
@@ -108,6 +121,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/privacy.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/privacy.html"/>
@@ -116,6 +130,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/voorwaarden.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/voorwaarden.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/voorwaarden.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/voorwaarden.html"/>
@@ -124,6 +139,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/voorwaarden.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/voorwaarden.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/voorwaarden.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/voorwaarden.html"/>
@@ -136,6 +152,7 @@
   <!-- Employer Branding (vertical proposition) -->
   <url>
     <loc>https://sircle.agency/employer-branding.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/employer-branding.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/employer-branding.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/employer-branding.html"/>
@@ -144,6 +161,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/employer-branding.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/employer-branding.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/employer-branding.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/employer-branding.html"/>
@@ -154,6 +172,7 @@
   <!-- Service divisions -->
   <url>
     <loc>https://sircle.agency/sirclestrategy.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclestrategy.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclestrategy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclestrategy.html"/>
@@ -162,6 +181,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sirclestrategy.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclestrategy.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclestrategy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclestrategy.html"/>
@@ -170,6 +190,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/sirclestudio.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclestudio.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclestudio.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclestudio.html"/>
@@ -178,6 +199,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sirclestudio.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclestudio.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclestudio.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclestudio.html"/>
@@ -186,6 +208,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/sirclegrowth.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclegrowth.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclegrowth.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclegrowth.html"/>
@@ -194,6 +217,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sirclegrowth.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclegrowth.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclegrowth.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclegrowth.html"/>
@@ -202,6 +226,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/sirclecare.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclecare.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclecare.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclecare.html"/>
@@ -210,6 +235,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sirclecare.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sirclecare.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sirclecare.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sirclecare.html"/>
@@ -220,6 +246,7 @@
   <!-- Sectoren -->
   <url>
     <loc>https://sircle.agency/sectoren/zorg.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/zorg.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/zorg.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/zorg.html"/>
@@ -228,6 +255,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sectoren/zorg.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/zorg.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/zorg.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/zorg.html"/>
@@ -236,6 +264,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/sectoren/vastgoed.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/vastgoed.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/vastgoed.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/vastgoed.html"/>
@@ -244,6 +273,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sectoren/vastgoed.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/vastgoed.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/vastgoed.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/vastgoed.html"/>
@@ -252,6 +282,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/sectoren/publieke-sector.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/publieke-sector.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/publieke-sector.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/publieke-sector.html"/>
@@ -260,6 +291,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sectoren/publieke-sector.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/publieke-sector.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/publieke-sector.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/publieke-sector.html"/>
@@ -268,6 +300,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/sectoren/industrie-b2b.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/industrie-b2b.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/industrie-b2b.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/industrie-b2b.html"/>
@@ -276,6 +309,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sectoren/industrie-b2b.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/industrie-b2b.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/industrie-b2b.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/industrie-b2b.html"/>
@@ -284,6 +318,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/sectoren/hospitality-events.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/hospitality-events.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/hospitality-events.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/hospitality-events.html"/>
@@ -292,6 +327,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sectoren/hospitality-events.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/hospitality-events.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/hospitality-events.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/hospitality-events.html"/>
@@ -300,6 +336,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/sectoren/sport-outdoor.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/sport-outdoor.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/sport-outdoor.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/sport-outdoor.html"/>
@@ -308,6 +345,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/sectoren/sport-outdoor.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/sectoren/sport-outdoor.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/sectoren/sport-outdoor.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/sectoren/sport-outdoor.html"/>
@@ -318,6 +356,7 @@
   <!-- Case studies -->
   <url>
     <loc>https://sircle.agency/werk/vlijt-tandartsen.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/vlijt-tandartsen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
@@ -326,6 +365,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/vlijt-tandartsen.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/vlijt-tandartsen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/vlijt-tandartsen.html"/>
@@ -334,6 +374,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/casper-bouman.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/casper-bouman.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/casper-bouman.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/casper-bouman.html"/>
@@ -342,6 +383,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/casper-bouman.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/casper-bouman.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/casper-bouman.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/casper-bouman.html"/>
@@ -350,6 +392,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/kone.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/kone.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/kone.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/kone.html"/>
@@ -358,6 +401,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/kone.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/kone.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/kone.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/kone.html"/>
@@ -367,6 +411,7 @@
   <!-- oceans-of-energy: tijdelijk uit sitemap (klant-akkoord pending) -->
   <url>
     <loc>https://sircle.agency/werk/newlong.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/newlong.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/newlong.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/newlong.html"/>
@@ -375,6 +420,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/newlong.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/newlong.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/newlong.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/newlong.html"/>
@@ -383,6 +429,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/kanslokaal.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/kanslokaal.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/kanslokaal.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/kanslokaal.html"/>
@@ -391,6 +438,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/kanslokaal.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/kanslokaal.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/kanslokaal.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/kanslokaal.html"/>
@@ -399,6 +447,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/schermgebruik.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/schermgebruik.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/schermgebruik.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/schermgebruik.html"/>
@@ -407,6 +456,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/schermgebruik.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/schermgebruik.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/schermgebruik.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/schermgebruik.html"/>
@@ -415,6 +465,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/dudok-consulting.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/dudok-consulting.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/dudok-consulting.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/dudok-consulting.html"/>
@@ -423,6 +474,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/dudok-consulting.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/dudok-consulting.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/dudok-consulting.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/dudok-consulting.html"/>
@@ -431,6 +483,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/22qminded.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/22qminded.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/22qminded.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/22qminded.html"/>
@@ -439,6 +492,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/22qminded.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/22qminded.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/22qminded.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/22qminded.html"/>
@@ -447,6 +501,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/fit-in-wassenaar.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/fit-in-wassenaar.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/fit-in-wassenaar.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/fit-in-wassenaar.html"/>
@@ -455,6 +510,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/fit-in-wassenaar.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/fit-in-wassenaar.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/fit-in-wassenaar.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/fit-in-wassenaar.html"/>
@@ -463,6 +519,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/breinwijzers.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/breinwijzers.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/breinwijzers.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/breinwijzers.html"/>
@@ -471,6 +528,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/breinwijzers.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/breinwijzers.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/breinwijzers.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/breinwijzers.html"/>
@@ -479,6 +537,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/lumc.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/lumc.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/lumc.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/lumc.html"/>
@@ -487,6 +546,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/lumc.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/lumc.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/lumc.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/lumc.html"/>
@@ -495,6 +555,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/coffee-on-wheels.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/coffee-on-wheels.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/coffee-on-wheels.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/coffee-on-wheels.html"/>
@@ -503,6 +564,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/coffee-on-wheels.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/coffee-on-wheels.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/coffee-on-wheels.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/coffee-on-wheels.html"/>
@@ -511,6 +573,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/de-zelfspot.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/de-zelfspot.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/de-zelfspot.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/de-zelfspot.html"/>
@@ -519,6 +582,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/de-zelfspot.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/de-zelfspot.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/de-zelfspot.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/de-zelfspot.html"/>
@@ -527,6 +591,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/outdoor-therapie.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/outdoor-therapie.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/outdoor-therapie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/outdoor-therapie.html"/>
@@ -535,6 +600,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/outdoor-therapie.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/outdoor-therapie.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/outdoor-therapie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/outdoor-therapie.html"/>
@@ -543,6 +609,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/pronova-laboratories.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/pronova-laboratories.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/pronova-laboratories.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/pronova-laboratories.html"/>
@@ -551,6 +618,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/pronova-laboratories.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/pronova-laboratories.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/pronova-laboratories.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/pronova-laboratories.html"/>
@@ -559,6 +627,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/vivium.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/vivium.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/vivium.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/vivium.html"/>
@@ -567,6 +636,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/vivium.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/vivium.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/vivium.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/vivium.html"/>
@@ -575,6 +645,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/frank-knight.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/frank-knight.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/frank-knight.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/frank-knight.html"/>
@@ -583,6 +654,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/frank-knight.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/frank-knight.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/frank-knight.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/frank-knight.html"/>
@@ -591,6 +663,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/werk/jll-nabuurs.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/jll-nabuurs.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/jll-nabuurs.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/jll-nabuurs.html"/>
@@ -599,6 +672,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/werk/jll-nabuurs.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/werk/jll-nabuurs.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/werk/jll-nabuurs.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/werk/jll-nabuurs.html"/>
@@ -609,6 +683,7 @@
   <!-- Journal articles -->
   <url>
     <loc>https://sircle.agency/journal/brand-guide.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/brand-guide.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/brand-guide.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/brand-guide.html"/>
@@ -616,6 +691,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal/brand-guide.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/brand-guide.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/brand-guide.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/brand-guide.html"/>
@@ -623,6 +699,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal/lokale-seo.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/lokale-seo.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/lokale-seo.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/lokale-seo.html"/>
@@ -630,6 +707,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal/lokale-seo.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/lokale-seo.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/lokale-seo.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/lokale-seo.html"/>
@@ -637,6 +715,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal/merkstrategie-vs-logo.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/merkstrategie-vs-logo.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/merkstrategie-vs-logo.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/merkstrategie-vs-logo.html"/>
@@ -644,6 +723,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal/merkstrategie-vs-logo.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/merkstrategie-vs-logo.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/merkstrategie-vs-logo.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/merkstrategie-vs-logo.html"/>
@@ -651,6 +731,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal/seo-voor-mkb.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/seo-voor-mkb.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/seo-voor-mkb.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/seo-voor-mkb.html"/>
@@ -658,6 +739,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal/seo-voor-mkb.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/seo-voor-mkb.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/seo-voor-mkb.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/seo-voor-mkb.html"/>
@@ -665,6 +747,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal/startup-naar-scaleup.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/startup-naar-scaleup.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/startup-naar-scaleup.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/startup-naar-scaleup.html"/>
@@ -672,6 +755,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal/startup-naar-scaleup.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/startup-naar-scaleup.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/startup-naar-scaleup.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/startup-naar-scaleup.html"/>
@@ -679,6 +763,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal/video-in-merkstrategie.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/video-in-merkstrategie.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/video-in-merkstrategie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/video-in-merkstrategie.html"/>
@@ -686,6 +771,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal/video-in-merkstrategie.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/video-in-merkstrategie.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/video-in-merkstrategie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/video-in-merkstrategie.html"/>
@@ -693,6 +779,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal/wanneer-rebranding.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wanneer-rebranding.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wanneer-rebranding.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wanneer-rebranding.html"/>
@@ -700,6 +787,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal/wanneer-rebranding.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wanneer-rebranding.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wanneer-rebranding.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wanneer-rebranding.html"/>
@@ -707,6 +795,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal/wat-kost-een-website.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wat-kost-een-website.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wat-kost-een-website.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wat-kost-een-website.html"/>
@@ -714,6 +803,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal/wat-kost-een-website.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wat-kost-een-website.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wat-kost-een-website.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wat-kost-een-website.html"/>
@@ -721,6 +811,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/journal/wordpress-vs-maatwerk.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wordpress-vs-maatwerk.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wordpress-vs-maatwerk.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wordpress-vs-maatwerk.html"/>
@@ -728,6 +819,7 @@
   </url>
   <url>
     <loc>https://sircle.agency/en/journal/wordpress-vs-maatwerk.html</loc>
+    <lastmod>2026-07-09</lastmod>
     <xhtml:link rel="alternate" hreflang="nl" href="https://sircle.agency/journal/wordpress-vs-maatwerk.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sircle.agency/en/journal/wordpress-vs-maatwerk.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sircle.agency/journal/wordpress-vs-maatwerk.html"/>
