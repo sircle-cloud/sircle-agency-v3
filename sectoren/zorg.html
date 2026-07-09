@@ -90,6 +90,10 @@
     .zorg-testimonial__quote::after { content: "\201D"; color: var(--gold); margin-left: 6px; font-style: normal; }
     .zorg-testimonial__author { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); }
     .zorg-testimonial__author span { color: var(--soft-green); font-weight: 400; text-transform: none; letter-spacing: 0; }
+    .faq-wrap { max-width: 820px; margin: var(--space-lg) auto 0; }
+    .faq-item { border-bottom: 1px solid rgba(12,24,15,0.12); padding: 24px 0; }
+    .faq-q { font-size: 1.1rem; font-weight: 700; color: var(--dark-green); margin: 0 0 10px; }
+    .faq-a { font-size: 0.95rem; color: rgba(12,24,15,0.75); line-height: 1.6; margin: 0; }
   </style>
   <!-- SCHEMA.ORG JSON-LD -->
   <script type="application/ld+json">
@@ -440,6 +444,28 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section section-cream">
+    <div class="noise-overlay"></div>
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+        <span class="sc-label reveal-up">Veelgestelde vragen</span>
+        <h2 class="sc-section-title reveal-up">VEELGESTELDE VRAGEN ZORG</h2>
+      </div>
+      <div class="faq-wrap reveal-up">
+          <div class="faq-item"><h3 class="faq-q">Wat doet een marketingbureau voor de zorg?</h3><p class="faq-a">Wij helpen klinieken, praktijken en zorginstellingen aan een helder merk, een toegankelijke website en meer patienten of aanmeldingen. Denk aan branding, een AVG-conforme site, online afspraken, educatieve video en lokale vindbaarheid. Alles afgestemd op de zorg, waar vertrouwen en duidelijke communicatie voorop staan.</p></div>
+          <div class="faq-item"><h3 class="faq-q">Wat kost marketing voor een zorgorganisatie?</h3><p class="faq-a">Dat verschilt per situatie. Een losse voorlichtingsvideo is iets anders dan een compleet merktraject met website en online groei. In een kort gesprek bepalen we samen wat je nodig hebt, en krijg je een voorstel dat daarbij past.</p></div>
+          <div class="faq-item"><h3 class="faq-q">Houden jullie rekening met AVG en toegankelijkheid (WCAG)?</h3><p class="faq-a">Ja. Privacy en toegankelijkheid zitten vanaf de eerste regel code in elk project verwerkt, geen afterthought. We bouwen AVG-conform en volgens de WCAG 2.1 AA-richtlijnen, zodat je site voor iedereen werkt en aan de regels voldoet.</p></div>
+          <div class="faq-item"><h3 class="faq-q">Werken jullie ook voor kleine praktijken en buiten Den Haag?</h3><p class="faq-a">Zeker. We werken voor eenmanspraktijken tot grotere zorginstellingen, in Den Haag en door heel Nederland. De aanpak schalen we mee met de grootte van je organisatie en je budget.</p></div>
+          <div class="faq-item"><h3 class="faq-q">Hoe snel kunnen jullie starten en hoe verloopt het traject?</h3><p class="faq-a">Meestal kunnen we binnen een paar weken beginnen. We starten met een verkennend gesprek, brengen je doelen en doelgroepen in kaart en werken dan in duidelijke fases: strategie, ontwerp, bouw en groei. Je weet steeds waar we staan.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wat doet een marketingbureau voor de zorg?", "acceptedAnswer": {"@type": "Answer", "text": "Wij helpen klinieken, praktijken en zorginstellingen aan een helder merk, een toegankelijke website en meer patienten of aanmeldingen. Denk aan branding, een AVG-conforme site, online afspraken, educatieve video en lokale vindbaarheid. Alles afgestemd op de zorg, waar vertrouwen en duidelijke communicatie voorop staan."}}, {"@type": "Question", "name": "Wat kost marketing voor een zorgorganisatie?", "acceptedAnswer": {"@type": "Answer", "text": "Dat verschilt per situatie. Een losse voorlichtingsvideo is iets anders dan een compleet merktraject met website en online groei. In een kort gesprek bepalen we samen wat je nodig hebt, en krijg je een voorstel dat daarbij past."}}, {"@type": "Question", "name": "Houden jullie rekening met AVG en toegankelijkheid (WCAG)?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Privacy en toegankelijkheid zitten vanaf de eerste regel code in elk project verwerkt, geen afterthought. We bouwen AVG-conform en volgens de WCAG 2.1 AA-richtlijnen, zodat je site voor iedereen werkt en aan de regels voldoet."}}, {"@type": "Question", "name": "Werken jullie ook voor kleine praktijken en buiten Den Haag?", "acceptedAnswer": {"@type": "Answer", "text": "Zeker. We werken voor eenmanspraktijken tot grotere zorginstellingen, in Den Haag en door heel Nederland. De aanpak schalen we mee met de grootte van je organisatie en je budget."}}, {"@type": "Question", "name": "Hoe snel kunnen jullie starten en hoe verloopt het traject?", "acceptedAnswer": {"@type": "Answer", "text": "Meestal kunnen we binnen een paar weken beginnen. We starten met een verkennend gesprek, brengen je doelen en doelgroepen in kaart en werken dan in duidelijke fases: strategie, ontwerp, bouw en groei. Je weet steeds waar we staan."}}]}
+  </script>
+
   <!-- ============================================ -->
   <!-- FINAL CTA -->
   <!-- ============================================ -->
@@ -462,7 +488,7 @@
     <div class="eb-sector-section__container">
       <span class="eb-sector-section__eyebrow">Employer Branding voor zorg</span>
       <h2 class="eb-sector-section__title">Personeel vinden in een vergrijzende zorgmarkt.</h2>
-      <p class="eb-sector-section__intro">Tandartsassistenten, mondhygiënisten, doktersassistenten, fysiotherapeuten, verzorgenden — overal staan vacatures langdurig open. Salaris-transparantie is geen optie meer, sfeer en team-cultuur worden doorslaggevend. Wij bouwen het werkgeversverhaal dat ontbreekt op de patiëntensite.</p>
+      <p class="eb-sector-section__intro">Tandartsassistenten, mondhygiënisten, doktersassistenten, fysiotherapeuten, verzorgenden, overal staan vacatures langdurig open. Salaris-transparantie is geen optie meer, sfeer en team-cultuur worden doorslaggevend. Wij bouwen het werkgeversverhaal dat ontbreekt op de patiëntensite.</p>
 
       <div class="eb-sector-section__grid">
         <div class="eb-sector-section__card">
@@ -471,7 +497,7 @@
           <ul>
             <li>188 tandartspraktijken in Den Haag concurreren om dezelfde assistenten en mondhygiënisten</li>
             <li>Vergrijzing speelt dubbel: groeiende vraag bij gelijktijdige uitstroom van ervaren krachten</li>
-            <li>Patiëntensite overtuigt patiënten, niet collega's — er ontbreekt een eigen werkgeversverhaal</li>
+            <li>Patiëntensite overtuigt patiënten, niet collega's, er ontbreekt een eigen werkgeversverhaal</li>
             <li>Salaris-transparantie wordt verwacht; zonder indicatie krijg je structureel minder kwalitatieve reacties</li>
           </ul>
         </div>
@@ -480,9 +506,9 @@
           <p class="eb-sector-section__card-label">Hoe wij het oplossen</p>
           <h3 class="eb-sector-section__card-title">Het SIRCLE Model toegepast op zorg</h3>
           <ul>
-            <li><strong>Strategy:</strong> Employer brand DNA — wat onderscheidt jullie praktijk als werkgever?</li>
+            <li><strong>Strategy:</strong> Employer brand DNA, wat onderscheidt jullie praktijk als werkgever?</li>
             <li><strong>Production:</strong> Eigen werken-bij site, team-interviews video, functie-specifieke landingpages</li>
-            <li><strong>Growth:</strong> Kanaalkeuze op basis van doelgroep — Google voor actieve zoekers, social waar dat past</li>
+            <li><strong>Growth:</strong> Kanaalkeuze op basis van doelgroep, Google voor actieve zoekers, social waar dat past</li>
             <li><strong>Care:</strong> Doorlopende rapportage per platform, optimaliseren op kosten per sollicitant</li>
           </ul>
         </div>
@@ -496,7 +522,7 @@
   </section>
 
   <!-- ============================================ -->
-  <!-- LEAD MAGNET — Employer Branding Checklist Zorg -->
+  <!-- LEAD MAGNET, Employer Branding Checklist Zorg -->
   <!-- ============================================ -->
   <section class="lm-section" id="checklist-zorg">
     <div class="lm-container">
@@ -509,7 +535,7 @@
             <div class="lm-stack__sheet lm-stack__sheet--3"></div>
             <div class="lm-stack__sheet lm-stack__sheet--2"></div>
             <div class="lm-stack__cover">
-              <img src="../assets/downloads/covers/cover-zorg.jpg" alt="Employer Branding Checklist Zorg — cover" loading="lazy">
+              <img src="../assets/downloads/covers/cover-zorg.jpg" alt="Employer Branding Checklist Zorg, cover" loading="lazy">
             </div>
           </div>
           <div class="lm-stack__meta">
@@ -536,9 +562,9 @@
 
           <form class="lm-form" data-lm-form data-pdf="/assets/downloads/employer-branding-checklist-zorg.pdf">
             <input type="hidden" name="access_key" value="09f4704b-a2b3-46c9-b8ad-3acdff9f7c33">
-            <input type="hidden" name="subject" value="Lead magnet download — Employer Branding Checklist Zorg">
+            <input type="hidden" name="subject" value="Lead magnet download, Employer Branding Checklist Zorg">
             <input type="hidden" name="from_name" value="sircle.agency · Lead magnet Zorg">
-            <input type="hidden" name="lead_source" value="Sector Zorg — EB Checklist">
+            <input type="hidden" name="lead_source" value="Sector Zorg, EB Checklist">
             <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="lm-form__row">
