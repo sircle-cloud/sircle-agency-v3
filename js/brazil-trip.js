@@ -254,23 +254,23 @@ const SPOT_GALLERIES = {
   },
   cumbuco: {
     title: 'Cumbuco',
-    images: [PLACE('cumbuco'), P(5), P(6), P(20), P(29)],
+    get images() { return [PLACE('cumbuco'), P(5), P(6), P(20), P(29)]; },
   },
   paracuru: {
     title: 'Paracuru & Donkey Lagoon',
-    images: [PLACE('paracuru'), P(21), P(25), P(31), P(24)],
+    get images() { return [PLACE('paracuru'), P(21), P(25), P(31), P(24)]; },
   },
   guajiru: {
     title: 'Ilha do Guajiru',
-    images: [PLACE('guajiru'), P(22), P(8), P(23), P(30)],
+    get images() { return [PLACE('guajiru'), P(22), P(8), P(23), P(30)]; },
   },
   jeri: {
     title: 'Jericoacoara',
-    images: [PLACE('jeri'), P(10), P(34), P(11), P(16), P(39)],
+    get images() { return [PLACE('jeri'), P(10), P(34), P(11), P(16), P(39)]; },
   },
   tatajuba: {
     title: 'Tatajuba',
-    images: [PLACE('tatajuba'), P(27), P(40), P(36)],
+    get images() { return [PLACE('tatajuba'), P(27), P(40), P(36)]; },
   },
 };
 
