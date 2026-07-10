@@ -325,6 +325,10 @@ const IMG = {
 };
 
 const SPOT_GALLERIES = {
+  brazil2024: {
+    get title() { return 'Brazil 2024'; },
+    get images() { return TRIP_PHOTOS_2024; },
+  },
   cumbuco: {
     title: 'Cumbuco',
     images: [IMG.cauipeBarra, IMG.cumbuco2, IMG.cauipe3, IMG.praiaCumbuco, IMG.cumbuco1, IMG.rigging],
@@ -423,6 +427,68 @@ const ACCOMMODATIONS = {
 };
 
 // ============================================
+// BRAZIL 2024 — masonry-galerij
+// LET OP: dit is de fotolijst van de eigen 2024-trip.
+// Zodra de map met eigen foto's in assets/brazil-2024/ staat:
+// vervang de paden hieronder (1 regel per foto) — de masonry,
+// lightbox en volgorde volgen automatisch.
+// ============================================
+const TRIP_PHOTOS_2024 = [
+  IMG.cauipeBarra, IMG.jumpHigh, IMG.jeriPraia, IMG.cumbuco2,
+  IMG.guajiruReal, IMG.rigging, IMG.dunaSunset, IMG.cauipe3,
+  IMG.barrinha2, IMG.voo, IMG.laguinho, IMG.jeriKite,
+  IMG.praiaCumbuco, IMG.sunset1, IMG.delta, IMG.gostoso,
+];
+
+(function initMasonry() {
+  const wrap = document.getElementById('masonry2024');
+  if (!wrap) return;
+  TRIP_PHOTOS_2024.forEach((src, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'trip-masonry__item';
+    btn.setAttribute('data-gallery-open', 'brazil2024');
+    btn.setAttribute('data-gallery-index', String(i));
+    btn.setAttribute('aria-label', `Foto ${i + 1} uit Brazil 2024 groot bekijken`);
+    const img = document.createElement('img');
+    img.src = src;
+    img.loading = 'lazy';
+    img.alt = `Brazil 2024 — kitefoto ${i + 1}`;
+    btn.appendChild(img);
+    wrap.appendChild(btn);
+  });
+  // rustige stagger-reveal bij scroll
+  gsap.from(wrap.children, {
+    y: 32, opacity: 0,
+    duration: 0.8, stagger: 0.06, ease: 'power3.out',
+    scrollTrigger: { trigger: wrap, start: 'top 85%', toggleActions: 'play none none none' }
+  });
+})();
+
+// ============================================
+// COUNTDOWN — tikt af naar vertrek
+// ============================================
+(function initCountdown() {
+  const blocks = document.querySelectorAll('[data-countdown]');
+  if (!blocks.length) return;
+  const pad = (n) => String(n).padStart(2, '0');
+  function tick() {
+    blocks.forEach(block => {
+      const target = new Date(block.dataset.countdown).getTime();
+      let diff = Math.max(0, target - Date.now());
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor(diff / 3600000) % 24;
+      const m = Math.floor(diff / 60000) % 60;
+      const sec = Math.floor(diff / 1000) % 60;
+      const set = (k, v) => { const el = block.querySelector(`[data-cd="${k}"]`); if (el) el.textContent = v; };
+      set('d', d); set('h', pad(h)); set('m', pad(m)); set('s', pad(sec));
+    });
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// ============================================
 // MODAL — foto-galerij (spots) + info-panel (accommodaties)
 // ============================================
 (function initModal() {
@@ -467,12 +533,12 @@ const ACCOMMODATIONS = {
     lenis.start();
   }
 
-  function openGallery(key) {
+  function openGallery(key, startIndex = 0) {
     const data = SPOT_GALLERIES[key];
     if (!data) return;
     images = data.images;
     alt = data.title;
-    index = 0;
+    index = Math.min(startIndex, images.length - 1);
     info.hidden = true;
     panel.classList.remove('has-info');
     render();
@@ -503,7 +569,7 @@ const ACCOMMODATIONS = {
   }
 
   document.querySelectorAll('[data-gallery-open]').forEach(btn => {
-    btn.addEventListener('click', () => openGallery(btn.dataset.galleryOpen));
+    btn.addEventListener('click', () => openGallery(btn.dataset.galleryOpen, parseInt(btn.dataset.galleryIndex || '0', 10)));
   });
   document.querySelectorAll('[data-acco-open]').forEach(card => {
     card.addEventListener('click', () => openAcco(card.dataset.accoOpen));
