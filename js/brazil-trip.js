@@ -286,43 +286,18 @@ gsap.fromTo('.trip-cta__bg', { yPercent: -10 }, {
 // DATA — galerijen per kite-spot & accommodatie-details
 // Prijzen zijn indicatief; links naar de aanbieder voor actuele tarieven.
 // ============================================
-// Alle foto's zijn kitesurf-beelden van Wikimedia Commons (vrije licenties),
-// waaronder echte spotfoto's van Cumbuco/Cauípe, Ilha do Guajiru, Barrinha (Jeri) en Tatajuba.
-const WIKI = (path) => `https://upload.wikimedia.org/wikipedia/commons/thumb/${path}`;
+// Alle foto's komen uit onze eigen Brazil 2024-map (Donkey Lagoon, Sony A7M4).
+const P = (n) => `assets/brazil-2024/donkey-${String(n).padStart(2, '0')}.jpg`;
 
 const IMG = {
-  cauipeBarra: WIKI('1/11/Kites_Surfes_na_Barra_do_Cau%C3%ADpe_Caucaia-CE.jpg/1280px-Kites_Surfes_na_Barra_do_Cau%C3%ADpe_Caucaia-CE.jpg'),
-  cumbuco1: WIKI('c/c8/Kitecumbuco.jpg/1280px-Kitecumbuco.jpg'),
-  cumbuco2: WIKI('f/f7/Kitecumbuco2.jpg/1280px-Kitecumbuco2.jpg'),
-  cumbuco3: WIKI('0/07/Kitecumbuco3.jpg/1280px-Kitecumbuco3.jpg'),
-  cumbucoBeach: WIKI('6/6f/Fortaleza%2C_Cear%C3%A1%2C_Brazil%2C_Kitesurf_in_Cumbuco_Beach_-_panoramio.jpg/1280px-Fortaleza%2C_Cear%C3%A1%2C_Brazil%2C_Kitesurf_in_Cumbuco_Beach_-_panoramio.jpg'),
-  praiaCumbuco: WIKI('1/13/Praia_do_cumbuco.jpg/1280px-Praia_do_cumbuco.jpg'),
-  rigging: WIKI('7/73/Fortaleza%2C_Cear%C3%A1%2C_Brasil._Montando_kitesurf._Icaray._-_panoramio.jpg/1280px-Fortaleza%2C_Cear%C3%A1%2C_Brasil._Montando_kitesurf._Icaray._-_panoramio.jpg'),
-  cauipe1: WIKI('0/0a/Kite_Cauipe.jpg/1280px-Kite_Cauipe.jpg'),
-  cauipe3: WIKI('c/c7/Kite_Cauipe_3.jpg/1280px-Kite_Cauipe_3.jpg'),
-  delta: WIKI('1/18/SSFnaDelta.jpg/1280px-SSFnaDelta.jpg'),
-  aquiraz1: WIKI('2/26/Kitesurfing_on_Aquiraz.jpg/1280px-Kitesurfing_on_Aquiraz.jpg'),
-  aquiraz2: WIKI('2/22/Kite_boarding_on_Aquiraz.jpg/1280px-Kite_boarding_on_Aquiraz.jpg'),
-  aquiraz3: WIKI('d/d9/Kitesurfing_on_Aquiraz-Cear%C3%A1.jpg/1280px-Kitesurfing_on_Aquiraz-Cear%C3%A1.jpg'),
-  araruama: WIKI('7/76/Kitesurf_na_Lagoa_de_Araruama.jpg/1280px-Kitesurf_na_Lagoa_de_Araruama.jpg'),
-  guajiruReal: WIKI('4/42/Ilha_do_guajiru_-_itarema_-_ceara.jpg/1280px-Ilha_do_guajiru_-_itarema_-_ceara.jpg'),
-  gostoso: WIKI('5/59/S%C3%A3o_Miguel_do_Gostoso%2C_Rio_Grande_do_Norte.jpg/1280px-S%C3%A3o_Miguel_do_Gostoso%2C_Rio_Grande_do_Norte.jpg'),
-  voo: WIKI('c/cc/A_beleza_de_um_voo_de_kitesurf.jpg/1280px-A_beleza_de_um_voo_de_kitesurf.jpg'),
-  jumpHigh: WIKI('c/cb/Kitesurfer_Jumping_High_In_The_Air_%2846262593652%29.jpg/1280px-Kitesurfer_Jumping_High_In_The_Air_%2846262593652%29.jpg'),
-  barrinha1: WIKI('e/eb/14-_Kitesurfsport-Barrinha-Jericoacoara%2CCe_Helio_Bastos_Salmon-130722.jpg/1280px-14-_Kitesurfsport-Barrinha-Jericoacoara%2CCe_Helio_Bastos_Salmon-130722.jpg'),
-  barrinha2: WIKI('e/ec/15_-Barrinha%2CSportKitesurf-Jericoacoara%2CCe_Helio_Bastos_Salmon-130722.jpg/1280px-15_-Barrinha%2CSportKitesurf-Jericoacoara%2CCe_Helio_Bastos_Salmon-130722.jpg'),
-  jeriPraia: WIKI('c/c7/Praia_Principal%2CJericoacoara%2CCear%C3%A1_-_01_-Helio_Bastos_Salmon.jpg/1280px-Praia_Principal%2CJericoacoara%2CCear%C3%A1_-_01_-Helio_Bastos_Salmon.jpg'),
-  jeriPraia31: WIKI('3/3a/31--PraiaPrincipal-Jericoacoara%2CCear%C3%A1-Helio-Bastos-Salmon-100722_6017.jpg/1280px-31--PraiaPrincipal-Jericoacoara%2CCear%C3%A1-Helio-Bastos-Salmon-100722_6017.jpg'),
-  jeriKite: WIKI('2/21/Kite_at_Jericoacoara_beach_IMG_1110_%288354033418%29.jpg/1280px-Kite_at_Jericoacoara_beach_IMG_1110_%288354033418%29.jpg'),
-  dunaSunset: WIKI('c/cf/Duna_do_por_do_sol_com_surfista.jpg/1280px-Duna_do_por_do_sol_com_surfista.jpg'),
-  jeriNov22: WIKI('5/55/Jeri_Nov_12_-_image_22_%288354529604%29.jpg/1280px-Jeri_Nov_12_-_image_22_%288354529604%29.jpg'),
-  jeriNov23: WIKI('1/11/Jeri_Nov_12_-_image_23_%288354533366%29.jpg/1280px-Jeri_Nov_12_-_image_23_%288354533366%29.jpg'),
-  laguinho: WIKI('2/23/Laguinho_da_Torta_2016.jpg/1280px-Laguinho_da_Torta_2016.jpg'),
-  canoa: WIKI('f/f2/Canoa_Quebrada_9.jpg/1280px-Canoa_Quebrada_9.jpg'),
-  sunset1: WIKI('f/f9/Kitesurf_at_sunset_%2824562604416%29.jpg/1280px-Kitesurf_at_sunset_%2824562604416%29.jpg'),
-  workum: WIKI('6/6a/Kitesurfer_at_sunset%2C_Workum%2C_may_2017.jpg/1280px-Kitesurfer_at_sunset%2C_Workum%2C_may_2017.jpg'),
-  essaouira: WIKI('f/fd/Sunset_with_kite%2C_Essaouira%2C_Morocco.jpg/1280px-Sunset_with_kite%2C_Essaouira%2C_Morocco.jpg'),
-};
+  cauipeBarra: P(24), cumbuco1: P(5), cumbuco2: P(10), cumbuco3: P(6),
+  cumbucoBeach: P(20), praiaCumbuco: P(22), rigging: P(17), cauipe1: P(23),
+  cauipe3: P(31), delta: P(21), aquiraz1: P(25), aquiraz2: P(29), aquiraz3: P(30),
+  araruama: P(20), guajiruReal: P(22), gostoso: P(6), voo: P(8), jumpHigh: P(19),
+  barrinha1: P(34), barrinha2: P(10), jeriPraia: P(24), jeriPraia31: P(27),
+  jeriKite: P(11), dunaSunset: P(16), jeriNov22: P(39), jeriNov23: P(40),
+  laguinho: P(27), canoa: P(36), sunset1: P(10), workum: P(16), essaouira: P(3),
+}
 
 const SPOT_GALLERIES = {
   brazil2024: {
@@ -434,10 +409,9 @@ const ACCOMMODATIONS = {
 // lightbox en volgorde volgen automatisch.
 // ============================================
 const TRIP_PHOTOS_2024 = [
-  IMG.cauipeBarra, IMG.jumpHigh, IMG.jeriPraia, IMG.cumbuco2,
-  IMG.guajiruReal, IMG.rigging, IMG.dunaSunset, IMG.cauipe3,
-  IMG.barrinha2, IMG.voo, IMG.laguinho, IMG.jeriKite,
-  IMG.praiaCumbuco, IMG.sunset1, IMG.delta, IMG.gostoso,
+  P(2), P(24), P(14), P(10), P(21), P(16), P(8), P(20),
+  P(27), P(6), P(23), P(31), P(34), P(11), P(39), P(5),
+  P(13), P(29), P(36), P(19),
 ];
 
 (function initMasonry() {
