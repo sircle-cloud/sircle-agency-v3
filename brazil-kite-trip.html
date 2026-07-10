@@ -28,6 +28,7 @@
     <nav class="trip-nav__links">
       <a href="#proloog">2024</a>
       <a href="#route">Route</a>
+      <a href="#itinerary">Stemmen</a>
       <a href="#spots">Spots</a>
       <a href="#downwinder">Downwinder</a>
       <a href="#opties">Slapen</a>
@@ -114,46 +115,53 @@
     <!-- ======= ROUTE (animated map) ======= -->
     <section class="trip-route section-dark" id="route">
       <div class="container">
-        <p class="trip-eyebrow reveal-up">DE ROUTE</p>
-        <h2 class="trip-h2 trip-h2--light reveal-up">±180 km kitecoast, west richting Tatajuba</h2>
+        <p class="trip-eyebrow reveal-up">DE ROUTE · OOST → WEST</p>
+        <h2 class="trip-h2 trip-h2--light reveal-up">±215 km met de wind mee, richting het westen</h2>
       </div>
-      <div class="trip-route__stage">
-        <div class="trip-route__map">
-          <svg class="trip-route__svg" viewBox="0 0 1000 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-            <path class="trip-route__path-bg" d="M 40 60 C 160 40, 220 140, 320 130 S 480 60, 560 150 S 720 260, 820 190 S 940 90, 960 120" />
-            <path class="trip-route__path" d="M 40 60 C 160 40, 220 140, 320 130 S 480 60, 560 150 S 720 260, 820 190 S 940 90, 960 120" />
-            <g class="trip-route__marker" data-marker="0" transform="translate(40,60)"><circle r="7"/></g>
-            <g class="trip-route__marker" data-marker="1" transform="translate(320,130)"><circle r="7"/></g>
-            <g class="trip-route__marker" data-marker="2" transform="translate(560,150)"><circle r="7"/></g>
-            <g class="trip-route__marker" data-marker="3" transform="translate(820,190)"><circle r="7"/></g>
-            <g class="trip-route__marker" data-marker="4" transform="translate(960,120)"><circle r="7"/></g>
-          </svg>
+      <div class="trip-route__stage container-wide">
+        <div class="trip-routemap" data-routemap>
+          <div class="trip-routemap__canvas">
+            <img class="trip-routemap__img" src="assets/brazil-2024/map/coast-map.jpg" alt="Kaart van de kust van Ceará met de route van Cumbuco naar Tatajuba" loading="lazy">
+            <svg class="trip-routemap__line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <polyline class="trip-routemap__path-bg" points="80.4,67.56 70.65,56.59 43.71,30.73 18.79,24.02 14.52,21.95" />
+              <polyline class="trip-routemap__path" points="80.4,67.56 70.65,56.59 43.71,30.73 18.79,24.02 14.52,21.95" />
+            </svg>
+            <button type="button" class="trip-routemap__pin" data-pin="0" data-anchor="#cumbuco" style="left:80.4%;top:67.56%"><span class="trip-routemap__dot">1</span><em>Cumbuco</em></button>
+            <button type="button" class="trip-routemap__pin" data-pin="1" data-anchor="#paracuru" style="left:70.65%;top:56.59%"><span class="trip-routemap__dot">2</span><em>Paracuru</em></button>
+            <button type="button" class="trip-routemap__pin" data-pin="2" data-anchor="#guajiru" style="left:43.71%;top:30.73%"><span class="trip-routemap__dot">3</span><em>Ilha do Guajiru</em></button>
+            <button type="button" class="trip-routemap__pin" data-pin="3" data-anchor="#jeri" style="left:18.79%;top:24.02%"><span class="trip-routemap__dot">4</span><em>Jericoacoara</em></button>
+            <button type="button" class="trip-routemap__pin" data-pin="4" data-anchor="#tatajuba" style="left:14.52%;top:21.95%"><span class="trip-routemap__dot">5</span><em>Tatajuba</em></button>
+          </div>
+          <div class="trip-routemap__legend">
+            <span class="trip-routemap__legend-east">▶ Fortaleza / Cumbuco — start</span>
+            <span class="trip-routemap__legend-west">Tatajuba — finish ◀</span>
+          </div>
         </div>
         <div class="trip-route__cards">
-          <article class="trip-route__card" data-route-card="0">
+          <article class="trip-route__card" data-route-card="0" data-anchor="#cumbuco">
             <span class="trip-route__num">01</span>
             <h3>Cumbuco</h3>
             <p>Startpunt &amp; thuisbasis. Kitescholen, warm opstarten, eerste sessies bij Windtown.</p>
           </article>
-          <article class="trip-route__card" data-route-card="1">
+          <article class="trip-route__card" data-route-card="1" data-anchor="#paracuru">
             <span class="trip-route__num">02</span>
             <span class="trip-route__dist">~45 km</span>
             <h3>Paracuru</h3>
             <p>Rustiger en lokaler. Brede lagune — en even verderop Donkey Lagoon, spiegelglad tussen de duinen.</p>
           </article>
-          <article class="trip-route__card" data-route-card="2">
+          <article class="trip-route__card" data-route-card="2" data-anchor="#guajiru">
             <span class="trip-route__num">03</span>
             <span class="trip-route__dist">~40 km</span>
             <h3>Ilha do Guajiru</h3>
             <p>Ongetij-spot — flat water, ongeacht het tij. Eén van de beste freestyle-lagunes van Brazilië.</p>
           </article>
-          <article class="trip-route__card" data-route-card="3">
+          <article class="trip-route__card" data-route-card="3" data-anchor="#jeri">
             <span class="trip-route__num">04</span>
             <span class="trip-route__dist">~100 km</span>
             <h3>Jericoacoara</h3>
             <p>De iconische duinen. Sunset op de Duna do Pôr do Sol, levendig dorp, veel restaurants.</p>
           </article>
-          <article class="trip-route__card" data-route-card="4">
+          <article class="trip-route__card" data-route-card="4" data-anchor="#tatajuba">
             <span class="trip-route__num">05</span>
             <span class="trip-route__dist">~20 km</span>
             <h3>Tatajuba</h3>
@@ -224,12 +232,64 @@
       </div>
     </section>
 
+
+    <!-- ======= ITINERARY & STEMMEN ======= -->
+    <section class="trip-section section-cream" id="itinerary">
+      <div class="container">
+        <p class="trip-eyebrow trip-eyebrow--dark reveal-up">ITINERARY · STEM MEE</p>
+        <h2 class="trip-h2 reveal-up">Twee indelingen — wat wordt 'm?</h2>
+        <p class="trip-body reveal-up">We hebben 9 nachten. Twee smaken: lekker lang op één plek blijven hangen (Jeri Focus), of elke paar dagen door naar de volgende spot (de Grote Tour). Stem met z'n drieën — de telling blijft op je toestel bewaard, en je kunt 'm delen in de groepsapp.</p>
+
+        <div class="trip-vote reveal-up" data-vote>
+          <article class="trip-vote-card" data-option="jeri">
+            <div class="trip-vote-card__head">
+              <span class="trip-vote-card__tag">Voorstel van Sebas</span>
+              <h3>Optie 1 · Jeri Focus</h3>
+            </div>
+            <ul class="trip-vote-card__stops">
+              <li><strong>2</strong> Cumbuco <span>start &amp; inkiten</span></li>
+              <li><strong>1</strong> Ilha do Guajiru <span>flat water</span></li>
+              <li><strong>3</strong> Jericoacoara <span>het dorp &amp; de duinen</span></li>
+              <li><strong>1</strong> Cumbuco <span>laatste nacht bij het vliegveld</span></li>
+            </ul>
+            <p class="trip-vote-card__note">7 vaste nachten · 2 flex-nachten (extra Jeri of Tatajuba)</p>
+            <div class="trip-vote-card__meter"><span class="trip-vote-card__bar" data-bar="jeri"></span></div>
+            <button type="button" class="btn-primary trip-vote-card__btn" data-vote-btn="jeri">Stem op Jeri Focus <span class="trip-vote-count" data-count="jeri">0</span></button>
+          </article>
+
+          <article class="trip-vote-card" data-option="tour">
+            <div class="trip-vote-card__head">
+              <span class="trip-vote-card__tag trip-vote-card__tag--alt">Meer zien</span>
+              <h3>Optie 2 · Grote Tour</h3>
+            </div>
+            <ul class="trip-vote-card__stops">
+              <li><strong>3</strong> Cumbuco <span>start &amp; inkiten</span></li>
+              <li><strong>2</strong> Paracuru <span>+ Donkey Lagoon</span></li>
+              <li><strong>2</strong> Ilha do Guajiru <span>flat water</span></li>
+              <li><strong>2</strong> Jericoacoara <span>de finale</span></li>
+            </ul>
+            <p class="trip-vote-card__note">9 nachten · elke etappe een nieuwe spot</p>
+            <div class="trip-vote-card__meter"><span class="trip-vote-card__bar" data-bar="tour"></span></div>
+            <button type="button" class="btn-secondary trip-vote-card__btn" data-vote-btn="tour">Stem op Grote Tour <span class="trip-vote-count" data-count="tour">0</span></button>
+          </article>
+        </div>
+
+        <div class="trip-vote__foot reveal-up">
+          <p class="trip-vote__status" data-vote-status>Nog geen stem uitgebracht.</p>
+          <div class="trip-vote__actions">
+            <a class="btn-ghost btn-ghost--dark" href="#" data-vote-share>Deel je stem in de app <span>→</span></a>
+            <button type="button" class="trip-vote__reset" data-vote-reset>reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ======= SPOTS ======= -->
     <section class="trip-spots" id="spots">
 
       <article class="trip-spot section-dark" id="cumbuco">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/donkey-06.jpg" alt="Tientallen kites boven de Cauípe-lagune bij Cumbuco" loading="lazy">
+          <img src="assets/brazil-2024/places/cumbuco.jpg" alt="Praia do Cumbuco — strand en duinen" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num">HOOFDSTUK 01 · WAAR HET WEER BEGINT</span>
@@ -242,7 +302,7 @@
 
       <article class="trip-spot section-cream trip-spot--reverse" id="paracuru">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/donkey-21.jpg" alt="Kitesurfers op een lagune aan de kust van Ceará" loading="lazy">
+          <img src="assets/brazil-2024/places/paracuru.jpg" alt="Het strand van Paracuru met kliffen" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num trip-route__num--dark">HOOFDSTUK 02 · HET RITME VINDEN</span>
@@ -255,7 +315,7 @@
 
       <article class="trip-spot section-dark" id="guajiru">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/donkey-22.jpg" alt="Kitesurfers op het vlakke water van Ilha do Guajiru" loading="lazy">
+          <img src="assets/brazil-2024/places/guajiru.jpg" alt="De lagune van Ilha do Guajiru" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num">HOOFDSTUK 03 · SPIEGELGLAD</span>
@@ -268,7 +328,7 @@
 
       <article class="trip-spot section-cream trip-spot--reverse" id="jeri">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/donkey-34.jpg" alt="Kitesurfers bij Barrinha, Jericoacoara" loading="lazy">
+          <img src="assets/brazil-2024/places/jeri.jpg" alt="Praia Principal, Jericoacoara" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num trip-route__num--dark">HOOFDSTUK 04 · DE DUINEN</span>
@@ -281,7 +341,7 @@
 
       <article class="trip-spot section-dark" id="tatajuba">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/donkey-27.jpg" alt="Kites boven de lagune bij Tatajuba" loading="lazy">
+          <img src="assets/brazil-2024/places/tatajuba.jpg" alt="De lagune bij Tatajuba" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num">HOOFDSTUK 05 · DE FINALE</span>

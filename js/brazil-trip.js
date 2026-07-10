@@ -173,42 +173,43 @@ document.querySelectorAll('.reveal-clip').forEach(el => {
 });
 
 // ============================================
-// ROUTE — kaartlijn tekent zichzelf bij scroll, markers poppen op,
-// kaarten staggeren mee
+// ROUTE — echte kaart, lijn tekent zich OOST→WEST (rechts→links),
+// pins poppen mee en zijn gekoppeld aan de spot-kaarten (Airbnb-stijl)
 // ============================================
 (function initRoute() {
-  const path = document.querySelector('.trip-route__path');
-  const markers = document.querySelectorAll('.trip-route__marker');
-  const cards = document.querySelectorAll('[data-route-card]');
+  const path = document.querySelector('.trip-routemap__path');
+  const pins = Array.from(document.querySelectorAll('.trip-routemap__pin'));
+  const cards = Array.from(document.querySelectorAll('[data-route-card]'));
   if (!path) return;
 
+  // De polyline loopt Cumbuco(rechts) → Tatajuba(links). De lijn 'van punt 0
+  // naar het einde' tekenen = rechts naar links = met de wind mee naar het westen.
   const length = path.getTotalLength();
   gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-  gsap.set(markers, { scale: 0, transformOrigin: 'center', transformBox: 'fill-box' });
+  gsap.set(pins, { scale: 0, opacity: 0, transformOrigin: 'center' });
 
-  // Lijn tekent zichzelf, gescrubd aan de scroll
   gsap.to(path, {
     strokeDashoffset: 0,
     ease: 'none',
     scrollTrigger: {
-      trigger: '.trip-route__stage',
-      start: 'top 80%',
-      end: 'top 25%',
+      trigger: '.trip-routemap',
+      start: 'top 78%',
+      end: 'center 45%',
       scrub: 0.6,
     }
   });
 
-  // Markers poppen op zodra de lijn hun punt passeert (progress-gebaseerd)
-  const markerPositions = [0, 0.3, 0.55, 0.85, 1];
+  // Pins poppen in volgorde rechts→links terwijl de lijn hun punt passeert
+  const pinAt = [0, 0.28, 0.62, 0.9, 1];
   ScrollTrigger.create({
-    trigger: '.trip-route__stage',
-    start: 'top 80%',
-    end: 'top 25%',
+    trigger: '.trip-routemap',
+    start: 'top 78%',
+    end: 'center 45%',
     onUpdate: (self) => {
-      markers.forEach((m, i) => {
-        if (self.progress >= markerPositions[i] && !m.dataset.shown) {
-          m.dataset.shown = '1';
-          gsap.to(m, { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
+      pins.forEach((pin, i) => {
+        if (self.progress >= pinAt[i] && !pin.dataset.shown) {
+          pin.dataset.shown = '1';
+          gsap.to(pin, { scale: 1, opacity: 1, duration: 0.55, ease: 'elastic.out(1, 0.55)' });
         }
       });
     }
@@ -217,9 +218,33 @@ document.querySelectorAll('.reveal-clip').forEach(el => {
   cards.forEach((card, i) => {
     gsap.from(card, {
       y: 40, opacity: 0,
-      duration: 0.8, delay: i * 0.12, ease: 'power3.out',
+      duration: 0.8, delay: i * 0.1, ease: 'power3.out',
       scrollTrigger: { trigger: '.trip-route__cards', start: 'top 88%', toggleActions: 'play none none none' }
     });
+  });
+
+  // ---- Kaart ↔ kaarten koppelen (hover + klik) ----
+  function highlight(idx, on) {
+    const pin = pins[idx];
+    const card = cards.find(c => +c.dataset.routeCard === idx);
+    if (pin) pin.classList.toggle('is-active', on);
+    if (card) card.classList.toggle('is-active', on);
+  }
+  function goToAnchor(el) {
+    const sel = el.dataset.anchor;
+    const target = sel && document.querySelector(sel);
+    if (target) lenis.scrollTo(target, { duration: 1.2, offset: -60 });
+  }
+  pins.forEach((pin, i) => {
+    pin.addEventListener('mouseenter', () => highlight(i, true));
+    pin.addEventListener('mouseleave', () => highlight(i, false));
+    pin.addEventListener('click', () => goToAnchor(pin));
+  });
+  cards.forEach((card) => {
+    const i = +card.dataset.routeCard;
+    card.addEventListener('mouseenter', () => highlight(i, true));
+    card.addEventListener('mouseleave', () => highlight(i, false));
+    card.addEventListener('click', () => goToAnchor(card));
   });
 })();
 
@@ -579,6 +604,66 @@ const TRIP_PHOTOS_2024 = [
     else if (e.key === 'ArrowLeft') { index = (index - 1 + images.length) % images.length; render(); }
     else if (e.key === 'ArrowRight') { index = (index + 1) % images.length; render(); }
   });
+})();
+
+// ============================================
+// STEMMEN op de itinerary (client-side, bewaard in localStorage)
+// Elke reiziger stemt op zijn eigen toestel; totalen worden per toestel
+// bewaard en zijn te delen via WhatsApp/de groepsapp.
+// ============================================
+(function initVote() {
+  const wrap = document.querySelector('[data-vote]');
+  if (!wrap) return;
+  const KEY = 'bkt26-votes';
+  const LABELS = { jeri: 'Optie 1 · Jeri Focus', tour: 'Optie 2 · Grote Tour' };
+  const statusEl = document.querySelector('[data-vote-status]');
+  const shareEl = document.querySelector('[data-vote-share]');
+  const resetEl = document.querySelector('[data-vote-reset]');
+
+  function read() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || { jeri: 0, tour: 0, mine: null }; }
+    catch (e) { return { jeri: 0, tour: 0, mine: null }; }
+  }
+  function write(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+
+  function render() {
+    const v = read();
+    const total = v.jeri + v.tour || 1;
+    document.querySelectorAll('[data-count]').forEach(el => { el.textContent = v[el.dataset.count]; });
+    document.querySelectorAll('[data-bar]').forEach(el => { el.style.width = ((v[el.dataset.bar] / total) * 100) + '%'; });
+    document.querySelectorAll('.trip-vote-card').forEach(card => {
+      card.classList.toggle('is-picked', v.mine === card.dataset.option);
+    });
+    if (v.mine) {
+      const winner = v.jeri === v.tour ? null : (v.jeri > v.tour ? 'jeri' : 'tour');
+      statusEl.textContent = `Jouw stem: ${LABELS[v.mine]}. Stand: ${v.jeri}–${v.tour}` +
+        (winner ? ` · ${LABELS[winner]} leidt.` : ' · gelijkspel.');
+    } else {
+      statusEl.textContent = 'Nog geen stem uitgebracht — kies hierboven.';
+    }
+    if (shareEl) {
+      const txt = `Mijn stem voor Brazil 2026: ${v.mine ? LABELS[v.mine] : '—'} (stand ${v.jeri}–${v.tour}). Wat kies jij?`;
+      shareEl.href = 'https://wa.me/?text=' + encodeURIComponent(txt);
+    }
+  }
+
+  document.querySelectorAll('[data-vote-btn]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const opt = btn.dataset.voteBtn;
+      const v = read();
+      if (v.mine === opt) return;      // al op deze optie gestemd
+      if (v.mine) v[v.mine]--;          // stem verplaatsen
+      v[opt]++;
+      v.mine = opt;
+      write(v);
+      render();
+      gsap.fromTo(btn, { scale: 0.96 }, { scale: 1, duration: 0.4, ease: 'elastic.out(1, 0.5)' });
+    });
+  });
+
+  if (resetEl) resetEl.addEventListener('click', () => { write({ jeri: 0, tour: 0, mine: null }); render(); });
+
+  render();
 })();
 
 // Refresh na late layout-shifts (lazy images)
