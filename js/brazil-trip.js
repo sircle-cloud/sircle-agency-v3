@@ -1,0 +1,491 @@
+// ============================================
+// BRAZIL KITE TRIP 2026 — onepager interactions
+// GSAP + ScrollTrigger + Lenis (zelfde stack als main.js)
+// ============================================
+
+// Fallback: als de CDN-scripts niet laden, toon de pagina zonder animaties
+if (typeof gsap === 'undefined' || typeof Lenis === 'undefined') {
+  document.documentElement.classList.add('no-gsap');
+  document.getElementById('tripLoader')?.classList.add('is-done');
+  throw new Error('GSAP/Lenis niet geladen — statische fallback actief');
+}
+
+gsap.registerPlugin(ScrollTrigger);
+
+const isMobile = window.innerWidth < 768;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---- LENIS SMOOTH SCROLL (gekoppeld aan GSAP ticker, zoals main.js) ----
+const lenis = window.lenis = new Lenis({
+  duration: 1.0,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+});
+
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
+lenis.on('scroll', ScrollTrigger.update);
+
+// ---- HELPERS ----
+function splitTextIntoWords(el) {
+  const text = el.textContent.trim();
+  const words = text.split(/\s+/);
+  el.innerHTML = '';
+  el.setAttribute('aria-label', text);
+  const spans = [];
+  words.forEach((word, i) => {
+    const span = document.createElement('span');
+    span.className = 'word';
+    span.textContent = word;
+    span.setAttribute('aria-hidden', 'true');
+    el.appendChild(span);
+    if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    spans.push(span);
+  });
+  return spans;
+}
+
+// ============================================
+// LOADER — teller 0 → 100 met fallback
+// ============================================
+(function initLoader() {
+  const loader = document.getElementById('tripLoader');
+  const countEl = document.getElementById('tripLoaderCount');
+  if (!loader || !countEl) return;
+
+  let done = false;
+  const counter = { val: 0 };
+
+  function finish() {
+    if (done) return;
+    done = true;
+    loader.classList.add('is-done');
+    initHeroIntro();
+  }
+
+  gsap.to(counter, {
+    val: 100,
+    duration: prefersReducedMotion ? 0.2 : 1.4,
+    ease: 'power2.inOut',
+    onUpdate: () => { countEl.textContent = Math.round(counter.val); },
+    onComplete: finish,
+  });
+
+  // Fallback: nooit langer dan 4s blijven hangen
+  setTimeout(finish, 4000);
+})();
+
+// ============================================
+// HERO — word-stagger intro + Ken Burns slideshow
+// ============================================
+function initHeroIntro() {
+  const lines = document.querySelectorAll('[data-split-words]');
+  const allWords = [];
+  lines.forEach(line => allWords.push(...splitTextIntoWords(line)));
+
+  gsap.set(allWords, { yPercent: 110, opacity: 0 });
+  gsap.to(allWords, {
+    yPercent: 0,
+    opacity: 1,
+    duration: 1.1,
+    stagger: 0.08,
+    ease: 'power3.out',
+    delay: 0.15,
+  });
+}
+
+(function initHeroSlideshow() {
+  const slides = document.querySelectorAll('.trip-hero__slide');
+  const video = document.querySelector('.trip-hero__video');
+
+  // Video alleen tonen als het bestand echt bestaat en kan afspelen
+  if (video) {
+    video.addEventListener('canplay', () => {
+      video.style.display = 'block';
+      slides.forEach(s => { s.style.display = 'none'; });
+    }, { once: true });
+    video.querySelector('source')?.addEventListener('error', () => { video.remove(); });
+  }
+
+  if (slides.length < 2 || prefersReducedMotion) return;
+  let current = 0;
+  setInterval(() => {
+    if (video && video.style.display === 'block') return;
+    slides[current].classList.remove('is-active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('is-active');
+  }, 5500);
+})();
+
+// Hero parallax bij scroll
+gsap.to('.trip-hero__bg', {
+  yPercent: 18,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.trip-hero',
+    start: 'top top',
+    end: 'bottom top',
+    scrub: true,
+  }
+});
+
+// ============================================
+// NAV — background bij scroll + smooth anchors
+// ============================================
+(function initNav() {
+  const nav = document.querySelector('[data-trip-nav]');
+  if (!nav) return;
+
+  ScrollTrigger.create({
+    start: 80,
+    onEnter: () => nav.classList.add('is-scrolled'),
+    onLeaveBack: () => nav.classList.remove('is-scrolled'),
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      lenis.scrollTo(target, { duration: 1.2, offset: -70 });
+    });
+  });
+})();
+
+// ============================================
+// GENERIC REVEALS (.reveal-up / .reveal-clip — zelfde patroon als main.js)
+// ============================================
+document.querySelectorAll('.reveal-up').forEach(el => {
+  const delay = parseFloat(el.dataset.delay) || 0;
+  gsap.to(el, {
+    y: 0, opacity: 1, filter: 'blur(0px)',
+    duration: 1.0, delay, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+  });
+});
+
+document.querySelectorAll('.reveal-clip').forEach(el => {
+  const delay = parseFloat(el.dataset.delay) || 0;
+  gsap.to(el, {
+    clipPath: 'inset(0 0 0 0)', opacity: 1,
+    duration: 0.8, delay, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none none' }
+  });
+});
+
+// ============================================
+// ROUTE — kaartlijn tekent zichzelf bij scroll, markers poppen op,
+// kaarten staggeren mee
+// ============================================
+(function initRoute() {
+  const path = document.querySelector('.trip-route__path');
+  const markers = document.querySelectorAll('.trip-route__marker');
+  const cards = document.querySelectorAll('[data-route-card]');
+  if (!path) return;
+
+  const length = path.getTotalLength();
+  gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+  gsap.set(markers, { scale: 0, transformOrigin: 'center', transformBox: 'fill-box' });
+
+  // Lijn tekent zichzelf, gescrubd aan de scroll
+  gsap.to(path, {
+    strokeDashoffset: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.trip-route__stage',
+      start: 'top 80%',
+      end: 'top 25%',
+      scrub: 0.6,
+    }
+  });
+
+  // Markers poppen op zodra de lijn hun punt passeert (progress-gebaseerd)
+  const markerPositions = [0, 0.3, 0.55, 0.85, 1];
+  ScrollTrigger.create({
+    trigger: '.trip-route__stage',
+    start: 'top 80%',
+    end: 'top 25%',
+    onUpdate: (self) => {
+      markers.forEach((m, i) => {
+        if (self.progress >= markerPositions[i] && !m.dataset.shown) {
+          m.dataset.shown = '1';
+          gsap.to(m, { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
+        }
+      });
+    }
+  });
+
+  cards.forEach((card, i) => {
+    gsap.from(card, {
+      y: 40, opacity: 0,
+      duration: 0.8, delay: i * 0.12, ease: 'power3.out',
+      scrollTrigger: { trigger: '.trip-route__cards', start: 'top 88%', toggleActions: 'play none none none' }
+    });
+  });
+})();
+
+// ============================================
+// SPOTS — subtiele parallax op de foto's
+// ============================================
+if (!isMobile && !prefersReducedMotion) {
+  document.querySelectorAll('.trip-spot__image img').forEach(img => {
+    gsap.fromTo(img, { yPercent: -6 }, {
+      yPercent: 6,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.closest('.trip-spot'),
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+  });
+}
+
+// CTA achtergrond parallax
+gsap.fromTo('.trip-cta__bg', { yPercent: -10 }, {
+  yPercent: 10,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.trip-cta',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: true,
+  }
+});
+
+// ============================================
+// TABS — Optie A / Optie B
+// ============================================
+(function initTabs() {
+  const buttons = document.querySelectorAll('.trip-tabs__btn');
+  const panels = document.querySelectorAll('[data-tab-panel]');
+  if (!buttons.length) return;
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      buttons.forEach(b => {
+        b.classList.toggle('is-active', b === btn);
+        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+      });
+      panels.forEach(panel => {
+        const show = panel.dataset.tabPanel === tab;
+        panel.hidden = !show;
+        if (show) {
+          gsap.fromTo(panel.querySelectorAll('.trip-acco-card'),
+            { y: 24, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
+        }
+      });
+      ScrollTrigger.refresh();
+    });
+  });
+})();
+
+// ============================================
+// DATA — galerijen per kite-spot & accommodatie-details
+// Prijzen zijn indicatief; links naar de aanbieder voor actuele tarieven.
+// ============================================
+const U = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1600&q=80`;
+
+const SPOT_GALLERIES = {
+  cumbuco: {
+    title: 'Cumbuco',
+    images: [U('1502680390469-be75c86b636f'), U('1509233725247-49e657c54213'), U('1517699418036-fb5d179fef0c'), U('1520250497591-112f2f40a3f4')],
+  },
+  paracuru: {
+    title: 'Paracuru',
+    images: [U('1455729552865-3658a5d39692'), U('1471922694854-ff1b63b20054'), U('1507525428034-b723cf961d3e'), U('1439405326854-014607f694d7')],
+  },
+  guajiru: {
+    title: 'Ilha do Guajiru',
+    images: [U('1533760881669-80db4d7b4c15'), U('1473116763249-2faaef81ccda'), U('1516815231560-8f41ec531527'), U('1437719417032-8595fd9e9dc6')],
+  },
+  jeri: {
+    title: 'Jericoacoara',
+    images: [U('1534570122623-99e8378a9aa7'), U('1520454974749-611b7248ffdb'), U('1518156677180-95a2893f3e9f'), U('1540202404-a2f29016b523')],
+  },
+  tatajuba: {
+    title: 'Tatajuba',
+    images: [U('1468413253725-0d5181091126'), U('1519046904884-53103b34b206'), U('1559827260-dc66d52bef19'), U('1506929562872-bb421503ef21')],
+  },
+};
+
+const ACCOMMODATIONS = {
+  'windtown': {
+    loc: 'Cumbuco · 3 nachten · Optie A & B',
+    title: 'Windtown Beach Hotel',
+    desc: 'Hét kitehotel van Cumbuco: eigen kiteschool, materiaal­opslag, zwembad en 2 minuten van de spot. Ontbijtbuffet inbegrepen. Deze ligt vast — hier starten we de trip.',
+    specs: { 'Prijsindicatie': '± €38 pp / nacht', 'Type': 'Hotel + kiteschool', 'Afstand spot': '± 100 m', 'Ontbijt': 'Inbegrepen' },
+    link: 'https://www.windtown-brazil.com/',
+    images: [U('1520250497591-112f2f40a3f4'), U('1502680390469-be75c86b636f'), U('1509233725247-49e657c54213')],
+  },
+  'paracuru-a': {
+    loc: 'Paracuru · 2 nachten · Optie A',
+    title: 'Paracuru Kitefriends Lux Pousada',
+    desc: 'Kite-pousada met ruime suites en ontbijt, gerund door en voor kiters. Dicht bij de lagune en het centrum van Paracuru.',
+    specs: { 'Prijsindicatie': '± €25 pp / nacht', 'Type': 'Pousada (suites)', 'Ontbijt': 'Inbegrepen' },
+    link: 'https://www.tripadvisor.com/Hotel_Review-g1720824-d7134421-Reviews-Paracuru_Kitefriends_Lux_Pousada-Paracuru_State_of_Ceara.html',
+    images: [U('1507525428034-b723cf961d3e'), U('1471922694854-ff1b63b20054')],
+  },
+  'paracuru-b': {
+    loc: 'Paracuru · 2 nachten · Optie B',
+    title: 'Pousada Wind Paracuru',
+    desc: 'No-nonsense budget-pousada met goede reviews onder kiters. Scooter- en motorverhuur op locatie (± €8 per dag) — handig om de spots rond Paracuru te verkennen.',
+    specs: { 'Prijsindicatie': '± €16 pp / nacht', 'Type': 'Budget pousada', 'Extra': 'Scooterverhuur' },
+    link: 'https://www.tripadvisor.com/Hotel_Review-g1720824-d6351613-Reviews-Pousada_Wind_Paracuru-Paracuru_State_of_Ceara.html',
+    images: [U('1476673160081-cf065607f449'), U('1439405326854-014607f694d7')],
+  },
+  'guajiru-a': {
+    loc: 'Ilha do Guajiru · 2 nachten · Optie A',
+    title: 'Pousada Kite Guajiru',
+    desc: 'Direct óp de ongetij-spot: 5 meter van het water, kiten van je terras af, hele dag varen ongeacht het tij. Uitstekend ontbijt en wifi.',
+    specs: { 'Prijsindicatie': '± €42 pp / nacht', 'Type': 'Kite-pousada', 'Afstand spot': '5 m', 'Ontbijt': 'Inbegrepen' },
+    link: 'https://www.kitesurfingbrazil.com/',
+    images: [U('1544550581-5f7ceaf7f992'), U('1533760881669-80db4d7b4c15')],
+  },
+  'guajiru-b': {
+    loc: 'Ilha do Guajiru · 2 nachten · Optie B',
+    title: 'Guajiru Kite Safari',
+    desc: 'Eco-pousada aan het strand met grote Sahara-tenten (met elektriciteit en internet), gebouwd op wind- en zonne-energie. Uniek slapen, klein budget.',
+    specs: { 'Prijsindicatie': '± €26 pp / nacht', 'Type': 'Eco / glamping', 'Ligging': 'Beachfront' },
+    link: 'https://www.guajiru-kitesafari.com/',
+    images: [U('1573843981267-be1999ff37cd'), U('1473116763249-2faaef81ccda')],
+  },
+  'jeri-a': {
+    loc: 'Jericoacoara · 2 nachten · Optie A',
+    title: 'Jeri Kite Surf Pousada — privékamer',
+    desc: 'Kite-pousada op 400 m van het strand en 500 m van Malhada Beach. Privékamers met airco, eigen badkamer en balkon. Ontbijtbuffet en kite-opslag.',
+    specs: { 'Prijsindicatie': '± €35 pp / nacht', 'Type': 'Pousada, privékamer', 'Locatie­score': '9.5 (Booking)', 'Ontbijt': 'Inbegrepen' },
+    link: 'https://www.booking.com/hotel/br/jeri-kite-surf-hostel.html',
+    images: [U('1540202404-a2f29016b523'), U('1520454974749-611b7248ffdb')],
+  },
+  'jeri-b': {
+    loc: 'Jericoacoara · 2 nachten · Optie B',
+    title: 'Jeri Kite Surf Pousada — budgetkamer',
+    desc: 'Zelfde pousada en toplocatie, maar dan de eenvoudigere kamers vanaf ± R$150 per nacht voor twee personen, ontbijt inbegrepen.',
+    specs: { 'Prijsindicatie': '± €18 pp / nacht', 'Type': 'Pousada, budgetkamer', 'Ontbijt': 'Inbegrepen' },
+    link: 'https://www.booking.com/hotel/br/jeri-kite-surf-hostel.html',
+    images: [U('1505142468610-359e7d316be0'), U('1518156677180-95a2893f3e9f')],
+  },
+  'tatajuba-a': {
+    loc: 'Tatajuba · optioneel +1 nacht · Optie A',
+    title: 'Kitejuba Bungalows',
+    desc: 'Bungalows direct op het strand van Tatajuba, met airco, klamboe en hangmat. Voor als we de downwind niet als dagtrip maar met overnachting willen doen.',
+    specs: { 'Prijsindicatie': '± €40 pp / nacht', 'Type': 'Beach bungalows', 'Ligging': 'Op het strand' },
+    link: 'https://www.kitejubabungalows.com/',
+    images: [U('1590523277543-a94d2e4eb00b'), U('1468413253725-0d5181091126')],
+  },
+  'tatajuba-b': {
+    loc: 'Tatajuba · optioneel +1 nacht · Optie B',
+    title: 'Pousada Portal do Kite',
+    desc: 'Rustige pousada op 8 minuten lopen van het strand, met tuin en zonnedek. De budgetvriendelijke manier om in Tatajuba te overnachten.',
+    specs: { 'Prijsindicatie': '± €20 pp / nacht', 'Type': 'Pousada', 'Afstand strand': '8 min lopen' },
+    link: 'https://portal-do-kite-pousada.ceara-hotels.com/en/',
+    images: [U('1506929562872-bb421503ef21'), U('1519046904884-53103b34b206')],
+  },
+};
+
+// ============================================
+// MODAL — foto-galerij (spots) + info-panel (accommodaties)
+// ============================================
+(function initModal() {
+  const modal = document.getElementById('tripModal');
+  if (!modal) return;
+
+  const panel = modal.querySelector('.trip-modal__panel');
+  const imgEl = modal.querySelector('.trip-modal__img');
+  const counter = modal.querySelector('.trip-modal__counter');
+  const prevBtn = modal.querySelector('.trip-modal__nav--prev');
+  const nextBtn = modal.querySelector('.trip-modal__nav--next');
+  const info = document.getElementById('tripModalInfo');
+  const infoLoc = modal.querySelector('.trip-modal__loc');
+  const infoTitle = modal.querySelector('.trip-modal__title');
+  const infoDesc = modal.querySelector('.trip-modal__desc');
+  const infoSpecs = modal.querySelector('.trip-modal__specs');
+  const infoLink = modal.querySelector('.trip-modal__link');
+
+  let images = [];
+  let index = 0;
+  let alt = '';
+
+  function render() {
+    imgEl.src = images[index];
+    imgEl.alt = alt;
+    counter.textContent = `${index + 1} / ${images.length}`;
+    const nav = images.length > 1 ? '' : 'none';
+    prevBtn.style.display = nav;
+    nextBtn.style.display = nav;
+    counter.style.display = nav;
+  }
+
+  function openModal() {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    lenis.stop();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    lenis.start();
+  }
+
+  function openGallery(key) {
+    const data = SPOT_GALLERIES[key];
+    if (!data) return;
+    images = data.images;
+    alt = data.title;
+    index = 0;
+    info.hidden = true;
+    panel.classList.remove('has-info');
+    render();
+    openModal();
+  }
+
+  function openAcco(key) {
+    const data = ACCOMMODATIONS[key];
+    if (!data) return;
+    images = data.images;
+    alt = data.title;
+    index = 0;
+    infoLoc.textContent = data.loc;
+    infoTitle.textContent = data.title;
+    infoDesc.textContent = data.desc;
+    infoSpecs.innerHTML = '';
+    Object.entries(data.specs).forEach(([k, v]) => {
+      const row = document.createElement('dl');
+      row.className = 'trip-modal__spec';
+      row.innerHTML = `<dt>${k}</dt><dd>${v}</dd>`;
+      infoSpecs.appendChild(row);
+    });
+    infoLink.href = data.link;
+    info.hidden = false;
+    panel.classList.add('has-info');
+    render();
+    openModal();
+  }
+
+  document.querySelectorAll('[data-gallery-open]').forEach(btn => {
+    btn.addEventListener('click', () => openGallery(btn.dataset.galleryOpen));
+  });
+  document.querySelectorAll('[data-acco-open]').forEach(card => {
+    card.addEventListener('click', () => openAcco(card.dataset.accoOpen));
+  });
+  modal.querySelectorAll('[data-modal-close]').forEach(el => {
+    el.addEventListener('click', closeModal);
+  });
+
+  prevBtn.addEventListener('click', () => { index = (index - 1 + images.length) % images.length; render(); });
+  nextBtn.addEventListener('click', () => { index = (index + 1) % images.length; render(); });
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeModal();
+    else if (e.key === 'ArrowLeft') { index = (index - 1 + images.length) % images.length; render(); }
+    else if (e.key === 'ArrowRight') { index = (index + 1) % images.length; render(); }
+  });
+})();
+
+// Refresh na late layout-shifts (lazy images)
+window.addEventListener('load', () => ScrollTrigger.refresh());
