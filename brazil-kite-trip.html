@@ -118,56 +118,50 @@
         <p class="trip-eyebrow reveal-up">DE ROUTE · OOST → WEST</p>
         <h2 class="trip-h2 trip-h2--light reveal-up">±215 km met de wind mee, richting het westen</h2>
       </div>
-      <div class="trip-route__stage container-wide">
-        <div class="trip-routemap" data-routemap>
-          <div class="trip-routemap__canvas">
-            <img class="trip-routemap__img" src="assets/brazil-2024/map/coast-map.jpg" alt="Kaart van de kust van Ceará met de route van Cumbuco naar Tatajuba" loading="lazy">
-            <svg class="trip-routemap__line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <polyline class="trip-routemap__path-bg" points="80.4,67.56 70.65,56.59 43.71,30.73 18.79,24.02 14.52,21.95" />
-              <polyline class="trip-routemap__path" points="80.4,67.56 70.65,56.59 43.71,30.73 18.79,24.02 14.52,21.95" />
+      <div class="trip-journey" data-journey>
+        <div class="trip-journey__viewport" data-journey-viewport>
+          <div class="trip-journey__mapwrap" data-journey-map>
+            <img class="trip-journey__map" src="assets/brazil-2024/map/coast-map.jpg" alt="Kaart van de kust van Ceará met de route van Cumbuco naar Tatajuba">
+            <svg class="trip-journey__line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <polyline class="trip-journey__path-bg" points="79.38,66.88 70.79,57.5 45,34.44 25.75,29.31 20.63,32.44" />
+              <polyline class="trip-journey__path" points="79.38,66.88 70.79,57.5 45,34.44 25.75,29.31 20.63,32.44" />
             </svg>
-            <button type="button" class="trip-routemap__pin" data-pin="0" data-anchor="#cumbuco" style="left:80.4%;top:67.56%"><span class="trip-routemap__dot">1</span><em>Cumbuco</em></button>
-            <button type="button" class="trip-routemap__pin" data-pin="1" data-anchor="#paracuru" style="left:70.65%;top:56.59%"><span class="trip-routemap__dot">2</span><em>Paracuru</em></button>
-            <button type="button" class="trip-routemap__pin" data-pin="2" data-anchor="#guajiru" style="left:43.71%;top:30.73%"><span class="trip-routemap__dot">3</span><em>Ilha do Guajiru</em></button>
-            <button type="button" class="trip-routemap__pin" data-pin="3" data-anchor="#jeri" style="left:18.79%;top:24.02%"><span class="trip-routemap__dot">4</span><em>Jericoacoara</em></button>
-            <button type="button" class="trip-routemap__pin" data-pin="4" data-anchor="#tatajuba" style="left:14.52%;top:21.95%"><span class="trip-routemap__dot">5</span><em>Tatajuba</em></button>
+            <span class="trip-journey__pin" data-pin="0" style="left:79.38%;top:66.88%"></span>
+            <span class="trip-journey__pin" data-pin="1" style="left:70.79%;top:57.5%"></span>
+            <span class="trip-journey__pin" data-pin="2" style="left:45%;top:34.44%"></span>
+            <span class="trip-journey__pin" data-pin="3" style="left:25.75%;top:29.31%"></span>
+            <span class="trip-journey__pin" data-pin="4" style="left:20.63%;top:32.44%"></span>
           </div>
-          <div class="trip-routemap__legend">
-            <span class="trip-routemap__legend-east">▶ Fortaleza / Cumbuco — start</span>
-            <span class="trip-routemap__legend-west">Tatajuba — finish ◀</span>
+          <div class="trip-journey__hud">
+            <span class="trip-journey__hud-east">OOST · start</span>
+            <span class="trip-journey__hud-west">WEST · finish</span>
           </div>
+          <div class="trip-journey__popup" data-journey-popup></div>
+          <div class="trip-journey__dots" data-journey-dots></div>
         </div>
-        <div class="trip-route__cards">
-          <article class="trip-route__card" data-route-card="0" data-anchor="#cumbuco">
-            <span class="trip-route__num">01</span>
-            <h3>Cumbuco</h3>
-            <p>Startpunt &amp; thuisbasis. Kitescholen, warm opstarten, eerste sessies bij Windtown.</p>
-          </article>
-          <article class="trip-route__card" data-route-card="1" data-anchor="#paracuru">
-            <span class="trip-route__num">02</span>
-            <span class="trip-route__dist">~45 km</span>
-            <h3>Paracuru</h3>
-            <p>Rustiger en lokaler. Brede lagune — en even verderop Donkey Lagoon, spiegelglad tussen de duinen.</p>
-          </article>
-          <article class="trip-route__card" data-route-card="2" data-anchor="#guajiru">
-            <span class="trip-route__num">03</span>
-            <span class="trip-route__dist">~40 km</span>
-            <h3>Ilha do Guajiru</h3>
-            <p>Ongetij-spot — flat water, ongeacht het tij. Eén van de beste freestyle-lagunes van Brazilië.</p>
-          </article>
-          <article class="trip-route__card" data-route-card="3" data-anchor="#jeri">
-            <span class="trip-route__num">04</span>
-            <span class="trip-route__dist">~100 km</span>
-            <h3>Jericoacoara</h3>
-            <p>De iconische duinen. Sunset op de Duna do Pôr do Sol, levendig dorp, veel restaurants.</p>
-          </article>
-          <article class="trip-route__card" data-route-card="4" data-anchor="#tatajuba">
-            <span class="trip-route__num">05</span>
-            <span class="trip-route__dist">~20 km</span>
-            <h3>Tatajuba</h3>
-            <p>Grand finale: wildste stuk kust, nauwelijks bebouwd, downwind vanaf Jeri over de lagune.</p>
-          </article>
-        </div>
+      </div>
+      <!-- Mobiele / statische fallback: overzichtskaarten -->
+      <div class="trip-route__cards container-wide" data-route-cards>
+        <article class="trip-route__card" data-route-card="0" data-anchor="#cumbuco">
+          <span class="trip-route__num">01</span><h3>Cumbuco</h3>
+          <p>Start &amp; thuisbasis — inkiten bij Windtown.</p>
+        </article>
+        <article class="trip-route__card" data-route-card="1" data-anchor="#paracuru">
+          <span class="trip-route__num">02</span><span class="trip-route__dist">~45 km</span><h3>Paracuru</h3>
+          <p>Lokaler, met Donkey Lagoon om de hoek.</p>
+        </article>
+        <article class="trip-route__card" data-route-card="2" data-anchor="#guajiru">
+          <span class="trip-route__num">03</span><span class="trip-route__dist">~40 km</span><h3>Ilha do Guajiru</h3>
+          <p>Ongetij-spot, spiegelglad flat water.</p>
+        </article>
+        <article class="trip-route__card" data-route-card="3" data-anchor="#jeri">
+          <span class="trip-route__num">04</span><span class="trip-route__dist">~100 km</span><h3>Jericoacoara</h3>
+          <p>De duinen, het dorp, de sunset.</p>
+        </article>
+        <article class="trip-route__card" data-route-card="4" data-anchor="#tatajuba">
+          <span class="trip-route__num">05</span><span class="trip-route__dist">~20 km</span><h3>Tatajuba</h3>
+          <p>De wilde finale over de lagune.</p>
+        </article>
       </div>
     </section>
 

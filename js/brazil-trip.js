@@ -172,83 +172,6 @@ document.querySelectorAll('.reveal-clip').forEach(el => {
   });
 });
 
-// ============================================
-// ROUTE — echte kaart, lijn tekent zich OOST→WEST (rechts→links),
-// pins poppen mee en zijn gekoppeld aan de spot-kaarten (Airbnb-stijl)
-// ============================================
-(function initRoute() {
-  const path = document.querySelector('.trip-routemap__path');
-  const pins = Array.from(document.querySelectorAll('.trip-routemap__pin'));
-  const cards = Array.from(document.querySelectorAll('[data-route-card]'));
-  if (!path) return;
-
-  // De polyline loopt Cumbuco(rechts) → Tatajuba(links). De lijn 'van punt 0
-  // naar het einde' tekenen = rechts naar links = met de wind mee naar het westen.
-  const length = path.getTotalLength();
-  gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-  gsap.set(pins, { scale: 0, opacity: 0, transformOrigin: 'center' });
-
-  gsap.to(path, {
-    strokeDashoffset: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.trip-routemap',
-      start: 'top 78%',
-      end: 'center 45%',
-      scrub: 0.6,
-    }
-  });
-
-  // Pins poppen in volgorde rechts→links terwijl de lijn hun punt passeert
-  const pinAt = [0, 0.28, 0.62, 0.9, 1];
-  ScrollTrigger.create({
-    trigger: '.trip-routemap',
-    start: 'top 78%',
-    end: 'center 45%',
-    onUpdate: (self) => {
-      pins.forEach((pin, i) => {
-        if (self.progress >= pinAt[i] && !pin.dataset.shown) {
-          pin.dataset.shown = '1';
-          gsap.to(pin, { scale: 1, opacity: 1, duration: 0.55, ease: 'elastic.out(1, 0.55)' });
-        }
-      });
-    }
-  });
-
-  cards.forEach((card, i) => {
-    gsap.from(card, {
-      y: 40, opacity: 0,
-      duration: 0.8, delay: i * 0.1, ease: 'power3.out',
-      scrollTrigger: { trigger: '.trip-route__cards', start: 'top 88%', toggleActions: 'play none none none' }
-    });
-  });
-
-  // ---- Kaart ↔ kaarten koppelen (hover + klik) ----
-  function highlight(idx, on) {
-    const pin = pins[idx];
-    const card = cards.find(c => +c.dataset.routeCard === idx);
-    if (pin) pin.classList.toggle('is-active', on);
-    if (card) card.classList.toggle('is-active', on);
-  }
-  function goToAnchor(el) {
-    const sel = el.dataset.anchor;
-    const target = sel && document.querySelector(sel);
-    if (target) lenis.scrollTo(target, { duration: 1.2, offset: -60 });
-  }
-  pins.forEach((pin, i) => {
-    pin.addEventListener('mouseenter', () => highlight(i, true));
-    pin.addEventListener('mouseleave', () => highlight(i, false));
-    pin.addEventListener('click', () => goToAnchor(pin));
-  });
-  cards.forEach((card) => {
-    const i = +card.dataset.routeCard;
-    card.addEventListener('mouseenter', () => highlight(i, true));
-    card.addEventListener('mouseleave', () => highlight(i, false));
-    card.addEventListener('click', () => goToAnchor(card));
-  });
-})();
-
-// ============================================
 // SPOTS — subtiele parallax op de foto's
 // ============================================
 if (!isMobile && !prefersReducedMotion) {
@@ -331,25 +254,30 @@ const SPOT_GALLERIES = {
   },
   cumbuco: {
     title: 'Cumbuco',
-    images: [IMG.cauipeBarra, IMG.cumbuco2, IMG.cauipe3, IMG.praiaCumbuco, IMG.cumbuco1, IMG.rigging],
+    images: [PLACE('cumbuco'), P(5), P(6), P(20), P(29)],
   },
   paracuru: {
-    title: 'Paracuru',
-    images: [IMG.delta, IMG.aquiraz2, IMG.aquiraz1, IMG.cumbucoBeach],
+    title: 'Paracuru & Donkey Lagoon',
+    images: [PLACE('paracuru'), P(21), P(25), P(31), P(24)],
   },
   guajiru: {
     title: 'Ilha do Guajiru',
-    images: [IMG.guajiruReal, IMG.cauipe1, IMG.araruama, IMG.aquiraz3],
+    images: [PLACE('guajiru'), P(22), P(8), P(23), P(30)],
   },
   jeri: {
     title: 'Jericoacoara',
-    images: [IMG.barrinha1, IMG.barrinha2, IMG.dunaSunset, IMG.jeriKite, IMG.jeriPraia31, IMG.jeriNov22],
+    images: [PLACE('jeri'), P(10), P(34), P(11), P(16), P(39)],
   },
   tatajuba: {
     title: 'Tatajuba',
-    images: [IMG.laguinho, IMG.canoa, IMG.jeriNov23, IMG.sunset1],
+    images: [PLACE('tatajuba'), P(27), P(40), P(36)],
   },
 };
+
+// Padhelpers voor plek- en accommodatiefoto's
+function PLACE(x) { return WIKI_PLACE ? WIKI_PLACE[x] : `assets/brazil-2024/places/${x}.jpg`; }
+function ACCO(x) { return WIKI_ACCO ? WIKI_ACCO[x] : `assets/brazil-2024/acco/${x}.jpg`; }
+var WIKI_PLACE = null, WIKI_ACCO = null;
 
 const ACCOMMODATIONS = {
   'windtown': {
@@ -442,10 +370,9 @@ const ACCOMMODATIONS = {
 // vervang de paden hieronder (1 regel per foto) — de masonry,
 // lightbox en volgorde volgen automatisch.
 // ============================================
+// Compacte intro-galerij (de rest van de foto's zit verspreid per locatie).
 const TRIP_PHOTOS_2024 = [
-  P(2), P(24), P(14), P(10), P(21), P(16), P(8), P(20),
-  P(27), P(6), P(23), P(31), P(34), P(11), P(39), P(5),
-  P(13), P(29), P(36), P(19),
+  P(2), P(24), P(14), P(8), P(21), P(16), P(34), P(13), P(27),
 ];
 
 (function initMasonry() {
@@ -552,6 +479,7 @@ const TRIP_PHOTOS_2024 = [
     render();
     openModal();
   }
+  window.__openGallery = openGallery;   // beschikbaar voor de journey-popups
 
   function openAcco(key) {
     const data = ACCOMMODATIONS[key];
@@ -665,6 +593,181 @@ const TRIP_PHOTOS_2024 = [
 
   render();
 })();
+
+// ============================================
+// SCROLL-JOURNEY — de kaart beweegt OOST→WEST langs de route terwijl je
+// scrollt; per stop een Airbnb-achtige pop-up met foto's, accommodatie
+// en live Booking.com-link.
+// ============================================
+const BOOK = (ss, ci, co) => 'https://www.booking.com/searchresults.nl.html?ss=' + encodeURIComponent(ss) +
+  '&checkin=' + ci + '&checkout=' + co + '&group_adults=3&no_rooms=1&group_children=0&nflt=price%3DEUR-0-150-1&order=price';
+
+const JOURNEY = [
+  { key: 'cumbuco', xp: 79.38, yp: 66.88, title: 'Cumbuco', days: 'Vr 9 – zo 11 okt · 2 nachten',
+    sub: 'Start & inkiten — onze thuisbasis vlak bij Fortaleza.', gallery: 'cumbuco',
+    acco: { name: 'Windtown Beach Hotel', meta: '± €38 pp/n · hotel + kiteschool', img: ACCO('windtown-hotel'),
+      book: BOOK('Cumbuco, Ceará, Brazilië', '2026-10-09', '2026-10-11') } },
+  { key: 'paracuru', xp: 70.79, yp: 57.5, title: 'Paracuru', days: 'Downwind-etappe',
+    sub: 'Lokale golven — en Donkey Lagoon om de hoek.', gallery: 'paracuru',
+    acco: { name: 'Paracuru Kitefriends Lux', meta: '± €25 pp/n · pousada', img: ACCO('paracuru-beach'),
+      book: BOOK('Paracuru, Ceará, Brazilië', '2026-10-11', '2026-10-12') } },
+  { key: 'guajiru', xp: 45, yp: 34.44, title: 'Ilha do Guajiru', days: 'Ma 12 okt · 1 nacht',
+    sub: 'Ongetij-spot — spiegelglad flat water, hele dag.', gallery: 'guajiru',
+    acco: { name: 'Pousada Kite Guajiru', meta: '± €42 pp/n · 5 m van de spot', img: ACCO('guajiru-a'),
+      book: BOOK('Ilha do Guajiru, Itarema, Brazilië', '2026-10-12', '2026-10-13') } },
+  { key: 'jeri', xp: 25.75, yp: 29.31, title: 'Jericoacoara', days: 'Di 13 – vr 16 okt · 3 nachten',
+    sub: 'De duinen, het dorp en de sunset op de Duna do Pôr do Sol.', gallery: 'jeri',
+    acco: { name: 'Jeri Kite Surf Pousada', meta: '± €35 pp/n · 400 m van strand', img: ACCO('jeri-place'),
+      book: BOOK('Jericoacoara, Ceará, Brazilië', '2026-10-13', '2026-10-16') } },
+  { key: 'tatajuba', xp: 20.63, yp: 32.44, title: 'Tatajuba', days: 'Finale-downwind',
+    sub: 'De wildste kust — over de lagune naar het einde van de wereld.', gallery: 'tatajuba',
+    acco: { name: 'Kitejuba Bungalows', meta: '± €40 pp/n · op het strand', img: ACCO('tatajuba-place'),
+      book: BOOK('Tatajuba, Camocim, Brazilië', '2026-10-16', '2026-10-17') } },
+];
+
+(function initJourney() {
+  const journey = document.querySelector('[data-journey]');
+  const viewport = document.querySelector('[data-journey-viewport]');
+  const mapwrap = document.querySelector('[data-journey-map]');
+  const path = document.querySelector('.trip-journey__path');
+  const pins = Array.from(document.querySelectorAll('.trip-journey__pin'));
+  const popup = document.querySelector('[data-journey-popup]');
+  const dotsWrap = document.querySelector('[data-journey-dots]');
+  if (!journey || !mapwrap) return;
+
+  // ---- Overzichtskaarten onderaan: klik = scroll naar hoofdstuk ----
+  document.querySelectorAll('[data-route-card]').forEach(card => {
+    card.addEventListener('click', () => {
+      const t = document.querySelector(card.dataset.anchor);
+      if (t) lenis.scrollTo(t, { duration: 1.2, offset: -60 });
+    });
+  });
+
+  // Mobiel / reduced-motion: statische kaart, geen scroll-pan
+  if (isMobile || prefersReducedMotion) {
+    document.documentElement.classList.add('trip-journey--static');
+    return;
+  }
+
+  const IMG_W = 2400, IMG_H = 1600, AR = IMG_W / IMG_H;
+  const ZOOM = 2.0;
+  let W, Hm, left, top;
+
+  function layout() {
+    const vw = viewport.clientWidth, vh = viewport.clientHeight;
+    // mapwrap 'cover' de viewport, met de beeld-aspect behouden
+    W = Math.max(vw, vh * AR);
+    Hm = W / AR;
+    left = (vw - W) / 2;
+    top = (vh - Hm) / 2;
+    mapwrap.style.width = W + 'px';
+    mapwrap.style.height = Hm + 'px';
+    mapwrap.style.left = '0px';
+    mapwrap.style.top = '0px';
+  }
+
+  function focusTransform(xp, yp, z) {
+    const vw = viewport.clientWidth, vh = viewport.clientHeight;
+    const lx = left + (xp / 100) * W;   // punt in viewport-coörd (voor transform)
+    const ly = top + (yp / 100) * Hm;
+    const tx = vw / 2 - z * lx;
+    const ty = vh / 2 - z * ly;
+    return `translate(${tx}px, ${ty}px) scale(${z})`;
+  }
+
+  const smooth = (t) => t * t * (3 - 2 * t);
+  let current = { xp: JOURNEY[0].xp, yp: JOURNEY[0].yp };
+  let activeIdx = -1;
+  const pathLen = path ? path.getTotalLength() : 0;
+  if (path) { path.style.strokeDasharray = pathLen; path.style.strokeDashoffset = pathLen; }
+
+  function setActive(idx) {
+    if (idx === activeIdx) return;
+    activeIdx = idx;
+    pins.forEach((p, i) => p.classList.toggle('is-active', i === idx));
+    if (dotsWrap) dotsWrap.querySelectorAll('button').forEach((b, i) => b.classList.toggle('is-active', i === idx));
+    renderPopup(JOURNEY[idx]);
+  }
+
+  function renderPopup(stop) {
+    if (!popup) return;
+    const g = SPOT_GALLERIES[stop.gallery];
+    const n = g ? g.images.length : 0;
+    popup.innerHTML = `
+      <button type="button" class="trip-jp__media" data-gallery-open="${stop.gallery}" aria-label="Bekijk foto's van ${stop.title}">
+        <img src="${g ? g.images[0] : ''}" alt="${stop.title}">
+        <span class="trip-jp__count">${n} foto's ⤢</span>
+        <span class="trip-jp__thumbs">${Array.from({length: Math.min(n,5)}, (_, i) => `<span class="${i===0?'on':''}"></span>`).join('')}</span>
+      </button>
+      <div class="trip-jp__body">
+        <div class="trip-jp__eyebrow"><span>${stop.title}</span><span>${stop.days}</span></div>
+        <p class="trip-jp__sub">${stop.sub}</p>
+        <div class="trip-jp__acco">
+          <img src="${stop.acco.img}" alt="${stop.acco.name}">
+          <div class="trip-jp__acco-info">
+            <div class="trip-jp__acco-name">${stop.acco.name}</div>
+            <div class="trip-jp__acco-meta">${stop.acco.meta}</div>
+          </div>
+        </div>
+        <a class="trip-jp__book" href="${stop.acco.book}" target="_blank" rel="noopener">Bekijk live op Booking.com ↗</a>
+      </div>`;
+    gsap.fromTo(popup, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', onStart: () => popup.classList.add('is-in') });
+  }
+
+  // Lightbox openen via delegatie (popup wordt dynamisch hervuld)
+  if (popup) popup.addEventListener('click', (e) => {
+    const media = e.target.closest('[data-gallery-open]');
+    if (media && window.__openGallery) window.__openGallery(media.dataset.galleryOpen, 0);
+  });
+
+  // Voortgangs-dots
+  if (dotsWrap) {
+    JOURNEY.forEach((s, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Ga naar ' + s.title);
+      b.addEventListener('click', () => {
+        const rect = journey.getBoundingClientRect();
+        const startY = window.scrollY + rect.top;
+        const dist = journey.offsetHeight - viewport.clientHeight;
+        lenis.scrollTo(startY + (i / (JOURNEY.length - 1)) * dist + 4, { duration: 1.4 });
+      });
+      dotsWrap.appendChild(b);
+    });
+  }
+
+  layout();
+  window.addEventListener('resize', () => { layout(); update(lastP); });
+
+  let lastP = 0;
+  function update(p) {
+    lastP = p;
+    const segs = JOURNEY.length - 1;
+    const g = Math.max(0, Math.min(1, p)) * segs;
+    let i = Math.min(segs - 1, Math.floor(g));
+    const t = smooth(g - i);
+    const a = JOURNEY[i], b = JOURNEY[i + 1];
+    const xp = a.xp + (b.xp - a.xp) * t;
+    const yp = a.yp + (b.yp - a.yp) * t;
+    mapwrap.style.transform = focusTransform(xp, yp, ZOOM);
+    if (path) path.style.strokeDashoffset = pathLen * (1 - Math.max(0, Math.min(1, p)));
+    setActive(Math.round(g));
+  }
+
+  ScrollTrigger.create({
+    trigger: journey,
+    start: 'top top',
+    end: 'bottom bottom',
+    onUpdate: (self) => update(self.progress),
+    onRefresh: () => { layout(); update(lastP); },
+  });
+
+  // begintoestand
+  mapwrap.style.transform = focusTransform(JOURNEY[0].xp, JOURNEY[0].yp, ZOOM);
+  setActive(0);
+})();
+
+// ============================================
 
 // Refresh na late layout-shifts (lazy images)
 window.addEventListener('load', () => ScrollTrigger.refresh());
