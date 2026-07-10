@@ -333,7 +333,8 @@ const ACCOMMODATIONS = {
     desc: 'Hét kitehotel van Cumbuco: eigen kiteschool, materiaal\u00adopslag, zwembad en 2 minuten van de spot. Ontbijtbuffet inbegrepen. Deze ligt vast — hier starten we de trip.',
     specs: { 'Prijsindicatie': '± €38 pp / nacht', 'Type': 'Hotel + kiteschool', 'Afstand spot': '± 100 m', 'Ontbijt': 'Inbegrepen' },
     link: 'https://www.windtown-brazil.com/',
-    images: [IMG.cumbuco3, IMG.cauipeBarra, IMG.praiaCumbuco],
+    images: ['assets/brazil-2024/acco/windtown-hotel.jpg', 'assets/brazil-2024/acco/windtown-room.jpg', 'assets/brazil-2024/acco/windtown-pool.jpg', 'assets/brazil-2024/acco/windtown-rooftop.jpg', 'assets/brazil-2024/acco/windtown-school.jpg'],
+    photoCredit: 'Foto’s: Windtown Beach Hotel',
   },
   'paracuru-a': {
     loc: 'Paracuru · 2 nachten · Optie A',
@@ -341,7 +342,8 @@ const ACCOMMODATIONS = {
     desc: 'Kite-pousada met ruime suites en ontbijt, gerund door en voor kiters. Dicht bij de lagune en het centrum van Paracuru.',
     specs: { 'Prijsindicatie': '± €25 pp / nacht', 'Type': 'Pousada (suites)', 'Ontbijt': 'Inbegrepen' },
     link: 'https://www.tripadvisor.com/Hotel_Review-g1720824-d7134421-Reviews-Paracuru_Kitefriends_Lux_Pousada-Paracuru_State_of_Ceara.html',
-    images: [IMG.aquiraz2, IMG.delta],
+    images: ['assets/brazil-2024/acco/paracuru-beach.jpg', 'assets/brazil-2024/acco/paracuru-pano.jpg'],
+    photoCredit: 'Sfeerbeeld Paracuru · kamers: zie Booking',
   },
   'paracuru-b': {
     loc: 'Paracuru · 2 nachten · Optie B',
@@ -349,7 +351,8 @@ const ACCOMMODATIONS = {
     desc: 'No-nonsense budget-pousada met goede reviews onder kiters. Scooter- en motorverhuur op locatie (± €8 per dag) — handig om de spots rond Paracuru te verkennen.',
     specs: { 'Prijsindicatie': '± €16 pp / nacht', 'Type': 'Budget pousada', 'Extra': 'Scooterverhuur' },
     link: 'https://www.tripadvisor.com/Hotel_Review-g1720824-d6351613-Reviews-Pousada_Wind_Paracuru-Paracuru_State_of_Ceara.html',
-    images: [IMG.gostoso, IMG.aquiraz1],
+    images: ['assets/brazil-2024/acco/paracuru-munguba.jpg', 'assets/brazil-2024/acco/paracuru-beach.jpg'],
+    photoCredit: 'Sfeerbeeld Paracuru · kamers: zie Booking',
   },
   'guajiru-a': {
     loc: 'Ilha do Guajiru · 2 nachten · Optie A',
@@ -357,7 +360,8 @@ const ACCOMMODATIONS = {
     desc: 'Direct óp de ongetij-spot: 5 meter van het water, kiten van je terras af, hele dag varen ongeacht het tij. Uitstekend ontbijt en wifi.',
     specs: { 'Prijsindicatie': '± €42 pp / nacht', 'Type': 'Kite-pousada', 'Afstand spot': '5 m', 'Ontbijt': 'Inbegrepen' },
     link: 'https://www.kitesurfingbrazil.com/',
-    images: [IMG.guajiruReal, IMG.cauipe1],
+    images: ['assets/brazil-2024/acco/guajiru-a.jpg', 'assets/brazil-2024/acco/guajiru-place.jpg'],
+    photoCredit: 'Foto: Pousada Kite Guajiru',
   },
   'guajiru-b': {
     loc: 'Ilha do Guajiru · 2 nachten · Optie B',
@@ -365,7 +369,8 @@ const ACCOMMODATIONS = {
     desc: 'Eco-pousada aan het strand met grote Sahara-tenten (met elektriciteit en internet), gebouwd op wind- en zonne-energie. Uniek slapen, klein budget.',
     specs: { 'Prijsindicatie': '± €26 pp / nacht', 'Type': 'Eco / glamping', 'Ligging': 'Beachfront' },
     link: 'https://www.guajiru-kitesafari.com/',
-    images: [IMG.voo, IMG.araruama],
+    images: ['assets/brazil-2024/acco/safari-tent.jpg', 'assets/brazil-2024/acco/safari-tentroof.jpg', 'assets/brazil-2024/acco/safari-beach.jpg'],
+    photoCredit: 'Foto’s: Guajiru Kite Safari',
   },
   'jeri-a': {
     loc: 'Jericoacoara · 2 nachten · Optie A',
@@ -373,7 +378,8 @@ const ACCOMMODATIONS = {
     desc: 'Kite-pousada op 400 m van het strand en 500 m van Malhada Beach. Privékamers met airco, eigen badkamer en balkon. Ontbijtbuffet en kite-opslag.',
     specs: { 'Prijsindicatie': '± €35 pp / nacht', 'Type': 'Pousada, privékamer', 'Locatie\u00adscore': '9.5 (Booking)', 'Ontbijt': 'Inbegrepen' },
     link: 'https://www.booking.com/hotel/br/jeri-kite-surf-hostel.html',
-    images: [IMG.jeriKite, IMG.barrinha1],
+    images: ['assets/brazil-2024/acco/jeri-place.jpg', 'assets/brazil-2024/acco/jeri-duna.jpg'],
+    photoCredit: 'Sfeerbeeld Jericoacoara · kamers: zie Booking',
   },
   'jeri-b': {
     loc: 'Jericoacoara · 2 nachten · Optie B',
@@ -381,7 +387,8 @@ const ACCOMMODATIONS = {
     desc: 'Zelfde pousada en toplocatie, maar dan de eenvoudigere kamers vanaf ± R$150 per nacht voor twee personen, ontbijt inbegrepen.',
     specs: { 'Prijsindicatie': '± €18 pp / nacht', 'Type': 'Pousada, budgetkamer', 'Ontbijt': 'Inbegrepen' },
     link: 'https://www.booking.com/hotel/br/jeri-kite-surf-hostel.html',
-    images: [IMG.dunaSunset, IMG.barrinha2],
+    images: ['assets/brazil-2024/acco/jeri-duna.jpg', 'assets/brazil-2024/acco/jeri-place.jpg'],
+    photoCredit: 'Sfeerbeeld Jericoacoara · kamers: zie Booking',
   },
   'tatajuba-a': {
     loc: 'Tatajuba · optioneel +1 nacht · Optie A',
@@ -389,7 +396,8 @@ const ACCOMMODATIONS = {
     desc: 'Bungalows direct op het strand van Tatajuba, met airco, klamboe en hangmat. Voor als we de downwind niet als dagtrip maar met overnachting willen doen.',
     specs: { 'Prijsindicatie': '± €40 pp / nacht', 'Type': 'Beach bungalows', 'Ligging': 'Op het strand' },
     link: 'https://www.kitejubabungalows.com/',
-    images: [IMG.sunset1, IMG.laguinho],
+    images: ['assets/brazil-2024/acco/tatajuba-place.jpg', 'assets/brazil-2024/acco/tatajuba-place2.jpg'],
+    photoCredit: 'Sfeerbeeld Tatajuba · kamers: zie aanbieder',
   },
   'tatajuba-b': {
     loc: 'Tatajuba · optioneel +1 nacht · Optie B',
@@ -397,7 +405,8 @@ const ACCOMMODATIONS = {
     desc: 'Rustige pousada op 8 minuten lopen van het strand, met tuin en zonnedek. De budgetvriendelijke manier om in Tatajuba te overnachten.',
     specs: { 'Prijsindicatie': '± €20 pp / nacht', 'Type': 'Pousada', 'Afstand strand': '8 min lopen' },
     link: 'https://portal-do-kite-pousada.ceara-hotels.com/en/',
-    images: [IMG.workum, IMG.essaouira],
+    images: ['assets/brazil-2024/acco/tatajuba-place2.jpg', 'assets/brazil-2024/acco/tatajuba-place.jpg'],
+    photoCredit: 'Sfeerbeeld Tatajuba · kamers: zie aanbieder',
   },
 };
 
@@ -536,6 +545,15 @@ const TRIP_PHOTOS_2024 = [
       infoSpecs.appendChild(row);
     });
     infoLink.href = data.link;
+    // foto-bronvermelding (echte accommodatiefoto of sfeerbeeld van de plek)
+    let creditEl = info.querySelector('.trip-modal__credit');
+    if (!creditEl) {
+      creditEl = document.createElement('p');
+      creditEl.className = 'trip-modal__credit';
+      infoLink.parentNode.insertBefore(creditEl, infoLink);
+    }
+    creditEl.textContent = data.photoCredit || '';
+    creditEl.style.display = data.photoCredit ? '' : 'none';
     info.hidden = false;
     panel.classList.add('has-info');
     render();
