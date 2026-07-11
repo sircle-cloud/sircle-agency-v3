@@ -193,6 +193,35 @@ document.querySelectorAll('.reveal-clip').forEach(el => {
   });
 });
 
+// ============================================
+// BEELDEN: cache warmen vooruit + ScrollTrigger verversen zodra ze inladen.
+// Voorkomt lege reveals en vastgelopen triggers op trage mobiele verbindingen.
+// ============================================
+(function initImageLoading() {
+  // 1) Ververs trigger-posities zodra een beeld inlaadt (de layout verschuift dan).
+  let rt;
+  document.addEventListener('load', (e) => {
+    if (e.target && e.target.tagName === 'IMG') {
+      clearTimeout(rt);
+      rt = setTimeout(() => ScrollTrigger.refresh(), 150);
+    }
+  }, true);
+
+  // 2) Warm de beeld-cache ~1,5 scherm vooruit, zodat foto's al klaarstaan bij de reveal.
+  if ('IntersectionObserver' in window) {
+    const warm = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const src = en.target.getAttribute('src');
+        if (src) { const pre = new Image(); pre.decoding = 'async'; pre.src = src; }
+        warm.unobserve(en.target);
+      });
+    }, { rootMargin: '1500px 0px' });
+    window.__warmImages = (root) => (root || document).querySelectorAll('img[loading="lazy"]').forEach((im) => warm.observe(im));
+    window.__warmImages();
+  }
+})();
+
 // SPOTS — subtiele parallax op de foto's
 // ============================================
 if (!isMobile && !prefersReducedMotion) {
@@ -416,12 +445,16 @@ const TRIP_PHOTOS_2024 = [
     btn.appendChild(img);
     wrap.appendChild(btn);
   });
+  // JS-gebouwde beelden ook vooruit warmen
+  if (window.__warmImages) window.__warmImages(wrap);
   // rustige stagger-reveal bij scroll
   gsap.from(wrap.children, {
     y: 32, opacity: 0,
     duration: 0.8, stagger: 0.06, ease: 'power3.out',
-    scrollTrigger: { trigger: wrap, start: 'top 85%', toggleActions: 'play none none none' }
+    scrollTrigger: { trigger: wrap, start: 'top 90%', toggleActions: 'play none none none' }
   });
+  // Trigger-posities herberekenen nu de galerij in de DOM staat
+  ScrollTrigger.refresh();
 })();
 
 // ============================================
