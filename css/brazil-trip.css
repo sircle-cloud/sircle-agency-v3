@@ -1344,13 +1344,13 @@ p.trip-body { margin-bottom: 20px; }
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-  aspect-ratio: 2480 / 1640;
+  aspect-ratio: 2400 / 1600;
 }
 
 .trip-routemap__img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   display: block;
   filter: saturate(1.02);
 }
