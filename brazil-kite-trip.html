@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=58">
-  <link rel="stylesheet" href="css/brazil-trip.css?v=5">
+  <link rel="stylesheet" href="css/brazil-trip.css?v=6">
 </head>
 <body class="trip-page">
 
@@ -114,51 +114,77 @@
       </div>
     </section>
 
-    <!-- ======= ROUTE (animated map) ======= -->
+    <!-- ======= ROUTE (animated master map) ======= -->
     <section class="trip-route section-dark" id="route">
       <div class="container">
-        <p class="trip-eyebrow reveal-up">DE ROUTE · OOST → WEST</p>
-        <h2 class="trip-h2 trip-h2--light reveal-up">Met de wind mee, richting het westen</h2>
+        <p class="trip-eyebrow reveal-up">DE HELE KUST · CUMBUCO → ATINS</p>
+        <h2 class="trip-h2 trip-h2--light reveal-up">Eén kust, drie routes</h2>
+        <p class="trip-body trip-body--light reveal-up">Alle tien de spots op één kaart, van oost naar west. <strong>Optie 1 &amp; 2</strong> pakken het Ceará-deel (spot 1–5). De <strong>safari (optie 3)</strong> trekt door van Jeri helemaal tot Atins (spot 4–10). Klik een pin voor die spot.</p>
       </div>
-      <div class="trip-routemap container-wide" data-routemap>
+      <div class="trip-routemap trip-routemap--wide container-wide" data-routemap>
         <div class="trip-routemap__canvas">
-          <img class="trip-routemap__img" src="assets/brazil-2024/map/coast-map.jpg" alt="Kaart van de kust van Ceará met de route van Cumbuco naar Tatajuba" loading="lazy">
+          <img class="trip-routemap__img" src="assets/brazil-2024/map/master-map.jpg" alt="Kaart van de hele kust van Cumbuco tot Atins met alle tien spots" loading="lazy">
           <svg class="trip-routemap__line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <polyline class="trip-routemap__path-bg" points="79.38,66.88 67.42,54.63 45,34.44 25.75,29.31 20.63,32.44" />
-            <polyline class="trip-routemap__path" points="79.38,66.88 67.42,54.63 45,34.44 25.75,29.31 20.63,32.44" />
+            <polyline class="trip-routemap__path-bg" points="93.81,85.86 85.15,69.37 68.92,42.45 54.96,35.64 51.27,39.78 47.62,42.34 37.92,42.45 27.15,35.53 16.31,33.72 6.19,22.55" />
+            <polyline class="trip-routemap__path" points="93.81,85.86 85.15,69.37 68.92,42.45 54.96,35.64 51.27,39.78 47.62,42.34 37.92,42.45 27.15,35.53 16.31,33.72 6.19,22.55" />
           </svg>
-          <button type="button" class="trip-routemap__pin" data-pin="0" data-anchor="#cumbuco" style="left:79.38%;top:66.88%"><span class="trip-routemap__dot">1</span><em>Cumbuco</em></button>
-          <button type="button" class="trip-routemap__pin" data-pin="1" data-anchor="#lagoinha" style="left:67.42%;top:54.63%"><span class="trip-routemap__dot">2</span><em>Lagoinha</em></button>
-          <button type="button" class="trip-routemap__pin" data-pin="2" data-anchor="#guajiru" style="left:45%;top:34.44%"><span class="trip-routemap__dot">3</span><em>Ilha do Guajiru</em></button>
-          <button type="button" class="trip-routemap__pin" data-pin="3" data-anchor="#jeri" style="left:25.75%;top:29.31%"><span class="trip-routemap__dot">4</span><em>Jericoacoara</em></button>
-          <button type="button" class="trip-routemap__pin" data-pin="4" data-anchor="#tatajuba" style="left:20.63%;top:32.44%"><span class="trip-routemap__dot">5</span><em>Tatajuba</em></button>
+          <button type="button" class="trip-routemap__pin" data-pin="0" data-anchor="#cumbuco" style="left:93.81%;top:85.86%"><span class="trip-routemap__dot">1</span><em>Cumbuco</em></button>
+          <button type="button" class="trip-routemap__pin" data-pin="1" data-anchor="#lagoinha" style="left:85.15%;top:69.37%"><span class="trip-routemap__dot">2</span><em>Lagoinha</em></button>
+          <button type="button" class="trip-routemap__pin" data-pin="2" data-anchor="#guajiru" style="left:68.92%;top:42.45%"><span class="trip-routemap__dot">3</span><em>Guajiru</em></button>
+          <button type="button" class="trip-routemap__pin" data-pin="3" data-anchor="#jeri" style="left:54.96%;top:35.64%"><span class="trip-routemap__dot">4</span><em>Jericoacoara</em></button>
+          <button type="button" class="trip-routemap__pin" data-pin="4" data-anchor="#tatajuba" style="left:51.27%;top:39.78%"><span class="trip-routemap__dot">5</span><em>Tatajuba</em></button>
+          <button type="button" class="trip-routemap__pin trip-routemap__pin--safari" data-pin="5" data-anchor="#camocim" style="left:47.62%;top:42.34%"><span class="trip-routemap__dot">6</span><em>Camocim</em></button>
+          <button type="button" class="trip-routemap__pin trip-routemap__pin--safari" data-pin="6" data-anchor="#barra-grande" style="left:37.92%;top:42.45%"><span class="trip-routemap__dot">7</span><em>Barra Grande</em></button>
+          <button type="button" class="trip-routemap__pin trip-routemap__pin--safari" data-pin="7" data-anchor="#parnaiba" style="left:27.15%;top:35.53%"><span class="trip-routemap__dot">8</span><em>Parnaíba-delta</em></button>
+          <button type="button" class="trip-routemap__pin trip-routemap__pin--safari" data-pin="8" data-anchor="#tutoia" style="left:16.31%;top:33.72%"><span class="trip-routemap__dot">9</span><em>Tutóia</em></button>
+          <button type="button" class="trip-routemap__pin trip-routemap__pin--safari" data-pin="9" data-anchor="#atins" style="left:6.19%;top:22.55%"><span class="trip-routemap__dot">10</span><em>Atins</em></button>
         </div>
         <div class="trip-routemap__legend">
-          <span class="trip-routemap__legend-east">▶ Fortaleza / Cumbuco — start</span>
-          <span class="trip-routemap__legend-west">Tatajuba — finish ◀</span>
+          <span class="trip-routemap__legend-west">◀ Atins — safari-finish (optie 3)</span>
+          <span class="trip-routemap__legend-east">Cumbuco — start ▶</span>
         </div>
       </div>
       <!-- Klikbare locatie-index (hover koppelt aan de kaart-pin) -->
-      <div class="trip-route__cards container-wide" data-route-cards>
+      <div class="trip-route__cards trip-route__cards--ten container-wide" data-route-cards>
         <article class="trip-route__card" data-route-card="0" data-anchor="#cumbuco">
-          <span class="trip-route__num">01</span><h3>Cumbuco</h3>
+          <span class="trip-route__num">01</span><span class="trip-route__opt trip-route__opt--12">1&amp;2</span><h3>Cumbuco</h3>
           <p>Start &amp; thuisbasis — inkiten bij Windtown.</p>
         </article>
         <article class="trip-route__card" data-route-card="1" data-anchor="#lagoinha">
-          <span class="trip-route__num">02</span><span class="trip-route__dist">~60 km</span><h3>Lagoinha</h3>
-          <p>Onze thuisbasis: Donkey Lagoon, kniediep flat.</p>
+          <span class="trip-route__num">02</span><span class="trip-route__opt trip-route__opt--12">1&amp;2</span><span class="trip-route__dist">~60 km</span><h3>Lagoinha</h3>
+          <p>Donkey Lagoon, kniediep flat water.</p>
         </article>
         <article class="trip-route__card" data-route-card="2" data-anchor="#guajiru">
-          <span class="trip-route__num">03</span><span class="trip-route__dist">~110 km</span><h3>Ilha do Guajiru</h3>
+          <span class="trip-route__num">03</span><span class="trip-route__opt trip-route__opt--12">1&amp;2</span><span class="trip-route__dist">~107 km</span><h3>Ilha do Guajiru</h3>
           <p>Ongetij-spot, spiegelglad flat water.</p>
         </article>
         <article class="trip-route__card" data-route-card="3" data-anchor="#jeri">
-          <span class="trip-route__num">04</span><span class="trip-route__dist">~80 km</span><h3>Jericoacoara</h3>
+          <span class="trip-route__num">04</span><span class="trip-route__opt trip-route__opt--all">alle</span><span class="trip-route__dist">~80 km</span><h3>Jericoacoara</h3>
           <p>De duinen, het dorp, de sunset.</p>
         </article>
         <article class="trip-route__card" data-route-card="4" data-anchor="#tatajuba">
-          <span class="trip-route__num">05</span><span class="trip-route__dist">~23 km</span><h3>Tatajuba</h3>
-          <p>De wilde finale over de lagune.</p>
+          <span class="trip-route__num">05</span><span class="trip-route__opt trip-route__opt--all">alle</span><span class="trip-route__dist">~23 km</span><h3>Tatajuba</h3>
+          <p>Wilde lagune, wind boven 30 kn.</p>
+        </article>
+        <article class="trip-route__card" data-route-card="5" data-anchor="#camocim">
+          <span class="trip-route__num">06</span><span class="trip-route__opt trip-route__opt--3">3</span><span class="trip-route__dist">~21 km</span><h3>Camocim</h3>
+          <p>Riviermonding, laatste stop in Ceará.</p>
+        </article>
+        <article class="trip-route__card" data-route-card="6" data-anchor="#barra-grande">
+          <span class="trip-route__num">07</span><span class="trip-route__opt trip-route__opt--3">3</span><span class="trip-route__dist">~55 km</span><h3>Barra Grande</h3>
+          <p>Piauí's kitedorp: flat + mangrove-lagune.</p>
+        </article>
+        <article class="trip-route__card" data-route-card="7" data-anchor="#parnaiba">
+          <span class="trip-route__num">08</span><span class="trip-route__opt trip-route__opt--3">3</span><span class="trip-route__dist">~63 km</span><h3>Parnaíba-delta</h3>
+          <p>Doolhof van eilanden en mangroven.</p>
+        </article>
+        <article class="trip-route__card" data-route-card="8" data-anchor="#tutoia">
+          <span class="trip-route__num">09</span><span class="trip-route__opt trip-route__opt--3">3</span><span class="trip-route__dist">~62 km</span><h3>Tutóia</h3>
+          <p>Poort naar Maranhão, beschutte baai.</p>
+        </article>
+        <article class="trip-route__card" data-route-card="9" data-anchor="#atins">
+          <span class="trip-route__num">10</span><span class="trip-route__opt trip-route__opt--3">3</span><span class="trip-route__dist">~62 km</span><h3>Atins</h3>
+          <p>Finale: Lençóis Maranhenses.</p>
         </article>
       </div>
     </section>
@@ -502,93 +528,149 @@
         <div class="trip-safari__overview-legend"><span>▶ Jericoacoara — start</span><span>Atins — finish ◀</span></div>
       </div>
 
-      <div class="trip-safari__list container">
-
-        <article class="trip-safari-spot reveal-up">
-          <a class="trip-safari-spot__map" href="https://www.google.com/maps/search/?api=1&query=Jericoacoara+Cear%C3%A1+Brazil" target="_blank" rel="noopener" aria-label="Jericoacoara op Google Maps">
-            <img src="assets/brazil-2024/spotmaps/jeri.jpg" alt="Kaart Jericoacoara" loading="lazy"><span>📍 Jericoacoara ↗</span>
-          </a>
-          <div class="trip-safari-spot__text">
-            <span class="trip-safari-spot__num">Start · Dag 1</span>
-            <h3>Jericoacoara <span class="trip-safari-spot__state">Ceará</span></h3>
-            <p>Vliegen naar Jeri (klein vliegveld op ±35 min) i.p.v. Fortaleza. Inkiten op de betrouwbare 20–30 kn, laatste comfort vóór de wildernis. Zie ook spot 04 hierboven.</p>
-            <div class="trip-safari-spot__chips"><span><i>Wind</i>20–30 kn</span><span><i>Water</i>Zee + duinlagunes</span><span><i>Sfeer</i>Levendig dorp</span></div>
-          </div>
-        </article>
-
-        <article class="trip-safari-spot reveal-up">
-          <a class="trip-safari-spot__map" href="https://www.google.com/maps/search/?api=1&query=Tatajuba+Camocim+Brazil" target="_blank" rel="noopener" aria-label="Tatajuba op Google Maps">
-            <img src="assets/brazil-2024/spotmaps/tatajuba.jpg" alt="Kaart Tatajuba" loading="lazy"><span>📍 Tatajuba ↗</span>
-          </a>
-          <div class="trip-safari-spot__text">
-            <span class="trip-safari-spot__num">Dag 2 · ±20 km</span>
-            <h3>Tatajuba <span class="trip-safari-spot__state">Ceará</span></h3>
-            <p>Eerste etappe met de wind mee. Bij hoog tij vult de lagune achter de duinen zich tot een enorme, ondiepe flatwater-vlakte; de wind loopt hier vaak boven de 30 kn. Verlaten, ruig, prachtig.</p>
-            <div class="trip-safari-spot__chips"><span><i>Wind</i>25–35 kn</span><span><i>Water</i>Flatwater-lagune (hoog tij)</span><span><i>Niveau</i>Gevorderd</span></div>
-          </div>
-        </article>
-
-        <article class="trip-safari-spot reveal-up">
-          <a class="trip-safari-spot__map" href="https://www.google.com/maps/search/?api=1&query=Camocim+Cear%C3%A1+Brazil" target="_blank" rel="noopener" aria-label="Camocim op Google Maps">
-            <img src="assets/brazil-2024/spotmaps/camocim.jpg" alt="Kaart Camocim" loading="lazy"><span>📍 Camocim ↗</span>
-          </a>
-          <div class="trip-safari-spot__text">
-            <span class="trip-safari-spot__num">Dag 3 · ±30 km</span>
-            <h3>Camocim <span class="trip-safari-spot__state">Ceará · grens</span></h3>
-            <p>Havenstadje aan de riviermonding en de laatste stop in Ceará. De downwind ernaartoe gaat over kilometers verlaten strand; aankomen doe je in de brede riviermonding met flat water. Vers gevangen krab bij de barracas als beloning.</p>
-            <div class="trip-safari-spot__chips"><span><i>Wind</i>22–30 kn</span><span><i>Water</i>Riviermonding, flat</span><span><i>Niveau</i>Gevorderd</span></div>
-          </div>
-        </article>
-
-        <article class="trip-safari-spot reveal-up">
-          <a class="trip-safari-spot__map" href="https://www.google.com/maps/search/?api=1&query=Barra+Grande+Cajueiro+da+Praia+Piau%C3%AD+Brazil" target="_blank" rel="noopener" aria-label="Barra Grande op Google Maps">
-            <img src="assets/brazil-2024/spotmaps/barra-grande.jpg" alt="Kaart Barra Grande" loading="lazy"><span>📍 Barra Grande ↗</span>
-          </a>
-          <div class="trip-safari-spot__text">
-            <span class="trip-safari-spot__num">Dag 4–5 · ±45 km</span>
-            <h3>Barra Grande <span class="trip-safari-spot__state">Piauí</span></h3>
-            <p>Het kitedorp van Piauí, waar velen 2 nachten blijven. Kite zó van je terras: flat water vóór het dorp bij laag tij, plus de <strong>La Boca-lagune</strong> ±2 km downwind, verstopt in de mangroven — 1,4 m diep, spiegelglad, perfect voor freestyle. Sterke sunset-sessies.</p>
-            <div class="trip-safari-spot__chips"><span><i>Wind</i>18–30 kn</span><span><i>Water</i>Flat + mangrove-lagune</span><span><i>Niveau</i>Alle niveaus</span></div>
-          </div>
-        </article>
-
-        <article class="trip-safari-spot reveal-up">
-          <a class="trip-safari-spot__map" href="https://www.google.com/maps/search/?api=1&query=Delta+do+Parna%C3%ADba+Brazil" target="_blank" rel="noopener" aria-label="Parnaíba-delta op Google Maps">
-            <img src="assets/brazil-2024/spotmaps/parnaiba.jpg" alt="Kaart Parnaíba-delta" loading="lazy"><span>📍 Parnaíba-delta ↗</span>
-          </a>
-          <div class="trip-safari-spot__text">
-            <span class="trip-safari-spot__num">Dag 6 · delta-crossing</span>
-            <h3>Parnaíba-delta <span class="trip-safari-spot__state">Piauí / Maranhão</span></h3>
-            <p>De op twee na grootste rivierdelta ter wereld en de enige in open zee van Amerika: een doolhof van eilanden, mangroven en zandbanken. Kiten tussen de kanalen met bootsupport, overnachten op een van de delta-eilanden. Puur avontuur, ver van alles.</p>
-            <div class="trip-safari-spot__chips"><span><i>Wind</i>18–28 kn</span><span><i>Water</i>Kanalen + zandbanken</span><span><i>Sfeer</i>Wildernis</span></div>
-          </div>
-        </article>
-
-        <article class="trip-safari-spot reveal-up">
-          <a class="trip-safari-spot__map" href="https://www.google.com/maps/search/?api=1&query=Tut%C3%B3ia+Maranh%C3%A3o+Brazil" target="_blank" rel="noopener" aria-label="Tutóia op Google Maps">
-            <img src="assets/brazil-2024/spotmaps/tutoia.jpg" alt="Kaart Tutóia" loading="lazy"><span>📍 Tutóia ↗</span>
-          </a>
-          <div class="trip-safari-spot__text">
-            <span class="trip-safari-spot__num">Dag 7 · ±40 km</span>
-            <h3>Tutóia <span class="trip-safari-spot__state">Maranhão</span></h3>
-            <p>Aankomst in Maranhão. Beschutte baai met flat water en de laatste bewoonde stop vóór het laatste, meest afgelegen stuk richting Caburé en Atins. Hier ruik je de Lençóis al.</p>
-            <div class="trip-safari-spot__chips"><span><i>Wind</i>18–26 kn</span><span><i>Water</i>Baai, flat</span><span><i>Niveau</i>Alle niveaus</span></div>
-          </div>
-        </article>
-
-        <article class="trip-safari-spot trip-safari-spot--finish reveal-up">
-          <a class="trip-safari-spot__map" href="https://www.google.com/maps/search/?api=1&query=Atins+Len%C3%A7%C3%B3is+Maranhenses+Brazil" target="_blank" rel="noopener" aria-label="Atins op Google Maps">
-            <img src="assets/brazil-2024/spotmaps/atins.jpg" alt="Kaart Atins" loading="lazy"><span>📍 Atins ↗</span>
-          </a>
-          <div class="trip-safari-spot__text">
-            <span class="trip-safari-spot__num">Finish · Atins</span>
-            <h3>Atins <span class="trip-safari-spot__state">Maranhão</span></h3>
-            <p>De grande finale, aan de monding van de Preguiças-rivier en de rand van Nationaal Park Lençóis Maranhenses. Enorme flatwater-vlaktes (27 °C water), wind van juli–december met de piek in okt–nov, en downwinds naar Caburé en Mandacaru. Afsluiten tussen de witte duinen en zoetwatermeren — een van de mooiste plekken op aarde om te kiten.</p>
-            <div class="trip-safari-spot__chips"><span><i>Wind</i>18–28 kn</span><span><i>Water</i>Riviermonding, flat</span><span><i>Niveau</i>Alle niveaus</span></div>
-          </div>
-        </article>
-
+      <div class="container">
+        <p class="trip-note trip-note--light reveal-up">De safari start bij <a href="#jeri" class="trip-inline-link">Jericoacoara</a> (spot 04) en <a href="#tatajuba" class="trip-inline-link">Tatajuba</a> (spot 05) — die vind je hierboven bij de spots. Vanaf daar trekken we door naar vijf nieuwe plekken:</p>
       </div>
+
+      <article class="trip-spot section-cream trip-spot--reverse" id="camocim">
+        <div class="trip-spot__visual">
+          <div class="trip-spot__photo reveal-clip"><img src="assets/brazil-2024/places/camocim.jpg" alt="Camocim" loading="lazy"></div>
+          <a class="trip-spot__minimap" href="https://www.google.com/maps/search/?api=1&query=Camocim+Cear%C3%A1+Brazil" target="_blank" rel="noopener" aria-label="Camocim op Google Maps">
+            <img src="assets/brazil-2024/spotmaps/camocim.jpg" alt="Kaart Camocim" loading="lazy">
+            <span>📍 Camocim ↗</span>
+          </a>
+        </div>
+        <div class="trip-spot__text">
+          <span class="trip-spot__eyebrow trip-spot__eyebrow--dark">Safari · spot 06 · Ceará-grens</span>
+          <h3 class="trip-h2 ">Camocim</h3>
+          <p class="trip-body  trip-spot__desc">Havenstadje aan de monding van de Rio Coreaú en de laatste stop in Ceará. De downwind vanaf Tatajuba (~21 km) gaat over kilometers verlaten strand; aankomen doe je in de brede riviermonding met flat water. Vers gevangen krab bij de barracas als beloning.</p>
+          <div class="trip-spot__conditions">
+            <span class="trip-cond"><i>Wind</i>22–30 kn</span>
+            <span class="trip-cond"><i>Water</i>Riviermonding, flat</span>
+            <span class="trip-cond"><i>Niveau</i>Gevorderd</span>
+          </div>
+          <div class="trip-spot__pc">
+            <ul class="trip-pc trip-pc--pro"><li>Verlaten downwind-stranden</li><li>Flat water in de monding</li><li>Verse zeevruchten</li></ul>
+            <ul class="trip-pc trip-pc--con"><li>Weinig toeristische voorzieningen</li><li>Getij speelt mee</li></ul>
+          </div>
+          <div class="trip-spot__links">
+            <span class="trip-spot__credit">Foto: Eduardo Dellapiazza (Wikimedia, free use)</span>
+            <a href="https://www.tripadvisor.com/Hotel_Review-g676123-d17853435-Reviews-Pousada_Kite_Mar-Camocim_State_of_Ceara.html" target="_blank" rel="noopener">Slapen: Pousada Kite Mar ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="trip-spot section-dark" id="barra-grande">
+        <div class="trip-spot__visual">
+          <div class="trip-spot__photo reveal-clip"><img src="assets/brazil-2024/places/barra-grande.jpg" alt="Barra Grande" loading="lazy"></div>
+          <a class="trip-spot__minimap" href="https://www.google.com/maps/search/?api=1&query=Barra+Grande+Cajueiro+da+Praia+Piau%C3%AD+Brazil" target="_blank" rel="noopener" aria-label="Barra Grande op Google Maps">
+            <img src="assets/brazil-2024/spotmaps/barra-grande.jpg" alt="Kaart Barra Grande" loading="lazy">
+            <span>📍 Barra Grande ↗</span>
+          </a>
+        </div>
+        <div class="trip-spot__text">
+          <span class="trip-spot__eyebrow">Safari · spot 07 · Piauí</span>
+          <h3 class="trip-h2 trip-h2--light">Barra Grande</h3>
+          <p class="trip-body trip-body--light trip-spot__desc">Het kitedorp van Piauí, waar velen 2 nachten blijven. Kite zó van je terras: flat water vóór het dorp bij laag tij, plus de <strong>La Boca-lagune</strong> ±2 km downwind, verstopt in de mangroven — 1,4 m diep, spiegelglad, perfect voor freestyle. Sterke sunset-sessies en een gezellig dorp met goede restaurants.</p>
+          <div class="trip-spot__conditions">
+            <span class="trip-cond"><i>Wind</i>18–30 kn</span>
+            <span class="trip-cond"><i>Water</i>Flat + mangrove-lagune</span>
+            <span class="trip-cond"><i>Niveau</i>Alle niveaus</span>
+          </div>
+          <div class="trip-spot__pc">
+            <ul class="trip-pc trip-pc--pro"><li>Kite van je deur</li><li>La Boca mangrove-lagune (freestyle)</li><li>Gezellig dorp, goede restaurants</li></ul>
+            <ul class="trip-pc trip-pc--con"><li>Vol in hoogseizoen</li><li>2 nachten aangeraden</li></ul>
+          </div>
+          <div class="trip-spot__links">
+            <span class="trip-spot__credit">Foto: Otávio Nogueira (Wikimedia, CC BY 2.0)</span>
+            <a href="https://www.barragrandebeachclub.com/en/" target="_blank" rel="noopener">Slapen: Barra Grande Beach Club ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="trip-spot section-cream trip-spot--reverse" id="parnaiba">
+        <div class="trip-spot__visual">
+          <div class="trip-spot__photo reveal-clip"><img src="assets/brazil-2024/places/parnaiba.jpg" alt="Parnaíba-delta" loading="lazy"></div>
+          <a class="trip-spot__minimap" href="https://www.google.com/maps/search/?api=1&query=Delta+do+Parna%C3%ADba+Brazil" target="_blank" rel="noopener" aria-label="Parnaíba-delta op Google Maps">
+            <img src="assets/brazil-2024/spotmaps/parnaiba.jpg" alt="Kaart Parnaíba-delta" loading="lazy">
+            <span>📍 Parnaíba-delta ↗</span>
+          </a>
+        </div>
+        <div class="trip-spot__text">
+          <span class="trip-spot__eyebrow trip-spot__eyebrow--dark">Safari · spot 08 · Piauí / Maranhão</span>
+          <h3 class="trip-h2 ">Parnaíba-delta</h3>
+          <p class="trip-body  trip-spot__desc">De op twee na grootste rivierdelta ter wereld — en de enige in open zee van Amerika: een doolhof van eilanden, mangroven en zandbanken. Kiten tussen de kanalen met bootsupport, overnachten op een van de delta-eilanden tussen de roze lepelaars. Puur avontuur, ver van alles.</p>
+          <div class="trip-spot__conditions">
+            <span class="trip-cond"><i>Wind</i>18–28 kn</span>
+            <span class="trip-cond"><i>Water</i>Kanalen + zandbanken</span>
+            <span class="trip-cond"><i>Sfeer</i>Wildernis</span>
+          </div>
+          <div class="trip-spot__pc">
+            <ul class="trip-pc trip-pc--pro"><li>Uniek delta-landschap</li><li>Overnachten op een eiland</li><li>Wildlife (lepelaars, apen)</li></ul>
+            <ul class="trip-pc trip-pc--con"><li>Alleen per boot bereikbaar</li><li>Basic accommodatie</li></ul>
+          </div>
+          <div class="trip-spot__links">
+            <span class="trip-spot__credit">Foto: Danielle Pereira (Wikimedia, CC BY 2.0)</span>
+            <a href="https://www.booking.com/hotel/br/paraiso-das-canarias.html" target="_blank" rel="noopener">Slapen: Pousada Paraíso das Canárias ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="trip-spot section-dark" id="tutoia">
+        <div class="trip-spot__visual">
+          <div class="trip-spot__photo reveal-clip"><img src="assets/brazil-2024/places/tutoia.jpg" alt="Tutóia" loading="lazy"></div>
+          <a class="trip-spot__minimap" href="https://www.google.com/maps/search/?api=1&query=Tut%C3%B3ia+Maranh%C3%A3o+Brazil" target="_blank" rel="noopener" aria-label="Tutóia op Google Maps">
+            <img src="assets/brazil-2024/spotmaps/tutoia.jpg" alt="Kaart Tutóia" loading="lazy">
+            <span>📍 Tutóia ↗</span>
+          </a>
+        </div>
+        <div class="trip-spot__text">
+          <span class="trip-spot__eyebrow">Safari · spot 09 · Maranhão</span>
+          <h3 class="trip-h2 trip-h2--light">Tutóia</h3>
+          <p class="trip-body trip-body--light trip-spot__desc">Aankomst in Maranhão. Beschutte baai met flat water en de laatste bewoonde stop vóór het meest afgelegen stuk richting Caburé en Atins. De poort naar de Lençóis — hier ruik je de duinen al.</p>
+          <div class="trip-spot__conditions">
+            <span class="trip-cond"><i>Wind</i>18–26 kn</span>
+            <span class="trip-cond"><i>Water</i>Baai, flat</span>
+            <span class="trip-cond"><i>Niveau</i>Alle niveaus</span>
+          </div>
+          <div class="trip-spot__pc">
+            <ul class="trip-pc trip-pc--pro"><li>Beschut flat water</li><li>Poort naar Lençóis</li><li>Delta-tours vanaf hier</li></ul>
+            <ul class="trip-pc trip-pc--con"><li>Beperkt aanbod overnachtingen</li></ul>
+          </div>
+          <div class="trip-spot__links">
+            <span class="trip-spot__credit">Foto: Otávio Nogueira (Wikimedia, CC BY 2.0)</span>
+            <a href="https://www.booking.com/searchresults.nl.html?ss=Tut%C3%B3ia%2C+Maranh%C3%A3o%2C+Brazili%C3%AB&group_adults=3&no_rooms=1&nflt=price%3DEUR-0-150-1&order=price" target="_blank" rel="noopener">Slapen op Booking ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="trip-spot section-cream trip-spot--reverse" id="atins">
+        <div class="trip-spot__visual">
+          <div class="trip-spot__photo reveal-clip"><img src="assets/brazil-2024/places/atins.jpg" alt="Atins & Lençóis Maranhenses" loading="lazy"></div>
+          <a class="trip-spot__minimap" href="https://www.google.com/maps/search/?api=1&query=Atins+Len%C3%A7%C3%B3is+Maranhenses+Brazil" target="_blank" rel="noopener" aria-label="Atins op Google Maps">
+            <img src="assets/brazil-2024/spotmaps/atins.jpg" alt="Kaart Atins" loading="lazy">
+            <span>📍 Atins ↗</span>
+          </a>
+        </div>
+        <div class="trip-spot__text">
+          <span class="trip-spot__eyebrow trip-spot__eyebrow--dark">Safari · finish · Lençóis Maranhenses</span>
+          <h3 class="trip-h2 ">Atins</h3>
+          <p class="trip-body  trip-spot__desc">De grande finale, aan de monding van de Preguiças-rivier en de rand van Nationaal Park Lençóis Maranhenses. Enorme flatwater-vlaktes (27 °C water), wind van juli–december met de piek in okt–nov, en downwinds naar Caburé en Mandacaru. Afsluiten tussen de witte duinen en zoetwatermeren — een van de mooiste plekken op aarde om te kiten.</p>
+          <div class="trip-spot__conditions">
+            <span class="trip-cond"><i>Wind</i>18–28 kn</span>
+            <span class="trip-cond"><i>Water</i>Riviermonding, flat</span>
+            <span class="trip-cond"><i>Niveau</i>Alle niveaus</span>
+          </div>
+          <div class="trip-spot__pc">
+            <ul class="trip-pc trip-pc--pro"><li>Enorme flatwater-vlaktes</li><li>Lençóis-duinen &amp; lagunes</li><li>Downwinds naar Caburé</li></ul>
+            <ul class="trip-pc trip-pc--con"><li>Uitvliegen via São Luís (verder)</li><li>Afgelegen</li></ul>
+          </div>
+          <div class="trip-spot__links">
+            <span class="trip-spot__credit">Foto: Heris L. C. Rocha (Wikimedia, CC BY-SA 3.0)</span>
+            <a href="https://muitapaz.com/en/" target="_blank" rel="noopener">Slapen: Muita Paz (AKB kiteschool) ↗</a>
+          </div>
+        </div>
+      </article>
 
       <div class="container">
         <p class="trip-note trip-note--light reveal-up">De safari rijd je met een lokale guide + 4x4/boot-support (tassen gaan vooruit). Aankomst in Atins betekent uitvliegen via <strong>São Luís</strong> in plaats van Fortaleza — iets duurder qua binnenlandse vlucht, maar je eindigt middenin de Lençóis. Precieze etappe-lengtes hangen af van wind en tij; dit schema volgt de gangbare 7-daagse safari.</p>
@@ -919,6 +1001,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-  <script src="js/brazil-trip.js?v=5"></script>
+  <script src="js/brazil-trip.js?v=6"></script>
 </body>
 </html>

@@ -1469,6 +1469,33 @@ p.trip-body { margin-bottom: 20px; }
   .trip-routemap__legend { font-size: 10px; }
 }
 
+/* Master-kaart (hele kust) — bredere verhouding + safari-pins + optie-tags */
+.trip-routemap--wide .trip-routemap__canvas { aspect-ratio: 2400 / 868; }
+.trip-routemap__pin--safari .trip-routemap__dot { background: var(--copper); border-color: var(--dark-green); color: var(--dark-green); }
+.trip-route__cards--ten { max-width: 1400px; grid-template-columns: repeat(5, 1fr); }
+.trip-route__opt {
+  position: absolute;
+  top: 24px;
+  right: 22px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+.trip-route__opt--12 { color: var(--sage-green); }
+.trip-route__opt--3 { color: var(--copper); }
+.trip-route__opt--all { color: var(--gold); }
+.trip-route__card .trip-route__dist { top: auto; bottom: 22px; right: 22px; }
+@media (max-width: 900px) {
+  .trip-route__cards--ten { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .trip-route__cards--ten { grid-template-columns: 1fr; }
+}
+
 /* ============================================
    ITINERARY STEMMEN
    ============================================ */
@@ -2339,7 +2366,9 @@ p.trip-body { margin-bottom: 20px; }
 .trip-pc--pro li::before { content: '＋'; position: absolute; left: 0; top: -1px; color: var(--sage-green); font-weight: 700; font-size: 12px; }
 .trip-pc--con li::before { content: '－'; position: absolute; left: 0; top: -1px; color: var(--bronze); font-weight: 700; font-size: 12px; }
 
-.trip-spot__links { display: flex; align-items: center; gap: 22px; }
+.trip-spot__links { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.trip-spot__credit { font-size: 11px; color: rgba(243,239,232,0.4); font-weight: 300; order: 2; flex-basis: 100%; }
+.section-cream .trip-spot__credit { color: var(--mid-grey); }
 .trip-spot__links button, .trip-spot__links a {
   background: none; border: none; cursor: pointer; padding: 0;
   font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em;
