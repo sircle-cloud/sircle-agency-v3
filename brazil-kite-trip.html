@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=58">
-  <link rel="stylesheet" href="css/brazil-trip.css?v=6">
+  <link rel="stylesheet" href="css/brazil-trip.css?v=7">
 </head>
 <body class="trip-page">
 
@@ -191,62 +191,67 @@
 
     <!-- ======= PLANNING ======= -->
     <section class="trip-section section-cream" id="planning">
-      <div class="container">
-        <p class="trip-eyebrow trip-eyebrow--dark reveal-up">DAGPLANNING <span class="trip-optlabel trip-optlabel--12">optie 1 &amp; 2</span></p>
-        <h2 class="trip-h2 reveal-up">9 dagen, 9 nachten</h2>
-        <div class="trip-timeline">
-          <div class="trip-timeline__row reveal-up">
-            <div class="trip-timeline__date">Vr 9 okt</div>
-            <div class="trip-timeline__loc">Aankomst Fortaleza → Cumbuco</div>
-            <div class="trip-timeline__note">Transfer (~45 min), inchecken Windtown</div>
-          </div>
-          <div class="trip-timeline__row reveal-up">
-            <div class="trip-timeline__date">Za 10 okt</div>
-            <div class="trip-timeline__loc">Cumbuco</div>
-            <div class="trip-timeline__note">Kite check, eerste sessies / lessen</div>
-          </div>
-          <div class="trip-timeline__row reveal-up">
-            <div class="trip-timeline__date">Zo 11 okt</div>
-            <div class="trip-timeline__loc">Cumbuco</div>
-            <div class="trip-timeline__note">Vrij kiten, duinbuggy-tocht optioneel</div>
-          </div>
-          <div class="trip-timeline__row reveal-up">
-            <div class="trip-timeline__date">Ma 12 okt</div>
-            <div class="trip-timeline__loc">Transfer → Lagoinha</div>
-            <div class="trip-timeline__note">Downwind etappe 1 (±45 km) of mee met de 4x4</div>
-          </div>
-          <div class="trip-timeline__row reveal-up">
-            <div class="trip-timeline__date">Di 13 okt</div>
-            <div class="trip-timeline__loc">Lagoinha</div>
-            <div class="trip-timeline__note">Volle dag Donkey Lagoon: kniediep flat water</div>
-          </div>
-          <div class="trip-timeline__row reveal-up">
-            <div class="trip-timeline__date">Wo 14 okt</div>
-            <div class="trip-timeline__loc">Transfer → Ilha do Guajiru</div>
-            <div class="trip-timeline__note">Downwind etappe 2 via Donkey Lagoon (±70 km)</div>
-          </div>
-          <div class="trip-timeline__row reveal-up">
-            <div class="trip-timeline__date">Do 15 okt</div>
-            <div class="trip-timeline__loc">Ilha do Guajiru</div>
-            <div class="trip-timeline__note">Volle dag kiten / freestyle</div>
-          </div>
-          <div class="trip-timeline__row reveal-up">
-            <div class="trip-timeline__date">Vr 16 okt</div>
-            <div class="trip-timeline__loc">Transfer → Jericoacoara</div>
-            <div class="trip-timeline__note">Downwind etappe 3 (±60 km) + transfer · sunset op de duin</div>
-          </div>
-          <div class="trip-timeline__row reveal-up">
-            <div class="trip-timeline__date">Za 17 okt</div>
-            <div class="trip-timeline__loc">Jeri → Tatajuba (downwind) → Jeri</div>
-            <div class="trip-timeline__note">Finale-downwind naar Tatajuba (±40 km), laatste avond Jeri</div>
-          </div>
-          <div class="trip-timeline__row trip-timeline__row--last reveal-up">
-            <div class="trip-timeline__date">Zo 18 okt</div>
-            <div class="trip-timeline__loc">Jeri → Fortaleza → vertrek</div>
-            <div class="trip-timeline__note">Transfer (~4,5 uur) naar het vliegveld</div>
-          </div>
+      <div class="container" data-tab-group>
+        <p class="trip-eyebrow trip-eyebrow--dark reveal-up">DAGPLANNING <span class="trip-optlabel trip-optlabel--all">alle 3 opties</span></p>
+        <h2 class="trip-h2 reveal-up">Dag voor dag</h2>
+        <p class="trip-body reveal-up">Elke route heeft z'n eigen ritme. Kies een optie voor de dag-voor-dag planning — allemaal van 9 t/m 18 oktober.</p>
+
+        <div class="trip-tabs trip-tabs--three reveal-up" role="tablist">
+          <button type="button" class="trip-tabs__btn is-active" data-tab="1" role="tab" aria-selected="true">Optie 1 · Klassiek</button>
+          <button type="button" class="trip-tabs__btn" data-tab="2" role="tab" aria-selected="false">Optie 2 · Jeri Focus</button>
+          <button type="button" class="trip-tabs__btn" data-tab="3" role="tab" aria-selected="false">Optie 3 · Safari</button>
         </div>
-        <p class="trip-note reveal-up">Tatajuba is lastig bereikbaar over de weg (4x4/zandpad) — de gebruikelijke manier is downwind vanaf Jeri over de lagune. Wil de groep er een nacht blijven? Zie de optionele extra nacht bij Opties A/B hieronder.</p>
+
+        <!-- Optie 1 · De Klassieke Kust -->
+        <div data-tab-panel="1">
+          <div class="trip-timeline">
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Vr 9 okt</div><div class="trip-timeline__loc">Aankomst Fortaleza → Cumbuco</div><div class="trip-timeline__note">Transfer (~45 min), inchecken Windtown</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Za 10 okt</div><div class="trip-timeline__loc">Cumbuco</div><div class="trip-timeline__note">Kite check, eerste sessies / lessen</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Zo 11 okt</div><div class="trip-timeline__loc">Cumbuco</div><div class="trip-timeline__note">Vrij kiten, duinbuggy-tocht optioneel</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Ma 12 okt</div><div class="trip-timeline__loc">Transfer → Lagoinha</div><div class="trip-timeline__note">Downwind etappe 1 (±45 km) of mee met de 4x4</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Di 13 okt</div><div class="trip-timeline__loc">Lagoinha</div><div class="trip-timeline__note">Volle dag Donkey Lagoon: kniediep flat water</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Wo 14 okt</div><div class="trip-timeline__loc">Transfer → Ilha do Guajiru</div><div class="trip-timeline__note">Downwind etappe 2 via Donkey Lagoon (±70 km)</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Do 15 okt</div><div class="trip-timeline__loc">Ilha do Guajiru</div><div class="trip-timeline__note">Volle dag kiten / freestyle</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Vr 16 okt</div><div class="trip-timeline__loc">Transfer → Jericoacoara</div><div class="trip-timeline__note">Downwind etappe 3 (±60 km) · sunset op de duin</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Za 17 okt</div><div class="trip-timeline__loc">Jeri → Tatajuba (downwind) → Jeri</div><div class="trip-timeline__note">Finale-downwind naar Tatajuba (±40 km), laatste avond Jeri</div></div>
+            <div class="trip-timeline__row trip-timeline__row--last"><div class="trip-timeline__date">Zo 18 okt</div><div class="trip-timeline__loc">Jeri → Fortaleza → vertrek</div><div class="trip-timeline__note">Transfer (~4,5 uur) naar het vliegveld</div></div>
+          </div>
+          <p class="trip-note reveal-up"><strong>5 spots · 9 nachten.</strong> Tatajuba is lastig over de weg (4x4/zandpad) — de gebruikelijke manier is downwind vanaf Jeri over de lagune. Optionele extra nacht: zie Opties A/B hieronder.</p>
+        </div>
+
+        <!-- Optie 2 · Jeri Focus -->
+        <div data-tab-panel="2" hidden>
+          <div class="trip-timeline">
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Vr 9 okt</div><div class="trip-timeline__loc">Aankomst Fortaleza → Cumbuco</div><div class="trip-timeline__note">Transfer (~45 min), inchecken Windtown</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Za 10 okt</div><div class="trip-timeline__loc">Cumbuco</div><div class="trip-timeline__note">Inkiten op de Cauípe-lagune</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Zo 11 okt</div><div class="trip-timeline__loc">Transfer → Ilha do Guajiru</div><div class="trip-timeline__note">Transfer (±100 km) of downwind in etappes</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Ma 12 okt</div><div class="trip-timeline__loc">Ilha do Guajiru</div><div class="trip-timeline__note">Volle dag flat water / freestyle</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Di 13 okt</div><div class="trip-timeline__loc">Transfer → Jericoacoara</div><div class="trip-timeline__note">Naar de thuisbasis voor de rest van de trip</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Wo 14 okt</div><div class="trip-timeline__loc">Jericoacoara</div><div class="trip-timeline__note">Dorp, duinen, sunset op de Duna do Pôr do Sol</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Do 15 okt</div><div class="trip-timeline__loc">Jeri · dagtrip Tatajuba</div><div class="trip-timeline__note">Downwind naar Tatajuba (±40 km) en terug</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Vr 16 okt</div><div class="trip-timeline__loc">Jericoacoara</div><div class="trip-timeline__note">Guriú &amp; de lagunes, of chillen in het dorp</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Za 17 okt</div><div class="trip-timeline__loc">Jericoacoara</div><div class="trip-timeline__note">Laatste sessies</div></div>
+            <div class="trip-timeline__row trip-timeline__row--last"><div class="trip-timeline__date">Zo 18 okt</div><div class="trip-timeline__loc">Jeri → Fortaleza → vertrek</div><div class="trip-timeline__note">Transfer (~4,5 uur) naar het vliegveld</div></div>
+          </div>
+          <p class="trip-note reveal-up"><strong>3 spots · 9 nachten · 5 nachten Jeri.</strong> Minder verplaatsen, meer sessies op één droomspot. Guajiru en Jeri liggen ±100 km uit elkaar (transfer of downwind in etappes).</p>
+        </div>
+
+        <!-- Optie 3 · Downwind Safari Jeri → Atins -->
+        <div data-tab-panel="3" hidden>
+          <div class="trip-timeline">
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Vr 9 okt</div><div class="trip-timeline__loc">Vlucht Fortaleza → Jericoacoara</div><div class="trip-timeline__note">Binnenlandse vlucht (±35 min) · inkiten</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Za 10 okt</div><div class="trip-timeline__loc">Jeri → Tatajuba</div><div class="trip-timeline__note">Downwind (±20 km) · flatwater-lagune bij hoog tij</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Zo 11 okt</div><div class="trip-timeline__loc">Tatajuba → Camocim</div><div class="trip-timeline__note">Downwind (±21 km) · laatste stop in Ceará</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Ma 12 okt</div><div class="trip-timeline__loc">Camocim → Barra Grande</div><div class="trip-timeline__note">Downwind (±55 km) · de grens over naar Piauí</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Di 13 okt</div><div class="trip-timeline__loc">Barra Grande</div><div class="trip-timeline__note">La Boca-lagune · freestyle &amp; rustdag</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Wo 14 okt</div><div class="trip-timeline__loc">Barra Grande → Parnaíba-delta</div><div class="trip-timeline__note">Downwind + boot (±63 km) · overnachten op een eiland</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Do 15 okt</div><div class="trip-timeline__loc">Delta → Tutóia</div><div class="trip-timeline__note">Downwind (±62 km) · aankomst in Maranhão</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Vr 16 okt</div><div class="trip-timeline__loc">Tutóia → Atins</div><div class="trip-timeline__note">Downwind (±62 km) · finish aan de Lençóis</div></div>
+            <div class="trip-timeline__row"><div class="trip-timeline__date">Za 17 okt</div><div class="trip-timeline__loc">Atins · Lençóis Maranhenses</div><div class="trip-timeline__note">Duinen &amp; zoetwatermeren, downwind naar Caburé</div></div>
+            <div class="trip-timeline__row trip-timeline__row--last"><div class="trip-timeline__date">Zo 18 okt</div><div class="trip-timeline__loc">Atins → São Luís → vertrek</div><div class="trip-timeline__note">Transfer + binnenlandse vlucht naar São Luís</div></div>
+          </div>
+          <p class="trip-note reveal-up"><strong>7 kite-dagen · ±275 km · 3 staten.</strong> Met lokale guide + 4x4/boot-support (tassen gaan vooruit). Ín via Jeri/Fortaleza, úit via São Luís. Etappe-lengtes hangen af van wind en tij.</p>
+        </div>
       </div>
     </section>
 
@@ -732,7 +737,7 @@
 
     <!-- ======= OPTIES (accommodaties A/B) ======= -->
     <section class="trip-section section-cream" id="opties">
-      <div class="container">
+      <div class="container" data-tab-group>
         <p class="trip-eyebrow trip-eyebrow--dark reveal-up">ACCOMMODATIES <span class="trip-optlabel trip-optlabel--12">optie 1 &amp; 2</span></p>
         <h2 class="trip-h2 reveal-up">Optie A of Optie B — kies je stijl</h2>
         <p class="trip-body reveal-up">Cumbuco ligt vast (Windtown) in beide opties. Voor de overige stops hebben we per optie een passende accommodatie uitgezocht, allemaal binnen budget. Klik op een kaart voor foto's, prijsindicatie en een link naar de aanbieder.</p>
@@ -1001,6 +1006,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-  <script src="js/brazil-trip.js?v=6"></script>
+  <script src="js/brazil-trip.js?v=7"></script>
 </body>
 </html>

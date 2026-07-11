@@ -226,27 +226,29 @@ gsap.fromTo('.trip-cta__bg', { yPercent: -10 }, {
 // TABS — Optie A / Optie B
 // ============================================
 (function initTabs() {
-  const buttons = document.querySelectorAll('.trip-tabs__btn');
-  const panels = document.querySelectorAll('[data-tab-panel]');
-  if (!buttons.length) return;
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tab = btn.dataset.tab;
-      buttons.forEach(b => {
-        b.classList.toggle('is-active', b === btn);
-        b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+  // Elke [data-tab-group] is een onafhankelijke tab-set (accommodaties, dagplanning, ...)
+  document.querySelectorAll('[data-tab-group]').forEach(group => {
+    const buttons = group.querySelectorAll('.trip-tabs__btn');
+    const panels = group.querySelectorAll('[data-tab-panel]');
+    if (!buttons.length) return;
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        buttons.forEach(b => {
+          b.classList.toggle('is-active', b === btn);
+          b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+        });
+        panels.forEach(panel => {
+          const show = panel.dataset.tabPanel === tab;
+          panel.hidden = !show;
+          if (show) {
+            gsap.fromTo(panel.querySelectorAll('.trip-acco-card, .trip-timeline__row'),
+              { y: 24, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.55, stagger: 0.05, ease: 'power3.out' });
+          }
+        });
+        ScrollTrigger.refresh();
       });
-      panels.forEach(panel => {
-        const show = panel.dataset.tabPanel === tab;
-        panel.hidden = !show;
-        if (show) {
-          gsap.fromTo(panel.querySelectorAll('.trip-acco-card'),
-            { y: 24, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
-        }
-      });
-      ScrollTrigger.refresh();
     });
   });
 })();
