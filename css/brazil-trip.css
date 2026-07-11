@@ -1908,3 +1908,94 @@ p.trip-body { margin-bottom: 20px; }
 .trip-leg__pc-col--pro li::before { content: '✓'; position: absolute; left: 0; color: var(--mid-green); font-weight: 700; }
 .trip-leg__pc-col--con li::before { content: '!'; position: absolute; left: 3px; color: var(--bronze); font-weight: 700; }
 @media (max-width: 767px) { .trip-leg__pc { grid-template-columns: 1fr; } }
+
+/* ============================================
+   SPOT — compacte, strakke herindeling (v2)
+   Overschrijft de eerdere grove detail-blokken.
+   ============================================ */
+.trip-spot {
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  row-gap: 0;
+}
+.trip-spot--reverse .trip-spot__visual { order: 2; }
+.trip-spot--reverse .trip-spot__text { order: 1; }
+
+.trip-spot__visual { display: flex; flex-direction: column; gap: 12px; }
+.trip-spot__photo { border-radius: 14px; overflow: hidden; }
+.trip-spot__photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; transition: transform 1s var(--ease-out-expo); }
+.trip-spot:hover .trip-spot__photo img { transform: scale(1.03); }
+
+/* kleiner kaartje eronder */
+.trip-spot__minimap {
+  position: relative; display: block;
+  border-radius: 12px; overflow: hidden;
+  aspect-ratio: 24 / 8;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+.trip-spot__minimap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.trip-spot__minimap span {
+  position: absolute; left: 10px; bottom: 10px;
+  font-size: 11px; font-weight: 700; color: var(--dark-green);
+  background: var(--gold); padding: 4px 10px; border-radius: 100px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.trip-spot__eyebrow {
+  display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+}
+.trip-spot__eyebrow--dark { color: var(--copper-deep); }
+.trip-spot__text .trip-h2 { margin-bottom: 14px; }
+.trip-spot__desc { font-size: 15.5px; line-height: 1.7; margin-bottom: 18px; }
+
+/* condities: strakke inline chips */
+.trip-spot__conditions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.trip-cond {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  padding: 7px 12px; border-radius: 9px;
+  font-size: 12.5px; font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);
+  color: var(--white);
+}
+.trip-cond i { font-style: normal; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-light); }
+.section-cream .trip-cond { border-color: rgba(12,24,15,0.12); background: rgba(12,24,15,0.03); color: var(--dark-green); }
+.section-cream .trip-cond i { color: var(--copper-deep); }
+
+/* pro/con: compacte tweekoloms lijstjes, dicht op elkaar */
+.trip-spot__pc { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; margin-bottom: 20px; }
+.trip-pc { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.trip-pc li { position: relative; padding-left: 20px; font-size: 13px; font-weight: 300; line-height: 1.4; }
+.trip-pc--pro li { color: rgba(243,239,232,0.85); }
+.trip-pc--con li { color: rgba(243,239,232,0.6); }
+.section-cream .trip-pc--pro li { color: var(--dark-green); }
+.section-cream .trip-pc--con li { color: var(--mid-grey); }
+.trip-pc--pro li::before { content: '＋'; position: absolute; left: 0; top: -1px; color: var(--sage-green); font-weight: 700; font-size: 12px; }
+.trip-pc--con li::before { content: '－'; position: absolute; left: 0; top: -1px; color: var(--bronze); font-weight: 700; font-size: 12px; }
+
+.trip-spot__links { display: flex; align-items: center; gap: 22px; }
+.trip-spot__links button, .trip-spot__links a {
+  background: none; border: none; cursor: pointer; padding: 0;
+  font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em;
+  color: var(--gold); transition: color 0.3s ease;
+  position: relative;
+}
+.trip-spot__links button::after, .trip-spot__links a::after {
+  content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 1.5px;
+  background: currentColor; transition: width 0.4s var(--ease-out-expo);
+}
+.trip-spot__links button:hover::after, .trip-spot__links a:hover::after { width: 100%; }
+.section-cream .trip-spot__links button, .section-cream .trip-spot__links a { color: var(--mid-green); }
+
+/* oude grove blokken uitschakelen */
+.trip-spot__detail, .trip-spot__map, .trip-proscons, .trip-spot__book, .trip-spot__conditions .trip-cond span { }
+.trip-spot__image { display: none; }
+
+@media (max-width: 767px) {
+  .trip-spot { grid-template-columns: 1fr; gap: 22px; }
+  .trip-spot--reverse .trip-spot__visual { order: 0; }
+  .trip-spot--reverse .trip-spot__text { order: 1; }
+  .trip-spot__pc { grid-template-columns: 1fr; gap: 6px; }
+  .trip-spot__minimap { aspect-ratio: 24 / 7; }
+}
