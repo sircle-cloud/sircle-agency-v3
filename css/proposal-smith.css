@@ -83,16 +83,6 @@
 .section-dark .body-text { color: rgba(243, 239, 232, 0.7); }
 .section-cream .body-text { color: var(--mid-grey); }
 
-.subtle-label {
-  display: block;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--gold);
-  margin: 64px 0 24px;
-}
-
 /* ---------- CHIP SYSTEM (shared) ---------- */
 .chip {
   display: inline-flex;
@@ -136,17 +126,6 @@
 
 /* ---------- THE PLAN (strip) ---------- */
 .plan-strip { padding-top: 64px; padding-bottom: 64px; }
-
-.plan-strip__eyebrow {
-  display: block;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--bronze);
-  margin-bottom: 32px;
-}
 
 .plan-strip__row {
   display: flex;
@@ -225,22 +204,6 @@
 @media (min-width: 1001px) {
   .route-card--featured { transform: scale(1.045); }
   .route-card--featured:hover { transform: scale(1.045) translateY(-6px); }
-}
-
-.route-card__flag {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 7px 18px;
-  border-radius: 100px;
-  background: linear-gradient(140deg, var(--gold) 0%, var(--bronze) 100%);
-  color: var(--dark-green);
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  white-space: nowrap;
 }
 
 .route-card h3 {
@@ -554,6 +517,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  margin-top: 56px;
 }
 
 .quote-card {
