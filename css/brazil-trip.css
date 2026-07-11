@@ -1635,6 +1635,154 @@ p.trip-body { margin-bottom: 20px; }
 }
 
 /* ============================================
+   DRIE ROUTEVOORSTELLEN + LIVE STEMMEN
+   ============================================ */
+.trip-namebar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 28px 0 8px;
+}
+.trip-namebar label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--mid-green);
+}
+.trip-namebar input {
+  flex: 1;
+  min-width: 220px;
+  max-width: 360px;
+  padding: 13px 18px;
+  border: 1.5px solid rgba(8,36,18,0.18);
+  border-radius: 40px;
+  background: var(--white);
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--dark-green);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.trip-namebar input:focus {
+  outline: none;
+  border-color: var(--mid-green);
+  box-shadow: 0 0 0 4px rgba(63,111,69,0.12);
+}
+
+.trip-routes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.trip-route-opt {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1.5px solid rgba(8,36,18,0.10);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-out-quint), box-shadow 0.4s ease, border-color 0.3s ease;
+}
+.trip-route-opt:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(8,36,18,0.13); }
+.trip-route-opt--hero { border-color: rgba(196,168,84,0.5); }
+.trip-route-opt.is-picked { border-color: var(--mid-green); box-shadow: 0 0 0 3px rgba(63,111,69,0.16); }
+.trip-route-opt.is-leading { border-color: var(--bronze); }
+
+.trip-route-opt__map {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #aad3df;
+}
+.trip-route-opt__map img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.trip-route-opt__pill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 5px 12px;
+  border-radius: 30px;
+  background: rgba(8,36,18,0.82);
+  color: var(--cream);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.trip-route-opt__pill--new { background: var(--gold); color: var(--dark-green); }
+
+.trip-route-opt__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 22px 24px;
+  flex: 1;
+}
+.trip-route-opt__tag {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--mid-green);
+}
+.trip-route-opt__tag--accent { color: var(--bronze); }
+.trip-route-opt__body h3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--dark-green);
+  margin: 0;
+}
+.trip-route-opt__desc {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--dark-grey);
+}
+.trip-route-opt__stops {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--mid-green);
+}
+.trip-route-opt__stops strong { color: var(--dark-green); }
+.trip-route-opt__meta {
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--mid-grey);
+  font-weight: 600;
+}
+.trip-route-opt__pc {
+  display: grid;
+  gap: 8px;
+  padding: 12px 0 4px;
+  margin-top: 2px;
+  border-top: 1px solid rgba(8,36,18,0.08);
+}
+/* pros/cons in cream context -> gebruik donkere varianten */
+.trip-route-opt__pc .trip-pc--pro li { color: var(--dark-green); }
+.trip-route-opt__pc .trip-pc--con li { color: var(--mid-grey); }
+.trip-route-opt .trip-vote-card__meter { margin-top: auto; }
+.trip-route-opt .trip-vote-card__btn { margin-top: 4px; }
+
+@media (max-width: 1024px) {
+  .trip-routes { grid-template-columns: 1fr; max-width: 620px; }
+  .trip-route-opt { flex-direction: row; }
+  .trip-route-opt__map { width: 40%; aspect-ratio: auto; min-height: 100%; }
+  .trip-route-opt__body { width: 60%; }
+}
+@media (max-width: 767px) {
+  .trip-route-opt { flex-direction: column; }
+  .trip-route-opt__map { width: 100%; aspect-ratio: 16 / 9; min-height: 0; }
+  .trip-route-opt__body { width: 100%; }
+  .trip-namebar input { max-width: none; }
+}
+
+/* ============================================
    SCROLL-JOURNEY (Airbnb-stijl reis over de kaart)
    ============================================ */
 .trip-journey {

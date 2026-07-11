@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=58">
-  <link rel="stylesheet" href="css/brazil-trip.css?v=2">
+  <link rel="stylesheet" href="css/brazil-trip.css?v=3">
 </head>
 <body class="trip-page">
 
@@ -226,49 +226,85 @@
     <!-- ======= ITINERARY & STEMMEN ======= -->
     <section class="trip-section section-cream" id="itinerary">
       <div class="container">
-        <p class="trip-eyebrow trip-eyebrow--dark reveal-up">ITINERARY · STEM MEE</p>
-        <h2 class="trip-h2 reveal-up">Twee indelingen — wat wordt 'm?</h2>
-        <p class="trip-body reveal-up">We hebben 9 nachten. Twee smaken: lekker lang op één plek blijven hangen (Jeri Focus), of elke paar dagen door naar de volgende spot (de Grote Tour). Stem met z'n drieën — de telling blijft op je toestel bewaard, en je kunt 'm delen in de groepsapp.</p>
+        <p class="trip-eyebrow trip-eyebrow--dark reveal-up">DRIE ROUTES · STEM MEE</p>
+        <h2 class="trip-h2 reveal-up">Welke route wordt 'm?</h2>
+        <p class="trip-body reveal-up">Drie concrete voorstellen — van vertrouwd tot avontuurlijk. Vul je naam in en stem: de telling is <strong>live en gedeeld</strong>, dus we zien met z'n drieën meteen waar de meeste stemmen naartoe gaan.</p>
 
-        <div class="trip-vote reveal-up" data-vote>
-          <article class="trip-vote-card" data-option="jeri">
-            <div class="trip-vote-card__head">
-              <span class="trip-vote-card__tag">Voorstel van Sebas</span>
-              <h3>Optie 1 · Jeri Focus</h3>
+        <div class="trip-namebar reveal-up">
+          <label for="voteName">Jouw naam</label>
+          <input type="text" id="voteName" data-vote-name maxlength="24" placeholder="Vul je naam in om te stemmen" autocomplete="off">
+        </div>
+
+        <div class="trip-routes reveal-up" data-vote>
+          <!-- Optie 1 -->
+          <article class="trip-route-opt" data-option="klassiek">
+            <div class="trip-route-opt__map">
+              <img src="assets/brazil-2024/map/coast-map.jpg" alt="Kaart klassieke route Cumbuco naar Tatajuba" loading="lazy">
+              <span class="trip-route-opt__pill">Optie 1</span>
             </div>
-            <ul class="trip-vote-card__stops">
-              <li><strong>2</strong> Cumbuco <span>start &amp; inkiten</span></li>
-              <li><strong>1</strong> Ilha do Guajiru <span>flat water</span></li>
-              <li><strong>3</strong> Jericoacoara <span>het dorp &amp; de duinen</span></li>
-              <li><strong>1</strong> Cumbuco <span>laatste nacht bij het vliegveld</span></li>
-            </ul>
-            <p class="trip-vote-card__note">7 vaste nachten · 2 flex-nachten (extra Jeri of Tatajuba)</p>
-            <div class="trip-vote-card__meter"><span class="trip-vote-card__bar" data-bar="jeri"></span></div>
-            <button type="button" class="btn-primary trip-vote-card__btn" data-vote-btn="jeri">Stem op Jeri Focus <span class="trip-vote-count" data-count="jeri">0</span></button>
+            <div class="trip-route-opt__body">
+              <span class="trip-route-opt__tag">Compleet &amp; vertrouwd</span>
+              <h3>De Klassieke Kust</h3>
+              <p class="trip-route-opt__desc">Onze bekende route: van oost naar west langs vijf spots, elke paar dagen een nieuwe plek. Comfortabel thuisbasis-hoppen met vaste pousada's en korte downwind-etappes ertussen.</p>
+              <p class="trip-route-opt__stops">Cumbuco → Paracuru → Guajiru → Jericoacoara → Tatajuba</p>
+              <p class="trip-route-opt__meta">5 spots · 9 nachten · ± 215 km</p>
+              <div class="trip-route-opt__pc">
+                <ul class="trip-pc trip-pc--pro"><li>Alle spots die we kennen</li><li>Vaste basis, weinig gedoe</li><li>Werkt ook bij wisselvallig weer</li></ul>
+                <ul class="trip-pc trip-pc--con"><li>Minder diepgang per spot</li></ul>
+              </div>
+              <div class="trip-vote-card__meter"><span class="trip-vote-card__bar" data-bar="klassiek"></span></div>
+              <button type="button" class="btn-primary trip-vote-card__btn" data-vote-btn="klassiek">Stem op De Klassieke Kust <span class="trip-vote-count" data-count="klassiek">0</span></button>
+            </div>
           </article>
 
-          <article class="trip-vote-card" data-option="tour">
-            <div class="trip-vote-card__head">
-              <span class="trip-vote-card__tag trip-vote-card__tag--alt">Meer zien</span>
-              <h3>Optie 2 · Grote Tour</h3>
+          <!-- Optie 2 -->
+          <article class="trip-route-opt" data-option="jeri">
+            <div class="trip-route-opt__map">
+              <img src="assets/brazil-2024/map/coast-map.jpg" alt="Kaart Jeri Focus route" loading="lazy">
+              <span class="trip-route-opt__pill">Optie 2</span>
             </div>
-            <ul class="trip-vote-card__stops">
-              <li><strong>3</strong> Cumbuco <span>start &amp; inkiten</span></li>
-              <li><strong>2</strong> Paracuru <span>+ Donkey Lagoon</span></li>
-              <li><strong>2</strong> Ilha do Guajiru <span>flat water</span></li>
-              <li><strong>2</strong> Jericoacoara <span>de finale</span></li>
-            </ul>
-            <p class="trip-vote-card__note">9 nachten · elke etappe een nieuwe spot</p>
-            <div class="trip-vote-card__meter"><span class="trip-vote-card__bar" data-bar="tour"></span></div>
-            <button type="button" class="btn-secondary trip-vote-card__btn" data-vote-btn="tour">Stem op Grote Tour <span class="trip-vote-count" data-count="tour">0</span></button>
+            <div class="trip-route-opt__body">
+              <span class="trip-route-opt__tag">Rustig aan</span>
+              <h3>Jeri Focus</h3>
+              <p class="trip-route-opt__desc">Minder koffers sjouwen, meer sessies. Inkiten in Cumbuco, flat water op Guajiru, en dan lekker lang in Jericoacoara blijven hangen — dagtrips naar Tatajuba en de lagunes vanuit één basis.</p>
+              <p class="trip-route-opt__stops">Cumbuco → Guajiru → <strong>Jericoacoara (lang)</strong> → Cumbuco</p>
+              <p class="trip-route-opt__meta">3 spots · 9 nachten · veel Jeri</p>
+              <div class="trip-route-opt__pc">
+                <ul class="trip-pc trip-pc--pro"><li>Veel tijd op dé droomspot</li><li>Nauwelijks reizen</li><li>Dorp, duinen &amp; sunset</li></ul>
+                <ul class="trip-pc trip-pc--con"><li>Minder variatie in spots</li></ul>
+              </div>
+              <div class="trip-vote-card__meter"><span class="trip-vote-card__bar" data-bar="jeri"></span></div>
+              <button type="button" class="btn-primary trip-vote-card__btn" data-vote-btn="jeri">Stem op Jeri Focus <span class="trip-vote-count" data-count="jeri">0</span></button>
+            </div>
+          </article>
+
+          <!-- Optie 3 (nieuw) -->
+          <article class="trip-route-opt trip-route-opt--hero" data-option="safari">
+            <div class="trip-route-opt__map">
+              <img src="assets/brazil-2024/map/safari-map.jpg" alt="Kaart downwind-safari Jericoacoara naar Atins" loading="lazy">
+              <span class="trip-route-opt__pill trip-route-opt__pill--new">Optie 3 · Nieuw</span>
+            </div>
+            <div class="trip-route-opt__body">
+              <span class="trip-route-opt__tag trip-route-opt__tag--accent">Het grote avontuur</span>
+              <h3>Downwind Safari: Jeri → Atins</h3>
+              <p class="trip-route-opt__desc">Vlieg direct naar Jericoacoara en ga met de wind mee helemaal westwaarts naar Atins. Een echte downwind-expeditie door drie staten — Ceará, Piauí en Maranhão — langs plekken waar we nog nooit waren, met 4x4- en bootsupport waar de kust ophoudt.</p>
+              <p class="trip-route-opt__stops">Jeri → Tatajuba → Camocim → Barra Grande → Parnaíba-delta → Tutóia → <strong>Atins</strong></p>
+              <p class="trip-route-opt__meta">± 275 km · 7 kite-dagen · 3 staten</p>
+              <div class="trip-route-opt__pc">
+                <ul class="trip-pc trip-pc--pro"><li>Compleet nieuw terrein</li><li>De klassieke NE-Brazil kitesafari</li><li>Elke dag een andere lagune</li></ul>
+                <ul class="trip-pc trip-pc--con"><li>Pittiger niveau vereist</li><li>Meer logistiek (guide + 4x4)</li><li>Uitvliegen via São Luís</li></ul>
+              </div>
+              <div class="trip-vote-card__meter"><span class="trip-vote-card__bar" data-bar="safari"></span></div>
+              <button type="button" class="btn-primary trip-vote-card__btn" data-vote-btn="safari">Stem op de Safari <span class="trip-vote-count" data-count="safari">0</span></button>
+            </div>
           </article>
         </div>
 
         <div class="trip-vote__foot reveal-up">
-          <p class="trip-vote__status" data-vote-status>Nog geen stem uitgebracht.</p>
+          <p class="trip-vote__status" data-vote-status>Vul je naam in en breng je stem uit.</p>
           <div class="trip-vote__actions">
             <a class="btn-ghost btn-ghost--dark" href="#" data-vote-share>Deel je stem in de app <span>→</span></a>
-            <button type="button" class="trip-vote__reset" data-vote-reset>reset</button>
+            <button type="button" class="trip-vote__reset" data-vote-reset>mijn stem wissen</button>
           </div>
         </div>
       </div>
@@ -743,6 +779,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-  <script src="js/brazil-trip.js?v=2"></script>
+  <script src="js/brazil-trip.js?v=3"></script>
 </body>
 </html>
