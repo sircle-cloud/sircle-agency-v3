@@ -185,6 +185,20 @@ p.trip-body { margin-bottom: 20px; }
   transform: scale(1);
 }
 
+/* Hero-achtergronden via classes — desktop laadt 1600px, mobiel de lichte -m variant
+   (voorkomt dat telefoons de zware full-size hero-foto's ophalen/decoderen) */
+.trip-hero__slide--1 { background-image: url('../assets/brazil-2024/donkey-24.jpg'); }
+.trip-hero__slide--2 { background-image: url('../assets/brazil-2024/donkey-10.jpg'); }
+.trip-hero__slide--3 { background-image: url('../assets/brazil-2024/donkey-05.jpg'); }
+.trip-hero__slide--4 { background-image: url('../assets/brazil-2024/donkey-21.jpg'); }
+
+@media (max-width: 768px) {
+  .trip-hero__slide--1 { background-image: url('../assets/brazil-2024/donkey-24-m.jpg'); }
+  .trip-hero__slide--2 { background-image: url('../assets/brazil-2024/donkey-10-m.jpg'); }
+  .trip-hero__slide--3 { background-image: url('../assets/brazil-2024/donkey-05-m.jpg'); }
+  .trip-hero__slide--4 { background-image: url('../assets/brazil-2024/donkey-21-m.jpg'); }
+}
+
 .trip-hero__video {
   position: absolute;
   inset: 0;

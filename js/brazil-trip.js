@@ -3,6 +3,27 @@
 // GSAP + ScrollTrigger + Lenis (zelfde stack als main.js)
 // ============================================
 
+// ---- MOBIEL: lichte -m beeldvarianten (ontwijkt iOS Safari geheugenlimiet op
+// deze lange fotopagina; forceert ~900px i.p.v. 1600px, DPR-onafhankelijk). ----
+// Draait vóór de GSAP-check zodat het ook in de statische fallback werkt.
+window.__isMobileBKT = window.innerWidth < 768;
+window.__mobileSrc = function (u) {
+  return (window.__isMobileBKT && typeof u === 'string' &&
+          /assets\/brazil-2024\/.+\.jpg$/.test(u) && u.indexOf('-m.jpg') === -1)
+    ? u.replace(/\.jpg$/, '-m.jpg') : u;
+};
+if (window.__isMobileBKT) {
+  document.querySelectorAll('img[src]').forEach(function (img) {
+    var cur = img.getAttribute('src');
+    var m = window.__mobileSrc(cur);
+    if (m !== cur) img.setAttribute('src', m);
+    img.decoding = 'async';
+  });
+  document.querySelectorAll('video[poster]').forEach(function (v) {
+    v.setAttribute('poster', window.__mobileSrc(v.getAttribute('poster')));
+  });
+}
+
 // Fallback: als de CDN-scripts niet laden, toon de pagina zonder animaties
 if (typeof gsap === 'undefined' || typeof Lenis === 'undefined') {
   document.documentElement.classList.add('no-gsap');
@@ -386,8 +407,9 @@ const TRIP_PHOTOS_2024 = [
     btn.setAttribute('data-gallery-index', String(i));
     btn.setAttribute('aria-label', `Foto ${i + 1} uit Brazil 2024 groot bekijken`);
     const img = document.createElement('img');
-    img.src = src;
+    img.src = window.__mobileSrc(src);
     img.loading = 'lazy';
+    img.decoding = 'async';
     img.alt = `Brazil 2024 — kitefoto ${i + 1}`;
     btn.appendChild(img);
     wrap.appendChild(btn);
@@ -447,7 +469,7 @@ const TRIP_PHOTOS_2024 = [
   let alt = '';
 
   function render() {
-    imgEl.src = images[index];
+    imgEl.src = window.__mobileSrc(images[index]);
     imgEl.alt = alt;
     counter.textContent = `${index + 1} / ${images.length}`;
     const nav = images.length > 1 ? '' : 'none';
