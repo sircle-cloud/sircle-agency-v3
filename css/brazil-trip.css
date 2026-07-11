@@ -1783,6 +1783,209 @@ p.trip-body { margin-bottom: 20px; }
 }
 
 /* ============================================
+   OPTIE-LABELS (welke sectie hoort bij welke route)
+   ============================================ */
+.trip-optlabel {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  padding: 3px 10px;
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+.trip-optlabel--12 { color: var(--sage-green); }
+.trip-optlabel--3 { color: var(--gold); }
+.trip-optlabel--all { color: var(--copper); }
+.section-cream .trip-optlabel--12 { color: var(--mid-green); }
+.section-cream .trip-optlabel--all { color: var(--bronze); }
+
+/* Spots-sectie intro-header */
+.trip-spots__intro { padding: 90px 0 24px; }
+.trip-inline-link { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.trip-inline-link:hover { color: var(--bronze); }
+
+/* ============================================
+   SAFARI (OPTIE 3) — spots Jeri → Atins
+   ============================================ */
+.trip-safari { padding: 100px 0; }
+.trip-safari__overview {
+  margin: 40px auto 8px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: #aad3df;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.trip-safari__overview img { width: 100%; display: block; }
+.trip-safari__overview-legend {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: rgba(8,36,18,0.55);
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.trip-safari__list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 40px;
+}
+.trip-safari-spot {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 26px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid rgba(243,239,232,0.12);
+  border-radius: 16px;
+  background: rgba(243,239,232,0.03);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.trip-safari-spot:hover { border-color: rgba(242,226,164,0.4); background: rgba(243,239,232,0.05); }
+.trip-safari-spot--finish { border-color: rgba(242,226,164,0.5); background: rgba(242,226,164,0.06); }
+.trip-safari-spot__map {
+  position: relative;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  background: #aad3df;
+}
+.trip-safari-spot__map img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.6s var(--ease-out-quint);
+}
+.trip-safari-spot__map:hover img { transform: scale(1.05); }
+.trip-safari-spot__map span {
+  position: absolute; bottom: 10px; left: 10px;
+  padding: 5px 11px;
+  background: rgba(8,36,18,0.82);
+  color: var(--cream);
+  font-size: 12px; font-weight: 600;
+  border-radius: 30px;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.trip-safari-spot__num {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+}
+.trip-safari-spot__text h3 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--white);
+  margin: 6px 0 10px;
+  line-height: 1.05;
+}
+.trip-safari-spot__state {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sage-green);
+  vertical-align: middle;
+}
+.trip-safari-spot__text p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--soft-green);
+  margin-bottom: 14px;
+}
+.trip-safari-spot__text p strong { color: var(--white); font-weight: 600; }
+.trip-safari-spot__chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.trip-safari-spot__chips span {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(243,239,232,0.06);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cream);
+}
+.trip-safari-spot__chips i {
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage-green);
+  margin-bottom: 2px;
+}
+
+@media (max-width: 767px) {
+  .trip-safari { padding: 70px 0; }
+  .trip-safari-spot { grid-template-columns: 1fr; gap: 16px; }
+  .trip-safari-spot__map { aspect-ratio: 16 / 9; }
+  .trip-safari-spot__text h3 { font-size: 22px; }
+}
+
+/* ============================================
+   VERGELIJKINGSTABEL (3 routes naast elkaar)
+   ============================================ */
+.trip-compare {
+  margin: 32px 0 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.trip-compare table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+  font-size: 14px;
+}
+.trip-compare th, .trip-compare td {
+  padding: 13px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(8,36,18,0.10);
+  vertical-align: top;
+}
+.trip-compare thead th {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark-green);
+  border-bottom: 2px solid rgba(8,36,18,0.2);
+}
+.trip-compare thead th span {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mid-green);
+  margin-top: 2px;
+}
+.trip-compare thead th.trip-compare__hi { color: var(--bronze); }
+.trip-compare thead th.trip-compare__hi span { color: var(--bronze); }
+.trip-compare tbody th {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mid-grey);
+  white-space: nowrap;
+}
+.trip-compare td { color: var(--dark-grey); font-weight: 300; }
+.trip-compare td strong { font-weight: 600; color: var(--dark-green); }
+.trip-compare__col-hi { background: rgba(242,226,164,0.14); }
+
+/* ============================================
    SCROLL-JOURNEY (Airbnb-stijl reis over de kaart)
    ============================================ */
 .trip-journey {

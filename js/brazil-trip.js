@@ -277,9 +277,9 @@ const SPOT_GALLERIES = {
     title: 'Cumbuco',
     get images() { return [PLACE('cumbuco'), P(5), P(6), P(20), P(29)]; },
   },
-  paracuru: {
-    title: 'Paracuru & Donkey Lagoon',
-    get images() { return [PLACE('paracuru'), P(21), P(25), P(31), P(24)]; },
+  lagoinha: {
+    title: 'Lagoinha & Donkey Lagoon',
+    get images() { return [P(21), P(25), P(31), P(24), P(16)]; },
   },
   guajiru: {
     title: 'Ilha do Guajiru',
@@ -310,23 +310,23 @@ const ACCOMMODATIONS = {
     images: ['assets/brazil-2024/acco/windtown-hotel.jpg', 'assets/brazil-2024/acco/windtown-room.jpg', 'assets/brazil-2024/acco/windtown-pool.jpg', 'assets/brazil-2024/acco/windtown-rooftop.jpg', 'assets/brazil-2024/acco/windtown-school.jpg'],
     photoCredit: 'Foto’s: Windtown Beach Hotel',
   },
-  'paracuru-a': {
-    loc: 'Paracuru · 2 nachten · Optie A',
-    title: 'Paracuru Kitefriends Lux Pousada',
-    desc: 'Kite-pousada met ruime suites en ontbijt, gerund door en voor kiters. Dicht bij de lagune en het centrum van Paracuru.',
-    specs: { 'Prijsindicatie': '± €25 pp / nacht', 'Type': 'Pousada (suites)', 'Ontbijt': 'Inbegrepen' },
-    link: 'https://www.tripadvisor.com/Hotel_Review-g1720824-d7134421-Reviews-Paracuru_Kitefriends_Lux_Pousada-Paracuru_State_of_Ceara.html',
+  'lagoinha-a': {
+    loc: 'Lagoinha · 2 nachten · Optie A',
+    title: 'Pousada Dolce Vita',
+    desc: 'Beachfront kite-guesthouse in Lagoinha, een insider-tip onder kiters. Ontbijt inbegrepen, transfer naar Donkey Lagoon (Lagoa dos Jegues) voor flat-water sessies.',
+    specs: { 'Prijsindicatie': '± €30 pp / nacht', 'Type': 'Beachfront guesthouse', 'Ontbijt': 'Inbegrepen' },
+    link: 'https://www.pousadadolcevita.com/',
     images: ['assets/brazil-2024/acco/paracuru-beach.jpg', 'assets/brazil-2024/acco/paracuru-pano.jpg'],
-    photoCredit: 'Sfeerbeeld Paracuru · kamers: zie Booking',
+    photoCredit: 'Sfeerbeeld Lagoinha-kust · kamers: zie Booking',
   },
-  'paracuru-b': {
-    loc: 'Paracuru · 2 nachten · Optie B',
-    title: 'Pousada Wind Paracuru',
-    desc: 'No-nonsense budget-pousada met goede reviews onder kiters. Scooter- en motorverhuur op locatie (± €8 per dag) — handig om de spots rond Paracuru te verkennen.',
-    specs: { 'Prijsindicatie': '± €16 pp / nacht', 'Type': 'Budget pousada', 'Extra': 'Scooterverhuur' },
-    link: 'https://www.tripadvisor.com/Hotel_Review-g1720824-d6351613-Reviews-Pousada_Wind_Paracuru-Paracuru_State_of_Ceara.html',
+  'lagoinha-b': {
+    loc: 'Lagoinha · 2 nachten · Optie B',
+    title: 'Aloha Kite House',
+    desc: 'No-nonsense kite-house in Lagoinha met airco, wifi en gratis parkeren. Op loopafstand van het strand en de kiteschool; budgetvriendelijk.',
+    specs: { 'Prijsindicatie': '± €18 pp / nacht', 'Type': 'Budget kite-house', 'Extra': 'Airco + wifi' },
+    link: 'https://www.booking.com/searchresults.nl.html?ss=Aloha+Kite+House+Lagoinha&group_adults=3&no_rooms=1',
     images: ['assets/brazil-2024/acco/paracuru-munguba.jpg', 'assets/brazil-2024/acco/paracuru-beach.jpg'],
-    photoCredit: 'Sfeerbeeld Paracuru · kamers: zie Booking',
+    photoCredit: 'Sfeerbeeld Lagoinha-kust · kamers: zie Booking',
   },
   'guajiru-a': {
     loc: 'Ilha do Guajiru · 2 nachten · Optie A',
