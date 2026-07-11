@@ -430,31 +430,10 @@ const TRIP_PHOTOS_2024 = [
 (function initMasonry() {
   const wrap = document.getElementById('masonry2024');
   if (!wrap) return;
-  TRIP_PHOTOS_2024.forEach((src, i) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'trip-masonry__item';
-    btn.setAttribute('data-gallery-open', 'brazil2024');
-    btn.setAttribute('data-gallery-index', String(i));
-    btn.setAttribute('aria-label', `Foto ${i + 1} uit Brazil 2024 groot bekijken`);
-    const img = document.createElement('img');
-    img.src = window.__mobileSrc(src);
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    img.alt = `Brazil 2024 — kitefoto ${i + 1}`;
-    btn.appendChild(img);
-    wrap.appendChild(btn);
-  });
-  // JS-gebouwde beelden ook vooruit warmen
+  // De galerij staat statisch in de HTML (altijd zichtbaar, ook als scripts
+  // haperen). Géén transform-reveal: dat botst met CSS-columns op iOS Safari
+  // en kon de galerij onzichtbaar maken. We warmen alleen de beelden vooruit.
   if (window.__warmImages) window.__warmImages(wrap);
-  // rustige stagger-reveal bij scroll
-  gsap.from(wrap.children, {
-    y: 32, opacity: 0,
-    duration: 0.8, stagger: 0.06, ease: 'power3.out',
-    scrollTrigger: { trigger: wrap, start: 'top 90%', toggleActions: 'play none none none' }
-  });
-  // Trigger-posities herberekenen nu de galerij in de DOM staat
-  ScrollTrigger.refresh();
 })();
 
 // ============================================
