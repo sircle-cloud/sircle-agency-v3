@@ -87,9 +87,9 @@
     <!-- ======= PROLOOG: BRAZIL 2024 + MASONRY GALLERY ======= -->
     <section class="trip-section section-dark" id="proloog">
       <div class="container">
-        <p class="trip-eyebrow reveal-up">PROLOOG · BRAZIL 2024</p>
-        <h2 class="trip-h2 trip-h2--light reveal-up">We weten hoe het smaakt</h2>
-        <p class="trip-body trip-body--light reveal-up">Brazilië 2024: elke ochtend wakker worden met wind die er gewoon <em>is</em>. Sessies tot het donker werd, caipirinha's in het zand, spierpijn die je graag terugneemt. Dit zijn de beelden — en dit is precies waarom we teruggaan. Alleen dit keer verder, wilder en met z'n drieën.</p>
+        <p class="trip-eyebrow reveal-up">PROLOOG · CEARÁ</p>
+        <h2 class="trip-h2 trip-h2--light reveal-up">Dit kennen we goed</h2>
+        <p class="trip-body trip-body--light reveal-up">Ceará is bijna een jaarlijkse gewoonte: elke ochtend wakker worden met wind die er gewoon <em>is</em>. Sessies tot het donker werd, caipirinha's in het zand, spierpijn die je graag terugneemt. Dit zijn de beelden — en dit is precies waarom we teruggaan. Alleen dit keer verder en wilder, met z'n drieën.</p>
       </div>
       <div class="trip-masonry container-wide" id="masonry2024" aria-label="Fotogalerij Brazil 2024"></div>
       <div class="container">
@@ -118,29 +118,25 @@
         <p class="trip-eyebrow reveal-up">DE ROUTE · OOST → WEST</p>
         <h2 class="trip-h2 trip-h2--light reveal-up">±215 km met de wind mee, richting het westen</h2>
       </div>
-      <div class="trip-journey" data-journey>
-        <div class="trip-journey__viewport" data-journey-viewport>
-          <div class="trip-journey__mapwrap" data-journey-map>
-            <img class="trip-journey__map" src="assets/brazil-2024/map/coast-map.jpg" alt="Kaart van de kust van Ceará met de route van Cumbuco naar Tatajuba">
-            <svg class="trip-journey__line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <polyline class="trip-journey__path-bg" points="79.38,66.88 70.79,57.5 45,34.44 25.75,29.31 20.63,32.44" />
-              <polyline class="trip-journey__path" points="79.38,66.88 70.79,57.5 45,34.44 25.75,29.31 20.63,32.44" />
-            </svg>
-            <span class="trip-journey__pin" data-pin="0" style="left:79.38%;top:66.88%"></span>
-            <span class="trip-journey__pin" data-pin="1" style="left:70.79%;top:57.5%"></span>
-            <span class="trip-journey__pin" data-pin="2" style="left:45%;top:34.44%"></span>
-            <span class="trip-journey__pin" data-pin="3" style="left:25.75%;top:29.31%"></span>
-            <span class="trip-journey__pin" data-pin="4" style="left:20.63%;top:32.44%"></span>
-          </div>
-          <div class="trip-journey__hud">
-            <span class="trip-journey__hud-east">OOST · start</span>
-            <span class="trip-journey__hud-west">WEST · finish</span>
-          </div>
-          <div class="trip-journey__popup" data-journey-popup></div>
-          <div class="trip-journey__dots" data-journey-dots></div>
+      <div class="trip-routemap container-wide" data-routemap>
+        <div class="trip-routemap__canvas">
+          <img class="trip-routemap__img" src="assets/brazil-2024/map/coast-map.jpg" alt="Kaart van de kust van Ceará met de route van Cumbuco naar Tatajuba" loading="lazy">
+          <svg class="trip-routemap__line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <polyline class="trip-routemap__path-bg" points="79.38,66.88 70.79,57.5 45,34.44 25.75,29.31 20.63,32.44" />
+            <polyline class="trip-routemap__path" points="79.38,66.88 70.79,57.5 45,34.44 25.75,29.31 20.63,32.44" />
+          </svg>
+          <button type="button" class="trip-routemap__pin" data-pin="0" data-anchor="#cumbuco" style="left:79.38%;top:66.88%"><span class="trip-routemap__dot">1</span><em>Cumbuco</em></button>
+          <button type="button" class="trip-routemap__pin" data-pin="1" data-anchor="#paracuru" style="left:70.79%;top:57.5%"><span class="trip-routemap__dot">2</span><em>Paracuru</em></button>
+          <button type="button" class="trip-routemap__pin" data-pin="2" data-anchor="#guajiru" style="left:45%;top:34.44%"><span class="trip-routemap__dot">3</span><em>Ilha do Guajiru</em></button>
+          <button type="button" class="trip-routemap__pin" data-pin="3" data-anchor="#jeri" style="left:25.75%;top:29.31%"><span class="trip-routemap__dot">4</span><em>Jericoacoara</em></button>
+          <button type="button" class="trip-routemap__pin" data-pin="4" data-anchor="#tatajuba" style="left:20.63%;top:32.44%"><span class="trip-routemap__dot">5</span><em>Tatajuba</em></button>
+        </div>
+        <div class="trip-routemap__legend">
+          <span class="trip-routemap__legend-east">▶ Fortaleza / Cumbuco — start</span>
+          <span class="trip-routemap__legend-west">Tatajuba — finish ◀</span>
         </div>
       </div>
-      <!-- Mobiele / statische fallback: overzichtskaarten -->
+      <!-- Klikbare locatie-index (hover koppelt aan de kaart-pin) -->
       <div class="trip-route__cards container-wide" data-route-cards>
         <article class="trip-route__card" data-route-card="0" data-anchor="#cumbuco">
           <span class="trip-route__num">01</span><h3>Cumbuco</h3>
@@ -283,66 +279,161 @@
 
       <article class="trip-spot section-dark" id="cumbuco">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/places/cumbuco.jpg" alt="Praia do Cumbuco — strand en duinen" loading="lazy">
+          <img src="assets/brazil-2024/places/cumbuco.jpg" alt="Cumbuco" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num">HOOFDSTUK 01 · WAAR HET WEER BEGINT</span>
           <h3 class="trip-h2 trip-h2--light">Cumbuco</h3>
-          <p class="trip-body trip-body--light">Onze thuisbasis. Grote zandduinen direct aan het strand, meerdere kitescholen, en de betrouwbaarste wind van de trip om in te vliegen. Overdag side-shore, ideale kracht voor 9–12m.</p>
+          <p class="trip-body trip-body--light">Onze thuisbasis. Grote zandduinen aan het strand, meerdere kitescholen en de betrouwbaarste wind van de trip om in te vliegen. De Cauípe-lagune vlakbij is spiegelglad — perfect om los te gaan.</p>
+          <div class="trip-spot__conditions">
+            <div class="trip-cond"><span>Wind</span><strong>16–22 kn</strong></div>
+            <div class="trip-cond"><span>Water</span><strong>Zee (choppy) + Cauípe-lagune (flat)</strong></div>
+            <div class="trip-cond"><span>Niveau</span><strong>Alle niveaus</strong></div>
+          </div>
           <button type="button" class="btn-ghost" data-gallery-open="cumbuco">Bekijk foto's</button>
-          <a href="#opties" class="trip-spot__badge">Accommodatie: Windtown (vast) →</a>
+        </div>
+        <div class="trip-spot__detail">
+          <a class="trip-spot__map" href="https://www.google.com/maps/search/?api=1&query=Cumbuco+Cear%C3%A1+Brazil" target="_blank" rel="noopener" aria-label="Open Cumbuco in Google Maps">
+            <img src="assets/brazil-2024/spotmaps/cumbuco.jpg" alt="Detailkaart Cumbuco" loading="lazy">
+            <span class="trip-spot__map-tag">📍 Cumbuco · open in Maps ↗</span>
+          </a>
+          <div class="trip-proscons">
+            <div class="trip-proscons__col trip-proscons__col--pro">
+              <h4>Pluspunten</h4><ul><li>Betrouwbaarste wind om in te vliegen</li><li>Cauípe-lagune: butter-flat freestyle</li><li>Kitescholen, materiaal & restaurants</li><li>20 min van vliegveld Fortaleza</li></ul>
+            </div>
+            <div class="trip-proscons__col trip-proscons__col--con">
+              <h4>Let op</h4><ul><li>Drukste spot van de trip</li><li>Zee kan rommelig zijn</li><li>Minder "afgelegen" gevoel</li></ul>
+            </div>
+          </div>
+          <a class="trip-spot__book" href="https://www.booking.com/searchresults.nl.html?ss=Cumbuco%2C+Cear%C3%A1%2C+Brazili%C3%AB&checkin=2026-10-09&checkout=2026-10-11&group_adults=3&no_rooms=1&group_children=0&nflt=price%3DEUR-0-150-1&order=price" target="_blank" rel="noopener">Slapen in Cumbuco — live op Booking.com ↗</a>
         </div>
       </article>
 
       <article class="trip-spot section-cream trip-spot--reverse" id="paracuru">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/places/paracuru.jpg" alt="Het strand van Paracuru met kliffen" loading="lazy">
+          <img src="assets/brazil-2024/places/paracuru.jpg" alt="Paracuru" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num trip-route__num--dark">HOOFDSTUK 02 · HET RITME VINDEN</span>
-          <h3 class="trip-h2">Paracuru</h3>
-          <p class="trip-body">Kleinschaliger en lokaler dan Cumbuco. Brede lagune bij laag water, minder toeristen, goede prijs-kwaliteit. En het echte goud ligt 3 km voorbij Lagoinha: <strong>Donkey Lagoon</strong> — een getij-onafhankelijke, spiegelgladde freestyle-lagune tussen de duinen, met wilde ezels als publiek. Vanuit Paracuru zo te doen als dagtrip of als start van de lange downwind-etappe.</p>
+          <h3 class="trip-h2 ">Paracuru</h3>
+          <p class="trip-body ">Kleinschaliger en lokaler dan Cumbuco. Bij laag water ontstaat een brede vlakke lagune, en 3 km voorbij Lagoinha ligt Donkey Lagoon — getij-onafhankelijk, spiegelglad tussen de duinen, met wilde ezels als publiek.</p>
+          <div class="trip-spot__conditions">
+            <div class="trip-cond"><span>Wind</span><strong>15–25 kn</strong></div>
+            <div class="trip-cond"><span>Water</span><strong>Golven + lagune (laag tij) + Donkey Lagoon</strong></div>
+            <div class="trip-cond"><span>Niveau</span><strong>Begin → gevorderd</strong></div>
+          </div>
           <button type="button" class="btn-ghost btn-ghost--dark" data-gallery-open="paracuru">Bekijk foto's</button>
-          <a href="#opties" class="trip-spot__badge trip-spot__badge--dark">Accommodatie: zie opties A/B →</a>
+        </div>
+        <div class="trip-spot__detail">
+          <a class="trip-spot__map" href="https://www.google.com/maps/search/?api=1&query=Paracuru+Cear%C3%A1+Brazil" target="_blank" rel="noopener" aria-label="Open Paracuru in Google Maps">
+            <img src="assets/brazil-2024/spotmaps/paracuru.jpg" alt="Detailkaart Paracuru" loading="lazy">
+            <span class="trip-spot__map-tag">📍 Paracuru · open in Maps ↗</span>
+          </a>
+          <div class="trip-proscons">
+            <div class="trip-proscons__col trip-proscons__col--pro">
+              <h4>Pluspunten</h4><ul><li>Lokaler & rustiger dan Cumbuco</li><li>Donkey Lagoon: flat freestyle-paradijs</li><li>Zowel golven als flat water</li><li>Goede prijs-kwaliteit</li></ul>
+            </div>
+            <div class="trip-proscons__col trip-proscons__col--con">
+              <h4>Let op</h4><ul><li>Lagune vooral bij laag tij</li><li>Golfspot meer voor gevorderden</li><li>Minder voorzieningen</li></ul>
+            </div>
+          </div>
+          <a class="trip-spot__book" href="https://www.booking.com/searchresults.nl.html?ss=Paracuru%2C+Cear%C3%A1%2C+Brazili%C3%AB&checkin=2026-10-11&checkout=2026-10-12&group_adults=3&no_rooms=1&group_children=0&nflt=price%3DEUR-0-150-1&order=price" target="_blank" rel="noopener">Slapen in Paracuru — live op Booking.com ↗</a>
         </div>
       </article>
 
       <article class="trip-spot section-dark" id="guajiru">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/places/guajiru.jpg" alt="De lagune van Ilha do Guajiru" loading="lazy">
+          <img src="assets/brazil-2024/places/guajiru.jpg" alt="Ilha do Guajiru" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num">HOOFDSTUK 03 · SPIEGELGLAD</span>
           <h3 class="trip-h2 trip-h2--light">Ilha do Guajiru</h3>
-          <p class="trip-body trip-body--light">Één van Brazilië's beste ongetij-spots: de lagune blijft varen ongeacht eb of vloed. Vlak water, perfect voor freestyle en foilen. Afgelegen en rustig.</p>
+          <p class="trip-body trip-body--light">Eén van de beste ongetij-spots van Brazilië: de lagune blijft varen ongeacht eb of vloed. Sta-diep, spiegelglad water — ideaal voor freestyle, foilen en veilig progressie maken.</p>
+          <div class="trip-spot__conditions">
+            <div class="trip-cond"><span>Wind</span><strong>18–25 kn</strong></div>
+            <div class="trip-cond"><span>Water</span><strong>Getij-onafhankelijke platte lagune</strong></div>
+            <div class="trip-cond"><span>Niveau</span><strong>Perfect voor begin & freestyle</strong></div>
+          </div>
           <button type="button" class="btn-ghost" data-gallery-open="guajiru">Bekijk foto's</button>
-          <a href="#opties" class="trip-spot__badge">Accommodatie: zie opties A/B →</a>
+        </div>
+        <div class="trip-spot__detail">
+          <a class="trip-spot__map" href="https://www.google.com/maps/search/?api=1&query=Ilha+do+Guajiru+Cear%C3%A1+Brazil" target="_blank" rel="noopener" aria-label="Open Ilha do Guajiru in Google Maps">
+            <img src="assets/brazil-2024/spotmaps/guajiru.jpg" alt="Detailkaart Ilha do Guajiru" loading="lazy">
+            <span class="trip-spot__map-tag">📍 Ilha do Guajiru · open in Maps ↗</span>
+          </a>
+          <div class="trip-proscons">
+            <div class="trip-proscons__col trip-proscons__col--pro">
+              <h4>Pluspunten</h4><ul><li>Flat water de hele dag, ongeacht tij</li><li>Sta-diep — veilig oefenen</li><li>Afgelegen natuurgebied</li><li>Ideaal voor freestyle-progressie</li></ul>
+            </div>
+            <div class="trip-proscons__col trip-proscons__col--con">
+              <h4>Let op</h4><ul><li>Afgelegen, weinig anders te doen</li><li>Beperkt aantal accommodaties</li><li>Kan druk worden met scholen</li></ul>
+            </div>
+          </div>
+          <a class="trip-spot__book" href="https://www.booking.com/searchresults.nl.html?ss=Ilha+do+Guajiru%2C+Itarema%2C+Brazili%C3%AB&checkin=2026-10-12&checkout=2026-10-13&group_adults=3&no_rooms=1&group_children=0&nflt=price%3DEUR-0-150-1&order=price" target="_blank" rel="noopener">Slapen in Ilha do Guajiru — live op Booking.com ↗</a>
         </div>
       </article>
 
       <article class="trip-spot section-cream trip-spot--reverse" id="jeri">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/places/jeri.jpg" alt="Praia Principal, Jericoacoara" loading="lazy">
+          <img src="assets/brazil-2024/places/jeri.jpg" alt="Jericoacoara" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num trip-route__num--dark">HOOFDSTUK 04 · DE DUINEN</span>
-          <h3 class="trip-h2">Jericoacoara (Jeri)</h3>
-          <p class="trip-body">Het iconische duindorp. Kiten op de lagune van Jeri, zonsondergang vanaf de Duna do Pôr do Sol, en 's avonds het levendigste dorp van de reis — restaurants, bars, capoeira op straat.</p>
+          <h3 class="trip-h2 ">Jericoacoara</h3>
+          <p class="trip-body ">Het iconische duindorp. De sterkste en meest constante wind van de kust, golven op zee en flat water bij Guriú en Preá. 's Avonds het levendigste dorp van de reis — eten, bars, capoeira op straat.</p>
+          <div class="trip-spot__conditions">
+            <div class="trip-cond"><span>Wind</span><strong>20–30 kn (sterkste!)</strong></div>
+            <div class="trip-cond"><span>Water</span><strong>Golven + flat bij Guriú / Preá</strong></div>
+            <div class="trip-cond"><span>Niveau</span><strong>Gevorderd</strong></div>
+          </div>
           <button type="button" class="btn-ghost btn-ghost--dark" data-gallery-open="jeri">Bekijk foto's</button>
-          <a href="#opties" class="trip-spot__badge trip-spot__badge--dark">Accommodatie: zie opties A/B →</a>
+        </div>
+        <div class="trip-spot__detail">
+          <a class="trip-spot__map" href="https://www.google.com/maps/search/?api=1&query=Jericoacoara+Cear%C3%A1+Brazil" target="_blank" rel="noopener" aria-label="Open Jericoacoara in Google Maps">
+            <img src="assets/brazil-2024/spotmaps/jeri.jpg" alt="Detailkaart Jericoacoara" loading="lazy">
+            <span class="trip-spot__map-tag">📍 Jericoacoara · open in Maps ↗</span>
+          </a>
+          <div class="trip-proscons">
+            <div class="trip-proscons__col trip-proscons__col--pro">
+              <h4>Pluspunten</h4><ul><li>Sterkste, meest constante wind</li><li>Iconisch dorp: eten & nachtleven</li><li>Guriú/Preá: flat tussen de golven</li><li>Sunset op de Duna do Pôr do Sol</li></ul>
+            </div>
+            <div class="trip-proscons__col trip-proscons__col--con">
+              <h4>Let op</h4><ul><li>Sterke wind — minder voor beginners</li><li>Drukker & toeristischer</li><li>Duurder dan de rest</li></ul>
+            </div>
+          </div>
+          <a class="trip-spot__book" href="https://www.booking.com/searchresults.nl.html?ss=Jericoacoara%2C+Cear%C3%A1%2C+Brazili%C3%AB&checkin=2026-10-13&checkout=2026-10-16&group_adults=3&no_rooms=1&group_children=0&nflt=price%3DEUR-0-150-1&order=price" target="_blank" rel="noopener">Slapen in Jericoacoara — live op Booking.com ↗</a>
         </div>
       </article>
 
       <article class="trip-spot section-dark" id="tatajuba">
         <div class="trip-spot__image reveal-clip">
-          <img src="assets/brazil-2024/places/tatajuba.jpg" alt="De lagune bij Tatajuba" loading="lazy">
+          <img src="assets/brazil-2024/places/tatajuba.jpg" alt="Tatajuba" loading="lazy">
         </div>
         <div class="trip-spot__text">
           <span class="trip-route__num">HOOFDSTUK 05 · DE FINALE</span>
           <h3 class="trip-h2 trip-h2--light">Tatajuba</h3>
-          <p class="trip-body trip-body--light">De grand finale. Downwind vanaf Jeri over de lagune, langs verlaten duinen — nauwelijks bebouwing, wind praktisch gegarandeerd van juli t/m december. Het wildste stuk van de trip.</p>
+          <p class="trip-body trip-body--light">De grand finale. Een gigantische, vrijwel lege lagune tussen de duinen en golven op zee. Nauwelijks bebouwing, bijna geen andere kiters — het wildste stuk van de trip, te bereiken met een downwind vanaf Jeri.</p>
+          <div class="trip-spot__conditions">
+            <div class="trip-cond"><span>Wind</span><strong>20–28 kn</strong></div>
+            <div class="trip-cond"><span>Water</span><strong>Enorme platte lagune + zee</strong></div>
+            <div class="trip-cond"><span>Niveau</span><strong>Alle niveaus op de lagune</strong></div>
+          </div>
           <button type="button" class="btn-ghost" data-gallery-open="tatajuba">Bekijk foto's</button>
-          <a href="#opties" class="trip-spot__badge">Accommodatie: optionele extra nacht, zie opties A/B →</a>
+        </div>
+        <div class="trip-spot__detail">
+          <a class="trip-spot__map" href="https://www.google.com/maps/search/?api=1&query=Tatajuba+Cear%C3%A1+Brazil" target="_blank" rel="noopener" aria-label="Open Tatajuba in Google Maps">
+            <img src="assets/brazil-2024/spotmaps/tatajuba.jpg" alt="Detailkaart Tatajuba" loading="lazy">
+            <span class="trip-spot__map-tag">📍 Tatajuba · open in Maps ↗</span>
+          </a>
+          <div class="trip-proscons">
+            <div class="trip-proscons__col trip-proscons__col--pro">
+              <h4>Pluspunten</h4><ul><li>Gigantische lege lagune</li><li>Nauwelijks andere kiters</li><li>Wild & ongerept — echte finale</li><li>Mooie downwind vanaf Jeri</li></ul>
+            </div>
+            <div class="trip-proscons__col trip-proscons__col--con">
+              <h4>Let op</h4><ul><li>Lastig bereikbaar (4x4 / downwind)</li><li>Heel weinig voorzieningen</li><li>Meestal dagtrip, niet overnachten</li></ul>
+            </div>
+          </div>
+          <a class="trip-spot__book" href="https://www.booking.com/searchresults.nl.html?ss=Tatajuba%2C+Camocim%2C+Brazili%C3%AB&checkin=2026-10-16&checkout=2026-10-17&group_adults=3&no_rooms=1&group_children=0&nflt=price%3DEUR-0-150-1&order=price" target="_blank" rel="noopener">Slapen in Tatajuba — live op Booking.com ↗</a>
         </div>
       </article>
 
@@ -361,25 +452,41 @@
             <h3>Cumbuco → Taíba → Paracuru</h3>
             <p>Meteen een serieuze: langs de Cauípe- en Taíba-lagune (snackstop), aankomen in de golven van Paracuru.</p>
             <span class="trip-leg__dist">±45 km · 3–4 uur</span>
-          </div>
+            <div class="trip-leg__pc">
+              <div class="trip-leg__pc-col trip-leg__pc-col--pro"><h5>Pro</h5><ul><li>Zachte opstart-etappe</li><li>Cauípe & Taíba flat als opwarmer</li><li>Goed te doen voor iedereen</li></ul></div>
+              <div class="trip-leg__pc-col trip-leg__pc-col--con"><h5>Con</h5><ul><li>Aankomst in golven bij Paracuru</li><li>Wind soms nog licht in de ochtend</li></ul></div>
+            </div>
+            </div>
           <div class="trip-leg reveal-up">
             <span class="trip-leg__day">Etappe 2 · de lange</span>
             <h3>Paracuru → Donkey Lagoon → Guajiru</h3>
             <p>Dé koningsetappe: via Lagoinha naar Donkey Lagoon voor een freestyle-stop tussen de duinen, dan door naar de ongetij-lagune van Guajiru.</p>
             <span class="trip-leg__dist">±70 km · 4,5–5,5 uur</span>
-          </div>
+            <div class="trip-leg__pc">
+              <div class="trip-leg__pc-col trip-leg__pc-col--pro"><h5>Pro</h5><ul><li>Donkey Lagoon: flat freestyle-stop</li><li>Meest gevarieerde etappe</li><li>Langste afstand = grootste beloning</li></ul></div>
+              <div class="trip-leg__pc-col trip-leg__pc-col--con"><h5>Con</h5><ul><li>Zwaar: 4,5–5,5 uur op het water</li><li>Conditie & materiaalkennis nodig</li><li>Tussenstuk met golven</li></ul></div>
+            </div>
+            </div>
           <div class="trip-leg reveal-up">
             <span class="trip-leg__day">Etappe 3</span>
             <h3>Guajiru → Icaraizinho → Preá</h3>
             <p>Langs kliffen en zandbanken via het vissersdorp Icaraizinho, uitvarend richting Preá.</p>
             <span class="trip-leg__dist">±60 km · 4–5 uur</span>
-          </div>
+            <div class="trip-leg__pc">
+              <div class="trip-leg__pc-col trip-leg__pc-col--pro"><h5>Pro</h5><ul><li>Spectaculaire kliffen & zandbanken</li><li>Rustig, weinig andere kiters</li><li>Mooie vissersdorpjes onderweg</li></ul></div>
+              <div class="trip-leg__pc-col trip-leg__pc-col--con"><h5>Con</h5><ul><li>Weinig bailout-punten onderweg</li><li>Aflandige stukken — kite goed relaunchen</li></ul></div>
+            </div>
+            </div>
           <div class="trip-leg reveal-up">
             <span class="trip-leg__day">Finale</span>
             <h3>Preá → Jeri → Guriú → Tatajuba</h3>
             <p>De favoriet van iedereen: onder de duin van Jeri door, spiegelglad water bij Guriú, eindigen in de wildernis van Tatajuba.</p>
             <span class="trip-leg__dist">±40 km · 3–4 uur</span>
-          </div>
+            <div class="trip-leg__pc">
+              <div class="trip-leg__pc-col trip-leg__pc-col--pro"><h5>Pro</h5><ul><li>De mooiste: langs de duin van Jeri</li><li>Guriú spiegelglad tussen de golven</li><li>Eindigt in de wildernis van Tatajuba</li></ul></div>
+              <div class="trip-leg__pc-col trip-leg__pc-col--con"><h5>Con</h5><ul><li>Sterke wind bij Jeri</li><li>Terug vanaf Tatajuba per 4x4/boot</li></ul></div>
+            </div>
+            </div>
         </div>
         <p class="trip-note reveal-up">Eerlijk is eerlijk: etappes van 40–70 km zijn geen beginnersfeest — vlot relaunchen, varen in golven en 4+ uur op het water is de norm. Daarom rijdt de 4x4 áltijd mee: wie stukgaat stapt in, wie vliegt vaart door. Totaal over de trip: ±215 km downwind.</p>
       </div>
