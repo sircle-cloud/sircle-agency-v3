@@ -557,63 +557,122 @@ const TRIP_PHOTOS_2024 = [
 })();
 
 // ============================================
-// STEMMEN op de itinerary (client-side, bewaard in localStorage)
-// Elke reiziger stemt op zijn eigen toestel; totalen worden per toestel
-// bewaard en zijn te delen via WhatsApp/de groepsapp.
+// STEMMEN op de route — GEDEELDE LIVE-TELLING
+// Totalen staan in een gedeelde, sleutelloze cloud-teller (counterapi.dev),
+// zodat we met z'n drieën dezelfde stand live zien. Je naam + eigen keuze
+// worden lokaal bewaard (zodat je 'm kunt wijzigen en delen via WhatsApp).
+// Valt terug op een nette offline-melding als de teller onbereikbaar is.
 // ============================================
 (function initVote() {
   const wrap = document.querySelector('[data-vote]');
   if (!wrap) return;
-  const KEY = 'bkt26-votes';
-  const LABELS = { jeri: 'Optie 1 · Jeri Focus', tour: 'Optie 2 · Grote Tour' };
+  const OPTS = ['klassiek', 'jeri', 'safari'];
+  const LABELS = { klassiek: 'De Klassieke Kust', jeri: 'Jeri Focus', safari: 'Downwind Safari Jeri→Atins' };
+  const NS = 'bkt26route9x2k';                 // gedeelde namespace voor deze trip
+  const API = 'https://api.counterapi.dev/v1/' + NS + '/';
+  const KEY = 'bkt26-myvote';                  // lokaal: alleen mijn naam + keuze
   const statusEl = document.querySelector('[data-vote-status]');
   const shareEl = document.querySelector('[data-vote-share]');
   const resetEl = document.querySelector('[data-vote-reset]');
+  const nameEl = document.querySelector('[data-vote-name]');
 
-  function read() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || { jeri: 0, tour: 0, mine: null }; }
-    catch (e) { return { jeri: 0, tour: 0, mine: null }; }
+  const counts = { klassiek: 0, jeri: 0, safari: 0 };
+  let online = true;
+
+  function me() { try { return JSON.parse(localStorage.getItem(KEY)) || { name: '', mine: null }; } catch (e) { return { name: '', mine: null }; } }
+  function saveMe(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+
+  async function api(path) {
+    const r = await fetch(API + path, { cache: 'no-store' });
+    if (!r.ok) throw new Error('api ' + r.status);
+    return r.json();
   }
-  function write(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+  async function getCount(opt) {
+    const r = await fetch(API + opt + '/?_=' + Date.now(), { cache: 'no-store' });
+    if (r.status === 400 || r.status === 404) return 0;   // teller bestaat nog niet = 0
+    if (!r.ok) throw new Error('api ' + r.status);         // echte fout -> offline
+    const d = await r.json();
+    return (d && typeof d.count === 'number') ? d.count : 0;
+  }
+  async function refresh() {
+    try {
+      const vals = await Promise.all(OPTS.map(getCount));
+      OPTS.forEach((o, i) => (counts[o] = vals[i]));
+      online = true;
+    } catch (e) { online = false; }
+    render();
+  }
 
   function render() {
-    const v = read();
-    const total = v.jeri + v.tour || 1;
-    document.querySelectorAll('[data-count]').forEach(el => { el.textContent = v[el.dataset.count]; });
-    document.querySelectorAll('[data-bar]').forEach(el => { el.style.width = ((v[el.dataset.bar] / total) * 100) + '%'; });
-    document.querySelectorAll('.trip-vote-card').forEach(card => {
-      card.classList.toggle('is-picked', v.mine === card.dataset.option);
+    const m = me();
+    const total = OPTS.reduce((s, o) => s + counts[o], 0);
+    const max = Math.max(1, counts.klassiek, counts.jeri, counts.safari);
+    const leader = total ? OPTS.reduce((a, b) => (counts[b] > counts[a] ? b : a)) : null;
+    OPTS.forEach(o => {
+      const c = document.querySelector('[data-count="' + o + '"]');
+      if (c) c.textContent = counts[o];
+      const bar = document.querySelector('[data-bar="' + o + '"]');
+      if (bar) bar.style.width = ((counts[o] / max) * 100) + '%';
+      const card = document.querySelector('.trip-route-opt[data-option="' + o + '"]');
+      if (card) {
+        card.classList.toggle('is-picked', m.mine === o);
+        card.classList.toggle('is-leading', total > 0 && leader === o && counts[o] > 0);
+      }
     });
-    if (v.mine) {
-      const winner = v.jeri === v.tour ? null : (v.jeri > v.tour ? 'jeri' : 'tour');
-      statusEl.textContent = `Jouw stem: ${LABELS[v.mine]}. Stand: ${v.jeri}–${v.tour}` +
-        (winner ? ` · ${LABELS[winner]} leidt.` : ' · gelijkspel.');
+    const stand = counts.klassiek + '–' + counts.jeri + '–' + counts.safari;
+    if (!m.name) {
+      statusEl.textContent = 'Vul je naam in om te stemmen.';
+    } else if (!m.mine) {
+      statusEl.textContent = m.name + ', kies hierboven je route. Live stand: ' + stand + '.';
     } else {
-      statusEl.textContent = 'Nog geen stem uitgebracht — kies hierboven.';
+      statusEl.textContent = 'Jouw stem (' + m.name + '): ' + LABELS[m.mine] + '. Live stand ' + stand +
+        (leader && total ? ' · ' + LABELS[leader] + ' leidt.' : '.');
     }
+    if (!online) statusEl.textContent += '  (telling even offline — verse stand volgt zo)';
     if (shareEl) {
-      const txt = `Mijn stem voor Brazil 2026: ${v.mine ? LABELS[v.mine] : '—'} (stand ${v.jeri}–${v.tour}). Wat kies jij?`;
+      const txt = 'Mijn stem voor Brazil 2026: ' + (m.mine ? LABELS[m.mine] : '—') +
+        '. Live stand — Klassiek ' + counts.klassiek + ', Jeri ' + counts.jeri + ', Safari ' + counts.safari +
+        '. Stem mee: https://sircle.agency/brazil-kite-trip.html#itinerary';
       shareEl.href = 'https://wa.me/?text=' + encodeURIComponent(txt);
     }
   }
 
+  if (nameEl) {
+    nameEl.value = me().name || '';
+    nameEl.addEventListener('input', () => { const m = me(); m.name = nameEl.value.trim().slice(0, 24); saveMe(m); render(); });
+  }
+
   document.querySelectorAll('[data-vote-btn]').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const opt = btn.dataset.voteBtn;
-      const v = read();
-      if (v.mine === opt) return;      // al op deze optie gestemd
-      if (v.mine) v[v.mine]--;          // stem verplaatsen
-      v[opt]++;
-      v.mine = opt;
-      write(v);
-      render();
+      const m = me();
+      if (!m.name) { if (nameEl) nameEl.focus(); statusEl.textContent = 'Vul eerst je naam in.'; return; }
+      if (m.mine === opt) return;
+      btn.disabled = true;
+      if (m.mine) counts[m.mine] = Math.max(0, counts[m.mine] - 1);
+      counts[opt]++;
+      const prev = m.mine; m.mine = opt; saveMe(m); render();
       gsap.fromTo(btn, { scale: 0.96 }, { scale: 1, duration: 0.4, ease: 'elastic.out(1, 0.5)' });
+      try {
+        if (prev) await api(prev + '/down');
+        await api(opt + '/up');
+      } catch (e) { online = false; }
+      await refresh();
+      btn.disabled = false;
     });
   });
 
-  if (resetEl) resetEl.addEventListener('click', () => { write({ jeri: 0, tour: 0, mine: null }); render(); });
+  if (resetEl) resetEl.addEventListener('click', async () => {
+    const m = me();
+    if (m.mine) { try { await api(m.mine + '/down'); } catch (e) {} }
+    saveMe({ name: m.name, mine: null });
+    await refresh();
+  });
 
   render();
+  refresh();
+  setInterval(refresh, 7000);
+  window.addEventListener('focus', refresh);
 })();
 
 // ============================================
