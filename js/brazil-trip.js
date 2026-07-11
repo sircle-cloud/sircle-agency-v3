@@ -695,7 +695,7 @@ const TRIP_PHOTOS_2024 = [
     scrollTrigger: { trigger: '.trip-routemap', start: 'top 80%', end: 'center 50%', scrub: 0.6 }
   });
 
-  const pinAt = [0, 0.28, 0.62, 0.9, 1];
+  const pinAt = pins.map((_, i) => (pins.length > 1 ? i / (pins.length - 1) : 0));
   ScrollTrigger.create({
     trigger: '.trip-routemap', start: 'top 80%', end: 'center 50%',
     onUpdate: (self) => pins.forEach((pin, i) => {
