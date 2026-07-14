@@ -61,6 +61,67 @@
   margin-top: 40px;
 }
 
+/* ---------- WHY THIS MATTERS: OFFICE PHOTOS ---------- */
+.brief-bg-photo {
+  opacity: 0.14;
+  filter: grayscale(0.45) contrast(1.05);
+}
+
+.brief-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(243, 239, 232, 0.5) 0%, rgba(243, 239, 232, 0.88) 55%, var(--cream) 100%);
+}
+
+.brief-photo {
+  position: relative;
+  margin-top: 48px;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: rgba(8, 36, 18, 0.04);
+  border: 1px dashed rgba(8, 36, 18, 0.18);
+}
+
+.brief-photo img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.brief-photo__pending {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--mid-grey);
+}
+
+.brief-photo__caption {
+  position: absolute;
+  left: 20px;
+  bottom: 16px;
+  z-index: 2;
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: rgba(8, 36, 18, 0.78);
+  color: var(--cream);
+  font-size: 12.5px;
+  font-weight: 300;
+  backdrop-filter: blur(4px);
+}
+
 /* ---------- SHARED ---------- */
 .pp-lead {
   font-size: clamp(18px, 2vw, 22px);
