@@ -61,31 +61,24 @@
   margin-top: 40px;
 }
 
-/* ---------- WHY THIS MATTERS: OFFICE PHOTOS ---------- */
-.brief-bg-photo {
-  opacity: 0.14;
-  filter: grayscale(0.45) contrast(1.05);
+/* ---------- WHY THIS MATTERS: TEXT + PHOTO GRID ---------- */
+.brief-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: center;
 }
 
-.brief-bg-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(243, 239, 232, 0.5) 0%, rgba(243, 239, 232, 0.88) 55%, var(--cream) 100%);
-}
-
-.brief-photo {
+.brief-image {
   position: relative;
-  margin-top: 48px;
   border-radius: 20px;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 5;
   background: rgba(8, 36, 18, 0.04);
   border: 1px dashed rgba(8, 36, 18, 0.18);
 }
 
-.brief-photo img {
+.brief-image img {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -95,7 +88,7 @@
   display: block;
 }
 
-.brief-photo__pending {
+.brief-image__pending {
   position: absolute;
   inset: 0;
   display: flex;
@@ -108,18 +101,9 @@
   color: var(--mid-grey);
 }
 
-.brief-photo__caption {
-  position: absolute;
-  left: 20px;
-  bottom: 16px;
-  z-index: 2;
-  padding: 8px 16px;
-  border-radius: 100px;
-  background: rgba(8, 36, 18, 0.78);
-  color: var(--cream);
-  font-size: 12.5px;
-  font-weight: 300;
-  backdrop-filter: blur(4px);
+@media (max-width: 900px) {
+  .brief-grid { grid-template-columns: 1fr; gap: 32px; }
+  .brief-image { order: -1; aspect-ratio: 16 / 10; }
 }
 
 /* ---------- SHARED ---------- */
